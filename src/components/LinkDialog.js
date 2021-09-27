@@ -20,17 +20,6 @@ export default function LinkDialog(props) {
     album
   } = props;
 
-  const [textRef, setTextRef] = useState(React.createRef());
-
-  useEffect(() => {
-    if (open && textRef.current) {
-      setTimeout(() => {
-      textRef.current.focus();  
-    },1000)
-      
-    }
-  }, [open, textRef.current])
-
   const selectText = (event) => {
     event.preventDefault();
     event.target.setSelectionRange(0, event.target.value.length);
@@ -42,6 +31,11 @@ export default function LinkDialog(props) {
     let xPos = event.clientX / window.innerWidth;
     let yPos = event.clientY / window.innerHeight;
 
+    if (xPos === 0 && yPos === 0) {
+      xPos = (window.innerWidth / 2) / window.innerWidth;
+      yPos = (window.innerHeight / 2) / window.innerHeight;
+    }
+
     confetti({
       origin: {
         x: xPos,
@@ -49,6 +43,10 @@ export default function LinkDialog(props) {
       },
       zIndex: 10000
     });
+    event.preventDefault();
+    event.stopPropagation();
+
+    handleClose();
   };
 
   let photoUrl = window.location.origin + '/photo/' + album.name;
@@ -69,13 +67,11 @@ export default function LinkDialog(props) {
           id="photo-url" 
           variant="outlined" 
           value={photoUrl} 
-          inputRef={textRef}
-          autoFocus
           onFocus={selectText}
           fullWidth />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCopy}>Copy</Button>
+        <Button onClick={handleCopy} autoFocus>Copy</Button>
         <Button onClick={handleClose}>
           Close
         </Button>
