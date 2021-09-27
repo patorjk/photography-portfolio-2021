@@ -2,14 +2,14 @@ import React, {useState} from 'react'
 import ReactGA from 'react-ga';
 import {
   IconButton
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   Favorite,
   FavoriteBorder
-} from '@material-ui/icons';
-import {makeStyles} from '@material-ui/styles';
+} from '@mui/icons-material';
+import {makeStyles} from '@mui/styles';
 import { useSnackbar } from 'notistack';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import confetti from 'canvas-confetti';
 
 const useStyles = makeStyles(theme => ({
@@ -72,7 +72,6 @@ export default function(props) {
 
     // confetti when like button changes
     if (position === 0 || (position === 7 && newStatus === false) ) {
-      console.log('!!!')
       let xPos = evt.clientX / window.innerWidth;
       let yPos = evt.clientY / window.innerHeight;
 
@@ -109,7 +108,7 @@ export default function(props) {
 
   return (
     <Tooltip title="Like">
-      <IconButton onClick={click}>
+      <IconButton onClick={click} size="large">
         {liked ? 
           <Favorite className={classes.favoriteIcon} />
           :

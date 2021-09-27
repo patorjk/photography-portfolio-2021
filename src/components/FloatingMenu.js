@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
 import ReactGA from 'react-ga';
-import Tooltip from '@material-ui/core/Tooltip';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Add from '@material-ui/icons/Add';
-import Remove from '@material-ui/icons/Remove';
+import Tooltip from '@mui/material/Tooltip';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ExpandLess from '@mui/icons-material/ExpandLess';
 import LikeButton from './LikeButton';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVert from '@material-ui/icons/MoreVert';
-import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@mui/material/IconButton';
+import MoreVert from '@mui/icons-material/MoreVert';
+import { makeStyles } from '@mui/styles';
+import ShareButton from './ShareButton';
 
 const useStyles = makeStyles((theme) => ({
   collapseBtn: {
     padding: '8px',
-    color: theme.palette.primary.main,
   },
   optionsBtn: {
     padding: '8px',
-    color: theme.palette.primary.main,
   },
   optionBar: {
     bottom: '0px',
     right: '5px',
     position: 'absolute',
-    backgroundColor: 'rgb(250,250,250)',
-//    backgroundColor: 'rgba(100,100,100,1)',// rgb(250,250,250)',
+    backgroundColor: 'rgb(255,255,255)',
     borderRadius: '15px',
-    //boxShadow: '1px 1px 3px 3px rgba(0, 0, 0, .1);'
   },
   optionSideShadow: {
     bottom: '0px',
@@ -34,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: '200px',
     height: '48px',
     position: 'absolute',
-    backgroundImage: 'linear-gradient(to left, rgba(250, 250, 250, 0.9), rgba(250, 250, 250, 0) 100%)',
+    backgroundImage: 'linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 100%)',
   },
   optionsIcon: {},
 }));
@@ -45,6 +42,7 @@ export default function FloatingMenu(props) {
   const classes = useStyles();
 
   const {
+    album,
     photoLabel,
     isTextOpen,
     toggleTextOpen,
@@ -89,19 +87,19 @@ export default function FloatingMenu(props) {
 
       <div className={classes.optionBar}>
         <Tooltip title={"Toggle Text Display"} >
-          <IconButton color="inherit" onClick={(evt) => toggleTextOpen()} className={classes.collapseBtn}>
+          <IconButton onClick={(evt) => toggleTextOpen()} className={classes.collapseBtn}>
             {isTextOpen ?
-              <Remove className={classes.optionsIcon} />
+              <ExpandLess className={classes.optionsIcon} />
               :
-              <Add className={classes.optionsIcon} />
+              <ExpandMore className={classes.optionsIcon} />
             }
           </IconButton>
         </Tooltip>
-        <LikeButton heartBreak={heartBreak} setHeartBreak={setHeartBreak} />
+        <ShareButton album={album} />
         
         {(flickrURL || instagramURL) &&
           <Tooltip title="More Actions">
-            <IconButton color="inherit" onClick={moreOptions} className={classes.optionsBtn}><MoreVert className={classes.optionsIcon} /></IconButton>
+            <IconButton onClick={moreOptions} className={classes.optionsBtn}><MoreVert className={classes.optionsIcon} /></IconButton>
           </Tooltip>
         }
       </div>
