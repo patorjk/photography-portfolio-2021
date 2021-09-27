@@ -1,6 +1,7 @@
 /*
 	Photos.
 
+	name: photo album name
 	photoFolders: A list of folder names for the image sources. If more than 1 is provided a stepper will be provided with the image.
 	tags: Tags for the image.
 	category: Main category for the image.
@@ -17,17 +18,35 @@
 
 let albums = [
 	{
+		name: "patterson-park-pagoda-in-springtime",
 		photoFolders: ["2019_pagoda"], // doubles as the ID for the photo
 		tags: ["main", "baltimore", "2019"],
 		category: "main",
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/47536723332/",
 		description: [
-			"Springtime in Baltimore... wait Baltimore?? Yes, this is in Baltimore. This pagoda is located in Patterson Park, which is one of several large parks which dot the city. It's one of the city's hidden gems."
+			"Springtime in Baltimore. To me this photo looks like it's from a fairy tale."
 		],
 		altText: "Pagoda in Spring",
 	},
 	{
+		name: "baltimore-skyline-light-toggle",
+		photoFolders: ["2018_baltimore_skyline_lights_off", "2018_baltimore_skyline_lights_on"],
+		tags: ["main", "baltimore", "2018"],
+		category: "main",
+		toggle: true,
+		toggleLabel: "Click the switch to turn Baltimore's lights on and off 👈 😁😁😁",
+		imageStart: 1,
+		aspect: "6x4",
+		flickr: "https://www.flickr.com/photos/40423570@N07/44674533262/",
+		description: [
+			"A view of Baltimore Skyline from 2018. I took a series of images as the sunset and found I liked the city lights better an hour after sunrset, but the sky from around 10 minutes after sunset. I took the two images and overlaid them in photostop and was able to blend them into one. However, I fun toggling the effect on and off because it looked like I was powering on/off the city. ",
+			"Maybe I'm just easily amused, but I figured I'd put it up here so others could play around with it too. I've toyed with the idea of doing other image sets like this, maybe in the future I'll have a section on this site for it."
+		],
+		altText: "Baltimore skyline",
+	},
+	{
+		name: "fells-point-sunrise",
 		photoFolders: ["2020_fells_sunrise"],
 		tags: ["main", "sunrise", "baltimore", "2020"],
 		category: "main",
@@ -35,11 +54,12 @@ let albums = [
 		flickr: "https://www.flickr.com/photos/40423570@N07/49444935107/",
 		instagram: "https://www.instagram.com/p/B73wKrJJthJ/",
 		description: [
-			"Fells Point, Baltimore. It's always nice to just stumble upon a good shot. I was up early one morning exploring Fells when I saw the clouds start to change color, so I followed the promenade until I could get a clear shot. When I came upon this open area I was stunned. Probably one of the nicest sunrises of 2020, and definitely one of the nicest sunrise spots in Baltimore. And the colors you see here weren't messed with, these colors are straight out of the camera. It really looked this surreal.",
+			"I was up early one morning exploring Fells Point when I saw the clouds start to change color. I followed the promenade until I came upon this spot. This surreal view is straight out of the camera, I didn't mess with the colors.",
 		],
 		altText: "Fells Point Sunrise",
 	},
 	{
+		name: "the-thunderbirds",
 		photoFolders: ["2018_the_thunderbirds"],
 		tags: ["main", "airshow", "2018"],
 		category: "main",
@@ -48,11 +68,12 @@ let albums = [
 		instagram: "https://www.instagram.com/p/BoruZZKFlmz/",
 		description: [
 			'This was actually taken with a macro lens - the type of lens people usually use to take pictures of really small stuff. It\'s an odd choice to bring to an airshow, but at the time all of my other lenses were wide angle lenses, which are good for landscapes but bad for things that are far away.',
-			'I felt kind of silly using it, especially when many of the other photographers there had really nice super zoom lenses, but I was able to capture this shot, which I thought was pretty good and which ended up as my most viewed photo on my old photography website. '
+			'I felt kind of silly using it, especially when many of the other photographers there had really nice super zoom lenses, but I was able to capture this shot, which I thought was pretty good and which ended up as my most viewed photo on my old photography website.'
 		],
 		altText: "The Thunderbirds",
 	},
 	{
+		name: "fort-armistead-sunrise-1",
 		photoFolders: ["2016-03-12_sunrise"],
 		tags: ["main", "sunrise", "baltimore", "2016"],
 		category: "main",
@@ -65,35 +86,38 @@ let albums = [
 		altText: "Sunrise",
 	},
 	{
+		name: "something-in-the-mist",
 		photoFolders: ["2020_something_in_the_mist"],
 		tags: ["main", "creepy", "2020"],
 		category: "main",
 		aspect: "16x9",
 		flickr: "https://www.flickr.com/photos/40423570@N07/49499354128/",
 		instagram: "https://www.instagram.com/p/B8UMPG7JSa4/",
-		description: "Something in the mist... normally this abandoned pier is a huge eyesore, something that spoils the landscape of the area, however, on a morning so foggy that the other side of the harbor wasn't visible it jumped out at me. Almost like an abandoned island floating in the middle of nowhere.",
+		description: "Normally this abandoned pier is a huge eyesore, something that spoils the landscape of the area, however, on a morning so foggy that the other side of the harbor wasn't visible it jumped out at me. Almost like an abandoned island floating in the middle of nowhere.",
 		altText: "Something in the Mist",
 	},
 	{
+		name: "mossbrae-falls",
 		photoFolders: ["2019-08-23_mossbrae_falls"],
 		tags: ["main", "waterfall", "2019"],
 		category: "main",
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/48660329588/",
 		description: [
-			"Mossbrae Falls. Getting to this place was an adventure in and of itself. There's no direct trail and I had to wade through a waist-deep section of the Sacramento River. However, the resulting sight was awe inspiring. The water looks like it's coming out of the underbrush on the mountain, and the falls run along the river. I know this sounds silly, but the place feels magical.",
+			"Getting to this place was an adventure in and of itself. There's no direct trail and I had to wade through a waist-deep section of the Sacramento River. However, the resulting sight was awe inspiring. The water looks like it's coming out of the underbrush on the mountain, and the falls run along the river. I know this sounds silly, but the place feels magical.",
 			"Also, as a neat bit of trivia, Arnold Schwarzenegger took President George H.W. Bush here when he was showing off California to the former president."
 		],
 		altText: "Mossbrae Falls",
 	},
 	{
+		name: "middle-branch-pier",
 		photoFolders: ["2019_middle_branch_pier", "2018_middle_branch_pier"],
 		tags: ["main", "sunrise", "baltimore", "2019"],
 		category: "main",
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/48152204987",
 		description: [
-			"I think most people look at this shot and just kind of shrug, thinking of it as just another sunrise pier photo. But I spent over a year trying to get this shot. When I came across this pier in Middle Branch Park, Baltimore, I could tell there was a nice photo just waiting to be captured. All that was needed was a morning with little to no wind (so the water would be smooth) and a nice sunrise. However, after showing up a few times over the course of a few months, I realized that since the pier pointed north (meaning the sun rose off camera to the right), it would take an epic sunrise/sunset that lit up the whole sky to create the shot I had in mind.",
+			"I think most people look at this shot and just kind of shrug, thinking of it as just another sunrise pier photo. But I spent over a year trying to get this shot. When I came across this pier I could tell there was a nice photo just waiting to be captured. All that was needed was a morning with little to no wind (so the water would be smooth) and a nice sunrise. However, after showing up a few times over the course of a few months, I realized that since the pier pointed north (meaning the sun rose off camera to the right), it would take an epic sunrise/sunset that lit up the whole sky to create the shot I had in mind.",
 			"I spent several months trying to figure out when the best day would be. Over a dozen times I woke up early and drove down to the park, only to be rewarded with a very \"meh\" shot. Finally one night there was a storm and I was sure a great sunrise was waiting on the other side of it. When I got to the park the following morning I saw the sight you see in the second picture (when you click the \"Next\" button). It was a dreary, unpleasant sight and there was trash everywhere. I was defeated. Why am I punishing myself like this? There's no shot here, and even if there was, no one cares about this park, everyone's always leaving their trash everywhere. I went home and tried to forget about this place.",
 			"Almost exactly a year later I awoke from my sleep thinking about this shot. It was still dark outside and I figured since I hadn't been there in a while I might as well give it one more try. When I got to the park I was met with the view you saw in the first image. It was completely unreal.",
 			"Now, to be clear, I don't think I was divinely woken up to go take this photo, but it's one of those weird coincidences that sticks in the mind. There's also probably a moral in here about not giving up and being open to giving something another chance, or maybe even just listening to your gut. My first instincts were correct, a nice shot was possible, the place just needed the right lighting (and also for the trash to be picked up, which thankfully some did)."
@@ -101,6 +125,7 @@ let albums = [
 		altText: "Pier Sunrise",
 	},
 	{
+		name: "domino-sugars-sunrise",
 		photoFolders: ["2020_purple_domino_sugars"],
 		tags: ["sunrise", "baltimore", "2020"],
 		category: "sunrise",
@@ -113,6 +138,7 @@ let albums = [
 		altText: "Domino Sugars Sunrise",
 	},
 	{
+		name: "promenade-view-1",
 		photoFolders: ["2020-02-16_sunrise"],
 		tags: ["sunrise", "baltimore", "2020"],
 		category: "sunrise",
@@ -124,6 +150,7 @@ let albums = [
 		altText: "View from along Baltimore's Inner Harbor promenade",
 	},
 	{
+		name: "broening-park-1",
 		photoFolders: ["2020-02-12_sunrise"],
 		tags: ["sunrise", "baltimore", "2020"],
 		category: "sunrise",
@@ -135,17 +162,20 @@ let albums = [
 		altText: "A view from Broening Park in Baltimore",
 	},
 	{
-		photoFolders: ["2019_downs_sunrise"],
+		name: "downs-park-pier",
+		photoFolders: ["2020_downs_sunrise", "2019_downs_sunrise", "2020_downs_spooky"],
 		tags: ["main", "sunrise", "2019"],
 		category: "main",
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/46482748235/",
 		description: [
-			"Downs Park Pier"
+			"One of my favorite places to go for the sunrise. If you look closely in the first photo you'll see a couple out on the pier - they were getting their engagement photos taken. I never saw them after that day, but with that sunrise in the background I have to imagine they were some pretty epic engagement photos.",
+			"The last photo was from a foggy morning. Some people would stay home, but I like the mystery that fog can add. Plus it's kind of cool seeing how much a location can change based on the weather."
 		],
 		altText: "A Downs Park sunrise",
 	},
 	{
+		name: "icy-domino-sugars-factory",
 		photoFolders: ["2019_a_song_of_ice_and_sugar"],
 		tags: ["main", "baltimore", "2019"],
 		category: "main",
@@ -157,6 +187,7 @@ let albums = [
 		altText: "Domino Sugars",
 	},
 	{
+		name: "federal-hill-view-1",
 		photoFolders: ["2019_predawn_federal_hill"],
 		tags: ["sunrise", "baltimore", "2019"],
 		category: "sunrise",
@@ -168,6 +199,7 @@ let albums = [
 		altText: "Federal Hill",
 	},
 	{
+		name: "inner-harbor-sunrise",
 		photoFolders: ["2019_colors_and_shapes"],
 		tags: ["main", "sunrise", "baltimore", "2019"],
 		category: "main",
@@ -179,6 +211,7 @@ let albums = [
 		altText: "Baltimore Inner Harbor",
 	},
 	{
+		name: "fells-point-puddle",
 		photoFolders: ["2019_fells_puddle"],
 		tags: ["sunrise", "baltimore", "2019"],
 		category: "sunrise",
@@ -190,6 +223,7 @@ let albums = [
 		altText: "Fells Puddle",
 	},
 	{
+		name: "middle-branch-boat-ramp",
 		photoFolders: ["2019_boat_ramp"],
 		tags: ["sunrise", "baltimore", "2019"],
 		category: "sunrise",
@@ -201,6 +235,7 @@ let albums = [
 		altText: "Boat Ramp",
 	},
 	{
+		name: "baltimore-skyline-2016",
 		photoFolders: ["2016_bmore_skyline"],
 		tags: ["sunrise", "baltimore", "2019"],
 		category: "sunrise",
@@ -212,6 +247,7 @@ let albums = [
 		altText: "Baltimore City Skyline",
 	},
 	{
+		name: "jordan-lake",
 		photoFolders: ["2018_nc_sunrise"],
 		tags: ["sunrise", "2018"],
 		category: "sunrise",
@@ -224,6 +260,7 @@ let albums = [
 		altText: "NC Sunrise",
 	},
 	{
+		name: "fort-armistead-sunrise-2",
 		photoFolders: ["2016_armistead_sunrise2","2016_armistead_sunrise1"],
 		tags: ["sunrise", "2018"],
 		category: "sunrise",
@@ -235,6 +272,7 @@ let albums = [
 		altText: "Sunrise",
 	},
 	{
+		name: "cherry-blossoms-dc",
 		photoFolders: ["2016_jefferson_tree"],
 		tags: ["sunrise", "2016"],
 		category: "sunrise",
@@ -246,6 +284,7 @@ let albums = [
 		altText: "Sunrise",
 	},
 	{
+		name: "mt-vernon-fountain",
 		photoFolders: ["2019_mt_vernon_fountain"],
 		tags: ["baltimore", "2019"],
 		category: "misc",
@@ -257,6 +296,7 @@ let albums = [
 		altText: "Photo",
 	},
 	{
+		name: "a-pathway-to-nightmares",
 		photoFolders: ["2018_a_pathway_to_nightmares"],
 		tags: ["spooky", "2018"],
 		category: "misc",
@@ -268,6 +308,7 @@ let albums = [
 		altText: "Photo",
 	},
 	{
+		name: "34th-street-1",
 		photoFolders: ["2018_34th_street"],
 		tags: ["christmas", "2018"],
 		category: "misc",
@@ -279,17 +320,19 @@ let albums = [
 		altText: "Photo",
 	},
 	{
+		name: "george-peabody-library",
 		photoFolders: ["2016_Peabody"],
 		tags: ["baltimore", "2016"],
 		category: "misc",
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/23977620954/",
 		description: [
-			"There's a great short story titled \"The Library of Babel\", which is about a library that contains all possible 410-page books. Most of these books are just gibberish, but within the library every single human thought, story, and idea is captured. In fact, within the library there must exist a book which is a perfect index of the library's contents (and also many which are fake indexes). The librarians who inhabit the place are in a state of despair, and many seek to purify the library by destroying the books which are gibbish. Anyway, whenever I think of that story, I think of this place, the George Peabody Library in Baltimore."
+			"There's a great short story titled \"The Library of Babel\", which is about a library that contains all possible 410-page books. Most of these books are just gibberish, but within the library every single human thought, story, and idea is captured. In fact, within the library there must exist a book which is a perfect index of the library's contents (and also many which are fake indexes). The librarians who inhabit the place are in a state of despair, and many seek to purify the library by destroying the books which are gibbish. Anyway, whenever I think of that story, I think of this place, the George Peabody Library in Baltimore."
 		],
 		altText: "Photo",
 	},
 	{
+		name: "foggy-carroll-park",
 		photoFolders: ["2018_carroll_park"],
 		tags: ["spooky", "2018"],
 		category: "misc",
@@ -301,6 +344,7 @@ let albums = [
 		altText: "Photo",
 	},
 	{
+		name: "kids",
 		photoFolders: ["2017_kids"],
 		tags: ["people", "2017"],
 		category: "misc",
@@ -312,6 +356,7 @@ let albums = [
 		altText: "Photo",
 	},
 	{
+		name: "annapolis-rock-1",
 		photoFolders: ["2017_annapolis_rock"],
 		tags: ["people", "2017"],
 		category: "misc",
@@ -323,6 +368,7 @@ let albums = [
 		altText: "Photo",
 	},
 	{
+		name: "the-haunted-car",
 		photoFolders: ["2017_haunted_car1", "2017_haunted_car2"],
 		tags: ["people", "2017"],
 		category: "misc",
@@ -334,6 +380,7 @@ let albums = [
 		altText: "Photo",
 	},
 	{
+		name: "baltimore-skyline-2016-pano",
 		photoFolders: ["2016_pano1","2016_pano2","2016_pano3"],
 		tags: ["sunrise", "2018"],
 		category: "misc",
@@ -350,15 +397,17 @@ let albums = [
 // add in the sizes field
 let large = (window.devicePixelRatio > 1) ? true : false;
 let _600 = large ? "1200" : "600";
-let _960 = large ? "1920" : "960";
-let _1280 = large ? "2560" : "1280";
+let _900 = large ? "1800" : "900";
+let _1200 = large ? "2400" : "1200";
+let _1536 = large ? "3072" : "1536";
 let baseImg = './';
 
 function getImagesSizes(folder) {
 	return {
 		"600": require(baseImg + folder + "/" + _600 + '.jpg'),
-		"960": require(baseImg + folder + "/" + _960 + '.jpg'),
-		"1280": require(baseImg + folder + "/" + _1280 + '.jpg'),
+		"900": require(baseImg + folder + "/" + _900 + '.jpg'),
+		"1200": require(baseImg + folder + "/" + _1200 + '.jpg'),
+		"1536": require(baseImg + folder + "/" + _1536 + '.jpg'),
 	};
 }
 
@@ -377,6 +426,12 @@ albums = albums.map(album => (createPhotoAlbum(album)))
 /////////////////////////////////////////// Exports
 
 export { createPhotoAlbum };
+
+export function getPhotoAlbumByName(name) {
+	return albums.find(album => {
+		return album.name === name;
+	});
+}
 
 export function getPhotoAlbumsByCategory(cat) {
 	return albums.filter(album => {

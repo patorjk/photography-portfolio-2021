@@ -1,5 +1,5 @@
-import React, {useMemo} from "react";
-import { useTheme } from "@material-ui/styles";
+import {useMemo} from "react";
+import { useTheme } from "@mui/styles";
 
 export default function useBreakpoints() {
   const theme = useTheme();
@@ -8,8 +8,9 @@ export default function useBreakpoints() {
   const sm = theme.breakpoints.values['sm'];
   const md = theme.breakpoints.values['md'];
   const lg = theme.breakpoints.values['lg'];
+  const xl = theme.breakpoints.values['xl'];
 
-  const breakpoints = useMemo( () => ([xs, sm, md, lg]), [xs, sm, md, lg] );
+  const breakpoints = useMemo( () => ([xs, sm, md, lg, xl]), [xs, sm, md, lg, xl] );
 
   const ranges = {
     [xs]: {
@@ -26,7 +27,11 @@ export default function useBreakpoints() {
     },
     [lg]: {
       min: lg,
-      max: lg * 100
+      max: xl - 1
+    },
+    [xl]: {
+      min: xl,
+      max: xl * 100
     },
   };
 
@@ -41,12 +46,16 @@ export default function useBreakpoints() {
         height: '400',
       },
       [md]: {
-        width: '960',
-        height: '640',
+        width: '900',
+        height: '600',
       },
       [lg]: {
-        width: '1280',
-        height: '853',
+        width: '1200',
+        height: '800',
+      },
+      [xl]: {
+        width: '1536',
+        height: '1025',
       },
       ratio: 4/6,
     },
@@ -60,12 +69,16 @@ export default function useBreakpoints() {
         height: '338',
       },
       [md]: {
-        width: '960',
-        height: '540',
+        width: '900',
+        height: '506',
       },
       [lg]: {
-        width: '1280',
-        height: '720',
+        width: '1200',
+        height: '675',
+      },
+      [xl]: {
+        width: '1536',
+        height: '864',
       },
       ratio: 9/16,
     },
@@ -79,12 +92,16 @@ export default function useBreakpoints() {
         height: '375',
       },
       [md]: {
-        width: '960',
-        height: '600',
+        width: '900',
+        height: '563',
       },
       [lg]: {
-        width: '1280',
-        height: '800',
+        width: '1200',
+        height: '750',
+      },
+      [xl]: {
+        width: '1536',
+        height: '960',
       },
       ratio: 10/16,
     },
@@ -98,12 +115,16 @@ export default function useBreakpoints() {
         height: '600',
       },
       [md]: {
-        width: '960',
-        height: '960',
+        width: '900',
+        height: '900',
       },
       [lg]: {
-        width: '1280',
-        height: '1280',
+        width: '1200',
+        height: '1200',
+      },
+      [xl]: {
+        width: '1536',
+        height: '1536',
       },
       ratio: 1,
     },
@@ -117,12 +138,16 @@ export default function useBreakpoints() {
         height: '774',
       },
       [md]: {
-        width: '960',
-        height: '1242',
+        width: '900',
+        height: '1165',
       },
       [lg]: {
-        width: '1280',
-        height: '1656',
+        width: '1200',
+        height: '1553',
+      },
+      [xl]: {
+        width: '1536',
+        height: '1988',
       },
       ratio: 11/8.5
     },
@@ -136,12 +161,16 @@ export default function useBreakpoints() {
         height: '480',
       },
       [md]: {
-        width: '960',
-        height: '768',
+        width: '900',
+        height: '720',
       },
       [lg]: {
-        width: '1280',
-        height: '1024',
+        width: '1200',
+        height: '960',
+      },
+      [xl]: {
+        width: '1536',
+        height: '1229',
       },
       ratio: 8/10
     },

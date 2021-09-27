@@ -1,6 +1,6 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@mui/material/Grid';
+import makeStyles from '@mui/styles/makeStyles';
 
 import clsx from 'clsx';
 import { createPhotoAlbum } from '../photos/index.js';
@@ -9,7 +9,6 @@ import PhotoViewer from './PhotoViewer.js';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    //marginTop:'80px',
     padding: theme.spacing(2),
   },
   stepper: {
@@ -24,13 +23,13 @@ const useStyles = makeStyles((theme) => ({
       width: '600px'
     },
     [theme.breakpoints.up('md')]: {
-      width: '960px'
+      width: '900px'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '1280px'
+      width: '1200px'
     },
     [theme.breakpoints.up('xl')]: {
-      width: '1920px'
+      width: '1536px'
     },
   },
   aboutSection: {
@@ -40,8 +39,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
   },
   aboutImage: {
-    //width: '100%',
-    //height: 'auto',
     textAlign:'center'
   }
 }));
@@ -56,6 +53,8 @@ function About() {
       '2018_cherry_pat',
       '2019_cherry_pat',
       '2020_cherry_pat',
+      '2021_cherry_pat_1',
+      '2021_cherry_pat_2',
     ],
     aspect: "6x4",
     altText: "Me, sitting under a tree",
@@ -65,7 +64,7 @@ function About() {
   return (
     <div className={classes.root}>
 
-      <Grid container spacing={0} justify="center" alignItems="center" align="center">
+      <Grid container spacing={0} justifyContent="center" alignItems="center" align="center">
         <Grid item xs={12}>
           <div className={classes.paper}>
             <PhotoViewer album={aboutAlbum} />
@@ -79,16 +78,10 @@ function About() {
               My name is Pat, I'm a software developer and amateur photographer. I setup this site to show off some of my favorite photos. If you're interested in more of my work you can find me on <a href="https://www.flickr.com/photos/40423570@N07/" target="_blank" rel="noopener noreferrer">Flickr</a> and <a href="https://www.instagram.com/patorjk/" target="_blank" rel="noopener noreferrer">Instagram</a>.
             </p>
             <p>
-              Additionally, I run a programming site which you can find here: <a href="http://patorjk.com/" target="_blank" rel="noopener noreferrer">patorjk.com</a>
+              Additionally, I run a programming site which you can find here: <a href="http://patorjk.com/" target="_blank" rel="noopener noreferrer">patorjk.com</a> (most stuff from my high school and college days)
             </p>
             <p>
               The above set of images are self portraits from my yearly trip down to the Tidal Basin in Washington DC to see the Cherry Blossoms. I rarely take photos of myself but on one visit I decided it was such a nice morning that I should take a photo to remember it. Since then I've continued the tradition, regardless if the mornings are nice or kind of drab.
-            </p>
-            <h4>
-              So uh, what are the like buttons on the images connected to? Facebook? Instagram?
-            </h4>
-            <p>
-              Neither, they're just there for fun. Go ahead and press one if you haven't! (if you're paranoid just open up an incognito tab)
             </p>
           </div>
         </Grid>

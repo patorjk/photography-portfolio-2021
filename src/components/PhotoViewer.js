@@ -1,19 +1,24 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import MediaQuery from 'react-responsive';
 
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 
-import { useTheme } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import { useTheme } from '@mui/material/styles';
+import MobileStepper from '@mui/material/MobileStepper';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
-import Collapse from '@material-ui/core/Collapse';
+import Collapse from '@mui/material/Collapse';
 import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import ReactGA from 'react-ga';
 import FloatingMenu from './FloatingMenu';
 import useBreakpoints from '../hooks/breakpoints.js';
+import Switch from '@mui/material/Switch';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,13 +34,13 @@ const useStyles = makeStyles((theme) => ({
       width: '600px'
     },
     [theme.breakpoints.up('md')]: {
-      width: '960px'
+      width: '900px'
     },
     [theme.breakpoints.up('lg')]: {
-      width: '1280px'
+      width: '1200px'
     },
     [theme.breakpoints.up('xl')]: {
-      width: '1920px'
+      width: '1536px'
     },
   },
   aboutText: {
@@ -48,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '50px',
   
-    backgroundImage: 'linear-gradient(to bottom, rgba(250, 250, 250, 0), rgba(250, 250, 250, 0.9) 100%)'
+    backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 100%)'
   },
   image: {
     textAlign:'center'
@@ -96,14 +101,37 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     transition: 'left 3s ',
     left: '100%'
+  },
+
+  // slow speed
+  currentPhotoToggle: {
+    position: 'absolute',
+    transition: 'left 0s ',
+    left: '0',
+  },
+  prevPhotoToggle: {
+    position: 'absolute',
+    transition: 'left 0s ',
+    left: '-100%'
+  },
+  nextPhotoToggle: {
+    position: 'absolute',
+    transition: 'left 0s ',
+    left: '100%'
   }
 }));
 
 function Photo(props) {
+  let {
+    album,
+    heartBreak,
+    setHeartBreak
+  } = props;
+
   const classes = useStyles();
   const theme = useTheme();
 
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(album.imageStart || 0);
   const [isTextOpen, setIsTextOpen] = useState(false);
   const [imageNearView, setImageNearView] = useState(false);
   const [isOffScreen, setIsOffScreen] = useState(false);
@@ -117,7 +145,6 @@ function Photo(props) {
   } = useBreakpoints();
 
   useEffect(() => {
-    console.log('useEffect onScroll');
     const onScroll = (evt) => {
       if (container.current) {
         let rect = container.current.getBoundingClientRect();
@@ -134,7 +161,6 @@ function Photo(props) {
           let threshold = (window.innerHeight * 3) + window.pageYOffset;
           if (rect.top < threshold) {
             setImageNearView(true);
-            console.log('load image!');
           }
         }
       }
@@ -154,7 +180,6 @@ function Photo(props) {
   }, [breakpoints]);
   const [currentBreakpoint, setCurrentBreakpoint] = useState( getBreakpoint() );
   useEffect(() => {
-    console.log('useEffect onResize');
     const onResize = (evt) => {
       setCurrentBreakpoint( getBreakpoint() );
       setIsOffScreen(false); // TODO - fix this
@@ -165,12 +190,6 @@ function Photo(props) {
       window.removeEventListener("resize", onResize);
     };
   }, [getBreakpoint]);
-
-  let {
-    album,
-    heartBreak,
-    setHeartBreak
-  } = props;
 
   const slowTransition = album.slowTransition;
   const transitionTime = slowTransition ? 3000 : 1000;
@@ -220,6 +239,20 @@ function Photo(props) {
     setIsTextOpen(!isTextOpen);
   };
 
+  const toggleChange = (event) => {
+    ReactGA.event({
+      category: 'Image Toggle',
+      action: 'Toggled',
+      label: photoLabel
+    });
+
+    if (event.target.checked) {
+      setActiveStep(1);
+    } else {
+      setActiveStep(0);
+    }
+  };
+
   let browserWidth = window.innerWidth;
 
   let containerStyle = {
@@ -239,7 +272,6 @@ function Photo(props) {
       <div style={containerStyle}>
         {breakpoints.map(point => (
           <MediaQuery minWidth={ranges[point].min} maxWidth={ranges[point].max} key={point} >
-
             {photos.map((img, idx) => (
               <img 
                 key={idx}
@@ -247,13 +279,17 @@ function Photo(props) {
                 className={clsx({
                   [classes.image]: true,
 
-                  [classes.prevPhoto]: idx < activeStep && !slowTransition,
-                  [classes.currentPhoto]: idx === activeStep && !slowTransition,
-                  [classes.nextPhoto]: idx > activeStep && !slowTransition,
+                  [classes.prevPhoto]: idx < activeStep && !slowTransition && !album.toggle,
+                  [classes.currentPhoto]: idx === activeStep && !slowTransition && !album.toggle,
+                  [classes.nextPhoto]: idx > activeStep && !slowTransition && !album.toggle,
 
-                  [classes.prevPhotoSlow]: idx < activeStep && slowTransition,
-                  [classes.currentPhotoSlow]: idx === activeStep && slowTransition,
-                  [classes.nextPhotoSlow]: idx > activeStep && slowTransition,
+                  [classes.prevPhotoSlow]: idx < activeStep && slowTransition && !album.toggle,
+                  [classes.currentPhotoSlow]: idx === activeStep && slowTransition && !album.toggle,
+                  [classes.nextPhotoSlow]: idx > activeStep && slowTransition && !album.toggle,
+
+                  [classes.prevPhotoToggle]: idx < activeStep && album.toggle,
+                  [classes.currentPhotoToggle]: idx === activeStep && album.toggle,
+                  [classes.nextPhotoToggle]: idx > activeStep && album.toggle,
                 })} 
                 width={aspects[album.aspect][point].width} 
                 height={aspects[album.aspect][point].height} 
@@ -264,7 +300,7 @@ function Photo(props) {
         ))}
       </div>
 
-      {isImageSet ? 
+      {(isImageSet && !album.toggle) ? 
         <MobileStepper
           variant="dots"
           steps={imgSetSize}
@@ -287,9 +323,23 @@ function Photo(props) {
         : null
       }
 
+      {album.toggle ?
+        <FormControl component="fieldset">
+          <FormGroup aria-label="position" row>
+            <FormControlLabel
+              value="top"
+              control={<Switch color="primary" onChange={toggleChange} defaultChecked={album.imageStart === 1} />}
+              label={album.toggleLabel}
+              labelPlacement="end"
+            />
+          </FormGroup>
+        </FormControl>
+        : null
+      }
+
       {album.description ? 
         <div className={clsx(classes.paper)}>
-          <Collapse in={isTextOpen} collapsedHeight={50} style={{position:'relative'}}>
+          <Collapse in={isTextOpen} collapsedSize={50} style={{position:'relative'}}>
             <div className={classes.aboutText}>
               {typeof album.description === "string" ? <p>{album.description}</p> :
                 album.description.map((para, idx) => (
@@ -301,6 +351,7 @@ function Photo(props) {
             <div className={classes.fadeBlock}/>
 
             <FloatingMenu 
+              album={album}
               photoLabel={photoLabel} 
               isTextOpen={isTextOpen}
               toggleTextOpen={toggleTextOpen}

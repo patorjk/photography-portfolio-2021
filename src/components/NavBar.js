@@ -1,8 +1,8 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import config from '../app.config.js';
@@ -45,7 +45,7 @@ function NavBar(props) {
 				<div style={middleStyle}></div>
 
 				<MediaQuery minWidth={700}>
-					<div style={rightItemStyle}>more →</div>
+					<div style={rightItemStyle}></div>
 				</MediaQuery>
 				<ReactGA.OutboundLink
 					to={config.urls.flickr}
