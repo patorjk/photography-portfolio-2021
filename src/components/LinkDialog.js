@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 
 import confetti from 'canvas-confetti';
+import ReactGA from 'react-ga';
 
 export default function LinkDialog(props) {
   const {
@@ -45,6 +46,12 @@ export default function LinkDialog(props) {
     });
     event.preventDefault();
     event.stopPropagation();
+
+    ReactGA.event({
+      category: 'Copy Dialog',
+      action: 'Copy',
+      label: album.name
+    });
 
     handleClose();
   };
