@@ -40,8 +40,8 @@ let albums = [
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/44674533262/",
 		description: [
-			"A view of Baltimore Skyline from 2018. I took a series of images as the sunset and found I liked the city lights better an hour after sunrset, but the sky from around 10 minutes after sunset. I took the two images and overlaid them in photostop and was able to blend them into one. However, I fun toggling the effect on and off because it looked like I was powering on/off the city. ",
-			"Maybe I'm just easily amused, but I figured I'd put it up here so others could play around with it too. I've toyed with the idea of doing other image sets like this, maybe in the future I'll have a section on this site for it."
+			"A view of Baltimore Skyline from 2018. I took a series of images as the sun set and found I liked the city lights better an hour after sunrset, but the sky from around 10 minutes after sunset. I took the two images and overlaid them in photostop and was able to blend them into one. However, I had fun toggling the effect on and off because it looked like I was powering on/off the city. ",
+			"Maybe I'm just easily amused, but I figured I'd put it up here so others could play around with it too."
 		],
 		altText: "Baltimore skyline",
 	},
