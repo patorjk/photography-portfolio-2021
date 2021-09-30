@@ -22,6 +22,7 @@ import {
 } from '@mui/icons-material';
 
 ReactGA.initialize(config.googleAnalyticsId);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const defaultTheme = createTheme();
 
@@ -125,8 +126,7 @@ function App() {
                   <div style={{display:'flex',flexDirection:'column',height:'100%'}}>
                     <div style={{flex: '1 0 auto'}}>
                       <About />
-                      </div>
-                    <Footer/>
+                    </div>
                   </div>
                 )} /> 
 

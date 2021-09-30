@@ -8,7 +8,7 @@ import {
 } from '@mui/icons-material';
 import {makeStyles} from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
-import LinkDialog from './LinkDialog';
+import ShareDialog from './ShareDialog';
 
 const useStyles = makeStyles(theme => ({
   btn: {}
@@ -32,7 +32,7 @@ export default function(props) {
 
   return (
     <>
-      <LinkDialog open={open} handleClose={handleClose} album={album} />
+      <ShareDialog open={open} handleClose={handleClose} album={album} />
       <Tooltip title="Share Link to Image">
         <IconButton onClick={openDialog} size="large">
             <Share className={classes.btn} />

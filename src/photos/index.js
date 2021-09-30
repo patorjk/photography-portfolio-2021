@@ -25,7 +25,7 @@ let albums = [
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/47536723332/",
 		description: [
-			"Springtime in Baltimore. To me this photo looks like it's from a fairy tale."
+			"Springtime in Baltimore."
 		],
 		altText: "Pagoda in Spring",
 	},
@@ -46,17 +46,16 @@ let albums = [
 		altText: "Baltimore skyline",
 	},
 	{
-		name: "fells-point-sunrise",
-		photoFolders: ["2020_fells_sunrise"],
-		tags: ["main", "sunrise", "baltimore", "2020"],
+		name: "downs-park-pier",
+		photoFolders: ["2020_downs_sunrise", "2019_downs_sunrise", "2020_downs_spooky"],
+		tags: ["main", "sunrise", "2019"],
 		category: "main",
 		aspect: "6x4",
-		flickr: "https://www.flickr.com/photos/40423570@N07/49444935107/",
-		instagram: "https://www.instagram.com/p/B73wKrJJthJ/",
+		flickr: "https://www.flickr.com/photos/40423570@N07/46482748235/",
 		description: [
-			"I was up early one morning exploring Fells Point when I saw the clouds start to change color. I followed the promenade until I came upon this spot. This surreal view is straight out of the camera, I didn't mess with the colors.",
+			"One of my favorite places to go for the sunrise. No two mornings are identical, each day brings its own unique beauty. As an aside, if you look closely in the first photo you'll see a couple out on the pier - they were getting their engagement photos taken. I never saw them again after that day, but with that sunrise in the background I have to imagine they got some pretty epic engagement photos."
 		],
-		altText: "Fells Point Sunrise",
+		altText: "A Downs Park sunrise",
 	},
 	{
 		name: "the-thunderbirds",
@@ -112,6 +111,9 @@ let albums = [
 	{
 		name: "middle-branch-pier",
 		photoFolders: ["2019_middle_branch_pier", "2018_middle_branch_pier"],
+		toggle: true,
+		toggleLabel: "Click the switch to see what the pier looked like one year earlier 😮",
+		imageStart: 0,
 		tags: ["main", "sunrise", "baltimore", "2019"],
 		category: "main",
 		aspect: "6x4",
@@ -162,17 +164,17 @@ let albums = [
 		altText: "A view from Broening Park in Baltimore",
 	},
 	{
-		name: "downs-park-pier",
-		photoFolders: ["2020_downs_sunrise", "2019_downs_sunrise", "2020_downs_spooky"],
-		tags: ["main", "sunrise", "2019"],
+		name: "fells-point-sunrise",
+		photoFolders: ["2020_fells_sunrise"],
+		tags: ["main", "sunrise", "baltimore", "2020"],
 		category: "main",
 		aspect: "6x4",
-		flickr: "https://www.flickr.com/photos/40423570@N07/46482748235/",
+		flickr: "https://www.flickr.com/photos/40423570@N07/49444935107/",
+		instagram: "https://www.instagram.com/p/B73wKrJJthJ/",
 		description: [
-			"One of my favorite places to go for the sunrise. If you look closely in the first photo you'll see a couple out on the pier - they were getting their engagement photos taken. I never saw them after that day, but with that sunrise in the background I have to imagine they were some pretty epic engagement photos.",
-			"The last photo was from a foggy morning. Some people would stay home, but I like the mystery that fog can add. Plus it's kind of cool seeing how much a location can change based on the weather."
+			"I was up early one morning exploring Fells Point when I saw the clouds start to change color. I followed the promenade until I came upon this spot. This surreal view is straight out of the camera, I didn't mess with the colors.",
 		],
-		altText: "A Downs Park sunrise",
+		altText: "Fells Point Sunrise",
 	},
 	{
 		name: "icy-domino-sugars-factory",
