@@ -18,7 +18,6 @@ import Switch from '@mui/material/Switch';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -124,14 +123,12 @@ const useStyles = makeStyles((theme) => ({
 function Photo(props) {
   let {
     album,
-    heartBreak,
-    setHeartBreak
   } = props;
 
   const classes = useStyles();
   const theme = useTheme();
 
-  const [activeStep, setActiveStep] = React.useState(album.imageStart || 0);
+  const [activeStep, setActiveStep] = React.useState(album.transitionOptions?.imageStart || 0);
   const [isTextOpen, setIsTextOpen] = useState(false);
   const [imageNearView, setImageNearView] = useState(false);
   const [isOffScreen, setIsOffScreen] = useState(false);
@@ -191,10 +188,11 @@ function Photo(props) {
     };
   }, [getBreakpoint]);
 
-  const slowTransition = album.slowTransition;
+  const slowTransition = album.transitionOptions ? album.transitionOptions.slowTransition : false;
   const transitionTime = slowTransition ? 3000 : 1000;
   const isImageSet = album.photos.length > 1 ? true : false;
   const imgSetSize = album.photos.length;
+  const transitionType = album.transitionOptions?.type ? album.transitionOptions.type : 'stepper';
   const photos = album.photos;
   let photoLabel = props.album.id;
 
@@ -253,14 +251,33 @@ function Photo(props) {
     }
   };
 
-  let browserWidth = window.innerWidth;
-
   let containerStyle = {
     height: window.innerWidth <= 600 ? (window.innerWidth * aspects[album.aspect].ratio) : aspects[album.aspect][currentBreakpoint].height + 'px',
     width: window.innerWidth <= 600 ? '100%' : aspects[album.aspect][currentBreakpoint].width + 'px',
     overflow: 'hidden',
     position: 'relative'
   };
+
+  let prevPhotoClass;
+  let currentPhotoClass;
+  let nextPhotoClass;
+
+  if (transitionType === 'stepper') {
+    if (slowTransition) {
+      prevPhotoClass = classes.prevPhotoSlow;
+      currentPhotoClass = classes.currentPhotoSlow;
+      nextPhotoClass = classes.nextPhotoSlow;
+    } else {
+      prevPhotoClass = classes.prevPhoto;
+      currentPhotoClass = classes.currentPhoto;
+      nextPhotoClass = classes.nextPhoto;
+    }
+  } else {
+    // toggle
+    prevPhotoClass = classes.prevPhotoToggle;
+    currentPhotoClass = classes.currentPhotoToggle;
+    nextPhotoClass = classes.nextPhotoToggle;
+  }
 
   return (
     <div className={clsx({
@@ -279,17 +296,10 @@ function Photo(props) {
                 className={clsx({
                   [classes.image]: true,
 
-                  [classes.prevPhoto]: idx < activeStep && !slowTransition && !album.toggle,
-                  [classes.currentPhoto]: idx === activeStep && !slowTransition && !album.toggle,
-                  [classes.nextPhoto]: idx > activeStep && !slowTransition && !album.toggle,
+                  [prevPhotoClass]: idx < activeStep,
+                  [currentPhotoClass]: idx === activeStep,
+                  [nextPhotoClass]: idx > activeStep,
 
-                  [classes.prevPhotoSlow]: idx < activeStep && slowTransition && !album.toggle,
-                  [classes.currentPhotoSlow]: idx === activeStep && slowTransition && !album.toggle,
-                  [classes.nextPhotoSlow]: idx > activeStep && slowTransition && !album.toggle,
-
-                  [classes.prevPhotoToggle]: idx < activeStep && album.toggle,
-                  [classes.currentPhotoToggle]: idx === activeStep && album.toggle,
-                  [classes.nextPhotoToggle]: idx > activeStep && album.toggle,
                 })} 
                 width={aspects[album.aspect][point].width} 
                 height={aspects[album.aspect][point].height} 
@@ -300,7 +310,7 @@ function Photo(props) {
         ))}
       </div>
 
-      {(isImageSet && !album.toggle) ? 
+      {(isImageSet && transitionType === 'stepper') ? 
         <MobileStepper
           variant="dots"
           steps={imgSetSize}
@@ -323,13 +333,13 @@ function Photo(props) {
         : null
       }
 
-      {album.toggle ?
+      {(isImageSet && transitionType === 'toggle') ?
         <FormControl component="fieldset">
           <FormGroup aria-label="position" row>
             <FormControlLabel
               value="top"
-              control={<Switch color="primary" onChange={toggleChange} defaultChecked={album.imageStart === 1} />}
-              label={album.toggleLabel}
+              control={<Switch color="primary" onChange={toggleChange} defaultChecked={album.transitionOptions.imageStart === 1} />}
+              label={album.transitionOptions.toggleLabel}
               labelPlacement="end"
             />
           </FormGroup>
@@ -355,8 +365,6 @@ function Photo(props) {
               photoLabel={photoLabel} 
               isTextOpen={isTextOpen}
               toggleTextOpen={toggleTextOpen}
-              setHeartBreak={setHeartBreak}
-              heartBreak={heartBreak}
               flickrURL={album.flickr} 
               instagramURL={album.instagram} />
           </Collapse>

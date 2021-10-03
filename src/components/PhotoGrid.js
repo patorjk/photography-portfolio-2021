@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import makeStyles from '@mui/styles/makeStyles';
 import { getPhotoAlbumsByCategory } from '../photos/index.js';
@@ -18,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
 function PhotoGrid(props) {
 
   const classes = useStyles();
-
-  const [heartBreak, setHeartBreak] = useState(false);
-
   let photos = getPhotoAlbumsByCategory(props.category);
 
   return (
@@ -30,7 +27,7 @@ function PhotoGrid(props) {
 
         {photos.map((photo, idx) => (
           <Grid item xs={12} className={classes.gridItem} key={idx}>
-              <PhotoViewer album={photo} heartBreak={heartBreak} setHeartBreak={setHeartBreak} />
+              <PhotoViewer album={photo} />
           </Grid>
         ))}
 

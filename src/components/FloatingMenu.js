@@ -5,7 +5,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ExpandLess from '@mui/icons-material/ExpandLess';
-import LikeButton from './LikeButton';
 import IconButton from '@mui/material/IconButton';
 import MoreVert from '@mui/icons-material/MoreVert';
 import { makeStyles } from '@mui/styles';
@@ -48,8 +47,6 @@ export default function FloatingMenu(props) {
     toggleTextOpen,
     flickrURL,
     instagramURL,
-    heartBreak,
-    setHeartBreak
   } = props;
 
   const viewLinkClick = (link, site) => {

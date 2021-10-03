@@ -2,7 +2,7 @@
 	Photos.
 
 	name: photo album name
-	photoFolders: A list of folder names for the image sources. If more than 1 is provided a stepper will be provided with the image.
+	photoFolders: A list of folder names for the image sources. If more than 1 is provided a stepper will be provided with the image. (see the transitionOptions prop)
 	tags: Tags for the image.
 	category: Main category for the image.
 	aspect: Image aspect.
@@ -10,6 +10,12 @@
 	instagram: URL to instagram version of image.
 	description: A text description of the image.
 	altText: alt text for the image.
+	transitionOptions: {
+	  	type: 'stepper' (default) | 'toggle',
+		toggleLabel: label for toggle (if type is toggle)
+		imageStart (default 0), image index to start at
+		slowTransition: (default false)
+	}
 
 	Generated parameters:
 	id: ID for the image, the name of the first variant is used.
@@ -34,9 +40,11 @@ let albums = [
 		photoFolders: ["2018_baltimore_skyline_lights_off", "2018_baltimore_skyline_lights_on"],
 		tags: ["main", "baltimore", "2018"],
 		category: "main",
-		toggle: true,
-		toggleLabel: "Click the switch to turn Baltimore's lights on and off 👈 😁😁😁",
-		imageStart: 1,
+		transitionOptions: {
+			type: 'toggle',
+			toggleLabel: "Click the switch to turn Baltimore's lights on and off 👈 😁😁😁",
+			imageStart: 1,
+		},
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/44674533262/",
 		description: [
@@ -53,7 +61,7 @@ let albums = [
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/46482748235/",
 		description: [
-			"One of my favorite places to go for the sunrise. No two mornings are identical, each day brings its own unique beauty. As an aside, if you look closely in the first photo you'll see a couple out on the pier - they were getting their engagement photos taken. I never saw them again after that day, but with that sunrise in the background I have to imagine they got some pretty epic engagement photos."
+			"One of my favorite places to go for the sunrise. No two mornings are identical. As an aside, if you look closely in the first photo you'll see a couple out on the pier - they were getting their engagement photos taken."
 		],
 		altText: "A Downs Park sunrise",
 	},
@@ -66,8 +74,7 @@ let albums = [
 		flickr: "https://www.flickr.com/photos/40423570@N07/44256887115/",
 		instagram: "https://www.instagram.com/p/BoruZZKFlmz/",
 		description: [
-			'This was actually taken with a macro lens - the type of lens people usually use to take pictures of really small stuff. It\'s an odd choice to bring to an airshow, but at the time all of my other lenses were wide angle lenses, which are good for landscapes but bad for things that are far away.',
-			'I felt kind of silly using it, especially when many of the other photographers there had really nice super zoom lenses, but I was able to capture this shot, which I thought was pretty good and which ended up as my most viewed photo on my old photography website.'
+			'The Thunderbirds. This shot was my most viewed shot on my old photography website.',
 		],
 		altText: "The Thunderbirds",
 	},
@@ -79,8 +86,7 @@ let albums = [
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/25705211566/",
 		description: [
-			"I ruined my shoes for this shot. After I set up my camera on the banks of this inlet I realized I was slowly sinking into the mud. However, the most spectacular sunrise I'd ever seen was in front of me so I didn't want to move. When the colors had finally faded I was in over my ankles. My shoes actually came off as I tried to escape. I would later vigorously wash them, but they were never the same. ",
-			"Also, just off frame was the crazy amount of trash that had washed up on the shore (an old tire, one of those orange barrels they put on the road, etc etc). This inlet is off the beaten trial and kind of hard to get to, which is probably why it was so unkept."
+			"I ruined my shoes for this shot. After I set up my camera on the banks of this inlet I realized I was slowly sinking into the mud. However, the most spectacular sunrise I'd ever seen was in front of me so I didn't want to move. When the colors had finally faded I was in over my ankles. My shoes actually came off as I tried to escape. I would later vigorously wash them, but they were never the same.",
 		],
 		altText: "Sunrise",
 	},
@@ -111,18 +117,20 @@ let albums = [
 	{
 		name: "middle-branch-pier",
 		photoFolders: ["2019_middle_branch_pier", "2018_middle_branch_pier"],
-		toggle: true,
-		toggleLabel: "Click the switch to see what the pier looked like one year earlier 😮",
-		imageStart: 0,
+		transitionOptions: {
+			type: 'toggle',
+			toggleLabel: "Click the switch to see what the pier looked like one year earlier 😮",
+			imageStart: 0,
+		},
 		tags: ["main", "sunrise", "baltimore", "2019"],
 		category: "main",
 		aspect: "6x4",
 		flickr: "https://www.flickr.com/photos/40423570@N07/48152204987",
 		description: [
 			"I think most people look at this shot and just kind of shrug, thinking of it as just another sunrise pier photo. But I spent over a year trying to get this shot. When I came across this pier I could tell there was a nice photo just waiting to be captured. All that was needed was a morning with little to no wind (so the water would be smooth) and a nice sunrise. However, after showing up a few times over the course of a few months, I realized that since the pier pointed north (meaning the sun rose off camera to the right), it would take an epic sunrise/sunset that lit up the whole sky to create the shot I had in mind.",
-			"I spent several months trying to figure out when the best day would be. Over a dozen times I woke up early and drove down to the park, only to be rewarded with a very \"meh\" shot. Finally one night there was a storm and I was sure a great sunrise was waiting on the other side of it. When I got to the park the following morning I saw the sight you see in the second picture (when you click the \"Next\" button). It was a dreary, unpleasant sight and there was trash everywhere. I was defeated. Why am I punishing myself like this? There's no shot here, and even if there was, no one cares about this park, everyone's always leaving their trash everywhere. I went home and tried to forget about this place.",
-			"Almost exactly a year later I awoke from my sleep thinking about this shot. It was still dark outside and I figured since I hadn't been there in a while I might as well give it one more try. When I got to the park I was met with the view you saw in the first image. It was completely unreal.",
-			"Now, to be clear, I don't think I was divinely woken up to go take this photo, but it's one of those weird coincidences that sticks in the mind. There's also probably a moral in here about not giving up and being open to giving something another chance, or maybe even just listening to your gut. My first instincts were correct, a nice shot was possible, the place just needed the right lighting (and also for the trash to be picked up, which thankfully some did)."
+			"I spent several months trying to figure out when the best day would be. Over a dozen times I woke up early and drove down to the park, only to be rewarded with a very \"meh\" shot. Finally one night there was a storm and I was sure a great sunrise was waiting on the other side of it. When I got to the park the following morning I saw the sight you see in the second picture (when you click the toggle button). It was a dreary, unpleasant sight and there was trash everywhere. I was defeated. Why was I punishing myself like this? There's no shot here, and even if there was, no one cares about this park, everyone's always leaving their trash everywhere. I went home and tried to forget about this place.",
+			"Almost exactly a year later I awoke from my sleep thinking about this shot. It was still dark outside and I figured since I hadn't been there in a while so I might as well give it one more try. When I got to the park I was met with the view you saw in the first image. It was completely unreal.",
+			"Now, to be clear, I don't think I was divinely woken up to go take this photo, but it's one of those weird coincidences that sticks in the mind. There's also probably a moral in here about not giving up and being open to giving something another chance, or maybe even just listening to your gut. My first instincts were correct, a nice shot was possible, the place just needed the right lighting (and also for the area to be cleaned up, which some good people must have done)."
 		],
 		altText: "Pier Sunrise",
 	},
@@ -172,7 +180,7 @@ let albums = [
 		flickr: "https://www.flickr.com/photos/40423570@N07/49444935107/",
 		instagram: "https://www.instagram.com/p/B73wKrJJthJ/",
 		description: [
-			"I was up early one morning exploring Fells Point when I saw the clouds start to change color. I followed the promenade until I came upon this spot. This surreal view is straight out of the camera, I didn't mess with the colors.",
+			"I was up early one morning exploring Fells Point when I saw the clouds start to change color. I followed the promenade until I came upon this spot.",
 		],
 		altText: "Fells Point Sunrise",
 	},
@@ -392,7 +400,9 @@ let albums = [
 			"Baltimore Skyline 2016.",
 		],
 		altText: "Pano",
-		slowTransition: true
+		transitionOptions: {
+			slowTransition: true
+		},
 	},
 ];
 
