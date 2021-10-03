@@ -33,7 +33,7 @@ let albums = [
 		description: [
 			"Springtime in Baltimore."
 		],
-		altText: "Pagoda in Spring",
+		altText: "Springtime in Baltimore",
 	},
 	{
 		name: "baltimore-skyline-light-toggle",
@@ -51,7 +51,7 @@ let albums = [
 			"A view of Baltimore's skyline from 2018. I took a series of images as the sun set and found I liked the city lights better an hour after sunrset, but the sky from around 10 minutes after sunset. I took the two images and overlaid them in photostop and was able to blend them into one. However, I had fun toggling the effect on and off because it looked like I was powering on/off the city. ",
 			"Maybe I'm just easily amused, but I figured I'd put it up here so others could play around with it too."
 		],
-		altText: "Baltimore skyline",
+		altText: "Baltimore Skyline Light Toggle",
 	},
 	{
 		name: "downs-park-pier",
@@ -63,7 +63,7 @@ let albums = [
 		description: [
 			"One of my favorite places to go for the sunrise. No two mornings are identical. As an aside, if you look closely in the first photo you'll see a couple out on the pier - they were getting their engagement photos taken."
 		],
-		altText: "A Downs Park sunrise",
+		altText: "Downs Park Sunrise",
 	},
 	{
 		name: "the-thunderbirds",
@@ -88,7 +88,7 @@ let albums = [
 		description: [
 			"I ruined my shoes for this shot. After I set up my camera on the banks of this inlet I realized I was slowly sinking into the mud. However, the most spectacular sunrise I'd ever seen was in front of me so I didn't want to move. When the colors had finally faded I was in over my ankles. My shoes actually came off as I tried to escape. I would later vigorously wash them, but they were never the same.",
 		],
-		altText: "Sunrise",
+		altText: "Fort Armistead Sunrise",
 	},
 	{
 		name: "something-in-the-mist",
@@ -132,7 +132,7 @@ let albums = [
 			"Almost exactly a year later I awoke from my sleep thinking about this shot. It was still dark outside and I figured since I hadn't been there in a while so I might as well give it one more try. When I got to the park I was met with the view you saw in the first image. It was completely unreal.",
 			"Now, to be clear, I don't think I was divinely woken up to go take this photo, but it's one of those weird coincidences that sticks in the mind. There's also probably a moral in here about not giving up and being open to giving something another chance, or maybe even just listening to your gut. My first instincts were correct, a nice shot was possible, the place just needed the right lighting (and also for the area to be cleaned up, which some good people must have done)."
 		],
-		altText: "Pier Sunrise",
+		altText: "Middle Branch Pier Sunrise",
 	},
 	{
 		name: "domino-sugars-sunrise",
@@ -157,7 +157,7 @@ let albums = [
 		description: [
 			"A view from along Baltimore's Inner Harbor promenade."
 		],
-		altText: "View from along Baltimore's Inner Harbor promenade",
+		altText: "Promenade View",
 	},
 	{
 		name: "broening-park-1",
@@ -169,7 +169,7 @@ let albums = [
 		description: [
 			"A view from Broening Park in Baltimore."
 		],
-		altText: "A view from Broening Park in Baltimore",
+		altText: "Broening Park",
 	},
 	{
 		name: "fells-point-sunrise",
@@ -267,7 +267,7 @@ let albums = [
 			"The sun rising over Jordan Lake in North Calorina. I went down to Durham with my family for a long weekend and on the morning we were to return home I decided to sneak out early to catch the sun rise. I'd seen this lake on the map and thought it might make for a nice spot. I had never been here before and neither had the person working the front desk at the hotel we were staying at, so I wasn't sure what to expect.",
 			"I found this spot entirely by chance. I parked at some random spot along the road and just kind of walked until I came across a view that looked nice. The lake itself looked like a wonderful little area. It's a shame I didn't have more time to explore the area."
 		],
-		altText: "NC Sunrise",
+		altText: "Jordan Lake",
 	},
 	{
 		name: "fort-armistead-sunrise-2",
@@ -279,7 +279,7 @@ let albums = [
 		description: [
 			"Fort Armistead Sunrise.",
 		],
-		altText: "Sunrise",
+		altText: "Fort Armistead Sunrise",
 	},
 	{
 		name: "cherry-blossoms-dc",
@@ -291,7 +291,7 @@ let albums = [
 		description: [
 			"Sunrise at the Washington DC Cherry Blossoms.",
 		],
-		altText: "Sunrise",
+		altText: "Cherry Blossoms",
 	},
 	{
 		name: "mt-vernon-fountain",
@@ -303,7 +303,7 @@ let albums = [
 		description: [
 			"Baltimore in Spring.",
 		],
-		altText: "Photo",
+		altText: "Mt Vernon Fountain",
 	},
 	{
 		name: "a-pathway-to-nightmares",
@@ -315,7 +315,7 @@ let albums = [
 		description: [
 			"Spookiness.",
 		],
-		altText: "Photo",
+		altText: "A Pathway to Nightmares",
 	},
 	{
 		name: "34th-street-1",
@@ -327,7 +327,7 @@ let albums = [
 		description: [
 			"34th Street.",
 		],
-		altText: "Photo",
+		altText: "34th Street",
 	},
 	{
 		name: "george-peabody-library",
@@ -339,7 +339,7 @@ let albums = [
 		description: [
 			"There's a great short story titled \"The Library of Babel\", which is about a library that contains all possible 410-page books. Most of these books are just gibberish, but within the library every single human thought, story, and idea is captured. In fact, within the library there must exist a book which is a perfect index of the library's contents (and also many which are fake indexes). The librarians who inhabit the place are in a state of despair, and many seek to purify the library by destroying the books which are gibbish. Anyway, whenever I think of that story, I think of this place, the George Peabody Library in Baltimore."
 		],
-		altText: "Photo",
+		altText: "George Peabody Library",
 	},
 	{
 		name: "foggy-carroll-park",
@@ -351,7 +351,7 @@ let albums = [
 		description: [
 			"A foggy morning in Baltimore.",
 		],
-		altText: "Photo",
+		altText: "Carroll Park",
 	},
 	{
 		name: "kids",
@@ -363,7 +363,7 @@ let albums = [
 		description: [
 			"Kids.",
 		],
-		altText: "Photo",
+		altText: "Kids",
 	},
 	{
 		name: "annapolis-rock-1",
@@ -375,7 +375,7 @@ let albums = [
 		description: [
 			"Western Maryland.",
 		],
-		altText: "Photo",
+		altText: "Annapolis Rock",
 	},
 	{
 		name: "the-haunted-car",
@@ -387,7 +387,7 @@ let albums = [
 		description: [
 			"The Haunted Car.",
 		],
-		altText: "Photo",
+		altText: "The Haunted Car",
 	},
 	{
 		name: "baltimore-skyline-2016-pano",
@@ -399,7 +399,7 @@ let albums = [
 		description: [
 			"Baltimore Skyline 2016.",
 		],
-		altText: "Pano",
+		altText: "Baltimore Skyline",
 		transitionOptions: {
 			slowTransition: true
 		},
