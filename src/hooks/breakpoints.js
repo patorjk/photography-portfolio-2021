@@ -174,6 +174,29 @@ export default function useBreakpoints() {
       },
       ratio: 8/10
     },
+    "8x10": {
+      [xs]: {
+        width: '100%',
+        height: 'auto',
+      },
+      [sm]: {
+        width: '600',
+        height: '750',
+      },
+      [md]: {
+        width: '900',
+        height: '1125',
+      },
+      [lg]: {
+        width: '1200',
+        height: '1500',
+      },
+      [xl]: {
+        width: '1536',
+        height: '1920',
+      },
+      ratio: 10/8
+    },
   };
 
   return {

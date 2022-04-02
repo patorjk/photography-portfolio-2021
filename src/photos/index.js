@@ -54,6 +54,23 @@ let albums = [
 		altText: "Baltimore Skyline Light Toggle",
 	},
 	{
+		name: "domino-2021-sunrise-toggle",
+		photoFolders: ["2021_01_domino_sunrise_1", "2021_01_domino_sunrise_2"],
+		tags: ["main", "baltimore", "2021"],
+		category: "main",
+		transitionOptions: {
+			type: 'toggle',
+			toggleLabel: "Click the switch to switch between night and day 👈 😁😁😁",
+			imageStart: 0,
+		},
+		aspect: "8x10",
+		flickr: "https://www.flickr.com/photos/40423570@N07/51755438998",
+		description: [
+			"Sunrise next to the Domino Sugars plant in Baltimore. ",
+		],
+		altText: "Sunrise Toggle",
+	},
+	{
 		name: "downs-park-pier",
 		photoFolders: ["2020_downs_sunrise", "2019_downs_sunrise", "2020_downs_spooky"],
 		tags: ["main", "sunrise", "2019"],
