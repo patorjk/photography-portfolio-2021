@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     backgroundColor: 'rgb(255,255,255)',
     borderRadius: '15px',
+    minWidth: '128px',
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   optionSideShadow: {
     bottom: '0px',
@@ -92,7 +95,9 @@ export default function FloatingMenu(props) {
             }
           </IconButton>
         </Tooltip>
-        <ShareButton album={album} />
+        {album.showShareLink !== false &&
+          <ShareButton album={album} />
+        }
         
         {(flickrURL || instagramURL) &&
           <Tooltip title="More Actions">

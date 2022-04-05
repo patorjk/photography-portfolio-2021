@@ -8,16 +8,16 @@ import MobileStepper from '@mui/material/MobileStepper';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
-import Collapse from '@mui/material/Collapse';
 import clsx from 'clsx';
 import Button from '@mui/material/Button';
 import ReactGA from 'react-ga';
-import FloatingMenu from './FloatingMenu';
 import useBreakpoints from '../hooks/breakpoints.js';
 import Switch from '@mui/material/Switch';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+
+import PhotoDescription from './PhotoDescription';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,20 +42,9 @@ const useStyles = makeStyles((theme) => ({
       width: '1536px'
     },
   },
-  aboutText: {
-    paddingBottom: '50px',
-  },
-  fadeBlock: {
-    position: 'absolute',
-    bottom: '0px',
-    display: 'block',
-    width: '100%',
-    height: '50px',
-  
-    backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 100%)'
-  },
   image: {
-    textAlign:'center'
+    textAlign:'center',
+    position: 'absolute',
   },
   stepper: {
     flexGrow: 1,
@@ -67,57 +56,6 @@ const useStyles = makeStyles((theme) => ({
   photoContainerOffScreen: {
     opacity: 0,
   },
-
-  // normal speed
-  currentPhoto: {
-    position: 'absolute',
-    transition: 'left 1s ',
-    left: '0',
-  },
-  prevPhoto: {
-    position: 'absolute',
-    transition: 'left 1s ',
-    left: '-100%'
-  },
-  nextPhoto: {
-    position: 'absolute',
-    transition: 'left 1s ',
-    left: '100%'
-  },
-
-  // slow speed
-  currentPhotoSlow: {
-    position: 'absolute',
-    transition: 'left 3s ',
-    left: '0',
-  },
-  prevPhotoSlow: {
-    position: 'absolute',
-    transition: 'left 3s ',
-    left: '-100%'
-  },
-  nextPhotoSlow: {
-    position: 'absolute',
-    transition: 'left 3s ',
-    left: '100%'
-  },
-
-  // slow speed
-  currentPhotoToggle: {
-    position: 'absolute',
-    transition: 'left 0s ',
-    left: '0',
-  },
-  prevPhotoToggle: {
-    position: 'absolute',
-    transition: 'left 0s ',
-    left: '-100%'
-  },
-  nextPhotoToggle: {
-    position: 'absolute',
-    transition: 'left 0s ',
-    left: '100%'
-  }
 }));
 
 function Photo(props) {
@@ -129,17 +67,26 @@ function Photo(props) {
   const theme = useTheme();
 
   const [activeStep, setActiveStep] = React.useState(album.transitionOptions?.imageStart || 0);
-  const [isTextOpen, setIsTextOpen] = useState(false);
   const [imageNearView, setImageNearView] = useState(false);
   const [isOffScreen, setIsOffScreen] = useState(false);
   const [canMoveStepper, setCanMoveStepper] = useState(true);
   const container = useRef();
+  const [clientX, setClientX] = useState(null);
+  const [xOffset, setXOffset] = useState(0);
 
   const {
     aspects,
     ranges,
     breakpoints
   } = useBreakpoints();
+
+  const slowTransition = album.transitionOptions ? album.transitionOptions.slowTransition : false;
+  const transitionTime = slowTransition ? 3000 : 1000;
+  const isImageSet = album.photos.length > 1 ? true : false;
+  const imgSetSize = album.photos.length;
+  const transitionType = album.transitionOptions?.type ? album.transitionOptions.type : 'stepper';
+  const photos = album.photos;
+  let photoLabel = props.album.id;
 
   useEffect(() => {
     const onScroll = (evt) => {
@@ -188,13 +135,65 @@ function Photo(props) {
     };
   }, [getBreakpoint]);
 
-  const slowTransition = album.transitionOptions ? album.transitionOptions.slowTransition : false;
-  const transitionTime = slowTransition ? 3000 : 1000;
-  const isImageSet = album.photos.length > 1 ? true : false;
-  const imgSetSize = album.photos.length;
-  const transitionType = album.transitionOptions?.type ? album.transitionOptions.type : 'stepper';
-  const photos = album.photos;
-  let photoLabel = props.album.id;
+
+  const onMouseDown = useCallback((event) => {
+    setClientX(event.clientX);
+  }, [setClientX]);
+  const onMouseMove = useCallback((event) => {
+    if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
+      setXOffset(event.clientX - clientX);
+    }
+  }, 
+  [
+    clientX,
+    transitionType,
+    photos,
+  ]);
+  const onMouseUp = useCallback((event) => {
+    let rect = container.current.getBoundingClientRect();
+    if (rect && rect.width) {
+      if (Math.abs(xOffset) > rect.width/2) {
+        if (xOffset < 0) {
+
+          ReactGA.event({
+            category: 'Image Drag',
+            action: 'Drag Left',
+            label: photoLabel
+          });
+
+          setActiveStep(Math.min(photos.length - 1, activeStep + 1));
+        } else {
+
+          ReactGA.event({
+            category: 'Image Drag',
+            action: 'Drag Right',
+            label: photoLabel
+          });
+
+          setActiveStep(Math.max(0, activeStep - 1));
+        }
+      }
+    }
+
+    setClientX(null);
+    setXOffset(0);
+  }, 
+  [
+    setClientX,
+    xOffset,
+    setXOffset,
+    activeStep,
+    setActiveStep,
+    container,
+    photos,
+    photoLabel,
+  ]);
+  useEffect(() => {
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      window.removeEventListener("mouseup", onMouseUp);
+    }
+  }, [onMouseUp])
 
   const handleNext = () => {
     if (!canMoveStepper) return;
@@ -228,15 +227,6 @@ function Photo(props) {
     }, transitionTime);
   };
 
-  const toggleTextOpen = () => {
-    ReactGA.event({
-      category: 'Text',
-      action: 'Toggle Description',
-      label: photoLabel
-    });
-    setIsTextOpen(!isTextOpen);
-  };
-
   const toggleChange = (event) => {
     ReactGA.event({
       category: 'Image Toggle',
@@ -258,26 +248,45 @@ function Photo(props) {
     position: 'relative'
   };
 
-  let prevPhotoClass;
-  let currentPhotoClass;
-  let nextPhotoClass;
-
-  if (transitionType === 'stepper') {
-    if (slowTransition) {
-      prevPhotoClass = classes.prevPhotoSlow;
-      currentPhotoClass = classes.currentPhotoSlow;
-      nextPhotoClass = classes.nextPhotoSlow;
-    } else {
-      prevPhotoClass = classes.prevPhoto;
-      currentPhotoClass = classes.currentPhoto;
-      nextPhotoClass = classes.nextPhoto;
+  const getImageLeft = (index) => {
+    if (index === activeStep) {
+      return xOffset + 'px';
     }
-  } else {
-    // toggle
-    prevPhotoClass = classes.prevPhotoToggle;
-    currentPhotoClass = classes.currentPhotoToggle;
-    nextPhotoClass = classes.nextPhotoToggle;
-  }
+    if (index === (activeStep - 1)) {
+      return `calc(-100% + ${xOffset}px)`;
+    }
+    if (index < activeStep) {
+      return '-200%';
+    }
+    if (index === (activeStep + 1)) {
+      return `calc(100% + ${xOffset}px)`;
+    }
+    if (index > activeStep) {
+      return '200%';
+    }
+  };
+  const getImageTransition = (index) => {
+    if (clientX !== null || transitionType === 'toggle') {
+      return 'left 0s';
+    } else if (transitionType === 'stepper') {
+      if (slowTransition) {
+        return 'left 3s';
+      } else {
+        return 'left 1s';
+      }
+    } else {
+      return 'left 0s';
+    }
+  };
+  const getImageCursor = () => {
+    if (clientX === null && transitionType === 'stepper' && photos.length > 1) {
+      return 'grab';
+    } else if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
+      return 'grabbing';
+    } else {
+      return 'default';
+    }
+  };
 
   return (
     <div className={clsx({
@@ -295,15 +304,20 @@ function Photo(props) {
                 src={img[Math.max(point, 600)]} 
                 className={clsx({
                   [classes.image]: true,
-
-                  [prevPhotoClass]: idx < activeStep,
-                  [currentPhotoClass]: idx === activeStep,
-                  [nextPhotoClass]: idx > activeStep,
-
                 })} 
+                style={{
+                  'left': getImageLeft(idx),
+                  'transition': getImageTransition(idx),
+                  'cursor': getImageCursor()
+                }}
                 width={aspects[album.aspect][point].width} 
                 height={aspects[album.aspect][point].height} 
-                alt={album.altText} />
+                alt={album.altText} 
+                draggable={false}
+                onMouseDown={onMouseDown}
+                onMouseUp={onMouseUp}
+                onMouseMove={onMouseMove}
+              />
             ))}
 
           </MediaQuery>
@@ -347,28 +361,11 @@ function Photo(props) {
         : null
       }
 
-      {album.description ? 
-        <div className={clsx(classes.paper)}>
-          <Collapse in={isTextOpen} collapsedSize={50} style={{position:'relative'}}>
-            <div className={classes.aboutText}>
-              {typeof album.description === "string" ? <p>{album.description}</p> :
-                album.description.map((para, idx) => (
-                  <p key={idx}>{para}</p>
-                ))
-              }
-            </div>
-
-            <div className={classes.fadeBlock}/>
-
-            <FloatingMenu 
-              album={album}
-              photoLabel={photoLabel} 
-              isTextOpen={isTextOpen}
-              toggleTextOpen={toggleTextOpen}
-              flickrURL={album.flickr} 
-              instagramURL={album.instagram} />
-          </Collapse>
-        </div>
+      {(album.description || album.descriptions) ? 
+        <PhotoDescription
+          album={album}
+          activeStep={activeStep}
+        />
         : null
       }
     </div>
