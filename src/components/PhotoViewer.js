@@ -287,6 +287,13 @@ function Photo(props) {
       return 'default';
     }
   };
+  const getImageTouchAction = () => {
+    if (transitionType === 'stepper' && photos.length > 1) {
+      return 'none';
+    } else {
+      return 'auto';
+    }
+  };
 
   return (
     <div className={clsx({
@@ -309,7 +316,7 @@ function Photo(props) {
                   'left': getImageLeft(idx),
                   'transition': getImageTransition(idx),
                   'cursor': getImageCursor(),
-                  'touchAction': 'none',
+                  'touchAction': getImageTouchAction(),
                 }}
                 width={aspects[album.aspect][point].width} 
                 height={aspects[album.aspect][point].height} 
