@@ -136,10 +136,10 @@ function Photo(props) {
   }, [getBreakpoint]);
 
 
-  const onMouseDown = useCallback((event) => {
+  const onPointerDown = useCallback((event) => {
     setClientX(event.clientX);
   }, [setClientX]);
-  const onMouseMove = useCallback((event) => {
+  const onPointerMove = useCallback((event) => {
     if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
       setXOffset(event.clientX - clientX);
     }
@@ -149,7 +149,7 @@ function Photo(props) {
     transitionType,
     photos,
   ]);
-  const onMouseUp = useCallback((event) => {
+  const onPointerUp = useCallback((event) => {
     let rect = container.current.getBoundingClientRect();
     if (rect && rect.width) {
       if (Math.abs(xOffset) > rect.width/2) {
@@ -189,11 +189,11 @@ function Photo(props) {
     photoLabel,
   ]);
   useEffect(() => {
-    window.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("pointerup", onPointerUp);
     return () => {
-      window.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("pointerup", onPointerUp);
     }
-  }, [onMouseUp])
+  }, [onPointerUp])
 
   const handleNext = () => {
     if (!canMoveStepper) return;
@@ -314,9 +314,9 @@ function Photo(props) {
                 height={aspects[album.aspect][point].height} 
                 alt={album.altText} 
                 draggable={false}
-                onMouseDown={onMouseDown}
-                onMouseUp={onMouseUp}
-                onMouseMove={onMouseMove}
+                onPointerDown={onPointerDown}
+                onPointerUp={onPointerUp}
+                onPointerMove={onPointerMove}
               />
             ))}
 
