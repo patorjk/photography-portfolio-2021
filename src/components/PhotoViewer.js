@@ -308,7 +308,8 @@ function Photo(props) {
                 style={{
                   'left': getImageLeft(idx),
                   'transition': getImageTransition(idx),
-                  'cursor': getImageCursor()
+                  'cursor': getImageCursor(),
+                  'touchAction': 'none',
                 }}
                 width={aspects[album.aspect][point].width} 
                 height={aspects[album.aspect][point].height} 
