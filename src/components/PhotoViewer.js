@@ -30,7 +30,9 @@ function Photo(props) {
   const [canMoveStepper, setCanMoveStepper] = useState(true);
   const container = useRef();
   const [clientX, setClientX] = useState(null);
+  const [clientY, setClientY] = useState(null);
   const [xOffset, setXOffset] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
 
   const {
     aspects,
@@ -96,14 +98,26 @@ function Photo(props) {
 
   const onPointerDown = useCallback((event) => {
     setClientX(event.clientX);
-  }, [setClientX]);
+    if (event.pointerType === "touch") {
+      setClientY(event.clientY);
+      setScrollTop(document.documentElement.scrollTop);
+    }
+  }, [setClientX, setClientY]);
   const onPointerMove = useCallback((event) => {
     if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
       setXOffset(event.clientX - clientX);
+
+      if (event.pointerType === "touch") {
+        const yOffset = event.clientY - clientY;
+        document.documentElement.scrollTop = Math.max(scrollTop - yOffset, 0); 
+      }
+
     }
   }, 
   [
     clientX,
+    clientY,
+    scrollTop,
     transitionType,
     photos,
   ]);
@@ -134,6 +148,7 @@ function Photo(props) {
     }
 
     setClientX(null);
+    setClientY(null);
     setXOffset(0);
   }, 
   [
