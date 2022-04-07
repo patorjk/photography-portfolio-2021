@@ -7,17 +7,10 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import IconButton from '@mui/material/IconButton';
 import MoreVert from '@mui/icons-material/MoreVert';
-import { makeStyles } from '@mui/styles';
 import ShareButton from './ShareButton';
+import { styled } from '@mui/system';
 
-const useStyles = makeStyles((theme) => ({
-  collapseBtn: {
-    padding: '8px',
-  },
-  optionsBtn: {
-    padding: '8px',
-  },
-  optionBar: {
+const OptionBar = styled('div')(() => ({
     bottom: '0px',
     right: '5px',
     position: 'absolute',
@@ -26,22 +19,20 @@ const useStyles = makeStyles((theme) => ({
     minWidth: '128px',
     display: 'flex',
     justifyContent: 'flex-end',
-  },
-  optionSideShadow: {
+}));
+
+const OptionSideShadow = styled('div')(() => ({
     bottom: '0px',
     right: '130px',
     width: '200px',
     height: '48px',
     position: 'absolute',
     backgroundImage: 'linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 100%)',
-  },
-  optionsIcon: {},
 }));
 
 export default function FloatingMenu(props) {
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const classes = useStyles();
 
   const {
     album,
@@ -83,15 +74,15 @@ export default function FloatingMenu(props) {
           {instagramURL ? <MenuItem onClick={() => viewLinkClick(instagramURL, "Instagram")}>View on Instagram</MenuItem> : null}
       </Menu>
 
-      <div className={classes.optionSideShadow} />
+      <OptionSideShadow />
 
-      <div className={classes.optionBar}>
+      <OptionBar>
         <Tooltip title={"Toggle Text Display"} >
-          <IconButton onClick={(evt) => toggleTextOpen()} className={classes.collapseBtn}>
+          <IconButton onClick={(evt) => toggleTextOpen()} sx={{padding: '8px'}}>
             {isTextOpen ?
-              <ExpandLess className={classes.optionsIcon} />
+              <ExpandLess />
               :
-              <ExpandMore className={classes.optionsIcon} />
+              <ExpandMore />
             }
           </IconButton>
         </Tooltip>
@@ -101,10 +92,10 @@ export default function FloatingMenu(props) {
         
         {(flickrURL || instagramURL) &&
           <Tooltip title="More Actions">
-            <IconButton onClick={moreOptions} className={classes.optionsBtn}><MoreVert className={classes.optionsIcon} /></IconButton>
+            <IconButton onClick={moreOptions} sx={{padding: '8px'}}><MoreVert /></IconButton>
           </Tooltip>
         }
-      </div>
+      </OptionBar>
     </>
   );
 }

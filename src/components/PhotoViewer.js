@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import MediaQuery from 'react-responsive';
 
-import makeStyles from '@mui/styles/makeStyles';
-
 import { useTheme } from '@mui/material/styles';
 import MobileStepper from '@mui/material/MobileStepper';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
-import clsx from 'clsx';
 import Button from '@mui/material/Button';
 import ReactGA from 'react-ga';
 import useBreakpoints from '../hooks/breakpoints.js';
@@ -18,52 +15,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 
 import PhotoDescription from './PhotoDescription';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-  },
-  paper: {
-    color: theme.palette.text.secondary,
-    position:'relative',
-    textAlign: 'left',
-    [theme.breakpoints.up('xs')]: {
-      width: '100%'
-    },
-    [theme.breakpoints.up('sm')]: {
-      width: '600px'
-    },
-    [theme.breakpoints.up('md')]: {
-      width: '900px'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '1200px'
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '1536px'
-    },
-  },
-  image: {
-    textAlign:'center',
-    position: 'absolute',
-  },
-  stepper: {
-    flexGrow: 1,
-  },
-  photoContainer: {
-    transition: 'opacity 1s',
-    opacity: 1
-  },
-  photoContainerOffScreen: {
-    opacity: 0,
-  },
-}));
+import ResponsiveContainer from './styled/ResponsiveContainer';
 
 function Photo(props) {
   let {
     album,
   } = props;
 
-  const classes = useStyles();
   const theme = useTheme();
 
   const [activeStep, setActiveStep] = React.useState(album.transitionOptions?.imageStart || 0);
@@ -296,12 +254,15 @@ function Photo(props) {
   };
 
   return (
-    <div className={clsx({
-      [classes.paper]: true,
-      [classes.photoContainer]: true,
-      [classes.photoContainerOffScreen]: isOffScreen
-    })} ref={container}>
-
+    <ResponsiveContainer 
+      sx={{
+        position:'relative',
+        textAlign: 'left',
+        transition: 'opacity 1s',
+        opacity: isOffScreen ? 0 : 1
+      }}
+      ref={container}
+    >
       <div style={containerStyle}>
         {breakpoints.map(point => (
           <MediaQuery minWidth={ranges[point].min} maxWidth={ranges[point].max} key={point} >
@@ -309,14 +270,13 @@ function Photo(props) {
               <img 
                 key={idx}
                 src={img[Math.max(point, 600)]} 
-                className={clsx({
-                  [classes.image]: true,
-                })} 
                 style={{
-                  'left': getImageLeft(idx),
-                  'transition': getImageTransition(idx),
-                  'cursor': getImageCursor(),
-                  'touchAction': getImageTouchAction(),
+                  left: getImageLeft(idx),
+                  transition: getImageTransition(idx),
+                  cursor: getImageCursor(),
+                  touchAction: getImageTouchAction(),
+                  textAlign:'center',
+                  position: 'absolute',
                 }}
                 width={aspects[album.aspect][point].width} 
                 height={aspects[album.aspect][point].height} 
@@ -338,7 +298,7 @@ function Photo(props) {
           steps={imgSetSize}
           position="static"
           activeStep={activeStep}
-          className={classes.stepper}
+          style={{flexGrow: 1,}}
           nextButton={
             <Button size="small" onClick={handleNext} disabled={activeStep === imgSetSize - 1}>
               Next
@@ -376,7 +336,7 @@ function Photo(props) {
         />
         : null
       }
-    </div>
+    </ResponsiveContainer>
   );
 }
 

@@ -1,35 +1,16 @@
 import React, { useState } from 'react';
 
 import Collapse from '@mui/material/Collapse';
-import clsx from 'clsx';
 import ReactGA from 'react-ga';
 import FloatingMenu from './FloatingMenu';
-import makeStyles from '@mui/styles/makeStyles';
+import { styled } from '@mui/system';
+import ResponsiveContainer from './styled/ResponsiveContainer';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-  },
-  paper: {
-    color: theme.palette.text.secondary,
-    position:'relative',
-    textAlign: 'left',
-    [theme.breakpoints.up('xs')]: {
-      width: '100%'
-    },
-    [theme.breakpoints.up('sm')]: {
-      width: '600px'
-    },
-    [theme.breakpoints.up('md')]: {
-      width: '900px'
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: '1200px'
-    },
-    [theme.breakpoints.up('xl')]: {
-      width: '1536px'
-    },
-  },
-  fadeBlock: {
+const AboutText = styled('div')(() => ({
+    paddingBottom: '50px',
+}));
+
+const FadeBlock = styled('div')(() => ({
     position: 'absolute',
     bottom: '0px',
     display: 'block',
@@ -37,10 +18,6 @@ const useStyles = makeStyles((theme) => ({
     height: '50px',
   
     backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 100%)'
-  },
-  aboutText: {
-    paddingBottom: '50px',
-  },
 }));
 
 function PhotoDescription(props) {
@@ -49,7 +26,6 @@ function PhotoDescription(props) {
     activeStep,
   } = props;
 
-  const classes = useStyles();
   let photoLabel = album.id;
 
   const [isTextOpen, setIsTextOpen] = useState(false);
@@ -66,19 +42,17 @@ function PhotoDescription(props) {
   const description = album.descriptions ? album.descriptions[activeStep] : album.description;
 
   return (
-    <div className={clsx(classes.paper)}>
+    <ResponsiveContainer sx={{textAlign: 'left',position:'relative'}}>
       <Collapse in={isTextOpen} collapsedSize={50} style={{position:'relative'}}>
-        <div className={classes.aboutText}>
+        <AboutText>
           {typeof description === "string" ? <p>{description}</p> :
             description.map((para, idx) => (
               <p key={idx}>{para}</p>
             ))
           }
-        </div>
+        </AboutText>
 
-        <div className={clsx({
-          [classes.fadeBlock]: true
-        })}/>
+        <FadeBlock />
 
         <FloatingMenu 
           album={album}
@@ -89,7 +63,7 @@ function PhotoDescription(props) {
           instagramURL={album.instagram} 
         />
       </Collapse>
-    </div>
+    </ResponsiveContainer>
   );
 }
 

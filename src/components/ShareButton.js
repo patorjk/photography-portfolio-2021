@@ -5,20 +5,14 @@ import {
 import {
   Share
 } from '@mui/icons-material';
-import {makeStyles} from '@mui/styles';
 import Tooltip from '@mui/material/Tooltip';
 import ShareDialog from './ShareDialog';
-
-const useStyles = makeStyles(theme => ({
-  btn: {}
-}));
 
 export default function(props) {
   const {
     album
   } = props;
 
-  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const openDialog = () => {
@@ -34,7 +28,7 @@ export default function(props) {
       <ShareDialog open={open} handleClose={handleClose} album={album} />
       <Tooltip title="Share Link to Image">
         <IconButton onClick={openDialog} size="large">
-            <Share className={classes.btn} />
+            <Share />
         </IconButton>
       </Tooltip>
     </>

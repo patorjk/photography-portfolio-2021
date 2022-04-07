@@ -1,42 +1,28 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import makeStyles from '@mui/styles/makeStyles';
 import { getPhotoAlbumByName } from '../photos/index.js';
 import PhotoViewer from './PhotoViewer.js';
 import ClosingMessage from './ClosingMessage';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: theme.spacing(0),
-  },
-  gridItem: {
-    marginBottom: '50px'
-  },
-}));
+import MainContent from './styled/MainContent';
 
 function PhotoGrid(props) {
-
-  const classes = useStyles();
   let photo = getPhotoAlbumByName(props.photoName);
-
+  const gridItemStyling = {
+    marginBottom: '50px'
+  };
 
   return (
-    <div className={classes.root}>
-
+    <MainContent>
       <Grid container alignItems="center" justifyContent="center" align="center">
-
-        <Grid item xs={12} className={classes.gridItem} >
+        <Grid item xs={12} sx={gridItemStyling} >
             <PhotoViewer album={photo} />
         </Grid>
 
-        <Grid item xs={12} className={classes.gridItem}>
+        <Grid item xs={12} sx={gridItemStyling}>
             <ClosingMessage />
         </Grid>
-
       </Grid>
-
-    </div>
+    </MainContent>
   );
 }
 
