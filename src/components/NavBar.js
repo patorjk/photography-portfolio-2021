@@ -19,7 +19,7 @@ function NavBar(props) {
 	}
 
 	const rightItemStyle = {
-		marginRight: '20px'
+		marginRight: '15px'
 	};
 
 	const titleStyle = {
@@ -27,7 +27,7 @@ function NavBar(props) {
 	};
 
 	return (
-		<AppBar position="fixed" color="default">
+		<AppBar position="fixed" >
 			<Toolbar>
 				<MediaQuery minWidth={700}>
 					<Typography variant="h6" color="inherit" to="/" component={Link} style={titleStyle}>

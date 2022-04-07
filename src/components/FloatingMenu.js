@@ -9,25 +9,26 @@ import IconButton from '@mui/material/IconButton';
 import MoreVert from '@mui/icons-material/MoreVert';
 import ShareButton from './ShareButton';
 import { styled } from '@mui/system';
+import { alpha } from '@mui/material/styles';
 
-const OptionBar = styled('div')(() => ({
+const OptionBar = styled('div')(({ theme }) => ({
     bottom: '0px',
     right: '5px',
     position: 'absolute',
-    backgroundColor: 'rgb(255,255,255)',
+    backgroundColor: theme.palette.background.default,
     borderRadius: '15px',
     minWidth: '128px',
     display: 'flex',
     justifyContent: 'flex-end',
 }));
 
-const OptionSideShadow = styled('div')(() => ({
+const OptionSideShadow = styled('div')(({ theme }) => ({
     bottom: '0px',
     right: '130px',
     width: '200px',
     height: '48px',
     position: 'absolute',
-    backgroundImage: 'linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 100%)',
+    backgroundImage: `linear-gradient(to left, ${alpha(theme.palette.background.default,1)}, ${alpha(theme.palette.background.default, 0)} 100%)`,
 }));
 
 export default function FloatingMenu(props) {

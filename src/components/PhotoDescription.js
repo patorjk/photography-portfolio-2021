@@ -5,19 +5,20 @@ import ReactGA from 'react-ga';
 import FloatingMenu from './FloatingMenu';
 import { styled } from '@mui/system';
 import ResponsiveContainer from './styled/ResponsiveContainer';
+import { alpha } from '@mui/material/styles';
 
 const AboutText = styled('div')(() => ({
     paddingBottom: '50px',
 }));
 
-const FadeBlock = styled('div')(() => ({
+const FadeBlock = styled('div')(({ theme }) => ({
     position: 'absolute',
     bottom: '0px',
     display: 'block',
     width: '100%',
     height: '50px',
   
-    backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 100%)'
+    backgroundImage: `linear-gradient(to bottom, ${alpha(theme.palette.background.default,0)}, ${alpha(theme.palette.background.default, 0.9)} 100%)`
 }));
 
 function PhotoDescription(props) {
