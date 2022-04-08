@@ -1,5 +1,5 @@
-import {useMemo} from "react";
-import { useTheme } from "@mui/styles";
+import { useTheme } from '@mui/styles';
+import { useMemo } from 'react';
 
 export default function useBreakpoints() {
   const theme = useTheme();
@@ -36,7 +36,7 @@ export default function useBreakpoints() {
   };
 
   const aspects = {
-    "6x4": {
+    '6x4': {
       [xs]: {
         width: '100%',
         height: 'auto',
@@ -59,7 +59,7 @@ export default function useBreakpoints() {
       },
       ratio: 4/6,
     },
-    "16x9": {
+    '16x9': {
       [xs]: {
         width: '100%',
         height: 'auto',
@@ -82,7 +82,7 @@ export default function useBreakpoints() {
       },
       ratio: 9/16,
     },
-    "16x10": {
+    '16x10': {
       [xs]: {
         width: '100%',
         height: 'auto',
@@ -105,7 +105,7 @@ export default function useBreakpoints() {
       },
       ratio: 10/16,
     },
-    "1x1": {
+    '1x1': {
       [xs]: {
         width: '100%',
         height: 'auto',
@@ -128,7 +128,7 @@ export default function useBreakpoints() {
       },
       ratio: 1,
     },
-    "8.5x11": {
+    '8.5x11': {
       [xs]: {
         width: '100%',
         height: 'auto',
@@ -151,7 +151,7 @@ export default function useBreakpoints() {
       },
       ratio: 11/8.5
     },
-    "10x8": {
+    '10x8': {
       [xs]: {
         width: '100%',
         height: 'auto',
@@ -174,7 +174,7 @@ export default function useBreakpoints() {
       },
       ratio: 8/10
     },
-    "8x10": {
+    '8x10': {
       [xs]: {
         width: '100%',
         height: 'auto',

@@ -1,5 +1,3 @@
-import React from 'react';
-import copy from 'copy-to-clipboard';
 
 import {
   Button,
@@ -11,9 +9,12 @@ import {
 } from '@mui/material';
 
 import confetti from 'canvas-confetti';
+import copy from 'copy-to-clipboard';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ReactGA from 'react-ga';
 
-export default function LinkDialog(props) {
+function LinkDialog(props) {
   const {
     open,
     handleClose,
@@ -23,7 +24,7 @@ export default function LinkDialog(props) {
   const selectText = (event) => {
     event.preventDefault();
     event.target.setSelectionRange(0, event.target.value.length);
-  }
+  };
 
   const handleCopy = (event) => {
     copy(photoUrl);
@@ -59,29 +60,37 @@ export default function LinkDialog(props) {
 
   return (
     <Dialog
-      open={open}
-      onClose={handleClose}
-      fullWidth={true}
-      aria-labelledby="photo-dialog-title"
-      aria-describedby="photo-dialog-description"
+      open={ open }
+      onClose={ handleClose }
+      fullWidth={ true }
+      aria-labelledby='photo-dialog-title'
+      aria-describedby='photo-dialog-description'
     >
-      <DialogTitle id="photo-dialog-title">
+      <DialogTitle id='photo-dialog-title'>
         Link to Photo
       </DialogTitle>
-      <DialogContent id="photo-dialog-description">
+      <DialogContent id='photo-dialog-description'>
         <TextField 
-          id="photo-url" 
-          variant="outlined" 
-          value={photoUrl} 
-          onFocus={selectText}
+          id='photo-url' 
+          variant='outlined' 
+          value={ photoUrl } 
+          onFocus={ selectText }
           fullWidth />
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCopy} autoFocus>Copy</Button>
-        <Button onClick={handleClose}>
+        <Button onClick={ handleCopy }>Copy</Button>
+        <Button onClick={ handleClose }>
           Close
         </Button>
       </DialogActions>
     </Dialog>
   );
 }
+
+LinkDialog.propTypes = {
+  open: PropTypes.bool,
+  handleClose: PropTypes.func,
+  album: PropTypes.object,
+};
+
+export default LinkDialog;

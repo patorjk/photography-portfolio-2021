@@ -11,26 +11,26 @@ settings.urls.instagram = 'https://www.instagram.com/patorjk/';
 settings.googleAnalyticsId = 'UA-76058158-1';
 
 
-settings.defaultCategory = "main";
+settings.defaultCategory = 'main';
 settings.categories = [
-	{
-		name: "main",
-		display: "Main",
-		path: "/",
-		randomize: false,
-	},
-	{
-		name: "sunrise",
-		display: "Sunrises",
-		path: "/sunrises",
-		randomize: true,
-	},
-	{
-		name: "misc",
-		display: "Misc",
-		path: "/misc",
-		randomize: true,
-	},
+  {
+    name: 'main',
+    display: 'Main',
+    path: '/',
+    randomize: false,
+  },
+  {
+    name: 'sunrise',
+    display: 'Sunrises',
+    path: '/sunrises',
+    randomize: true,
+  },
+  {
+    name: 'misc',
+    display: 'Misc',
+    path: '/misc',
+    randomize: true,
+  },
 ];
 
 

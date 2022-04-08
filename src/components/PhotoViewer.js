@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import MediaQuery from 'react-responsive';
 
-import { useTheme } from '@mui/material/styles';
-import MobileStepper from '@mui/material/MobileStepper';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 import Button from '@mui/material/Button';
-import ReactGA from 'react-ga';
-import useBreakpoints from '../hooks/breakpoints.js';
-import Switch from '@mui/material/Switch';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import MobileStepper from '@mui/material/MobileStepper';
+import { useTheme } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
+import PropTypes from 'prop-types';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import ReactGA from 'react-ga';
+import MediaQuery from 'react-responsive';
 import PhotoDescription from './PhotoDescription';
 import ResponsiveContainer from './styled/ResponsiveContainer';
+import useBreakpoints from '../hooks/breakpoints.js';
 
 function Photo(props) {
   let {
@@ -49,15 +49,15 @@ function Photo(props) {
   let photoLabel = props.album.id;
 
   useEffect(() => {
-    const onScroll = (evt) => {
+    const onScroll = () => {
       if (container.current) {
         let rect = container.current.getBoundingClientRect();
         
         let _isOffScreen = (
-           (rect.x + rect.width) < 0 
+          (rect.x + rect.width) < 0 
              || (rect.y + rect.height) < 0
              || (rect.x > window.innerWidth || rect.y > window.innerHeight)
-         );
+        );
         
         setIsOffScreen(_isOffScreen);
 
@@ -69,10 +69,10 @@ function Photo(props) {
         }
       }
     };
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener('scroll', onScroll);
     };
   }, [container, imageNearView]);
 
@@ -84,21 +84,21 @@ function Photo(props) {
   }, [breakpoints]);
   const [currentBreakpoint, setCurrentBreakpoint] = useState( getBreakpoint() );
   useEffect(() => {
-    const onResize = (evt) => {
+    const onResize = () => {
       setCurrentBreakpoint( getBreakpoint() );
       setIsOffScreen(false); // TODO - fix this
     };
-    window.addEventListener("resize", onResize);
+    window.addEventListener('resize', onResize);
 
     return () => {
-      window.removeEventListener("resize", onResize);
+      window.removeEventListener('resize', onResize);
     };
   }, [getBreakpoint]);
 
 
   const onPointerDown = useCallback((event) => {
     setClientX(event.clientX);
-    if (event.pointerType === "touch") {
+    if (event.pointerType === 'touch') {
       setClientY(event.clientY);
       setScrollTop(document.documentElement.scrollTop);
     }
@@ -107,7 +107,7 @@ function Photo(props) {
     if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
       setXOffset(event.clientX - clientX);
 
-      if (event.pointerType === "touch") {
+      if (event.pointerType === 'touch') {
         const yOffset = event.clientY - clientY;
         document.documentElement.scrollTop = Math.max(scrollTop - yOffset, 0); 
       }
@@ -121,7 +121,7 @@ function Photo(props) {
     transitionType,
     photos,
   ]);
-  const onPointerUp = useCallback((event) => {
+  const onPointerUp = useCallback(() => {
     let rect = container.current.getBoundingClientRect();
     if (rect && rect.width) {
       if (Math.abs(xOffset) > rect.width/2) {
@@ -162,11 +162,11 @@ function Photo(props) {
     photoLabel,
   ]);
   useEffect(() => {
-    window.addEventListener("pointerup", onPointerUp);
+    window.addEventListener('pointerup', onPointerUp);
     return () => {
-      window.removeEventListener("pointerup", onPointerUp);
-    }
-  }, [onPointerUp])
+      window.removeEventListener('pointerup', onPointerUp);
+    };
+  }, [onPointerUp]);
 
   const handleNext = () => {
     if (!canMoveStepper) return;
@@ -215,6 +215,7 @@ function Photo(props) {
   };
 
   let containerStyle = {
+    // eslint-disable-next-line max-len
     height: window.innerWidth <= 600 ? (window.innerWidth * aspects[album.aspect].ratio) : aspects[album.aspect][currentBreakpoint].height + 'px',
     width: window.innerWidth <= 600 ? '100%' : aspects[album.aspect][currentBreakpoint].width + 'px',
     overflow: 'hidden',
@@ -238,7 +239,7 @@ function Photo(props) {
       return '200%';
     }
   };
-  const getImageTransition = (index) => {
+  const getImageTransition = () => {
     if (clientX !== null || transitionType === 'toggle') {
       return 'left 0s';
     } else if (transitionType === 'stepper') {
@@ -270,59 +271,59 @@ function Photo(props) {
 
   return (
     <ResponsiveContainer 
-      sx={{
+      sx={ {
         position:'relative',
         textAlign: 'left',
         transition: 'opacity 1s',
         opacity: isOffScreen ? 0 : 1
-      }}
-      ref={container}
+      } }
+      ref={ container }
     >
-      <div style={containerStyle}>
-        {breakpoints.map(point => (
-          <MediaQuery minWidth={ranges[point].min} maxWidth={ranges[point].max} key={point} >
-            {photos.map((img, idx) => (
+      <div style={ containerStyle }>
+        { breakpoints.map(point => (
+          <MediaQuery minWidth={ ranges[point].min } maxWidth={ ranges[point].max } key={ point } >
+            { photos.map((img, idx) => (
               <img 
-                key={idx}
-                src={img[Math.max(point, 600)]} 
-                style={{
+                key={ idx }
+                src={ img[Math.max(point, 600)] } 
+                style={ {
                   left: getImageLeft(idx),
                   transition: getImageTransition(idx),
                   cursor: getImageCursor(),
                   touchAction: getImageTouchAction(),
                   textAlign:'center',
                   position: 'absolute',
-                }}
-                width={aspects[album.aspect][point].width} 
-                height={aspects[album.aspect][point].height} 
-                alt={album.altText} 
-                draggable={false}
-                onPointerDown={onPointerDown}
-                onPointerUp={onPointerUp}
-                onPointerMove={onPointerMove}
+                } }
+                width={ aspects[album.aspect][point].width } 
+                height={ aspects[album.aspect][point].height } 
+                alt={ album.altText } 
+                draggable={ false }
+                onPointerDown={ onPointerDown }
+                onPointerUp={ onPointerUp }
+                onPointerMove={ onPointerMove }
               />
-            ))}
+            )) }
 
           </MediaQuery>
-        ))}
+        )) }
       </div>
 
-      {(isImageSet && transitionType === 'stepper') ? 
+      { (isImageSet && transitionType === 'stepper') ? 
         <MobileStepper
-          variant="dots"
-          steps={imgSetSize}
-          position="static"
-          activeStep={activeStep}
-          style={{flexGrow: 1,}}
+          variant='dots'
+          steps={ imgSetSize }
+          position='static'
+          activeStep={ activeStep }
+          style={ { flexGrow: 1, } }
           nextButton={
-            <Button size="small" onClick={handleNext} disabled={activeStep === imgSetSize - 1}>
+            <Button size='small' onClick={ handleNext } disabled={ activeStep === imgSetSize - 1 }>
               Next
-              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+              { theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight /> }
             </Button>
           }
           backButton={
-            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+            <Button size='small' onClick={ handleBack } disabled={ activeStep === 0 }>
+              { theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft /> }
               Previous
             </Button>
           }
@@ -330,29 +331,38 @@ function Photo(props) {
         : null
       }
 
-      {(isImageSet && transitionType === 'toggle') ?
-        <FormControl component="fieldset">
-          <FormGroup aria-label="position" row>
+      { (isImageSet && transitionType === 'toggle') ?
+        <FormControl component='fieldset'>
+          <FormGroup aria-label='position' row>
             <FormControlLabel
-              value="top"
-              control={<Switch color="primary" onChange={toggleChange} defaultChecked={album.transitionOptions.imageStart === 1} />}
-              label={album.transitionOptions.toggleLabel}
-              labelPlacement="end"
+              value='top'
+              control={
+                <Switch
+                  color='primary'
+                  onChange={ toggleChange }
+                  defaultChecked={ album.transitionOptions.imageStart === 1 }
+                /> }
+              label={ album.transitionOptions.toggleLabel }
+              labelPlacement='end'
             />
           </FormGroup>
         </FormControl>
         : null
       }
 
-      {(album.description || album.descriptions) ? 
+      { (album.description || album.descriptions) ? 
         <PhotoDescription
-          album={album}
-          activeStep={activeStep}
+          album={ album }
+          activeStep={ activeStep }
         />
         : null
       }
     </ResponsiveContainer>
   );
 }
+
+Photo.propTypes = {
+  album: PropTypes.object,
+};
 
 export default Photo;

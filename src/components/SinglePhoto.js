@@ -1,9 +1,10 @@
-import React from 'react';
 import Grid from '@mui/material/Grid';
-import { getPhotoAlbumByName } from '../photos/index.js';
-import PhotoViewer from './PhotoViewer.js';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ClosingMessage from './ClosingMessage';
+import PhotoViewer from './PhotoViewer.js';
 import MainContent from './styled/MainContent';
+import { getPhotoAlbumByName } from '../photos/index.js';
 
 function PhotoGrid(props) {
   let photo = getPhotoAlbumByName(props.photoName);
@@ -13,17 +14,21 @@ function PhotoGrid(props) {
 
   return (
     <MainContent>
-      <Grid container alignItems="center" justifyContent="center" align="center">
-        <Grid item xs={12} sx={gridItemStyling} >
-            <PhotoViewer album={photo} />
+      <Grid container alignItems='center' justifyContent='center' align='center'>
+        <Grid item xs={ 12 } sx={ gridItemStyling } >
+          <PhotoViewer album={ photo } />
         </Grid>
 
-        <Grid item xs={12} sx={gridItemStyling}>
-            <ClosingMessage />
+        <Grid item xs={ 12 } sx={ gridItemStyling }>
+          <ClosingMessage />
         </Grid>
       </Grid>
     </MainContent>
   );
 }
+
+PhotoGrid.propTypes = {
+  photoName: PropTypes.string,
+};
 
 export default PhotoGrid;

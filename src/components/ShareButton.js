@@ -1,14 +1,15 @@
-import React from 'react'
-import {
-  IconButton
-} from '@mui/material';
 import {
   Share
 } from '@mui/icons-material';
+import {
+  IconButton
+} from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
+import PropTypes from 'prop-types';
+import React from 'react';
 import ShareDialog from './ShareDialog';
 
-export default function(props) {
+function ShareButton(props) {
   const {
     album
   } = props;
@@ -25,12 +26,18 @@ export default function(props) {
 
   return (
     <>
-      <ShareDialog open={open} handleClose={handleClose} album={album} />
-      <Tooltip title="Share Link to Image">
-        <IconButton onClick={openDialog} size="large">
-            <Share />
+      <ShareDialog open={ open } handleClose={ handleClose } album={ album } />
+      <Tooltip title='Share Link to Image'>
+        <IconButton onClick={ openDialog } size='large'>
+          <Share />
         </IconButton>
       </Tooltip>
     </>
   ); 
+}
+
+ShareButton.propTypes = {
+  album: PropTypes.object,
 };
+
+export default ShareButton;
