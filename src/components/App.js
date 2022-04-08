@@ -1,7 +1,7 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material/styles';
 import { createBrowserHistory } from 'history';
-import React from 'react';
+import React, { useState } from 'react';
 import ReactGA from 'react-ga';
 import {
   Redirect,
@@ -56,7 +56,7 @@ const basicThemeDef = {
     },
   }
 };
-/*
+
 const halloweenThemeDef = {
   palette: {
     type: 'dark',
@@ -97,7 +97,7 @@ const halloweenThemeDef = {
     divider: 'rgba(255,255,255,0.12)',
     background: {
       default: '#202020',
-      paper: '#505050',
+      paper: '#202020',
     },
     action: {
       active: '#fff',
@@ -125,8 +125,20 @@ const halloweenThemeDef = {
     },
   }
 };
-*/
-const theme = createTheme(basicThemeDef);
+
+const basicTheme = createTheme(basicThemeDef);
+const halloweenTheme = createTheme(halloweenThemeDef);
+
+const themes = [
+  {
+    label: 'Light',
+    theme: basicTheme,
+  },
+  {
+    label: 'Dark (Halloween)',
+    theme: halloweenTheme,
+  }
+];
 
 function toTitleCase(text) {
   return text.toLowerCase()
@@ -173,19 +185,20 @@ history.listen((location) => {
 updatePageTitle();
 
 function App() {
+  const [theme, setTheme] = useState(basicTheme);
   return (
     <Router history={ history }>
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={ theme }>
           <CssBaseline />
-          <NavBar />
-          <div style={ { paddingTop:'64px',boxSizing:'border-box',height:'100%' } }>
+          <NavBar theme={ theme } themes={ themes } setTheme={ setTheme } />
+          <div style={{ paddingTop:'64px',boxSizing:'border-box',height:'100%' }}>
             <Switch>
 
               { config.categories.map( cat => (
                 <Route path={ cat.path } exact key={ cat.name } render={ () => (
-                  <div style={ { display:'flex',flexDirection:'column',height:'100%' } }>
-                    <div style={ { flex: '1 0 auto' } }>
+                  <div style={{ display:'flex',flexDirection:'column',height:'100%' }}>
+                    <div style={{ flex: '1 0 auto' }}>
                       <PhotoGrid category={ cat.name } randomize={ cat.randomize } />
                     </div>
                     <Footer/>
@@ -194,8 +207,8 @@ function App() {
               )) }
 
               <Route path='/photo/:photo' render={ (routeProps) => (
-                <div style={ { display:'flex',flexDirection:'column',height:'100%' } }>
-                  <div style={ { flex: '1 0 auto' } }>
+                <div style={{ display:'flex',flexDirection:'column',height:'100%' }}>
+                  <div style={{ flex: '1 0 auto' }}>
                     <SinglePhoto photoName={ routeProps.match.params.photo } />
                   </div>
                   <Footer/>
@@ -203,8 +216,8 @@ function App() {
               ) } /> 
 
               <Route path='/about' render={ () => (
-                <div style={ { display:'flex',flexDirection:'column',height:'100%' } }>
-                  <div style={ { flex: '1 0 auto' } }>
+                <div style={{ display:'flex',flexDirection:'column',height:'100%' }}>
+                  <div style={{ flex: '1 0 auto' }}>
                     <About />
                   </div>
                 </div>

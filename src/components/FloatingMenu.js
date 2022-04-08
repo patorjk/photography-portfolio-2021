@@ -83,7 +83,7 @@ function FloatingMenu(props) {
 
       <OptionBar>
         <Tooltip title={ 'Toggle Text Display' } >
-          <IconButton onClick={ () => toggleTextOpen() } sx={ { padding: '8px' } }>
+          <IconButton onClick={ () => toggleTextOpen() } sx={{ padding: '8px' }}>
             { isTextOpen ?
               <ExpandLess />
               :
@@ -97,7 +97,7 @@ function FloatingMenu(props) {
         
         { (flickrURL || instagramURL) &&
           <Tooltip title='More Actions'>
-            <IconButton onClick={ moreOptions } sx={ { padding: '8px' } }><MoreVert /></IconButton>
+            <IconButton onClick={ moreOptions } sx={{ padding: '8px' }}><MoreVert /></IconButton>
           </Tooltip>
         }
       </OptionBar>

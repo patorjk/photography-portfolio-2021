@@ -4,15 +4,27 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import ReactGA from 'react-ga';
 import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
+import SettingsDialog from './SettingsDialog';
 import config from '../app.config.js';
 
-function NavBar() {
+function NavBar(props) {
+  const {
+    theme,
+    themes,
+    setTheme
+  } = props;
 
-  var bStyle = {
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const handleSettingsClose = () => {
+    setSettingsOpen(false);
+  };
+
+  const bStyle = {
     width: '20px'
   };
 
@@ -35,7 +47,7 @@ function NavBar() {
           <Typography variant='h6' color='inherit' to='/' component={ Link } style={ titleStyle }>
             { config.title.main }
           </Typography>
-          <div style={ bStyle }></div>
+          <div style={ bStyle } />
         </MediaQuery>
 
         { config.categories.map( cat => (
@@ -47,7 +59,7 @@ function NavBar() {
         <div style={ middleStyle } />
 
         <MediaQuery minWidth={ 700 }>
-          <div style={ rightItemStyle }></div>
+          <div style={ rightItemStyle } />
         </MediaQuery>
         <ReactGA.OutboundLink
           to={ config.urls.flickr }
@@ -64,12 +76,25 @@ function NavBar() {
         >
           <img src={ require('../images/instagram.png') } width={ 32 } alt='Instagram' />
         </ReactGA.OutboundLink>
-        <IconButton sx={ { marginLeft:'10px' } }>
-          <SettingsIcon/>
+        <IconButton sx={{ marginLeft:'10px' }}>
+          <SettingsIcon onClick={ () => setSettingsOpen(true) } />
         </IconButton>
+        <SettingsDialog 
+          open={ settingsOpen }
+          handleClose={ handleSettingsClose }
+          theme={ theme }
+          themes={ themes }
+          setTheme={ setTheme }
+        />
       </Toolbar>
     </AppBar>
   ); 
 }
+
+NavBar.propTypes = {
+  themes: PropTypes.array,
+  theme: PropTypes.object,
+  setTheme: PropTypes.func,
+};
 
 export default NavBar;

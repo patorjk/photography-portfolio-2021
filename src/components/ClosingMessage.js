@@ -3,7 +3,7 @@ import ResponsiveContainer from './styled/ResponsiveContainer';
 
 function ClosingMessage() {
   return (
-    <ResponsiveContainer sx={ { textAlign:'left' } }>
+    <ResponsiveContainer sx={{ textAlign:'left' }}>
       <p>
         Hello, and thank you for visiting. If you're interested in more of my work you can checkout
         { /* eslint-disable-next-line max-len */ }

@@ -45,8 +45,8 @@ function PhotoDescription(props) {
   const description = album.descriptions ? album.descriptions[activeStep] : album.description;
 
   return (
-    <ResponsiveContainer sx={ { textAlign: 'left',position:'relative' } }>
-      <Collapse in={ isTextOpen } collapsedSize={ 50 } style={ { position:'relative' } }>
+    <ResponsiveContainer sx={{ textAlign: 'left',position:'relative' }}>
+      <Collapse in={ isTextOpen } collapsedSize={ 50 } style={{ position:'relative' }}>
         <AboutText>
           { typeof description === 'string' ? <p>{ description }</p> :
             description.map((para, idx) => (

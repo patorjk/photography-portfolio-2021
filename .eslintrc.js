@@ -106,7 +106,7 @@ module.exports = {
           when: 'always'
         },
         spacing: {
-          objectLiterals: 'always'
+          objectLiterals: 'never'
         },
         when: 'always'
       }

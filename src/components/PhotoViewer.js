@@ -271,12 +271,12 @@ function Photo(props) {
 
   return (
     <ResponsiveContainer 
-      sx={ {
+      sx={{
         position:'relative',
         textAlign: 'left',
         transition: 'opacity 1s',
         opacity: isOffScreen ? 0 : 1
-      } }
+      }}
       ref={ container }
     >
       <div style={ containerStyle }>
@@ -286,14 +286,14 @@ function Photo(props) {
               <img 
                 key={ idx }
                 src={ img[Math.max(point, 600)] } 
-                style={ {
+                style={{
                   left: getImageLeft(idx),
                   transition: getImageTransition(idx),
                   cursor: getImageCursor(),
                   touchAction: getImageTouchAction(),
                   textAlign:'center',
                   position: 'absolute',
-                } }
+                }}
                 width={ aspects[album.aspect][point].width } 
                 height={ aspects[album.aspect][point].height } 
                 alt={ album.altText } 
@@ -314,7 +314,7 @@ function Photo(props) {
           steps={ imgSetSize }
           position='static'
           activeStep={ activeStep }
-          style={ { flexGrow: 1, } }
+          style={{ flexGrow: 1, }}
           nextButton={
             <Button size='small' onClick={ handleNext } disabled={ activeStep === imgSetSize - 1 }>
               Next

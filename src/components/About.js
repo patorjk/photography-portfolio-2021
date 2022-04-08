@@ -48,7 +48,7 @@ function About() {
         </Grid>
 
         <Grid item xs={ 12 }>
-          <ResponsiveContainer sx={ { textAlign: 'left' } }>
+          <ResponsiveContainer sx={{ textAlign: 'left' }}>
             <h3>About</h3>
             <p>
               { /* eslint-disable-next-line max-len */ }
