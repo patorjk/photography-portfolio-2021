@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Cookies from 'universal-cookie';
 
 function SettingsDialog(props) {
   const {
@@ -22,7 +23,17 @@ function SettingsDialog(props) {
   } = props;
 
   const onThemeChange = (evt) => {
-    setTheme(evt.target.value);
+    const theme = evt.target.value;
+    const cookies = new Cookies();
+
+    const selectedTheme = themes.find(tt => tt.theme === theme);
+    const themeName = selectedTheme ? selectedTheme.label : "";
+
+    if (themeName) {
+      cookies.set('theme', themeName, { path: '/' });
+    }
+
+    setTheme(theme);
   };
 
   return (
