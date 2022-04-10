@@ -1,5 +1,6 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { StyledEngineProvider, ThemeProvider, createTheme } from '@mui/material/styles';
+import { styled } from '@mui/system';
 import { createBrowserHistory } from 'history';
 import React, { useState } from 'react';
 import ReactGA from 'react-ga';
@@ -11,32 +12,20 @@ import {
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import About from './About.js';
+import ContentGrid from './ContentGrid';
 import Footer from './Footer.js';
 import NavBar from './NavBar.js';
 import PhotoGrid from './PhotoGrid.js';
 import SinglePhoto from './SinglePhoto';
 import config from '../app.config.js';
+import { galleries } from '../photos';
 import {
-  HalloweenThemeDef,
-  LightThemeDef
+  LightTheme,
+  themes
 } from '../themes';
 
 ReactGA.initialize(config.googleAnalyticsId);
 ReactGA.pageview(window.location.pathname + window.location.search);
-
-const basicTheme = createTheme(LightThemeDef);
-const halloweenTheme = createTheme(HalloweenThemeDef);
-
-const themes = [
-  {
-    label: 'Light',
-    theme: basicTheme,
-  },
-  {
-    label: 'Dark (Halloween)',
-    theme: halloweenTheme,
-  }
-];
 
 function toTitleCase(text) {
   return text.toLowerCase()
@@ -82,11 +71,21 @@ history.listen((location) => {
 
 updatePageTitle();
 
+const ContentWrapper = styled('div')(() => ({
+  display:'flex',
+  flexDirection:'column',
+  height:'100%'
+}));
+
+const MainContent = styled('div')(() => ({
+  flex: '1 0 auto'
+}));
+
 function App() {
   const cookies = new Cookies();
   let savedTheme = cookies.get('theme');
   const startingThemeItem = themes.find(tt => tt.label === savedTheme);
-  const startingTheme = startingThemeItem ? startingThemeItem.theme : basicTheme;
+  const startingTheme = startingThemeItem ? startingThemeItem.theme : LightTheme;
 
   const [theme, setTheme] = useState(startingTheme);
   return (
@@ -94,36 +93,48 @@ function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={ theme }>
           <CssBaseline />
-          <NavBar theme={ theme } themes={ themes } setTheme={ setTheme } />
+          <NavBar theme={ theme } setTheme={ setTheme } />
           <div style={{ paddingTop:'64px',boxSizing:'border-box',height:'100%' }}>
             <Switch>
 
+              { /* legacy - will remove this later */ }
               { config.categories.map( cat => (
                 <Route path={ cat.path } exact key={ cat.name } render={ () => (
-                  <div style={{ display:'flex',flexDirection:'column',height:'100%' }}>
-                    <div style={{ flex: '1 0 auto' }}>
+                  <ContentWrapper>
+                    <MainContent>
                       <PhotoGrid category={ cat.name } randomize={ cat.randomize } />
-                    </div>
+                    </MainContent>
                     <Footer/>
-                  </div>
+                  </ContentWrapper>
                 ) } /> 
               )) }
 
+              { galleries.map( gallery => (
+                <Route path={ `/gallery/${gallery.name}` } exact key={ gallery.label } render={ () => (
+                  <ContentWrapper>
+                    <MainContent>
+                      <ContentGrid items={ gallery.pageContent } />
+                    </MainContent>
+                    <Footer/>
+                  </ContentWrapper>
+                ) } />
+              )) }
+              
               <Route path='/photo/:photo' render={ (routeProps) => (
-                <div style={{ display:'flex',flexDirection:'column',height:'100%' }}>
-                  <div style={{ flex: '1 0 auto' }}>
+                <ContentWrapper>
+                  <MainContent>
                     <SinglePhoto photoName={ routeProps.match.params.photo } />
-                  </div>
+                  </MainContent>
                   <Footer/>
-                </div>
+                </ContentWrapper>
               ) } /> 
 
               <Route path='/about' render={ () => (
-                <div style={{ display:'flex',flexDirection:'column',height:'100%' }}>
-                  <div style={{ flex: '1 0 auto' }}>
+                <ContentWrapper>
+                  <MainContent>
                     <About />
-                  </div>
-                </div>
+                  </MainContent>
+                </ContentWrapper>
               ) } /> 
 
               <Redirect from='*' to={ '/' } />

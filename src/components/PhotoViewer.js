@@ -286,6 +286,7 @@ function Photo(props) {
                 onPointerDown={ onPointerDown }
                 onPointerUp={ onPointerUp }
                 onPointerMove={ onPointerMove }
+                onPointerCancel={ onPointerUp }
               />
             )) }
 

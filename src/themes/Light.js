@@ -1,4 +1,4 @@
-const LightThemeDef = {
+const LightThemeDefinition = {
   palette: {
     primary: {
       main: '#607d8b',
@@ -36,4 +36,4 @@ const LightThemeDef = {
   }
 };
 
-export { LightThemeDef };
+export { LightThemeDefinition };

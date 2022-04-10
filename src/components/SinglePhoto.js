@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ClosingMessage from './ClosingMessage';
 import PhotoViewer from './PhotoViewer.js';
-import MainContent from './styled/MainContent';
 import { getPhotoAlbumByName } from '../photos/index.js';
 
 function PhotoGrid(props) {
@@ -13,17 +12,15 @@ function PhotoGrid(props) {
   };
 
   return (
-    <MainContent>
-      <Grid container alignItems='center' justifyContent='center' align='center'>
-        <Grid item xs={ 12 } sx={ gridItemStyling } >
-          <PhotoViewer album={ photo } />
-        </Grid>
-
-        <Grid item xs={ 12 } sx={ gridItemStyling }>
-          <ClosingMessage />
-        </Grid>
+    <Grid container alignItems='center' justifyContent='center' align='center'>
+      <Grid item xs={ 12 } sx={ gridItemStyling } >
+        <PhotoViewer album={ photo } />
       </Grid>
-    </MainContent>
+
+      <Grid item xs={ 12 } sx={ gridItemStyling }>
+        <ClosingMessage />
+      </Grid>
+    </Grid>
   );
 }
 

@@ -11,13 +11,25 @@ import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
 import SettingsDialog from './SettingsDialog';
 import config from '../app.config.js';
+import {Menu} from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function NavBar(props) {
   const {
     theme,
-    themes,
     setTheme
   } = props;
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const openGalleryMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleGalleryMenuClose = () => {
+    setAnchorEl(null);
+  };
 
   const [settingsOpen, setSettingsOpen] = useState(false);
   const handleSettingsClose = () => {
@@ -50,11 +62,30 @@ function NavBar(props) {
           <div style={ bStyle } />
         </MediaQuery>
 
-        { config.categories.map( cat => (
-          <Button color='inherit' to={ cat.path } key={ cat.path } component={ Link } >{ cat.display }</Button>
-        )) }
+        <Button
+          id="gallery-button"
+          aria-controls={open ? 'gallery-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={openGalleryMenu}
+        >
+          Galleries <ArrowDropDownIcon/>
+        </Button>
+        <Menu
+          id="gallery-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleGalleryMenuClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          <MenuItem onClick={handleGalleryMenuClose} to={ '/gallery/sunrises-and-sunsets' } component={ Link }>Sunrises and Sunsets</MenuItem>
+          <MenuItem onClick={handleGalleryMenuClose} to={ '/gallery/interactive' } component={ Link }>Interactive</MenuItem>
+          <MenuItem onClick={handleGalleryMenuClose} to={ '/gallery/spooky' } component={ Link }>Spooky</MenuItem>
+        </Menu>
 
-        <Button color='inherit' to='/about' component={ Link } >About</Button>
+        <Button to='/about' component={ Link } >About</Button>
 
         <div style={ middleStyle } />
 
@@ -76,14 +107,13 @@ function NavBar(props) {
         >
           <img src={ require('../images/instagram.png') } width={ 32 } alt='Instagram' />
         </ReactGA.OutboundLink>
-        <IconButton sx={{ marginLeft:'10px' }}>
-          <SettingsIcon onClick={ () => setSettingsOpen(true) } />
+        <IconButton sx={{ marginLeft:'10px' }} onClick={ () => setSettingsOpen(true) }>
+          <SettingsIcon />
         </IconButton>
         <SettingsDialog 
           open={ settingsOpen }
           handleClose={ handleSettingsClose }
           theme={ theme }
-          themes={ themes }
           setTheme={ setTheme }
         />
       </Toolbar>
@@ -92,7 +122,6 @@ function NavBar(props) {
 }
 
 NavBar.propTypes = {
-  themes: PropTypes.array,
   theme: PropTypes.object,
   setTheme: PropTypes.func,
 };

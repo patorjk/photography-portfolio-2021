@@ -55,7 +55,9 @@ module.exports = {
     'max-len': [
       'warn',
       {
-        code: 120
+        code: 120,
+        'ignoreTemplateLiterals': true,
+        'ignoreUrls': true,
       }
     ],
     //'no-console': 'warn',

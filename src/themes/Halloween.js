@@ -1,4 +1,4 @@
-const HalloweenThemeDef = {
+const HalloweenThemeDefinition = {
   palette: {
     type: 'dark',
     mode: 'dark',
@@ -67,4 +67,4 @@ const HalloweenThemeDef = {
   }
 };
 
-export { HalloweenThemeDef };
+export { HalloweenThemeDefinition };

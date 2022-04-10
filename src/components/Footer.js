@@ -30,11 +30,9 @@ function getRandomFooterMessage() {
 function Footer() {
   return (
     <div style={ topDiv }>
-			
       <div style={ innerStyle }>
         { getRandomFooterMessage() }
       </div>
-			
     </div>
   );
 }

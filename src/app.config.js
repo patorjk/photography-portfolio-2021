@@ -10,7 +10,7 @@ settings.urls.instagram = 'https://www.instagram.com/patorjk/';
 
 settings.googleAnalyticsId = 'UA-76058158-1';
 
-
+// category code is legacy, will be removed later
 settings.defaultCategory = 'main';
 settings.categories = [
   {

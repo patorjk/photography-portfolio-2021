@@ -12,12 +12,12 @@ import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Cookies from 'universal-cookie';
+import { themes } from '../themes';
 
 function SettingsDialog(props) {
   const {
     open,
     handleClose,
-    themes = [],
     theme,
     setTheme,
   } = props;
@@ -80,7 +80,6 @@ SettingsDialog.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   album: PropTypes.object,
-  themes: PropTypes.array,
   theme: PropTypes.object,
   setTheme: PropTypes.func,
 };

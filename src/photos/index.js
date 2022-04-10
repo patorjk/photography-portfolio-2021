@@ -468,7 +468,51 @@ const createPhotoAlbum = function(input) {
 
 albums = albums.map(album => (createPhotoAlbum(album)));
 
+const galleries = [
+  {
+    name: 'sunrises-and-sunsets',
+    label: 'Sunrises/Sunsets',
+    pageContent: [
+      { type: 'photo', name: 'fort-armistead-sunrise-1' },
+      { type: 'photo', name: 'fells-point-sunrise' },
+      { type: 'photo', name: 'downs-park-pier' },
+      { type: 'photo', name: 'domino-sugars-sunrise' },
+      { type: 'photo', name: 'promenade-view-1' },
+      { type: 'photo', name: 'broening-park-1' },
+      { type: 'photo', name: 'federal-hill-view-1' },
+      { type: 'photo', name: 'inner-harbor-sunrise' },
+      { type: 'photo', name: 'fells-point-puddle' },
+      { type: 'photo', name: 'middle-branch-boat-ramp' },
+      { type: 'photo', name: 'jordan-lake' },
+      { type: 'photo', name: 'fort-armistead-sunrise-2' },
+      { type: 'photo', name: 'cherry-blossoms-dc' },
+      { type: 'photo', name: 'baltimore-skyline-2016' },
+    ]
+  },
+  {
+    name: 'interactive',
+    label: 'Interactive',
+    pageContent: [
+      { type: 'photo', name: 'baltimore-skyline-light-toggle' },
+      { type: 'photo', name: 'domino-2021-sunrise-toggle' },
+      { type: 'photo', name: 'middle-branch-pier' },
+    ]
+  },
+  {
+    name: 'spooky',
+    label: 'Spooky',
+    pageContent: [
+      { type: 'photo', name: 'a-pathway-to-nightmares' },
+      { type: 'photo', name: 'something-in-the-mist' },
+      { type: 'photo', name: 'foggy-carroll-park' },
+      { type: 'photo', name: 'the-haunted-car' },
+    ]
+  },
+];
+
 /////////////////////////////////////////// Exports
+
+export { galleries };
 
 export { createPhotoAlbum };
 
