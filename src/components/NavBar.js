@@ -74,6 +74,10 @@ function NavBar(props) {
             'aria-labelledby': 'basic-button',
           }}
         >
+          <MediaQuery maxWidth={ 699 }>
+            <MenuItem onClick={ hideGalleryMenu }
+              to={ '/' } component={ Link }>Main</MenuItem>
+          </MediaQuery>
           <MenuItem onClick={ hideGalleryMenu } 
             to={ '/gallery/sunrises-and-sunsets' } component={ Link }>Sunrises and Sunsets</MenuItem>
           <MenuItem onClick={ hideGalleryMenu }
