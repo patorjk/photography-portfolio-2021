@@ -30,7 +30,6 @@ function Photo(props) {
   const [canMoveStepper, setCanMoveStepper] = useState(true);
   const container = useRef();
   const [clientX, setClientX] = useState(null);
-  const [clientY, setClientY] = useState(null);
   const [xOffset, setXOffset] = useState(0);
 
   const {
@@ -97,25 +96,16 @@ function Photo(props) {
 
   const onPointerDown = useCallback((event) => {
     setClientX(event.clientX);
-    setClientY(event.clientY);
-  }, [setClientX, setClientY]);
+  }, [setClientX]);
   const onPointerMove = useCallback((event) => {
     if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
-      let abX = Math.abs(event.clientX - clientX);
-      let abY = Math.abs(event.clientY - clientY);
-
-      if ( abY > 50 && abY > (abX * 2) ) {
-        setClientX(null);
-        setClientY(null);
-        setXOffset(0);
-      } else {
-        setXOffset(event.clientX - clientX);
-      }
+      setXOffset(event.clientX - clientX);
+      event.stopPropagation();
+      event.preventDefault();
     }
   }, 
   [
     clientX,
-    clientY,
     transitionType,
     photos,
   ]);
@@ -146,12 +136,10 @@ function Photo(props) {
     }
 
     setClientX(null);
-    setClientY(null);
     setXOffset(0);
   }, 
   [
     setClientX,
-    setClientY,
     xOffset,
     setXOffset,
     activeStep,
@@ -264,11 +252,7 @@ function Photo(props) {
   };
   const getImageTouchAction = () => {
     if (transitionType === 'stepper' && photos.length > 1) {
-      if (clientX === null) {
-        return 'none';
-      } else {
-        return 'auto';
-      }
+      return 'pan-y';
     } else {
       return 'auto';
     }
