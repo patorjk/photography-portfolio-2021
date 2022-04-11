@@ -5,7 +5,7 @@ import ClosingMessage from './ClosingMessage';
 import PhotoViewer from './PhotoViewer.js';
 import { getPhotoAlbumByName } from '../photos/index.js';
 
-function PhotoGrid(props) {
+function SinglePhoto(props) {
   let photo = getPhotoAlbumByName(props.photoName);
   const gridItemStyling = {
     marginBottom: '50px'
@@ -24,8 +24,8 @@ function PhotoGrid(props) {
   );
 }
 
-PhotoGrid.propTypes = {
+SinglePhoto.propTypes = {
   photoName: PropTypes.string,
 };
 
-export default PhotoGrid;
+export default SinglePhoto;

@@ -5,6 +5,7 @@ import ClosingMessage from './ClosingMessage';
 import PhotoViewer from './PhotoViewer';
 import GridBlock from './styled/GridBlock';
 import { getPhotoAlbumByName } from '../photos';
+import ResponsiveContainer from './styled/ResponsiveContainer';
 
 function ContentGrid(props) {
   const {
@@ -14,8 +15,17 @@ function ContentGrid(props) {
   const getDisplay = (item) => {
     if (item.type === 'photo') {
       return (
-        <PhotoViewer album={ getPhotoAlbumByName(item.name) } />
-      )
+        <PhotoViewer album={getPhotoAlbumByName(item.name)}/>
+      );
+    } else if (item.type === 'text') {
+      return (
+        <ResponsiveContainer sx={{ textAlign: 'left' }}>
+          { item.header && (<h3>{ item.header }</h3>) }
+          { item.text.map( (pp, idx) => (
+            <p key={ idx }>{ pp }</p>
+          )) }
+        </ResponsiveContainer>
+      );
     } else {
       return null;
     }
@@ -25,7 +35,7 @@ function ContentGrid(props) {
     <Grid container alignItems='center' justifyContent='center' align='center'>
 
       { items.map((item, idx) => (
-        <GridBlock item xs={ 12 } key={ idx }>
+        <GridBlock item xs={ 12 } key={ item.name }>
           { getDisplay(item) }
         </GridBlock>
       )) }

@@ -24,12 +24,13 @@ function Photo(props) {
 
   const theme = useTheme();
 
-  const [activeStep, setActiveStep] = React.useState(album.transitionOptions?.imageStart || 0);
+  const [activeStep, setActiveStep] = useState(album.transitionOptions?.imageStart || 0);
   const [imageNearView, setImageNearView] = useState(false);
   const [isOffScreen, setIsOffScreen] = useState(false);
   const [canMoveStepper, setCanMoveStepper] = useState(true);
   const container = useRef();
   const [clientX, setClientX] = useState(null);
+  const [clientY, setClientY] = useState(null);
   const [xOffset, setXOffset] = useState(0);
 
   const {
@@ -96,14 +97,25 @@ function Photo(props) {
 
   const onPointerDown = useCallback((event) => {
     setClientX(event.clientX);
-  }, [setClientX]);
+    setClientY(event.clientY);
+  }, [setClientX, setClientY]);
   const onPointerMove = useCallback((event) => {
     if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
-      setXOffset(event.clientX - clientX);
+      let abX = Math.abs(event.clientX - clientX);
+      let abY = Math.abs(event.clientY - clientY);
+
+      if ( abY > 50 && abY > (abX * 2) ) {
+        setClientX(null);
+        setClientY(null);
+        setXOffset(0);
+      } else {
+        setXOffset(event.clientX - clientX);
+      }
     }
   }, 
   [
     clientX,
+    clientY,
     transitionType,
     photos,
   ]);
@@ -134,10 +146,12 @@ function Photo(props) {
     }
 
     setClientX(null);
+    setClientY(null);
     setXOffset(0);
   }, 
   [
     setClientX,
+    setClientY,
     xOffset,
     setXOffset,
     activeStep,
@@ -162,6 +176,7 @@ function Photo(props) {
       action: 'Next Photo',
       label: photoLabel
     });
+
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
     setTimeout(() => {
@@ -178,6 +193,7 @@ function Photo(props) {
       action: 'Previous Photo',
       label: photoLabel
     });
+
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
     setTimeout(() => {
@@ -248,7 +264,11 @@ function Photo(props) {
   };
   const getImageTouchAction = () => {
     if (transitionType === 'stepper' && photos.length > 1) {
-      return 'pan-y pinch-zoom';
+      if (clientX === null) {
+        return 'none';
+      } else {
+        return 'auto';
+      }
     } else {
       return 'auto';
     }
@@ -325,8 +345,8 @@ function Photo(props) {
               control={
                 <Switch
                   color='primary'
+                  checked={ activeStep === 1 }
                   onChange={ toggleChange }
-                  defaultChecked={ album.transitionOptions.imageStart === 1 }
                 /> }
               label={ album.transitionOptions.toggleLabel }
               labelPlacement='end'

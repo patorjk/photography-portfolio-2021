@@ -1,7 +1,10 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Menu } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
@@ -11,9 +14,6 @@ import MediaQuery from 'react-responsive';
 import { Link } from 'react-router-dom';
 import SettingsDialog from './SettingsDialog';
 import config from '../app.config.js';
-import {Menu} from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function NavBar(props) {
   const {
@@ -24,17 +24,11 @@ function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const openGalleryMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleGalleryMenuClose = () => {
-    setAnchorEl(null);
-  };
+  const openGalleryMenu = (event) => setAnchorEl(event.currentTarget);
+  const hideGalleryMenu = () => setAnchorEl(null);
 
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const handleSettingsClose = () => {
-    setSettingsOpen(false);
-  };
+  const handleSettingsClose = () => setSettingsOpen(false);
 
   const bStyle = {
     width: '20px'
@@ -63,26 +57,31 @@ function NavBar(props) {
         </MediaQuery>
 
         <Button
-          id="gallery-button"
-          aria-controls={open ? 'gallery-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={openGalleryMenu}
+          id='gallery-button'
+          aria-controls={ open ? 'gallery-menu' : undefined }
+          aria-haspopup='true'
+          aria-expanded={ open ? 'true' : undefined }
+          onClick={ openGalleryMenu }
         >
           Galleries <ArrowDropDownIcon/>
         </Button>
         <Menu
-          id="gallery-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleGalleryMenuClose}
+          id='gallery-menu'
+          anchorEl={ anchorEl }
+          open={ open }
+          onClose={ hideGalleryMenu }
           MenuListProps={{
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={handleGalleryMenuClose} to={ '/gallery/sunrises-and-sunsets' } component={ Link }>Sunrises and Sunsets</MenuItem>
-          <MenuItem onClick={handleGalleryMenuClose} to={ '/gallery/interactive' } component={ Link }>Interactive</MenuItem>
-          <MenuItem onClick={handleGalleryMenuClose} to={ '/gallery/spooky' } component={ Link }>Spooky</MenuItem>
+          <MenuItem onClick={ hideGalleryMenu } 
+            to={ '/gallery/sunrises-and-sunsets' } component={ Link }>Sunrises and Sunsets</MenuItem>
+          <MenuItem onClick={ hideGalleryMenu }
+            to={ '/gallery/interactive' } component={ Link }>Interactive</MenuItem>
+          <MenuItem onClick={ hideGalleryMenu } 
+            to={ '/gallery/spooky' } component={ Link }>Spooky</MenuItem>
+          <MenuItem onClick={ hideGalleryMenu }
+            to={ '/gallery/panoramas' } component={ Link }>Panoramas</MenuItem>
         </Menu>
 
         <Button to='/about' component={ Link } >About</Button>

@@ -345,7 +345,9 @@ let albums = [
     aspect: '16x9',
     flickr: 'https://www.flickr.com/photos/40423570@N07/25943790027/',
     description: [
-      'Spookiness.'
+      `I want to title this "A Pathway to Nightmares" because its a landscape that seems like its out of a nightmare.
+       However, in reality this pathway leads to a really nice playground so that seems a bit silly. However, I love
+       the creepiness of this image.`
     ],
     altText: 'A Pathway to Nightmares'
   },
@@ -359,7 +361,8 @@ let albums = [
     description: [
       '34th Street.'
     ],
-    altText: '34th Street'
+    altText: `Every year in December the people who live on this street - 34th Street - go all out with decorating 
+    their houses.`
   },
   {
     name: 'george-peabody-library',
@@ -382,7 +385,12 @@ let albums = [
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/41785088311/',
     description: [
-      'A foggy morning in Baltimore.'
+      `I had originally planned to shoot the sunrise over Druid Lake in Baltimore, but when I arrived I found that the
+       city was in the midst of doing a big construction project and there was a fence around the lake. 
+       Distraught, I decided to go home.`,
+      `As I made my way through unfamiliar backstreets a fog came over the city and I thought the skyline looked
+       really surreal as it faded into the haze. I pulled into the park next to me and ran to the highest spot I could
+       find. From there I took this picture.`
     ],
     altText: 'Carroll Park'
   },
@@ -418,7 +426,11 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/37562177870/',
     description: [
-      'The Haunted Car.'
+      `I was taken to this spot by an Urbex YouTuber I used to follow. He'd done a video on the car and
+       when I asked him where it was he offered to take me out to see it. I thought that was pretty cool of him,
+       though I felt a little strange going deep into the woods with someone I didn't know.`,
+      `The hike to the car took around an hour and I was really happy with the images I was able to capture. 
+      To me the first one has a strange beauty to it and the second one I just find hilariously fun.`,
     ],
     altText: 'The Haunted Car'
   },
@@ -430,7 +442,7 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/31139325476/',
     description: [
-      'Baltimore Skyline 2016.'
+      'Grab the image and pull it that way 👈. Baltimore Skyline 2016.'
     ],
     altText: 'Baltimore Skyline',
     transitionOptions: {
@@ -468,7 +480,102 @@ const createPhotoAlbum = function(input) {
 
 albums = albums.map(album => (createPhotoAlbum(album)));
 
+/*
+  Notes:
+  - All pageContent items need a unique name.
+ */
 const galleries = [
+  {
+    name: 'main-standard',
+    label: 'Main',
+    pageContent: [
+      { type: 'photo', name: 'patterson-park-pagoda-in-springtime' },
+      { type: 'photo', name: 'baltimore-skyline-light-toggle' },
+      { type: 'photo', name: 'domino-2021-sunrise-toggle' },
+      { type: 'photo', name: 'downs-park-pier' },
+      { type: 'photo', name: 'the-thunderbirds' },
+      { type: 'photo', name: 'fort-armistead-sunrise-1' },
+      { type: 'photo', name: 'something-in-the-mist' },
+      { type: 'photo', name: 'mossbrae-falls' },
+      { type: 'photo', name: 'middle-branch-pier' },
+      { type: 'photo', name: 'fells-point-sunrise' },
+      { type: 'photo', name: 'icy-domino-sugars-factory' },
+      { type: 'photo', name: 'inner-harbor-sunrise' },
+    ]
+  },
+  {
+    name: 'main-spring',
+    label: 'Main',
+    pageContent: [
+      { type: 'photo', name: 'patterson-park-pagoda-in-springtime' },
+      { type: 'photo', name: 'baltimore-skyline-light-toggle' },
+      { type: 'photo', name: 'mt-vernon-fountain' },
+      { type: 'photo', name: 'downs-park-pier' },
+      { type: 'photo', name: 'fort-armistead-sunrise-1' },
+      { type: 'photo', name: 'mossbrae-falls' },
+      { type: 'photo', name: 'middle-branch-pier' },
+      { type: 'photo', name: 'fells-point-sunrise' },
+      { type: 'photo', name: 'cherry-blossoms-dc' },
+      { type: 'photo', name: 'inner-harbor-sunrise' },
+    ]
+  },
+  {
+    name: 'main-summer',
+    label: 'Main',
+    pageContent: [
+      { type: 'photo', name: 'patterson-park-pagoda-in-springtime' },
+      { type: 'photo', name: 'baltimore-skyline-light-toggle' },
+      { type: 'photo', name: 'the-thunderbirds' },
+      { type: 'photo', name: 'downs-park-pier' },
+      { type: 'photo', name: 'fort-armistead-sunrise-1' },
+      { type: 'photo', name: 'mossbrae-falls' },
+      { type: 'photo', name: 'middle-branch-pier' },
+      { type: 'photo', name: 'fells-point-sunrise' },
+      { type: 'photo', name: 'jordan-lake' },
+      { type: 'photo', name: 'inner-harbor-sunrise' },
+    ]
+  },
+  {
+    name: 'main-halloween',
+    label: 'Main',
+    pageContent: [
+      { type: 'photo', name: 'a-pathway-to-nightmares' },
+      { type: 'photo', name: 'something-in-the-mist' },
+      { type: 'photo', name: 'foggy-carroll-park' },
+      { type: 'photo', name: 'the-haunted-car' },
+    ]
+  },
+  {
+    name: 'main-christmas',
+    label: 'Main',
+    pageContent: [
+      { type: 'photo', name: '34th-street-1' },
+      { type: 'photo', name: 'baltimore-skyline-light-toggle' },
+      { type: 'photo', name: 'icy-domino-sugars-factory' },
+      { type: 'photo', name: 'downs-park-pier' },
+      { type: 'photo', name: 'fort-armistead-sunrise-1' },
+      { type: 'photo', name: 'mossbrae-falls' },
+      { type: 'photo', name: 'middle-branch-pier' },
+      { type: 'photo', name: 'fells-point-sunrise' },
+      { type: 'photo', name: 'kids' },
+      { type: 'photo', name: 'inner-harbor-sunrise' },
+    ]
+  },
+  {
+    name: 'misc',
+    label: 'Misc',
+    pageContent: [
+      { type: 'photo', name: 'mt-vernon-fountain' },
+      { type: 'photo', name: 'a-pathway-to-nightmares' },
+      { type: 'photo', name: '34th-street-1' },
+      { type: 'photo', name: 'george-peabody-library' },
+      { type: 'photo', name: 'foggy-carroll-park' },
+      { type: 'photo', name: 'kids' },
+      { type: 'photo', name: 'annapolis-rock-1' },
+      { type: 'photo', name: 'the-haunted-car' },
+      { type: 'photo', name: 'baltimore-skyline-2016-pano' },
+    ]
+  },
   {
     name: 'sunrises-and-sunsets',
     label: 'Sunrises/Sunsets',
@@ -494,6 +601,14 @@ const galleries = [
     label: 'Interactive',
     pageContent: [
       { type: 'photo', name: 'baltimore-skyline-light-toggle' },
+      {
+        type: 'text',
+        name: 'interactive-text-1',
+        header: `What's this section about anyway?`,
+        text:
+          [`These are images you can interact with in some way. Right now the section is pretty small but I hope to
+            expand on it sometime soon.`]
+      },
       { type: 'photo', name: 'domino-2021-sunrise-toggle' },
       { type: 'photo', name: 'middle-branch-pier' },
     ]
@@ -506,6 +621,22 @@ const galleries = [
       { type: 'photo', name: 'something-in-the-mist' },
       { type: 'photo', name: 'foggy-carroll-park' },
       { type: 'photo', name: 'the-haunted-car' },
+    ]
+  },
+  {
+    name: 'panoramas',
+    label: 'Panorama',
+    pageContent: [
+      { type: 'photo', name: 'baltimore-skyline-2016-pano' },
+      {
+        type: 'text',
+        name: 'panorama-text-1',
+        header: 'Wait, where are the other panoramas???',
+        text:
+          [`Based on my stats most people don't return, so I'm probably saying this in vain, but: I'm working on it.
+            I just started revamping this site and have a bunch of different galleries I want to add (as of 4/10/22).
+            So assuming I get the time I need this section should fill out within the next month.`]
+      }
     ]
   },
 ];

@@ -13,9 +13,11 @@ const themes = [
   }
 ];
 
-const LightTheme = themes[0].theme;
+const DefaultTheme = themes[0];
+const HalloweenTheme = themes[1];
 
 export {
   themes,
-  LightTheme,
+  DefaultTheme,
+  HalloweenTheme,
 };

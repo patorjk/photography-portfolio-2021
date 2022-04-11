@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Cookies from 'universal-cookie';
-import { themes } from '../themes';
+import { themes, DefaultTheme } from '../themes';
 
 function SettingsDialog(props) {
   const {
@@ -21,6 +21,15 @@ function SettingsDialog(props) {
     theme,
     setTheme,
   } = props;
+
+  const resetSettings = () => {
+    const cookies = new Cookies();
+    cookies.remove('theme', { path: '/' });
+
+    setTheme(DefaultTheme.theme);
+
+    handleClose();
+  };
 
   const onThemeChange = (evt) => {
     const theme = evt.target.value;
@@ -68,6 +77,9 @@ function SettingsDialog(props) {
         </FormControl>
       </DialogContent>
       <DialogActions>
+        <Button onClick={ resetSettings }>
+          Reset
+        </Button>
         <Button onClick={ handleClose }>
           Close
         </Button>
