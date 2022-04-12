@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactGA from 'react-ga';
 import Cookies from 'universal-cookie';
 import { themes, DefaultTheme } from '../themes';
 
@@ -41,6 +42,12 @@ function SettingsDialog(props) {
     if (themeName) {
       cookies.set('theme', themeName, { path: '/' });
     }
+
+    ReactGA.event({
+      category: 'Settings',
+      action: 'Theme Change',
+      label: themeName
+    });
 
     setTheme(theme);
   };

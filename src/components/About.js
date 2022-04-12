@@ -1,3 +1,4 @@
+import { Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import React from 'react';
 import PhotoViewer from './PhotoViewer.js';
@@ -50,11 +51,11 @@ function About() {
           <h3>About</h3>
           <p>
             { /* eslint-disable-next-line max-len */ }
-            My name is Pat, I'm a software developer and amateur photographer. I setup this site to show off some of my favorite photos. If you're interested in more of my work you can find me on <a href='https://www.flickr.com/photos/40423570@N07/' target='_blank' rel='noopener noreferrer'>Flickr</a> and <a href='https://www.instagram.com/patorjk/' target='_blank' rel='noopener noreferrer'>Instagram</a>.
+            My name is Pat, I'm a software developer and amateur photographer. I setup this site to show off some of my favorite photos. If you're interested in more of my work you can find me on <Link href='https://www.flickr.com/photos/40423570@N07/' target='_blank'>Flickr</Link> and <Link href='https://www.instagram.com/patorjk/' target='_blank'>Instagram</Link>.
           </p>
           <p>
             { /* eslint-disable-next-line max-len */ }
-            Additionally, I run a programming site which you can find here: <a href='http://patorjk.com/' target='_blank' rel='noopener noreferrer'>patorjk.com</a> (it's mostly stuff from my high school and college days)
+            Additionally, I run a programming site which you can find here: <Link href='https://patorjk.com/' target='_blank'>patorjk.com</Link> (it's mostly stuff from my high school and college days)
           </p>
           <p>
             { /* eslint-disable-next-line max-len */ }

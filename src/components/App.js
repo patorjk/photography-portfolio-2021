@@ -2,7 +2,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import { createBrowserHistory } from 'history';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
 import {
   Redirect,
@@ -10,6 +10,7 @@ import {
   BrowserRouter as Router,
   Routes,
   useParams,
+  useLocation,
   useSearchParams,
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
@@ -138,6 +139,16 @@ function MainRoute(props) {
   return (<GalleryRoute gallery={ mainGallery } />);
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   let params = getQueryParams();
   let date = params.date || new Date().toISOString();
@@ -165,6 +176,7 @@ function App() {
 
   return (
     <Router history={ history }>
+      <ScrollToTop />
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={ theme }>
           <CssBaseline />

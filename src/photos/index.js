@@ -5,7 +5,6 @@
 	photoFolders: A list of folder names for the image sources. If more than 1 is provided a stepper will be provided
 	  with the image. (see the transitionOptions prop)
 	tags: Tags for the image.
-	category: Main category for the image.
 	aspect: Image aspect.
 	flickr: URL to flickr version of image.
 	instagram: URL to instagram version of image.
@@ -28,7 +27,6 @@ let albums = [
     name: 'patterson-park-pagoda-in-springtime',
     photoFolders: ['2019_pagoda'], // doubles as the ID for the photo
     tags: ['main', 'baltimore', '2019'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/47536723332/',
     description: [
@@ -40,7 +38,6 @@ let albums = [
     name: 'baltimore-skyline-light-toggle',
     photoFolders: ['2018_baltimore_skyline_lights_off', '2018_baltimore_skyline_lights_on'],
     tags: ['main', 'baltimore', '2018'],
-    category: 'main',
     transitionOptions: {
       type: 'toggle',
       toggleLabel: 'Click the switch to turn Baltimore\'s lights on and off 👈 😁😁😁',
@@ -59,7 +56,6 @@ let albums = [
     name: 'domino-2021-sunrise-toggle',
     photoFolders: ['2021_01_domino_sunrise_1', '2021_01_domino_sunrise_2'],
     tags: ['main', 'baltimore', '2021'],
-    category: 'main',
     transitionOptions: {
       type: 'toggle',
       toggleLabel: 'Click the switch to switch between night and day 👈 😁😁😁',
@@ -76,7 +72,6 @@ let albums = [
     name: 'downs-park-pier',
     photoFolders: ['2020_downs_sunrise', '2019_downs_sunrise', '2020_downs_spooky'],
     tags: ['main', 'sunrise', '2019'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/46482748235/',
     description: [
@@ -89,7 +84,6 @@ let albums = [
     name: 'the-thunderbirds',
     photoFolders: ['2018_the_thunderbirds'],
     tags: ['main', 'airshow', '2018'],
-    category: 'main',
     aspect: '1x1',
     flickr: 'https://www.flickr.com/photos/40423570@N07/44256887115/',
     instagram: 'https://www.instagram.com/p/BoruZZKFlmz/',
@@ -102,7 +96,6 @@ let albums = [
     name: 'fort-armistead-sunrise-1',
     photoFolders: ['2016-03-12_sunrise'],
     tags: ['main', 'sunrise', 'baltimore', '2016'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/25705211566/',
     description: [
@@ -115,7 +108,6 @@ let albums = [
     name: 'something-in-the-mist',
     photoFolders: ['2020_something_in_the_mist'],
     tags: ['main', 'creepy', '2020'],
-    category: 'main',
     aspect: '16x9',
     flickr: 'https://www.flickr.com/photos/40423570@N07/49499354128/',
     instagram: 'https://www.instagram.com/p/B8UMPG7JSa4/',
@@ -127,7 +119,6 @@ let albums = [
     name: 'mossbrae-falls',
     photoFolders: ['2019-08-23_mossbrae_falls'],
     tags: ['main', 'waterfall', '2019'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/48660329588/',
     description: [
@@ -147,7 +138,6 @@ let albums = [
       imageStart: 0
     },
     tags: ['main', 'sunrise', 'baltimore', '2019'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/48152204987',
     description: [
@@ -166,7 +156,6 @@ let albums = [
     name: 'domino-sugars-sunrise',
     photoFolders: ['2020_purple_domino_sugars'],
     tags: ['sunrise', 'baltimore', '2020'],
-    category: 'sunrise',
     aspect: '8.5x11',
     flickr: 'https://www.flickr.com/photos/40423570@N07/49785668918/',
     instagram: 'https://www.instagram.com/p/B_IMUjCJTFe/',
@@ -179,7 +168,6 @@ let albums = [
     name: 'promenade-view-1',
     photoFolders: ['2020-02-16_sunrise'],
     tags: ['sunrise', 'baltimore', '2020'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/49549964818/',
     description: [
@@ -191,7 +179,6 @@ let albums = [
     name: 'broening-park-1',
     photoFolders: ['2020-02-12_sunrise'],
     tags: ['sunrise', 'baltimore', '2020'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/49540770052/',
     description: [
@@ -203,7 +190,6 @@ let albums = [
     name: 'fells-point-sunrise',
     photoFolders: ['2020_fells_sunrise'],
     tags: ['main', 'sunrise', 'baltimore', '2020'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/49444935107/',
     instagram: 'https://www.instagram.com/p/B73wKrJJthJ/',
@@ -217,7 +203,6 @@ let albums = [
     name: 'icy-domino-sugars-factory',
     photoFolders: ['2019_a_song_of_ice_and_sugar'],
     tags: ['main', 'baltimore', '2019'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/46972143511/',
     description: [
@@ -230,7 +215,6 @@ let albums = [
     name: 'federal-hill-view-1',
     photoFolders: ['2019_predawn_federal_hill'],
     tags: ['sunrise', 'baltimore', '2019'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/46068156685/',
     description: [
@@ -242,7 +226,6 @@ let albums = [
     name: 'inner-harbor-sunrise',
     photoFolders: ['2019_colors_and_shapes'],
     tags: ['main', 'sunrise', 'baltimore', '2019'],
-    category: 'main',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/33185613028/',
     description: [
@@ -254,7 +237,6 @@ let albums = [
     name: 'fells-point-puddle',
     photoFolders: ['2019_fells_puddle'],
     tags: ['sunrise', 'baltimore', '2019'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/40171359453/',
     description: [
@@ -266,7 +248,6 @@ let albums = [
     name: 'middle-branch-boat-ramp',
     photoFolders: ['2019_boat_ramp'],
     tags: ['sunrise', 'baltimore', '2019'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/48040741787/',
     description: [
@@ -278,7 +259,6 @@ let albums = [
     name: 'baltimore-skyline-2016',
     photoFolders: ['2016_bmore_skyline'],
     tags: ['sunrise', 'baltimore', '2019'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/32739919647/',
     description: [
@@ -290,7 +270,6 @@ let albums = [
     name: 'jordan-lake',
     photoFolders: ['2018_nc_sunrise'],
     tags: ['sunrise', '2018'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/44481116881/',
     description: [
@@ -305,7 +284,6 @@ let albums = [
     name: 'fort-armistead-sunrise-2',
     photoFolders: ['2016_armistead_sunrise2','2016_armistead_sunrise1'],
     tags: ['sunrise', '2018'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/31139325476/',
     description: [
@@ -317,7 +295,6 @@ let albums = [
     name: 'cherry-blossoms-dc',
     photoFolders: ['2016_jefferson_tree'],
     tags: ['sunrise', '2016'],
-    category: 'sunrise',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/25429707924/',
     description: [
@@ -329,7 +306,6 @@ let albums = [
     name: 'mt-vernon-fountain',
     photoFolders: ['2019_mt_vernon_fountain'],
     tags: ['baltimore', '2019'],
-    category: 'misc',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/47038743724/',
     description: [
@@ -341,7 +317,6 @@ let albums = [
     name: 'a-pathway-to-nightmares',
     photoFolders: ['2018_a_pathway_to_nightmares'],
     tags: ['spooky', '2018'],
-    category: 'misc',
     aspect: '16x9',
     flickr: 'https://www.flickr.com/photos/40423570@N07/25943790027/',
     description: [
@@ -355,7 +330,6 @@ let albums = [
     name: '34th-street-1',
     photoFolders: ['2018_34th_street'],
     tags: ['christmas', '2018'],
-    category: 'misc',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/32449000578/',
     description: [
@@ -368,7 +342,6 @@ let albums = [
     name: 'george-peabody-library',
     photoFolders: ['2016_Peabody'],
     tags: ['baltimore', '2016'],
-    category: 'misc',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/23977620954/',
     description: [
@@ -381,7 +354,6 @@ let albums = [
     name: 'foggy-carroll-park',
     photoFolders: ['2018_carroll_park'],
     tags: ['spooky', '2018'],
-    category: 'misc',
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/41785088311/',
     description: [
@@ -398,7 +370,6 @@ let albums = [
     name: 'kids',
     photoFolders: ['2017_kids'],
     tags: ['people', '2017'],
-    category: 'misc',
     aspect: '10x8',
     flickr: 'https://www.flickr.com/photos/40423570@N07/37835534304/',
     description: [
@@ -410,7 +381,6 @@ let albums = [
     name: 'annapolis-rock-1',
     photoFolders: ['2017_annapolis_rock'],
     tags: ['people', '2017'],
-    category: 'misc',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/38603331716/',
     description: [
@@ -422,7 +392,6 @@ let albums = [
     name: 'the-haunted-car',
     photoFolders: ['2017_haunted_car1', '2017_haunted_car2'],
     tags: ['people', '2017'],
-    category: 'misc',
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/37562177870/',
     description: [
@@ -437,14 +406,31 @@ let albums = [
   {
     name: 'baltimore-skyline-2016-pano',
     photoFolders: ['2016_pano1','2016_pano2','2016_pano3'],
-    tags: ['sunrise', '2018'],
-    category: 'misc',
+    tags: ['sunrise', '2016'],
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/31139325476/',
     description: [
-      'Grab the image and pull it that way 👈. Baltimore Skyline 2016.'
+      `Baltimore Skyline 2016. This was taken from my in-law's condo. To get the 180+ degree view I took 3 shots from
+       each of their two balconies and then stitched the images together in Photoshop.`,
+      `The dynamic range for this shot was insane. I had tried to do it a few times previously
+       but I always ended up with the sky being blown out on one side. I finally got an evening where it worked out.`
     ],
     altText: 'Baltimore Skyline',
+    transitionOptions: {
+      slowTransition: true
+    }
+  },
+  {
+    name: 'middle-branch-park-2019-pano',
+    photoFolders: ['2019_mb_sunrise_pano1','2019_mb_sunrise_pano2'],
+    tags: ['sunrise', '2019'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/48033984648/',
+    description: [
+      `If you saw my Middle Branch Dock photo, which is elsewhere on this site, this is from that same sunrise. 
+      This was taken from the end of the dock.`
+    ],
+    altText: 'Baltimore Sunrise',
     transitionOptions: {
       slowTransition: true
     }
@@ -473,7 +459,11 @@ const createPhotoAlbum = function(input) {
   album.id = album.id || album.photoFolders[0];
   album.photoFolders.forEach(folderName => {
     album.photos = album.photos || [];
-    album.photos.push( getImagesSizes(folderName) );
+    try {
+      album.photos.push(getImagesSizes(folderName));
+    } catch (err) {
+      console.dir(err);
+    }
   });
   return album;
 };
@@ -604,7 +594,7 @@ const galleries = [
       {
         type: 'text',
         name: 'interactive-text-1',
-        header: `What's this section about anyway?`,
+        header: 'What\'s this section about anyway?',
         text:
           [`These are images you can interact with in some way. Right now the section is pretty small but I hope to
             expand on it sometime soon.`]
@@ -631,11 +621,21 @@ const galleries = [
       {
         type: 'text',
         name: 'panorama-text-1',
-        header: 'Wait, where are the other panoramas???',
+        header: 'Grab the image and pull it that way 👈.',
         text:
-          [`Based on my stats most people don't return, so I'm probably saying this in vain, but: I'm working on it.
-            I just started revamping this site and have a bunch of different galleries I want to add (as of 4/10/22).
-            So assuming I get the time I need this section should fill out within the next month.`]
+        [`One of my goals for this site was to make viewing my panoramas easier. You can more easily view them
+          by grabbing them with your mouse or finger and pulling them left or right.`]
+      },
+      { type: 'photo', name: 'middle-branch-park-2019-pano' },
+      {
+        type: 'text',
+        name: 'panorama-text-2',
+        header: 'Wait, only 2?',
+        text:
+          [`There will be more soon. Based on my stats most people don't return, so I'm probably saying this in vain, 
+            but: I'm working on it. I just started revamping this site and have a bunch of different galleries 
+            I want to add (as of 4/10/22). So assuming I get the time I need this section should fill out within 
+            the next month.`]
       }
     ]
   },
@@ -650,12 +650,6 @@ export { createPhotoAlbum };
 export function getPhotoAlbumByName(name) {
   return albums.find(album => {
     return album.name === name;
-  });
-}
-
-export function getPhotoAlbumsByCategory(cat) {
-  return albums.filter(album => {
-    return album.category === cat;
   });
 }
 
