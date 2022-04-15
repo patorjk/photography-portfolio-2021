@@ -59,6 +59,7 @@ function PhotoDescription(props) {
 
         <FloatingMenu 
           album={ album }
+          description={ description }
           photoLabel={ photoLabel } 
           isTextOpen={ isTextOpen }
           toggleTextOpen={ toggleTextOpen }

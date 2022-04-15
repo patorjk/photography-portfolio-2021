@@ -82,7 +82,9 @@ function NavBar(props) {
             to={ '/gallery/sunrises-and-sunsets' } component={ Link }>Sunrises and Sunsets</MenuItem>
           <MenuItem onClick={ hideGalleryMenu }
             to={ '/gallery/interactive' } component={ Link }>Interactive</MenuItem>
-          <MenuItem onClick={ hideGalleryMenu } 
+          <MenuItem onClick={ hideGalleryMenu }
+            to={ '/gallery/mccloud-at-night' } component={ Link }>McCloud at Night</MenuItem>
+          <MenuItem onClick={ hideGalleryMenu }
             to={ '/gallery/spooky' } component={ Link }>Spooky</MenuItem>
           <MenuItem onClick={ hideGalleryMenu }
             to={ '/gallery/panoramas' } component={ Link }>Panoramas</MenuItem>

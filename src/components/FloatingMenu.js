@@ -44,6 +44,7 @@ function FloatingMenu(props) {
     toggleTextOpen,
     flickrURL,
     instagramURL,
+    description
   } = props;
 
   const viewLinkClick = (link, site) => {
@@ -66,6 +67,15 @@ function FloatingMenu(props) {
     setAnchorEl(evt.currentTarget);
   };
 
+  const hasText = (des) => {
+    if (typeof des === 'string') {
+      return !!des;
+    } else if (Array.isArray(des)) {
+      return !!des.join('');
+    }
+    return false;
+  };
+
   return (
     <>
       <Menu
@@ -82,15 +92,17 @@ function FloatingMenu(props) {
       <OptionSideShadow />
 
       <OptionBar>
-        <Tooltip title={ 'Toggle Text Display' } >
-          <IconButton onClick={ () => toggleTextOpen() } sx={{ padding: '8px' }}>
-            { isTextOpen ?
-              <ExpandLess />
-              :
-              <ExpandMore />
-            }
-          </IconButton>
-        </Tooltip>
+        {hasText(description) && (
+          <Tooltip title={ 'Toggle Text Display' } >
+            <IconButton onClick={ () => toggleTextOpen() } sx={{ padding: '8px' }}>
+              { isTextOpen ?
+                <ExpandLess />
+                :
+                <ExpandMore />
+              }
+            </IconButton>
+          </Tooltip>
+        )}
         { album.showShareLink !== false &&
           <ShareButton album={ album } />
         }
@@ -106,7 +118,8 @@ function FloatingMenu(props) {
 }
 
 FloatingMenu.propTypes = {
-  album: PropTypes.object,
+  album: PropTypes.any,
+  description: PropTypes.string,
   photoLabel: PropTypes.string,
   isTextOpen: PropTypes.bool,
   toggleTextOpen: PropTypes.func,

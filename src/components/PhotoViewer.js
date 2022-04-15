@@ -20,6 +20,7 @@ import useBreakpoints from '../hooks/breakpoints.js';
 function Photo(props) {
   let {
     album,
+    showDetails
   } = props;
 
   const theme = useTheme();
@@ -340,7 +341,7 @@ function Photo(props) {
         : null
       }
 
-      { (album.description || album.descriptions) ? 
+      { ( showDetails !== false ) ?
         <PhotoDescription
           album={ album }
           activeStep={ activeStep }
@@ -353,6 +354,7 @@ function Photo(props) {
 
 Photo.propTypes = {
   album: PropTypes.object,
+  showDetails: PropTypes.bool,
 };
 
 export default Photo;

@@ -15,7 +15,7 @@ function ContentGrid(props) {
   const getDisplay = (item) => {
     if (item.type === 'photo') {
       return (
-        <PhotoViewer album={getPhotoAlbumByName(item.name)}/>
+        <PhotoViewer album={getPhotoAlbumByName(item.name)} {...item.photoProps} />
       );
     } else if (item.type === 'text') {
       return (

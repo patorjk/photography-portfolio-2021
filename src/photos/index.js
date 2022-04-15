@@ -1,3 +1,4 @@
+import React from 'react';
 /*
 	Photos.
 
@@ -434,6 +435,138 @@ let albums = [
     transitionOptions: {
       slowTransition: true
     }
+  },
+  {
+    name: 'mccloud-church-down-the-street',
+    photoFolders: ['2021_mccloud_at_night_01'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51578322234/',
+    description: [
+      ''
+    ],
+    altText: '',
+  },
+  {
+    name: 'mccloud-church-witching-hour',
+    photoFolders: ['2021_mccloud_at_night_02'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51578559305/',
+    description: [
+      ''
+    ],
+    altText: '',
+  },
+  {
+    name: 'mccloud-illuminated',
+    photoFolders: ['2021_mccloud_at_night_03'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51577874638/',
+    description: [
+      ''
+    ],
+    altText: 'House',
+  },
+  {
+    name: 'mccloud-pocket-of-light',
+    photoFolders: ['2021_mccloud_at_night_04'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51577636961/',
+    description: [
+      ''
+    ],
+    altText: '',
+  },
+  {
+    name: 'mccloud-light-at-the-end-of-the-road',
+    photoFolders: ['2021_mccloud_at_night_05'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51576821947/',
+    description: [
+      ''
+    ],
+    altText: '',
+  },
+  {
+    name: 'mccloud-lonely-road',
+    photoFolders: ['2021_mccloud_at_night_06'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51578319779/',
+    description: [
+      ''
+    ],
+    altText: '',
+  },
+  {
+    name: 'mccloud-playground',
+    photoFolders: ['2021_mccloud_at_night_07'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51578317329/',
+    description: [
+      ''
+    ],
+    altText: '',
+  },
+  {
+    name: 'mccloud-the-book',
+    photoFolders: ['2021_mccloud_at_night_11'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51576821647/',
+    description: [
+      ''
+    ],
+    altText: '',
+  },
+  {
+    name: 'mccloud-the-house',
+    photoFolders: ['2021_mccloud_at_night_08'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51576827772/',
+    description: [
+      '#8'
+    ],
+    altText: 'House',
+  },
+  {
+    name: 'mccloud-gas-station',
+    photoFolders: ['2021_mccloud_at_night_09'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51576827092/',
+    description: [
+      '#8'
+    ],
+    altText: 'Gas station',
+  },
+  {
+    name: 'mccloud-at-night',
+    photoFolders: ['2021_mccloud_at_night_10'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51577875728/',
+    description: [
+      '#8'
+    ],
+    altText: 'House',
+  },
+  {
+    name: 'mccloud-street-light',
+    photoFolders: ['2021_mccloud_at_night_12'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52004331497/',
+    description: [
+      '#8'
+    ],
+    altText: 'House',
   }
 ];
 
@@ -611,6 +744,42 @@ const galleries = [
       { type: 'photo', name: 'something-in-the-mist' },
       { type: 'photo', name: 'foggy-carroll-park' },
       { type: 'photo', name: 'the-haunted-car' },
+    ]
+  },
+  {
+    name: 'mccloud-at-night',
+    label: 'McCloud at Night',
+    pageContent: [
+      { type: 'photo', name: 'mccloud-church-down-the-street', photoProps: { showDetails: false } },
+      {
+        type: 'text',
+        name: 'mccloud-at-night-text-1',
+        text:
+          [`McCloud is an old mountain town that rests in the shadow of Mount Shasta, an active volcano at the 
+            southern end of the Cascade Range in northern California. 
+            The town was founded around a lumber company ("Mother McCloud") which closed down around the middle of 
+            the 20th century. Today its population is less than 1000.`]
+      },
+      { type: 'photo', name: 'mccloud-church-witching-hour', photoProps: { showDetails: false } },
+      {
+        type: 'react',
+        name: 'mccloud-at-night-react-1',
+        childNodes: (
+          <>
+            
+          </>
+        )
+      },
+      { type: 'photo', name: 'mccloud-illuminated', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-the-house', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-street-light', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-pocket-of-light', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-light-at-the-end-of-the-road', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-lonely-road', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-playground', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-the-book', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-gas-station', photoProps: { showDetails: false } },
+      { type: 'photo', name: 'mccloud-at-night', photoProps: { showDetails: false } },
     ]
   },
   {
