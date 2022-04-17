@@ -60,9 +60,9 @@ function LinkDialog(props) {
 
   return (
     <Dialog
-      open={ open }
-      onClose={ handleClose }
-      fullWidth={ true }
+      open={open}
+      onClose={handleClose}
+      fullWidth={true}
       aria-labelledby='photo-dialog-title'
       aria-describedby='photo-dialog-description'
     >
@@ -73,13 +73,13 @@ function LinkDialog(props) {
         <TextField 
           id='photo-url' 
           variant='outlined' 
-          value={ photoUrl } 
-          onFocus={ selectText }
+          value={photoUrl} 
+          onFocus={selectText}
           fullWidth />
       </DialogContent>
       <DialogActions>
-        <Button onClick={ handleCopy }>Copy</Button>
-        <Button onClick={ handleClose }>
+        <Button onClick={handleCopy}>Copy</Button>
+        <Button onClick={handleClose}>
           Close
         </Button>
       </DialogActions>

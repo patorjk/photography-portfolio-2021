@@ -67,4 +67,4 @@ const HalloweenThemeDefinition = {
   }
 };
 
-export { HalloweenThemeDefinition };
+export {HalloweenThemeDefinition};

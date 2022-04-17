@@ -1,6 +1,6 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Menu } from '@mui/material';
+import {Menu} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -8,10 +8,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ReactGA from 'react-ga';
 import MediaQuery from 'react-responsive';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import SettingsDialog from './SettingsDialog';
 import config from '../app.config.js';
 
@@ -49,77 +49,77 @@ function NavBar(props) {
   return (
     <AppBar position='fixed' >
       <Toolbar>
-        <MediaQuery minWidth={ 700 }>
-          <Typography variant='h6' color='inherit' to='/' component={ Link } style={ titleStyle }>
-            { config.title.main }
+        <MediaQuery minWidth={700}>
+          <Typography variant='h6' color='inherit' to='/' component={Link} style={titleStyle}>
+            {config.title.main}
           </Typography>
-          <div style={ bStyle } />
+          <div style={bStyle} />
         </MediaQuery>
 
         <Button
           id='gallery-button'
-          aria-controls={ open ? 'gallery-menu' : undefined }
+          aria-controls={open ? 'gallery-menu' : undefined}
           aria-haspopup='true'
-          aria-expanded={ open ? 'true' : undefined }
-          onClick={ openGalleryMenu }
+          aria-expanded={open ? 'true' : undefined}
+          onClick={openGalleryMenu}
         >
           Galleries <ArrowDropDownIcon/>
         </Button>
         <Menu
           id='gallery-menu'
-          anchorEl={ anchorEl }
-          open={ open }
-          onClose={ hideGalleryMenu }
+          anchorEl={anchorEl}
+          open={open}
+          onClose={hideGalleryMenu}
           MenuListProps={{
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MediaQuery maxWidth={ 699 }>
-            <MenuItem onClick={ hideGalleryMenu }
-              to={ '/' } component={ Link }>Main</MenuItem>
+          <MediaQuery maxWidth={699}>
+            <MenuItem onClick={hideGalleryMenu}
+              to={'/'} component={Link}>Main</MenuItem>
           </MediaQuery>
-          <MenuItem onClick={ hideGalleryMenu } 
-            to={ '/gallery/sunrises-and-sunsets' } component={ Link }>Sunrises and Sunsets</MenuItem>
-          <MenuItem onClick={ hideGalleryMenu }
-            to={ '/gallery/interactive' } component={ Link }>Interactive</MenuItem>
-          <MenuItem onClick={ hideGalleryMenu }
-            to={ '/gallery/mccloud-at-night' } component={ Link }>McCloud at Night</MenuItem>
-          <MenuItem onClick={ hideGalleryMenu }
-            to={ '/gallery/spooky' } component={ Link }>Spooky</MenuItem>
-          <MenuItem onClick={ hideGalleryMenu }
-            to={ '/gallery/panoramas' } component={ Link }>Panoramas</MenuItem>
+          <MenuItem onClick={hideGalleryMenu} 
+            to={'/gallery/sunrises-and-sunsets'} component={Link}>Sunrises and Sunsets</MenuItem>
+          <MenuItem onClick={hideGalleryMenu}
+            to={'/gallery/interactive'} component={Link}>Interactive</MenuItem>
+          <MenuItem onClick={hideGalleryMenu}
+            to={'/gallery/mccloud-at-night'} component={Link}>McCloud at Night</MenuItem>
+          <MenuItem onClick={hideGalleryMenu}
+            to={'/gallery/spooky'} component={Link}>Spooky</MenuItem>
+          <MenuItem onClick={hideGalleryMenu}
+            to={'/gallery/panoramas'} component={Link}>Panoramas</MenuItem>
         </Menu>
 
-        <Button to='/about' component={ Link } >About</Button>
+        <Button to='/about' component={Link} >About</Button>
 
-        <div style={ middleStyle } />
+        <div style={middleStyle} />
 
-        <MediaQuery minWidth={ 700 }>
-          <div style={ rightItemStyle } />
+        <MediaQuery minWidth={700}>
+          <div style={rightItemStyle} />
         </MediaQuery>
         <ReactGA.OutboundLink
-          to={ config.urls.flickr }
+          to={config.urls.flickr}
           target='_blank' 
-          style={ rightItemStyle }
+          style={rightItemStyle}
           eventLabel='Flickr'
         >
-          <img src={ require('../images/flickr.png') } width={ 32 } alt='Flickr' />
+          <img src={require('../images/flickr.png')} width={32} alt='Flickr' />
         </ReactGA.OutboundLink>
         <ReactGA.OutboundLink 
-          to={ config.urls.instagram } 
+          to={config.urls.instagram} 
           target='_blank'
           eventLabel='Instagram'
         >
-          <img src={ require('../images/instagram.png') } width={ 32 } alt='Instagram' />
+          <img src={require('../images/instagram.png')} width={32} alt='Instagram' />
         </ReactGA.OutboundLink>
-        <IconButton sx={{ marginLeft:'10px' }} onClick={ () => setSettingsOpen(true) }>
+        <IconButton sx={{marginLeft:'10px'}} onClick={() => setSettingsOpen(true)}>
           <SettingsIcon />
         </IconButton>
         <SettingsDialog 
-          open={ settingsOpen }
-          handleClose={ handleSettingsClose }
-          theme={ theme }
-          setTheme={ setTheme }
+          open={settingsOpen}
+          handleClose={handleSettingsClose}
+          theme={theme}
+          setTheme={setTheme}
         />
       </Toolbar>
     </AppBar>

@@ -1,17 +1,16 @@
+import {Link} from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
-import { styled } from '@mui/system';
-import { createBrowserHistory } from 'history';
-import React, { useState, useEffect } from 'react';
+import {StyledEngineProvider, ThemeProvider} from '@mui/material/styles';
+import {styled} from '@mui/system';
+import PropTypes from 'prop-types';
+import React, {useEffect, useState} from 'react';
 import ReactGA from 'react-ga';
 import {
-  Redirect,
   Route,
   BrowserRouter as Router,
   Routes,
-  useParams,
   useLocation,
-  useSearchParams,
+  useParams,
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import About from './About.js';
@@ -20,7 +19,7 @@ import Footer from './Footer.js';
 import NavBar from './NavBar.js';
 import SinglePhoto from './SinglePhoto';
 import config from '../app.config.js';
-import { galleries } from '../photos';
+import {galleries} from '../photos';
 import {
   DefaultTheme,
   HalloweenTheme,
@@ -41,6 +40,7 @@ function updatePageTitle(location) {
   if (!location) {
     location = window.location;
   }
+
   let name;
   switch(location.pathname) {
   case '/':
@@ -49,7 +49,12 @@ function updatePageTitle(location) {
   case '/about':
     document.title = config.title.about;
     break;
-  case location.pathname.match(/^\/photo/)?.input:
+  case location.pathname?.match(/^\/photo/)?.input:
+    name = /[^/]*$/.exec(location.pathname)[0];
+    name = toTitleCase(name.replace(/-/g,' '));
+    document.title = name + ' | ' + config.title.main;
+    break;
+  case location.pathname?.match(/^\/gallery/)?.input:
     name = /[^/]*$/.exec(location.pathname)[0];
     name = toTitleCase(name.replace(/-/g,' '));
     document.title = name + ' | ' + config.title.main;
@@ -59,19 +64,20 @@ function updatePageTitle(location) {
   }
 }
 
-const history = createBrowserHistory();
-history.listen((location) => {
-  window.scrollTo && window.scrollTo(0,0);
+function usePageViews() {
+  let location = useLocation();
 
-  updatePageTitle(location);
-
-  ReactGA.set({ page: location.pathname + location.hash });
-  ReactGA.pageview(location.pathname + location.hash);
-});
-
-// <Redirect from="/" exact to={"/main"} />
-
-updatePageTitle();
+  useEffect(
+    () => {
+      const loc = location.pathname + location.hash;
+      console.log(`New location: ${loc}`);
+      ReactGA.set({page: location.pathname + location.hash});
+      ReactGA.pageview(location.pathname + location.hash);
+      updatePageTitle(location);
+    },
+    [location]
+  );
+}
 
 function getQueryParams() {
   let queryString = window.location.search || '';
@@ -99,7 +105,7 @@ function SinglePhotoRoute() {
   return (
     <ContentWrapper>
       <MainContent>
-        <SinglePhoto photoName={ params.photo } />
+        <SinglePhoto photoName={params.photo} />
       </MainContent>
       <Footer/>
     </ContentWrapper>
@@ -114,7 +120,29 @@ function GalleryRoute(props) {
   return (
     <ContentWrapper>
       <MainContent>
-        <ContentGrid items={ gallery.pageContent }/>
+        <ContentGrid items={gallery.pageContent}/>
+      </MainContent>
+      <Footer/>
+    </ContentWrapper>
+  );
+}
+GalleryRoute.propTypes = {
+  gallery: PropTypes.object,
+};
+
+function PatorjkRoute() {
+  return (
+    <ContentWrapper>
+      <MainContent>
+        <div style={{padding: '20px'}}>
+          <h3>How did you get here?</h3>
+          <p>
+            My analytics tell me this is a popular route (/patorjk), but I'm not sure how people are finding it.
+            Did you mean to go to
+            {' '}
+            <Link href={'https://patorjk.com/'}>patorjk.com</Link>?
+          </p>
+        </div>
       </MainContent>
       <Footer/>
     </ContentWrapper>
@@ -136,11 +164,14 @@ function MainRoute(props) {
     mainGallery = galleries.find(item => item.name === 'main-christmas');
   }
 
-  return (<GalleryRoute gallery={ mainGallery } />);
+  return (<GalleryRoute gallery={mainGallery} />);
 }
+MainRoute.propTypes = {
+  month: PropTypes.string,
+};
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const {pathname} = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -149,7 +180,8 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+function InnerApp() {
+  usePageViews();
   let params = getQueryParams();
   let date = params.date || new Date().toISOString();
   let dateParams = date.match(/^\d\d\d\d-(\d\d)-(\d\d)/);
@@ -175,41 +207,46 @@ function App() {
   const sunriseGallery = galleries.find(item => item.name === 'sunrises-and-sunsets');
 
   return (
-    <Router history={ history }>
+    <>
       <ScrollToTop />
       <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={ theme }>
+        <ThemeProvider theme={theme}>
           <CssBaseline />
-          <NavBar theme={ theme } setTheme={ setTheme } />
-          <div style={{ paddingTop:'64px',boxSizing:'border-box',height:'100%' }}>
+          <NavBar theme={theme} setTheme={setTheme} />
+          <div style={{paddingTop:'64px',boxSizing:'border-box',height:'100%'}}>
             <Routes>
 
               <Route
-                path={ `/` }
-                element={ <MainRoute month={month} day={day} /> }
+                path={'/'}
+                element={<MainRoute month={month} day={day} />}
               />
 
-              { /* legacy */ }
+              {/* legacy */}
               <Route
-                path={ `/sunrises` }
-                element={ <GalleryRoute gallery={ sunriseGallery } /> }
+                path={'/sunrises'}
+                element={<GalleryRoute gallery={sunriseGallery} />}
               />
 
-              { /* legacy */ }
+              {/* legacy */}
               <Route
-                path={ `/misc` }
-                element={ <GalleryRoute gallery={ miscGallery } /> }
+                path={'/misc'}
+                element={<GalleryRoute gallery={miscGallery} />}
               />
 
-              { galleries.map( gallery => (
+              {galleries.map( gallery => (
                 <Route 
-                  path={ `/gallery/${gallery.name}` }
-                  key={ gallery.label } 
-                  element={ <GalleryRoute gallery={ gallery } /> }
+                  path={`/gallery/${gallery.name}`}
+                  key={gallery.label} 
+                  element={<GalleryRoute gallery={gallery} />}
                 />
-              )) }
+              ))}
 
-              <Route path='/photo/:photo' element={ <SinglePhotoRoute /> } />
+              <Route
+                path={'/patorjk'}
+                element={<PatorjkRoute />}
+              />
+
+              <Route path='/photo/:photo' element={<SinglePhotoRoute />} />
 
               <Route path='/about' element={
                 <ContentWrapper>
@@ -223,6 +260,14 @@ function App() {
           </div>
         </ThemeProvider>
       </StyledEngineProvider>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <InnerApp/>
     </Router>
   );
 }

@@ -7,10 +7,10 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MobileStepper from '@mui/material/MobileStepper';
-import { useTheme } from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import PropTypes from 'prop-types';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import ReactGA from 'react-ga';
 import MediaQuery from 'react-responsive';
 import PhotoDescription from './PhotoDescription';
@@ -267,15 +267,15 @@ function Photo(props) {
         transition: 'opacity 1s',
         opacity: isOffScreen ? 0 : 1
       }}
-      ref={ container }
+      ref={container}
     >
-      <div style={ containerStyle }>
-        { breakpoints.map(point => (
-          <MediaQuery minWidth={ ranges[point].min } maxWidth={ ranges[point].max } key={ point } >
-            { photos.map((img, idx) => (
+      <div style={containerStyle}>
+        {breakpoints.map(point => (
+          <MediaQuery minWidth={ranges[point].min} maxWidth={ranges[point].max} key={point} >
+            {photos.map((img, idx) => (
               <img 
-                key={ idx }
-                src={ img[Math.max(point, 600)] } 
+                key={idx}
+                src={img[Math.max(point, 600)]} 
                 style={{
                   left: getImageLeft(idx),
                   transition: getImageTransition(idx),
@@ -284,37 +284,37 @@ function Photo(props) {
                   textAlign:'center',
                   position: 'absolute',
                 }}
-                width={ aspects[album.aspect][point].width } 
-                height={ aspects[album.aspect][point].height } 
-                alt={ album.altText } 
-                draggable={ false }
-                onPointerDown={ onPointerDown }
-                onPointerUp={ onPointerUp }
-                onPointerMove={ onPointerMove }
-                onPointerCancel={ onPointerUp }
+                width={aspects[album.aspect][point].width} 
+                height={aspects[album.aspect][point].height} 
+                alt={album.altText} 
+                draggable={false}
+                onPointerDown={onPointerDown}
+                onPointerUp={onPointerUp}
+                onPointerMove={onPointerMove}
+                onPointerCancel={onPointerUp}
               />
-            )) }
+            ))}
 
           </MediaQuery>
-        )) }
+        ))}
       </div>
 
-      { (isImageSet && transitionType === 'stepper') ? 
+      {(isImageSet && transitionType === 'stepper') ? 
         <MobileStepper
           variant='dots'
-          steps={ imgSetSize }
+          steps={imgSetSize}
           position='static'
-          activeStep={ activeStep }
-          style={{ flexGrow: 1, }}
+          activeStep={activeStep}
+          style={{flexGrow: 1,}}
           nextButton={
-            <Button size='small' onClick={ handleNext } disabled={ activeStep === imgSetSize - 1 }>
+            <Button size='small' onClick={handleNext} disabled={activeStep === imgSetSize - 1}>
               Next
-              { theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight /> }
+              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </Button>
           }
           backButton={
-            <Button size='small' onClick={ handleBack } disabled={ activeStep === 0 }>
-              { theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft /> }
+            <Button size='small' onClick={handleBack} disabled={activeStep === 0}>
+              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
               Previous
             </Button>
           }
@@ -322,7 +322,7 @@ function Photo(props) {
         : null
       }
 
-      { (isImageSet && transitionType === 'toggle') ?
+      {(isImageSet && transitionType === 'toggle') ?
         <FormControl component='fieldset'>
           <FormGroup aria-label='position' row>
             <FormControlLabel
@@ -330,10 +330,10 @@ function Photo(props) {
               control={
                 <Switch
                   color='primary'
-                  checked={ activeStep === 1 }
-                  onChange={ toggleChange }
-                /> }
-              label={ album.transitionOptions.toggleLabel }
+                  checked={activeStep === 1}
+                  onChange={toggleChange}
+                />}
+              label={album.transitionOptions.toggleLabel}
               labelPlacement='end'
             />
           </FormGroup>
@@ -341,10 +341,10 @@ function Photo(props) {
         : null
       }
 
-      { ( showDetails !== false ) ?
+      {( showDetails !== false ) ?
         <PhotoDescription
-          album={ album }
-          activeStep={ activeStep }
+          album={album}
+          activeStep={activeStep}
         />
         : null
       }

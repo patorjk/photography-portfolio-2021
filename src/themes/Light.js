@@ -36,4 +36,4 @@ const LightThemeDefinition = {
   }
 };
 
-export { LightThemeDefinition };
+export {LightThemeDefinition};

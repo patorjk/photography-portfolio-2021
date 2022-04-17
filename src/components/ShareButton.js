@@ -26,9 +26,9 @@ function ShareButton(props) {
 
   return (
     <>
-      <ShareDialog open={ open } handleClose={ handleClose } album={ album } />
+      <ShareDialog open={open} handleClose={handleClose} album={album} />
       <Tooltip title='Share Link to Image'>
-        <IconButton onClick={ openDialog } size='large'>
+        <IconButton onClick={openDialog} size='large'>
           <Share />
         </IconButton>
       </Tooltip>

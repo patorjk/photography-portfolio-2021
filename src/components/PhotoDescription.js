@@ -1,18 +1,20 @@
 import Collapse from '@mui/material/Collapse';
-import { alpha } from '@mui/material/styles';
-import { styled } from '@mui/system';
+import {alpha} from '@mui/material/styles';
+import {styled} from '@mui/system';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 import ReactGA from 'react-ga';
 import FloatingMenu from './FloatingMenu';
 import ResponsiveContainer from './styled/ResponsiveContainer';
 
 const AboutText = styled('div')(() => ({
+  paddingLeft: '12px',
+  paddingRight:'12px',
   paddingBottom: '50px',
 }));
 
-const FadeBlock = styled('div')(({ theme }) => ({
+const FadeBlock = styled('div')(({theme}) => ({
   position: 'absolute',
   bottom: '0px',
   display: 'block',
@@ -45,12 +47,12 @@ function PhotoDescription(props) {
   const description = album.descriptions ? album.descriptions[activeStep] : album.description;
 
   return (
-    <ResponsiveContainer sx={{ textAlign: 'left',position:'relative' }}>
-      <Collapse in={ isTextOpen } collapsedSize={ 50 } style={{ position:'relative' }}>
+    <ResponsiveContainer sx={{textAlign: 'left',position:'relative'}}>
+      <Collapse in={isTextOpen} collapsedSize={50} style={{position:'relative'}}>
         <AboutText>
-          { typeof description === 'string' ? <p>{ description }</p> :
+          {typeof description === 'string' ? <p>{description}</p> :
             description.map((para, idx) => (
-              <p key={ idx }>{ para }</p>
+              <p key={idx}>{para}</p>
             ))
           }
         </AboutText>
@@ -58,13 +60,13 @@ function PhotoDescription(props) {
         <FadeBlock />
 
         <FloatingMenu 
-          album={ album }
-          description={ description }
-          photoLabel={ photoLabel } 
-          isTextOpen={ isTextOpen }
-          toggleTextOpen={ toggleTextOpen }
-          flickrURL={ album.flickr } 
-          instagramURL={ album.instagram } 
+          album={album}
+          description={description}
+          photoLabel={photoLabel} 
+          isTextOpen={isTextOpen}
+          toggleTextOpen={toggleTextOpen}
+          flickrURL={album.flickr} 
+          instagramURL={album.instagram} 
         />
       </Collapse>
     </ResponsiveContainer>

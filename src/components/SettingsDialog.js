@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactGA from 'react-ga';
 import Cookies from 'universal-cookie';
-import { themes, DefaultTheme } from '../themes';
+import {DefaultTheme, themes} from '../themes';
 
 function SettingsDialog(props) {
   const {
@@ -25,7 +25,7 @@ function SettingsDialog(props) {
 
   const resetSettings = () => {
     const cookies = new Cookies();
-    cookies.remove('theme', { path: '/' });
+    cookies.remove('theme', {path: '/'});
 
     setTheme(DefaultTheme.theme);
 
@@ -37,10 +37,10 @@ function SettingsDialog(props) {
     const cookies = new Cookies();
 
     const selectedTheme = themes.find(tt => tt.theme === theme);
-    const themeName = selectedTheme ? selectedTheme.label : "";
+    const themeName = selectedTheme ? selectedTheme.label : '';
 
     if (themeName) {
-      cookies.set('theme', themeName, { path: '/' });
+      cookies.set('theme', themeName, {path: '/'});
     }
 
     ReactGA.event({
@@ -54,9 +54,9 @@ function SettingsDialog(props) {
 
   return (
     <Dialog
-      open={ open }
-      onClose={ handleClose }
-      fullWidth={ true }
+      open={open}
+      onClose={handleClose}
+      fullWidth={true}
       aria-labelledby='settings-dialog-title'
       aria-describedby='settings-dialog-description'
     >
@@ -71,23 +71,23 @@ function SettingsDialog(props) {
           <Select
             labelId='theme-select-label'
             id='theme-select'
-            value={ theme }
+            value={theme}
             label='Theme'
-            onChange={ onThemeChange }
+            onChange={onThemeChange}
           >
             {
               themes.map(val => (
-                <MenuItem key={ val.label } value={ val.theme }>{ val.label }</MenuItem>
+                <MenuItem key={val.label} value={val.theme}>{val.label}</MenuItem>
               ))
             }
           </Select>
         </FormControl>
       </DialogContent>
       <DialogActions>
-        <Button onClick={ resetSettings }>
+        <Button onClick={resetSettings}>
           Reset
         </Button>
-        <Button onClick={ handleClose }>
+        <Button onClick={handleClose}>
           Close
         </Button>
       </DialogActions>

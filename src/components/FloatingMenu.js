@@ -4,15 +4,15 @@ import MoreVert from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { alpha } from '@mui/material/styles';
+import {alpha} from '@mui/material/styles';
 import Tooltip from '@mui/material/Tooltip';
-import { styled } from '@mui/system';
+import {styled} from '@mui/system';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ReactGA from 'react-ga';
 import ShareButton from './ShareButton';
 
-const OptionBar = styled('div')(({ theme }) => ({
+const OptionBar = styled('div')(({theme}) => ({
   bottom: '0px',
   right: '5px',
   position: 'absolute',
@@ -23,7 +23,7 @@ const OptionBar = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-const OptionSideShadow = styled('div')(({ theme }) => ({
+const OptionSideShadow = styled('div')(({theme}) => ({
   bottom: '0px',
   right: '130px',
   width: '200px',
@@ -79,23 +79,23 @@ function FloatingMenu(props) {
   return (
     <>
       <Menu
-        anchorEl={ anchorEl }
-        open={ Boolean(anchorEl) }
-        onClose={ () => setAnchorEl(false) }
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={() => setAnchorEl(false)}
       >
-        { /* eslint-disable-next-line max-len */ }
-        { flickrURL ? <MenuItem onClick={ () => viewLinkClick(flickrURL, 'Flickr') }>Download/View on Flickr</MenuItem> : null }
-        { /* eslint-disable-next-line max-len */ }
-        { instagramURL ? <MenuItem onClick={ () => viewLinkClick(instagramURL, 'Instagram') }>View on Instagram</MenuItem> : null }
+        {/* eslint-disable-next-line max-len */}
+        {flickrURL ? <MenuItem onClick={() => viewLinkClick(flickrURL, 'Flickr')}>Download/View on Flickr</MenuItem> : null}
+        {/* eslint-disable-next-line max-len */}
+        {instagramURL ? <MenuItem onClick={() => viewLinkClick(instagramURL, 'Instagram')}>View on Instagram</MenuItem> : null}
       </Menu>
 
       <OptionSideShadow />
 
-      <OptionBar>
+      <OptionBar className={'options-bar'}>
         {hasText(description) && (
-          <Tooltip title={ 'Toggle Text Display' } >
-            <IconButton onClick={ () => toggleTextOpen() } sx={{ padding: '8px' }}>
-              { isTextOpen ?
+          <Tooltip title={'Toggle Text Display'} >
+            <IconButton onClick={() => toggleTextOpen()} sx={{padding: '8px'}}>
+              {isTextOpen ?
                 <ExpandLess />
                 :
                 <ExpandMore />
@@ -103,13 +103,13 @@ function FloatingMenu(props) {
             </IconButton>
           </Tooltip>
         )}
-        { album.showShareLink !== false &&
-          <ShareButton album={ album } />
+        {album.showShareLink !== false &&
+          <ShareButton album={album} />
         }
         
-        { (flickrURL || instagramURL) &&
+        {(flickrURL || instagramURL) &&
           <Tooltip title='More Actions'>
-            <IconButton onClick={ moreOptions } sx={{ padding: '8px' }}><MoreVert /></IconButton>
+            <IconButton onClick={moreOptions} sx={{padding: '8px'}}><MoreVert /></IconButton>
           </Tooltip>
         }
       </OptionBar>
@@ -119,7 +119,7 @@ function FloatingMenu(props) {
 
 FloatingMenu.propTypes = {
   album: PropTypes.any,
-  description: PropTypes.string,
+  description: PropTypes.any,
   photoLabel: PropTypes.string,
   isTextOpen: PropTypes.bool,
   toggleTextOpen: PropTypes.func,

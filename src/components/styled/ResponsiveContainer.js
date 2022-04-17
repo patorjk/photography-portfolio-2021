@@ -1,6 +1,6 @@
-import { styled } from '@mui/system';
+import {styled} from '@mui/system';
 
-const ResponsiveContainer = styled('div')(({ theme }) => ({
+const ResponsiveContainer = styled('div')(({theme}) => ({
   color: theme.palette.text.secondary,
   [theme.breakpoints.up('xs')]: {
     width: '100%'

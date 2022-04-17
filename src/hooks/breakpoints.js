@@ -1,5 +1,5 @@
-import { useTheme } from '@mui/styles';
-import { useMemo } from 'react';
+import {useTheme} from '@mui/styles';
+import {useMemo} from 'react';
 
 export default function useBreakpoints() {
   const theme = useTheme();

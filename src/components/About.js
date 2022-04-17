@@ -1,9 +1,9 @@
-import { Link } from '@mui/material';
+import {Link} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import React from 'react';
 import PhotoViewer from './PhotoViewer.js';
 import ResponsiveContainer from './styled/ResponsiveContainer';
-import { createPhotoAlbum } from '../photos';
+import {createPhotoAlbum} from '../photos';
 
 function About() {
   let aboutAlbum =  {
@@ -39,26 +39,26 @@ function About() {
   aboutAlbum = createPhotoAlbum(aboutAlbum);
 
   return (
-    <Grid container spacing={ 0 } justifyContent='center' alignItems='center' align='center'>
-      <Grid item xs={ 12 }>
+    <Grid container spacing={0} justifyContent='center' alignItems='center' align='center'>
+      <Grid item xs={12}>
         <ResponsiveContainer>
-          <PhotoViewer album={ aboutAlbum } />
+          <PhotoViewer album={aboutAlbum} />
         </ResponsiveContainer>
       </Grid>
 
-      <Grid item xs={ 12 }>
-        <ResponsiveContainer sx={{ textAlign: 'left' }}>
+      <Grid item xs={12}>
+        <ResponsiveContainer sx={{textAlign: 'left', padding: '0 12px'}}>
           <h3>About</h3>
           <p>
-            { /* eslint-disable-next-line max-len */ }
+            {/* eslint-disable-next-line max-len */}
             My name is Pat, I'm a software developer and amateur photographer. I setup this site to show off some of my favorite photos. If you're interested in more of my work you can find me on <Link href='https://www.flickr.com/photos/40423570@N07/' target='_blank'>Flickr</Link> and <Link href='https://www.instagram.com/patorjk/' target='_blank'>Instagram</Link>.
           </p>
           <p>
-            { /* eslint-disable-next-line max-len */ }
+            {/* eslint-disable-next-line max-len */}
             Additionally, I run a programming site which you can find here: <Link href='https://patorjk.com/' target='_blank'>patorjk.com</Link> (it's mostly stuff from my high school and college days)
           </p>
           <p>
-            { /* eslint-disable-next-line max-len */ }
+            {/* eslint-disable-next-line max-len */}
             The above set of images are self portraits from my yearly trip down to the Tidal Basin in Washington DC to see the Cherry Blossoms. I rarely take photos of myself but on one visit I decided it was such a nice morning that I should take a photo to remember it. Since then I've continued the tradition, regardless if the mornings are nice or kind of drab.
           </p>
         </ResponsiveContainer>

@@ -94,7 +94,7 @@ module.exports = {
     'no-unused-vars': 'warn',
     'object-curly-spacing': [
       'warn',
-      'always'
+      'never'
     ],
     quotes: [
       'warn',
@@ -105,12 +105,12 @@ module.exports = {
       {
         allowMultiline: true,
         children: {
-          when: 'always'
+          when: 'never'
         },
         spacing: {
           objectLiterals: 'never'
         },
-        when: 'always'
+        when: 'never'
       }
     ],
     'react/jsx-filename-extension': [
