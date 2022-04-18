@@ -45,6 +45,7 @@ function PhotoDescription(props) {
   };
 
   const description = album.descriptions ? album.descriptions[activeStep] : album.description;
+  const flickrURL = Array.isArray(album.flickr) ? album.flickr[activeStep] : album.flickr;
 
   return (
     <ResponsiveContainer sx={{textAlign: 'left',position:'relative'}}>
@@ -65,8 +66,7 @@ function PhotoDescription(props) {
           photoLabel={photoLabel} 
           isTextOpen={isTextOpen}
           toggleTextOpen={toggleTextOpen}
-          flickrURL={album.flickr} 
-          instagramURL={album.instagram} 
+          flickrURL={flickrURL}
         />
       </Collapse>
     </ResponsiveContainer>

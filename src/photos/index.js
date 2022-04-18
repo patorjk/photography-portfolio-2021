@@ -64,7 +64,10 @@ let albums = [
       imageStart: 0
     },
     aspect: '8x10',
-    flickr: 'https://www.flickr.com/photos/40423570@N07/51755438998',
+    flickr: [
+      'https://www.flickr.com/photos/40423570@N07/51755438998',
+      'https://www.flickr.com/photos/40423570@N07/51177443441/',
+    ],
     description: [
       'Sunrise next to the Domino Sugars plant in Baltimore. '
     ],
@@ -75,10 +78,28 @@ let albums = [
     photoFolders: ['2020_downs_sunrise', '2019_downs_sunrise', '2020_downs_spooky'],
     tags: ['main', 'sunrise', '2019'],
     aspect: '6x4',
-    flickr: 'https://www.flickr.com/photos/40423570@N07/46482748235/',
+    flickr: [
+      'https://www.flickr.com/photos/40423570@N07/51017115833/',
+      'https://www.flickr.com/photos/40423570@N07/46482748235/',
+      'https://www.flickr.com/photos/40423570@N07/50535452467',
+    ],
     description: [
       // eslint-disable-next-line max-len
       'One of my favorite places to go for the sunrise. No two mornings are identical. As an aside, if you look closely in the first photo you\'ll see a couple out on the pier - they were getting their engagement photos taken.'
+    ],
+    altText: 'Downs Park Sunrise'
+  },
+  {
+    name: 'downs-park-pier-foggy',
+    photoFolders: ['2020_downs_spooky'],
+    tags: ['main', 'sunrise', '2019'],
+    aspect: '6x4',
+    flickr: [
+      'https://www.flickr.com/photos/40423570@N07/50535452467',
+    ],
+    description: [
+      // eslint-disable-next-line max-len
+      'Taken a week or so before Halloween.'
     ],
     altText: 'Downs Park Sunrise'
   },
@@ -141,7 +162,10 @@ let albums = [
     },
     tags: ['main', 'sunrise', 'baltimore', '2019'],
     aspect: '6x4',
-    flickr: 'https://www.flickr.com/photos/40423570@N07/48152204987',
+    flickr: [
+      'https://www.flickr.com/photos/40423570@N07/48152204987',
+      'https://www.flickr.com/photos/40423570@N07/48174788687/'
+    ],
     description: [
       // eslint-disable-next-line max-len
       'I think most people look at this shot and just kind of shrug, thinking of it as just another sunrise pier photo. But I spent over a year trying to get this shot. When I came across this pier I could tell there was a nice photo just waiting to be captured. All that was needed was a morning with little to no wind (so the water would be smooth) and a nice sunrise. However, after showing up a few times over the course of a few months, I realized that since the pier pointed north (meaning the sun rose off camera to the right), it would take an epic sunrise/sunset that lit up the whole sky to create the shot I had in mind.',
@@ -287,7 +311,10 @@ let albums = [
     photoFolders: ['2016_armistead_sunrise2','2016_armistead_sunrise1'],
     tags: ['sunrise', '2018'],
     aspect: '6x4',
-    flickr: 'https://www.flickr.com/photos/40423570@N07/31139325476/',
+    flickr: [
+      'https://www.flickr.com/photos/40423570@N07/31139325476/',
+      'https://www.flickr.com/photos/40423570@N07/30999597372/',
+    ],
     description: [
       'Fort Armistead Sunrise.'
     ],
@@ -554,7 +581,7 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51577875728/',
     description: [
-      '#8'
+      ''
     ],
     altText: 'House',
   },
@@ -565,10 +592,58 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52004331497/',
     description: [
-      '#8'
+      ''
     ],
-    altText: 'House',
-  }
+    altText: 'McCloud High School',
+  },
+  {
+    name: 'middle-branch-trailhead-no9-pano',
+    photoFolders: ['2018_mbt9_1', '2018_mbt9_2'],
+    tags: ['2018'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/28870755928/',
+    description: '',
+    altText: 'Panorama',
+  },
+  {
+    name: 'heart-lake-smoky',
+    photoFolders: ['2021_heart_lake_smoky'],
+    tags: ['2021'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51887885864/',
+    description: '',
+    altText: 'Mt Shasta from Heart Lake',
+  },
+  {
+    name: 'old-american-brewery',
+    photoFolders: ['2019_old_american_brewery'],
+    tags: ['2019'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52011933849/',
+    description: [
+      `The Old American Brewery looms over a row of townhouses. This is a strange yet iconic spot in Baltimore.
+      Photographers can make the brewery smaller or larger by adjusting the focal length of their lens. I'd only ever
+      seen daylight shots of this place so I thought it might be cool to stop by after dark.`,
+      `Wow did I not think that through.
+      The area turned out to be pretty sketchy and it's one of the few times I've felt unsafe taking a photo. 
+      Although it's a cool spot, I'm not sure I see myself returning.`
+    ],
+    altText: 'Old American Brewery',
+  },
+  {
+    name: 'halloween-house-1',
+    photoFolders: ['2021_halloween_house_1'],
+    tags: ['2021'],
+    aspect: '16x10',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51624805640/',
+    description: [
+      `I love it when someone goes all out for Halloween. In 2021 I drove around with my daughter looking for
+      "Halloween Houses". We only found a few, but the ones we did find were amazing. 
+      If I collect up enough I may make a gallery dedicated to them.
+      These kind of displays need more love.`,
+    ],
+    altText: 'Old American Brewery',
+  },
 ];
 
 // add in the sizes field
@@ -763,9 +838,23 @@ const galleries = [
     label: 'Spooky',
     pageContent: [
       {type: 'photo', name: 'a-pathway-to-nightmares'},
+      {
+        type: 'text',
+        name: 'spooky-text-1',
+        header: 'Spooky',
+        text:
+          [`I'm not a fan of horror, but I love the spooky feeling that a forbidding landscape can give off.
+           I don't often go out of my way to capture creepy images, but I get excited when an opportunity 
+           presents itself. These pictures never do well on my social media, sandwiched between to photos of 
+           sunsets and sunrises, but they have a special place in my heart.`,]
+      },
       {type: 'photo', name: 'something-in-the-mist'},
       {type: 'photo', name: 'foggy-carroll-park'},
       {type: 'photo', name: 'the-haunted-car'},
+      {type: 'photo', name: 'downs-park-pier-foggy'},
+      {type: 'photo', name: 'heart-lake-smoky'},
+      {type: 'photo', name: 'old-american-brewery'},
+      {type: 'photo', name: 'halloween-house-1'},
     ]
   },
   {
@@ -946,16 +1035,7 @@ const galleries = [
           by grabbing them with your mouse or finger and pulling them left or right.`]
       },
       {type: 'photo', name: 'middle-branch-park-2019-pano'},
-      {
-        type: 'text',
-        name: 'panorama-text-2',
-        header: 'Wait, only 2?',
-        text:
-          [`There will be more soon. Based on my stats most people don't return, so I'm probably saying this in vain, 
-            but: I'm working on it. I just started revamping this site and have a bunch of different galleries 
-            I want to add (as of 4/10/22). So assuming I get the time I need this section should fill out within 
-            the next month.`]
-      }
+      {type: 'photo', name: 'middle-branch-trailhead-no9-pano'},
     ]
   },
 ];

@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import ReactGA from 'react-ga';
 import ShareButton from './ShareButton';
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 
 const OptionBar = styled('div')(({theme}) => ({
   bottom: '0px',
@@ -43,7 +44,6 @@ function FloatingMenu(props) {
     isTextOpen,
     toggleTextOpen,
     flickrURL,
-    instagramURL,
     description
   } = props;
 
@@ -85,8 +85,6 @@ function FloatingMenu(props) {
       >
         {/* eslint-disable-next-line max-len */}
         {flickrURL ? <MenuItem onClick={() => viewLinkClick(flickrURL, 'Flickr')}>Download/View on Flickr</MenuItem> : null}
-        {/* eslint-disable-next-line max-len */}
-        {instagramURL ? <MenuItem onClick={() => viewLinkClick(instagramURL, 'Instagram')}>View on Instagram</MenuItem> : null}
       </Menu>
 
       <OptionSideShadow />
@@ -106,16 +104,26 @@ function FloatingMenu(props) {
         {album.showShareLink !== false &&
           <ShareButton album={album} />
         }
+        <Tooltip title={'Download from Flickr'}>
+          <IconButton onClick={() => viewLinkClick(flickrURL, 'Flickr')}>
+            <CloudDownloadIcon />
+          </IconButton>
+        </Tooltip>
         
-        {(flickrURL || instagramURL) &&
-          <Tooltip title='More Actions'>
-            <IconButton onClick={moreOptions} sx={{padding: '8px'}}><MoreVert /></IconButton>
-          </Tooltip>
-        }
+
       </OptionBar>
     </>
   );
 }
+
+// more options menu - useful when more options are added
+/*
+        {(flickrURL) &&
+          <Tooltip title='More Actions'>
+            <IconButton onClick={moreOptions} sx={{padding: '8px'}}><MoreVert /></IconButton>
+          </Tooltip>
+        }
+ */
 
 FloatingMenu.propTypes = {
   album: PropTypes.any,
@@ -124,7 +132,6 @@ FloatingMenu.propTypes = {
   isTextOpen: PropTypes.bool,
   toggleTextOpen: PropTypes.func,
   flickrURL: PropTypes.string,
-  instagramURL: PropTypes.string,
 };
 
 export default FloatingMenu;

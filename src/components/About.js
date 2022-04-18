@@ -35,6 +35,15 @@ function About() {
     aspect: '6x4',
     altText: 'Me, sitting under a tree',
     showShareLink: false,
+    flickr: [
+      'https://www.flickr.com/photos/40423570@N07/51961260748/', // 2022
+      'https://www.flickr.com/photos/40423570@N07/51096016418/', // 2021
+      'https://www.flickr.com/photos/40423570@N07/51095568142/', // 2020
+      'https://www.flickr.com/photos/40423570@N07/33669602638/', // 2019
+      'https://www.flickr.com/photos/40423570@N07/40687373454/', // 2018
+      'https://www.flickr.com/photos/40423570@N07/46775843825/', // 2017
+      'https://www.flickr.com/photos/40423570@N07/51961518149/', // 2016
+    ]
   };
   aboutAlbum = createPhotoAlbum(aboutAlbum);
 
@@ -61,6 +70,14 @@ function About() {
             {/* eslint-disable-next-line max-len */}
             The above set of images are self portraits from my yearly trip down to the Tidal Basin in Washington DC to see the Cherry Blossoms. I rarely take photos of myself but on one visit I decided it was such a nice morning that I should take a photo to remember it. Since then I've continued the tradition, regardless if the mornings are nice or kind of drab.
           </p>
+          <h3>FAQ</h3>
+          <h4>Why do the download links go to Flickr?</h4>
+          <p>
+            To allow someone to get the highest resolution version of the photo. The site will display a version of
+            an image best suited for their screen size, up to 3072px wide. However, many of the photos have higher
+            resolutions.
+          </p>
+          <br/>
         </ResponsiveContainer>
       </Grid>
     </Grid>
