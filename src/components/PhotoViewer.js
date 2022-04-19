@@ -113,7 +113,7 @@ function Photo(props) {
   const onPointerUp = useCallback(() => {
     let rect = container.current.getBoundingClientRect();
     if (rect && rect.width) {
-      if (Math.abs(xOffset) > rect.width/2) {
+      if (Math.abs(xOffset) > rect.width/4) {
         if (xOffset < 0) {
 
           ReactGA.event({

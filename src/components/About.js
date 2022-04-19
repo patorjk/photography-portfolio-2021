@@ -18,7 +18,7 @@ function About() {
     ],
     descriptions: [
       // eslint-disable-next-line max-len
-      'Year 7 (2022): They cut off the top of my tree! Sadly I read online that these trees typically only live 15-20 years 😭, though they can live over 100 with proper care - so hopefully the park service is able to save this one. However, I\'ve decided I\'m going to continue on even if the tree dies.',
+      'Drag images 👈 way. Year 7 (2022): They cut off the top of my tree! Sadly I read online that these trees typically only live 15-20 years 😭, though they can live over 100 with proper care - so hopefully the park service is able to save this one. However, I\'ve decided I\'m going to continue on even if the tree dies.',
       // eslint-disable-next-line max-len
       'Year 6 (2021): This is almost the prefect shot (in my mind). With this shot I feel like I finally figured out how to nail the lighting. The only problem is the top of the tree is dying. You can see it start to die in 2020.',
       // eslint-disable-next-line max-len
@@ -71,11 +71,22 @@ function About() {
             The above set of images are self portraits from my yearly trip down to the Tidal Basin in Washington DC to see the Cherry Blossoms. I rarely take photos of myself but on one visit I decided it was such a nice morning that I should take a photo to remember it. Since then I've continued the tradition, regardless if the mornings are nice or kind of drab.
           </p>
           <h3>FAQ</h3>
-          <h4>Why do the download links go to Flickr?</h4>
+          <h4>How can I contact you?</h4>
           <p>
-            To allow someone to get the highest resolution version of the photo. The site will display a version of
-            an image best suited for their screen size, up to 3072px wide. However, many of the photos have higher
-            resolutions.
+            Email: <Link href={"mailto:patorjk@gmail.com"}>patorjk@gmail.com</Link>. Don't DM me on social media, I don't
+            read those and usually only see them months later.
+          </p>
+          <h4>What kind of camera do you use?</h4>
+          <p>
+            Post-2018, Nikon D850. Before that: Nikon D5300.
+          </p>
+          <h4>Favorite lens?</h4>
+          <p>
+            The 24-70mm 2.8/f is the most practical, but I've grown to love the 70-200mm 2.8/f the most.
+            The depth of field, compression, colors - just everything about it is great. However, after reviewing what
+            I selected for this site, not a single shot was done with the 70-200mm. In fact, all but 6 were done
+            with the 24-70mm. And those 6 were from my ultra wide 14-24mm - and they were main gallery images. Maybe
+            that lens is secretly my favorite? I don't use it that often, but I seem to like the shots I take with it.
           </p>
           <br/>
         </ResponsiveContainer>

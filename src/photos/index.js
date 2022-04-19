@@ -32,9 +32,10 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/47536723332/',
     description: [
-      'Springtime in Baltimore.'
+      `Built in 1891 as a people's lookout tower, this pagoda is located in Baltimore, Maryland of all places.
+      It's one of the city's most popular landmarks and a highlight of one of its nicest parks.`
     ],
-    altText: 'Springtime in Baltimore'
+    altText: 'Patternson Park Pagoda'
   },
   {
     name: 'baltimore-skyline-light-toggle',
@@ -42,15 +43,15 @@ let albums = [
     tags: ['main', 'baltimore', '2018'],
     transitionOptions: {
       type: 'toggle',
-      toggleLabel: 'Click the switch to turn Baltimore\'s lights on and off 👈 😁😁😁',
+      toggleLabel: 'Click the switch to turn Baltimore\'s lights on and off',
       imageStart: 1
     },
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/44674533262/',
     description: [
-      // eslint-disable-next-line max-len
-      'A view of Baltimore\'s skyline from 2018. I took a series of images as the sun set and found I liked the city lights better an hour after sunrset, but the sky from around 10 minutes after sunset. I took the two images and overlaid them in photostop and was able to blend them into one. However, I had fun toggling the effect on and off because it looked like I was powering on/off the city. ',
-      'Maybe I\'m just easily amused, but I figured I\'d put it up here so others could play around with it too.'
+      `A view of Baltimore's skyline from 2018. I superimposed two images to create the lights on/off effect.
+      I found it kind of fun, though maybe I'm just easily amused. 
+      I figured I'd put it up here so others could play around with it too.`
     ],
     altText: 'Baltimore Skyline Light Toggle'
   },
@@ -60,7 +61,7 @@ let albums = [
     tags: ['main', 'baltimore', '2021'],
     transitionOptions: {
       type: 'toggle',
-      toggleLabel: 'Click the switch to switch between night and day 👈 😁😁😁',
+      toggleLabel: 'Click the switch to switch between night and day',
       imageStart: 0
     },
     aspect: '8x10',
@@ -456,8 +457,8 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/48033984648/',
     description: [
-      `If you saw my Middle Branch Dock photo, which is elsewhere on this site, this is from that same sunrise. 
-      This was taken from the end of the dock.`
+      `This majestic view was once home to an auto junkyard. Thankfully someone had some sense and it's now the view
+      from a public park.`
     ],
     altText: 'Baltimore Sunrise',
     transitionOptions: {
@@ -644,6 +645,17 @@ let albums = [
     ],
     altText: 'Old American Brewery',
   },
+  {
+    name: 'baltimore-skyline-2022-pano',
+    photoFolders: ['2022_bmore_pano_1', '2022_bmore_pano_2'],
+    tags: ['2022'],
+    aspect: '16x10',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51844197590/',
+    description: [
+      ``,
+    ],
+    altText: 'Baltimore Panorama',
+  },
 ];
 
 // add in the sizes field
@@ -677,6 +689,8 @@ const createPhotoAlbum = function(input) {
   return album;
 };
 
+console.log(`number of photos: ${albums.length}`);
+
 albums = albums.map(album => (createPhotoAlbum(album)));
 
 /*
@@ -707,12 +721,38 @@ const galleries = [
     label: 'Main',
     pageContent: [
       {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
+      {
+        type: 'text',
+        name: 'main-spring-text-1',
+        header: 'Welcome!',
+        text:
+          [`Hello, and welcome to my photography website. I'm just an amateur and I just do this for fun, but I wanted 
+            to set up a site to show off my best work. This main page is a set of varied images. Up at the top 
+            there are a set of galleries to choose from (still a work in progress). `]
+      },
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
+      {
+        type: 'text',
+        name: 'main-spring-text-2',
+        header: 'Image Toggles',
+        text:
+          [`Some images have toggle buttons that allow you to toggle between 2 images. Flip the toggle to see a 
+          before/after image.`]
+      },
+      {type: 'photo', name: 'middle-branch-park-2019-pano'},
+      {
+        type: 'text',
+        name: 'main-spring-text-3',
+        header: 'Drag panoramas with your finger/mouse 👈 way',
+        text:
+          [`You can drag panoramas with your finger and/or mouse. You can try it on the image above. 
+          This also works for image sets too.`]
+      },
       {type: 'photo', name: 'mt-vernon-fountain'},
       {type: 'photo', name: 'downs-park-pier'},
       {type: 'photo', name: 'fort-armistead-sunrise-1'},
       {type: 'photo', name: 'mossbrae-falls'},
-      {type: 'photo', name: 'middle-branch-pier'},
+
       {type: 'photo', name: 'fells-point-sunrise'},
       {type: 'photo', name: 'cherry-blossoms-dc'},
       {type: 'photo', name: 'inner-harbor-sunrise'},
@@ -1036,6 +1076,7 @@ const galleries = [
       },
       {type: 'photo', name: 'middle-branch-park-2019-pano'},
       {type: 'photo', name: 'middle-branch-trailhead-no9-pano'},
+      {type: 'photo', name: 'baltimore-skyline-2022-pano'},
     ]
   },
 ];

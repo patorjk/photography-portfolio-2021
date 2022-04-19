@@ -8,10 +8,13 @@ import ReactGA from 'react-ga';
 import FloatingMenu from './FloatingMenu';
 import ResponsiveContainer from './styled/ResponsiveContainer';
 
-const AboutText = styled('div')(() => ({
+const AboutText = styled('div', {
+  shouldForwardProp: (prop) => prop !== 'isCollapsed',
+})((props) => ({
   paddingLeft: '12px',
   paddingRight:'12px',
   paddingBottom: '50px',
+  fontStyle: props.isCollapsed ? 'italic' : 'normal',
 }));
 
 const FadeBlock = styled('div')(({theme}) => ({
@@ -50,7 +53,7 @@ function PhotoDescription(props) {
   return (
     <ResponsiveContainer sx={{textAlign: 'left',position:'relative'}}>
       <Collapse in={isTextOpen} collapsedSize={50} style={{position:'relative'}}>
-        <AboutText>
+        <AboutText isCollapsed={!isTextOpen}>
           {typeof description === 'string' ? <p>{description}</p> :
             description.map((para, idx) => (
               <p key={idx}>{para}</p>
