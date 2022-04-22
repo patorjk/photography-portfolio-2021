@@ -14,6 +14,7 @@ import MediaQuery from 'react-responsive';
 import {Link} from 'react-router-dom';
 import SettingsDialog from './SettingsDialog';
 import config from '../app.config.js';
+import { useTranslation } from 'react-i18next';
 
 function NavBar(props) {
   const {
@@ -23,6 +24,7 @@ function NavBar(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const { t : translate } = useTranslation();
 
   const openGalleryMenu = (event) => setAnchorEl(event.currentTarget);
   const hideGalleryMenu = () => setAnchorEl(null);
@@ -63,7 +65,7 @@ function NavBar(props) {
           aria-expanded={open ? 'true' : undefined}
           onClick={openGalleryMenu}
         >
-          Galleries <ArrowDropDownIcon/>
+          {translate("toolbar.galleries")} <ArrowDropDownIcon/>
         </Button>
         <Menu
           id='gallery-menu'
@@ -90,7 +92,7 @@ function NavBar(props) {
             to={'/gallery/panoramas'} component={Link}>Panoramas</MenuItem>
         </Menu>
 
-        <Button to='/about' component={Link} >About</Button>
+        <Button to='/about' component={Link} >{translate('toolbar.about')}</Button>
 
         <div style={middleStyle} />
 

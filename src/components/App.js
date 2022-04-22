@@ -25,6 +25,7 @@ import {
   HalloweenTheme,
   themes
 } from '../themes';
+import '../i18n';
 
 ReactGA.initialize(config.googleAnalyticsId);
 ReactGA.pageview(window.location.pathname + window.location.search);
@@ -207,7 +208,7 @@ function InnerApp() {
   const sunriseGallery = galleries.find(item => item.name === 'sunrises-and-sunsets');
 
   return (
-    <>
+    <React.Suspense fallback={"loading..."}>
       <ScrollToTop />
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
@@ -260,7 +261,7 @@ function InnerApp() {
           </div>
         </ThemeProvider>
       </StyledEngineProvider>
-    </>
+    </React.Suspense>
   );
 }
 

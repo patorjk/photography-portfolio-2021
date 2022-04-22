@@ -656,6 +656,17 @@ let albums = [
     ],
     altText: 'Baltimore Panorama',
   },
+  {
+    name: 'fells-point-2020-pano',
+    photoFolders: ['2020_fells_pano_1', '2020_fells_pano_2'],
+    tags: ['2020'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52019390315/',
+    description: [
+      ``,
+    ],
+    altText: 'Baltimore Panorama',
+  },
 ];
 
 // add in the sizes field
@@ -1077,6 +1088,7 @@ const galleries = [
       {type: 'photo', name: 'middle-branch-park-2019-pano'},
       {type: 'photo', name: 'middle-branch-trailhead-no9-pano'},
       {type: 'photo', name: 'baltimore-skyline-2022-pano'},
+      {type: 'photo', name: 'fells-point-2020-pano'},
     ]
   },
 ];
