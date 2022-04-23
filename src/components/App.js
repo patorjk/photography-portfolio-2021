@@ -20,6 +20,8 @@ import NavBar from './NavBar.js';
 import SinglePhoto from './SinglePhoto';
 import config from '../app.config.js';
 import {galleries} from '../photos';
+import photos from '../photos';
+
 import {
   DefaultTheme,
   HalloweenTheme,
@@ -42,7 +44,7 @@ function updatePageTitle(location) {
     location = window.location;
   }
 
-  let name;
+  let name, elm;
   switch(location.pathname) {
   case '/':
     document.title = config.title.main;
@@ -52,13 +54,13 @@ function updatePageTitle(location) {
     break;
   case location.pathname?.match(/^\/photo/)?.input:
     name = /[^/]*$/.exec(location.pathname)[0];
-    name = toTitleCase(name.replace(/-/g,' '));
-    document.title = name + ' | ' + config.title.main;
+    elm = photos.find(photo => photo.name === name) || {};
+    document.title = elm.title || config.title.main;
     break;
   case location.pathname?.match(/^\/gallery/)?.input:
     name = /[^/]*$/.exec(location.pathname)[0];
-    name = toTitleCase(name.replace(/-/g,' '));
-    document.title = name + ' | ' + config.title.main;
+    elm = galleries.find(gal => gal.name === name) || {};
+    document.title = elm.title || config.title.main;
     break;
   default:
     document.title = config.title.main;

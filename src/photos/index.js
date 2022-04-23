@@ -1,5 +1,7 @@
 import {Link} from '@mui/material';
 import React from 'react';
+import config from '../app.config.js';
+
 /*
 	Photos.
 
@@ -652,7 +654,7 @@ let albums = [
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51844197590/',
     description: [
-      ``,
+      '',
     ],
     altText: 'Baltimore Panorama',
   },
@@ -663,7 +665,7 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52019390315/',
     description: [
-      ``,
+      '',
     ],
     altText: 'Baltimore Panorama',
   },
@@ -689,6 +691,7 @@ function getImagesSizes(folder) {
 const createPhotoAlbum = function(input) {
   let album = Object.assign({}, input);
   album.id = album.id || album.photoFolders[0];
+  album.title = album.title || album.altText + ' | ' + config.title.main;
   album.photoFolders.forEach(folderName => {
     album.photos = album.photos || [];
     try {
@@ -712,6 +715,7 @@ const galleries = [
   {
     name: 'main-standard',
     label: 'Main',
+    description: '',
     pageContent: [
       {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
@@ -730,6 +734,7 @@ const galleries = [
   {
     name: 'main-spring',
     label: 'Main',
+    description: '',
     pageContent: [
       {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
       {
@@ -793,6 +798,7 @@ const galleries = [
   {
     name: 'main-summer',
     label: 'Main',
+    description: '',
     pageContent: [
       {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
@@ -809,6 +815,7 @@ const galleries = [
   {
     name: 'main-halloween',
     label: 'Main',
+    description: '',
     pageContent: [
       {type: 'photo', name: 'a-pathway-to-nightmares'},
       {type: 'photo', name: 'something-in-the-mist'},
@@ -819,6 +826,7 @@ const galleries = [
   {
     name: 'main-christmas',
     label: 'Main',
+    description: '',
     pageContent: [
       {type: 'photo', name: '34th-street-1'},
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
@@ -835,6 +843,7 @@ const galleries = [
   {
     name: 'misc',
     label: 'Misc',
+    description: '',
     pageContent: [
       {type: 'photo', name: 'mt-vernon-fountain'},
       {type: 'photo', name: 'a-pathway-to-nightmares'},
@@ -850,6 +859,7 @@ const galleries = [
   {
     name: 'sunrises-and-sunsets',
     label: 'Sunrises/Sunsets',
+    description: '',
     pageContent: [
       {type: 'photo', name: 'fort-armistead-sunrise-1'},
       {type: 'photo', name: 'fells-point-sunrise'},
@@ -870,6 +880,7 @@ const galleries = [
   {
     name: 'interactive',
     label: 'Interactive',
+    description: 'A gallery of interactive photographic images.',
     pageContent: [
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
       {
@@ -887,6 +898,7 @@ const galleries = [
   {
     name: 'spooky',
     label: 'Spooky',
+    description: 'Some spooky images.',
     pageContent: [
       {type: 'photo', name: 'a-pathway-to-nightmares'},
       {
@@ -911,6 +923,7 @@ const galleries = [
   {
     name: 'mccloud-at-night',
     label: 'McCloud at Night',
+    description: 'A photographic essay on the town of McCloud, CA.',
     pageContent: [
       {type: 'photo', name: 'mccloud-church-down-the-street', photoProps: {showDetails: false}},
       {
@@ -1074,7 +1087,8 @@ const galleries = [
   },
   {
     name: 'panoramas',
-    label: 'Panorama',
+    label: 'Panoramas',
+    description: 'A set of panoramas from the Baltimore area.',
     pageContent: [
       {type: 'photo', name: 'baltimore-skyline-2016-pano'},
       {
@@ -1093,7 +1107,21 @@ const galleries = [
   },
 ];
 
+galleries.forEach(gg => {
+  gg.title = gg.label + ' | ' + config.title.main;
+});
+
 /////////////////////////////////////////// Exports
+
+console.log('galleries');
+const _galleries = galleries.map(item => ({
+  name: item.name,
+  title: item.label,
+  photoName: item.pageContent.find(elm => elm.type === 'photo').name,
+  description: item.description
+}));
+console.dir(_galleries);
+console.log(JSON.stringify(_galleries).replace(/'/g, '\\\''));
 
 export {galleries};
 
@@ -1104,6 +1132,16 @@ export function getPhotoAlbumByName(name) {
     return album.name === name;
   });
 }
+
+console.log('albums');
+let _albums = albums.map(item => ({
+  name: item.name,
+  des: Array.isArray(item.description) ? item.description.join('') : item.description || 'A really cool photo',
+  title: item.altText,
+  photo: item.photos[0]['600'],
+}));
+console.dir(_albums);
+console.log(JSON.stringify(_albums).replace(/'/g, '\\\''));
 
 export default albums;
 
