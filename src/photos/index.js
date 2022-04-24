@@ -1,6 +1,10 @@
 import {Link} from '@mui/material';
 import React from 'react';
 import config from '../app.config.js';
+import MainEnding from '../components/blurbs/MainEnding';
+import MainImageToggles from '../components/blurbs/MainImageToggles';
+import MainIntro from '../components/blurbs/MainIntro';
+import MainPanoramas from '../components/blurbs/MainPanoramas';
 
 /*
 	Photos.
@@ -37,7 +41,7 @@ let albums = [
       `Built in 1891 as a people's lookout tower, this pagoda is located in Baltimore, Maryland of all places.
       It's one of the city's most popular landmarks and a highlight of one of its nicest parks.`
     ],
-    altText: 'Patternson Park Pagoda'
+    altText: 'Patterson Park Pagoda'
   },
   {
     name: 'baltimore-skyline-light-toggle',
@@ -55,7 +59,7 @@ let albums = [
       I found it kind of fun, though maybe I'm just easily amused. 
       I figured I'd put it up here so others could play around with it too.`
     ],
-    altText: 'Baltimore Skyline Light Toggle'
+    altText: 'Baltimore Skyline Light Toggle (power the city on and off)'
   },
   {
     name: 'domino-2021-sunrise-toggle',
@@ -74,7 +78,7 @@ let albums = [
     description: [
       'Sunrise next to the Domino Sugars plant in Baltimore. '
     ],
-    altText: 'Sunrise Toggle'
+    altText: 'Domino Sugars Planet Day/Night Image Toggle'
   },
   {
     name: 'downs-park-pier',
@@ -88,9 +92,9 @@ let albums = [
     ],
     description: [
       // eslint-disable-next-line max-len
-      'One of my favorite places to go for the sunrise. No two mornings are identical. As an aside, if you look closely in the first photo you\'ll see a couple out on the pier - they were getting their engagement photos taken.'
+      'No two mornings are identical. As an aside, if you look closely in the first photo you\'ll see a couple out on the pier - they were getting their engagement photos taken.'
     ],
-    altText: 'Downs Park Sunrise'
+    altText: 'Downs Park Pier Sunrise'
   },
   {
     name: 'downs-park-pier-foggy',
@@ -104,7 +108,7 @@ let albums = [
       // eslint-disable-next-line max-len
       'Taken a week or so before Halloween.'
     ],
-    altText: 'Downs Park Sunrise'
+    altText: 'A Haunting View of Downs Park Pier'
   },
   {
     name: 'the-thunderbirds',
@@ -139,7 +143,7 @@ let albums = [
     instagram: 'https://www.instagram.com/p/B8UMPG7JSa4/',
     // eslint-disable-next-line max-len
     description: 'Normally this abandoned pier is a huge eyesore, something that spoils the landscape of the area, however, on a morning so foggy that the other side of the harbor wasn\'t visible it jumped out at me. Almost like an abandoned island floating in the middle of nowhere.',
-    altText: 'Something in the Mist'
+    altText: 'Something in the Mist - Abandoned Pier in Baltimore'
   },
   {
     name: 'mossbrae-falls',
@@ -179,7 +183,7 @@ let albums = [
       // eslint-disable-next-line max-len
       'Now, to be clear, I don\'t think I was divinely woken up to go take this photo, but it\'s one of those weird coincidences that sticks in the mind. There\'s also probably a moral in here about not giving up and being open to giving something another chance, or maybe even just listening to your gut. My first instincts were correct, a nice shot was possible, the place just needed the right lighting (and also for the area to be cleaned up, which some good people must have done).'
     ],
-    altText: 'Middle Branch Pier Sunrise'
+    altText: 'Middle Branch Pier - The difference a year makes'
   },
   {
     name: 'domino-sugars-sunrise',
@@ -191,7 +195,7 @@ let albums = [
     description: [
       'Domino Sugars... how did I never notice the "s" at the end of sugars...'
     ],
-    altText: 'Domino Sugars Sunrise'
+    altText: 'Sunrise Behind the Domino Sugars Planet in Baltimore'
   },
   {
     name: 'promenade-view-1',
@@ -202,7 +206,7 @@ let albums = [
     description: [
       'A view from along Baltimore\'s Inner Harbor promenade.'
     ],
-    altText: 'Promenade View'
+    altText: 'Sunrise Along Baltimore\'s Promenade'
   },
   {
     name: 'broening-park-1',
@@ -213,7 +217,7 @@ let albums = [
     description: [
       'A view from Broening Park in Baltimore.'
     ],
-    altText: 'Broening Park'
+    altText: 'Sunrise at Broening Park in Baltimore'
   },
   {
     name: 'fells-point-sunrise',
@@ -226,7 +230,7 @@ let albums = [
       // eslint-disable-next-line max-len
       'I was up early one morning exploring Fells Point when I saw the clouds start to change color. I followed the promenade until I came upon this spot.'
     ],
-    altText: 'Fells Point Sunrise'
+    altText: 'Sunrise at Fells Point in Baltimore'
   },
   {
     name: 'icy-domino-sugars-factory',
@@ -238,7 +242,7 @@ let albums = [
       // eslint-disable-next-line max-len
       'The thing I remember most about this shot was how incredibly cold it was. My hands were numb and my beard had ice in it. However, I really wanted to get a shot where there was snow around the building, since it would make the building look like it was spilling out sugar.'
     ],
-    altText: 'Domino Sugars'
+    altText: 'An Icy Morning at the Domino Sugars Plant'
   },
   {
     name: 'federal-hill-view-1',
@@ -249,7 +253,7 @@ let albums = [
     description: [
       'A pre-dawn view from Federal Hill.'
     ],
-    altText: 'Federal Hill'
+    altText: 'Sunrise at Federal Hill Park in Baltimore'
   },
   {
     name: 'inner-harbor-sunrise',
@@ -260,7 +264,7 @@ let albums = [
     description: [
       'Colors and shapes from Baltimore\'s Inner Harbor.'
     ],
-    altText: 'Baltimore Inner Harbor'
+    altText: 'Sunrise at Baltimore\'s Inner Harbor'
   },
   {
     name: 'fells-point-puddle',
@@ -271,7 +275,7 @@ let albums = [
     description: [
       'Fells Point Puddle'
     ],
-    altText: 'Fells Puddle'
+    altText: 'Sunrise from the Fells Puddle in Baltimore'
   },
   {
     name: 'middle-branch-boat-ramp',
@@ -282,7 +286,7 @@ let albums = [
     description: [
       'Middle Branch Park Boat Ramp'
     ],
-    altText: 'Boat Ramp'
+    altText: 'Baltimore Boat Ramp Sunrise'
   },
   {
     name: 'baltimore-skyline-2016',
@@ -293,7 +297,7 @@ let albums = [
     description: [
       'Baltimore City Skyline (2016)'
     ],
-    altText: 'Baltimore City Skyline'
+    altText: 'Baltimore City Skyline Sunset'
   },
   {
     name: 'jordan-lake',
@@ -307,7 +311,7 @@ let albums = [
       // eslint-disable-next-line max-len
       'I found this spot entirely by chance. I parked at some random spot along the road and just kind of walked until I came across a view that looked nice. The lake itself looked like a wonderful little area. It\'s a shame I didn\'t have more time to explore the area.'
     ],
-    altText: 'Jordan Lake'
+    altText: 'Jordan Lake Sunrise'
   },
   {
     name: 'fort-armistead-sunrise-2',
@@ -321,7 +325,7 @@ let albums = [
     description: [
       'Fort Armistead Sunrise.'
     ],
-    altText: 'Fort Armistead Sunrise'
+    altText: 'Fort Armistead Sunrise - The Sun Aligns!'
   },
   {
     name: 'cherry-blossoms-dc',
@@ -332,7 +336,7 @@ let albums = [
     description: [
       'Sunrise at the Washington DC Cherry Blossoms.'
     ],
-    altText: 'Cherry Blossoms'
+    altText: 'Cherry Blossoms Sunrise'
   },
   {
     name: 'mt-vernon-fountain',
@@ -343,7 +347,7 @@ let albums = [
     description: [
       'Baltimore in Spring.'
     ],
-    altText: 'Mt Vernon Fountain'
+    altText: 'Mt Vernon Fountain in Baltimore'
   },
   {
     name: 'a-pathway-to-nightmares',
@@ -365,10 +369,9 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/32449000578/',
     description: [
-      '34th Street.'
+      'Every year in December the people who live on this street, 34th Street, go all out with decorating their houses.'
     ],
-    altText: `Every year in December the people who live on this street - 34th Street - go all out with decorating 
-    their houses.`
+    altText: 'Baltimore\'s 34th Street at Christmas Time'
   },
   {
     name: 'george-peabody-library',
@@ -380,7 +383,7 @@ let albums = [
       // eslint-disable-next-line max-len
       'There\'s a great short story titled "The Library of Babel", which is about a library that contains all possible 410-page books. Most of these books are just gibberish, but within the library every single human thought, story, and idea is captured. In fact, within the library there must exist a book which is a perfect index of the library\'s contents (and also many which are fake indexes). The librarians who inhabit the place are in a state of despair, and many seek to purify the library by destroying the books which are gibbish. Anyway, whenever I think of that story, I think of this place, the George Peabody Library in Baltimore.'
     ],
-    altText: 'George Peabody Library'
+    altText: 'George Peabody Library in Baltimore'
   },
   {
     name: 'foggy-carroll-park',
@@ -396,7 +399,7 @@ let albums = [
        really surreal as it faded into the haze. I pulled into the park next to me and ran to the highest spot I could
        find. From there I took this picture.`
     ],
-    altText: 'Carroll Park'
+    altText: 'A Foggy Morning in Carroll Park'
   },
   {
     name: 'kids',
@@ -407,7 +410,7 @@ let albums = [
     description: [
       'Kids.'
     ],
-    altText: 'Kids'
+    altText: 'Smiling Kids'
   },
   {
     name: 'annapolis-rock-1',
@@ -418,7 +421,7 @@ let albums = [
     description: [
       'Western Maryland.'
     ],
-    altText: 'Annapolis Rock'
+    altText: 'Annapolis Rock Overlook'
   },
   {
     name: 'the-haunted-car',
@@ -447,7 +450,7 @@ let albums = [
       `The dynamic range for this shot was insane. I had tried to do it a few times previously
        but I always ended up with the sky being blown out on one side. I finally got an evening where it worked out.`
     ],
-    altText: 'Baltimore Skyline',
+    altText: 'Baltimore Skyline Panorama',
     transitionOptions: {
       slowTransition: true
     }
@@ -462,7 +465,7 @@ let albums = [
       `This majestic view was once home to an auto junkyard. Thankfully someone had some sense and it's now the view
       from a public park.`
     ],
-    altText: 'Baltimore Sunrise',
+    altText: 'Baltimore Sunrise Panorama',
     transitionOptions: {
       slowTransition: true
     }
@@ -476,7 +479,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: '',
+    altText: 'McCloud Church',
   },
   {
     name: 'mccloud-church-witching-hour',
@@ -487,7 +490,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: '',
+    altText: 'The Witching Hour in McCloud',
   },
   {
     name: 'mccloud-illuminated',
@@ -498,7 +501,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: 'House',
+    altText: 'McCloud House',
   },
   {
     name: 'mccloud-pocket-of-light',
@@ -520,7 +523,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: '',
+    altText: 'Light at the End of the Road',
   },
   {
     name: 'mccloud-lonely-road',
@@ -531,7 +534,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: '',
+    altText: 'A Lonely Road',
   },
   {
     name: 'mccloud-playground',
@@ -542,7 +545,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: '',
+    altText: 'McCloud Playground',
   },
   {
     name: 'mccloud-the-book',
@@ -553,7 +556,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: '',
+    altText: 'McCloud Book Statue',
   },
   {
     name: 'mccloud-the-house',
@@ -562,9 +565,9 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51576827772/',
     description: [
-      '#8'
+      ''
     ],
-    altText: 'House',
+    altText: 'An Uprooted House',
   },
   {
     name: 'mccloud-gas-station',
@@ -573,9 +576,9 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51576827092/',
     description: [
-      '#8'
+      ''
     ],
-    altText: 'Gas station',
+    altText: 'McCloud Gas Station',
   },
   {
     name: 'mccloud-at-night',
@@ -586,7 +589,7 @@ let albums = [
     description: [
       ''
     ],
-    altText: 'House',
+    altText: 'McCloud House',
   },
   {
     name: 'mccloud-high-school',
@@ -605,8 +608,8 @@ let albums = [
     tags: ['2018'],
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/28870755928/',
-    description: '',
-    altText: 'Panorama',
+    description: 'A panorama from Middle Branch Park in Baltimore.',
+    altText: 'Baltimore Sunrise Panorama from Trailhead #9',
   },
   {
     name: 'heart-lake-smoky',
@@ -614,7 +617,7 @@ let albums = [
     tags: ['2021'],
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51887885864/',
-    description: '',
+    description: 'A creepy morning at Heart Lake.',
     altText: 'Mt Shasta from Heart Lake',
   },
   {
@@ -631,7 +634,7 @@ let albums = [
       The area turned out to be pretty sketchy and it's one of the few times I've felt unsafe taking a photo. 
       Although it's a cool spot, I'm not sure I see myself returning.`
     ],
-    altText: 'Old American Brewery',
+    altText: 'Old American Brewery in Baltimore',
   },
   {
     name: 'halloween-house-1',
@@ -645,7 +648,7 @@ let albums = [
       If I collect up enough I may make a gallery dedicated to them.
       These kind of displays need more love.`,
     ],
-    altText: 'Old American Brewery',
+    altText: 'Halloween House in Glenn Bernie',
   },
   {
     name: 'baltimore-skyline-2022-pano',
@@ -654,9 +657,9 @@ let albums = [
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51844197590/',
     description: [
-      '',
+      'A panorama from the Inner Harbor in Baltimore.',
     ],
-    altText: 'Baltimore Panorama',
+    altText: 'Baltimore Skyline Panorama',
   },
   {
     name: 'fells-point-2020-pano',
@@ -665,9 +668,9 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52019390315/',
     description: [
-      '',
+      'A panorama from Fells Point in Baltimore.',
     ],
-    altText: 'Baltimore Panorama',
+    altText: 'Baltimore Fells Point Sunrise Panorama',
   },
 ];
 
@@ -715,90 +718,50 @@ const galleries = [
   {
     name: 'main-standard',
     label: 'Main',
-    description: '',
+    description: 'The photographic portfolio of Patrick Gillespie.',
     pageContent: [
       {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
+      {type: 'react', name: 'main-standard-intro-blurb', children: (<MainIntro />)},
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
-      {type: 'photo', name: 'domino-2021-sunrise-toggle'},
+      {type: 'react', name: 'main-standard-toggle-blurb', children: (<MainImageToggles />)},
+      {type: 'photo', name: 'middle-branch-park-2019-pano'},
+      {type: 'react', name: 'main-standard-panoramas-blurb', children: (<MainPanoramas />)},
       {type: 'photo', name: 'downs-park-pier'},
       {type: 'photo', name: 'the-thunderbirds'},
       {type: 'photo', name: 'fort-armistead-sunrise-1'},
       {type: 'photo', name: 'something-in-the-mist'},
       {type: 'photo', name: 'mossbrae-falls'},
-      {type: 'photo', name: 'middle-branch-pier'},
       {type: 'photo', name: 'fells-point-sunrise'},
       {type: 'photo', name: 'icy-domino-sugars-factory'},
       {type: 'photo', name: 'inner-harbor-sunrise'},
+      {type: 'react', name: 'main-spring-footer-text', children: (<MainEnding />)},
     ]
   },
   {
     name: 'main-spring',
     label: 'Main',
-    description: '',
+    description: 'The photographic portfolio of Patrick Gillespie.',
     pageContent: [
       {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
-      {
-        type: 'text',
-        name: 'main-spring-text-1',
-        header: 'Welcome!',
-        text:
-          [`Hello, and welcome to my photography website. I'm just an amateur and I just do this for fun, but I wanted 
-            to set up a site to show off my best work. This main page is a set of varied images. Up at the top 
-            there are a set of galleries to choose from (still a work in progress). `]
-      },
+      {type: 'react', name: 'main-spring-intro-blurb', children: (<MainIntro />)},
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
-      {
-        type: 'text',
-        name: 'main-spring-text-2',
-        header: 'Image Toggles',
-        text:
-          [`Some images have toggle buttons that allow you to toggle between 2 images. Flip the toggle to see a 
-          before/after image.`]
-      },
+      {type: 'react', name: 'main-spring-toggle-blurb', children: (<MainImageToggles />)},
       {type: 'photo', name: 'middle-branch-park-2019-pano'},
-      {
-        type: 'text',
-        name: 'main-spring-text-3',
-        header: 'Drag panoramas with your finger/mouse 👈 way',
-        text:
-          [`You can drag panoramas with your finger and/or mouse. You can try it on the image above. 
-          This also works for image sets too.`]
-      },
+      {type: 'react', name: 'main-spring-panoramas-blurb', children: (<MainPanoramas />)},
       {type: 'photo', name: 'mt-vernon-fountain'},
       {type: 'photo', name: 'downs-park-pier'},
       {type: 'photo', name: 'fort-armistead-sunrise-1'},
       {type: 'photo', name: 'mossbrae-falls'},
-
       {type: 'photo', name: 'fells-point-sunrise'},
       {type: 'photo', name: 'cherry-blossoms-dc'},
       {type: 'photo', name: 'inner-harbor-sunrise'},
-      {
-        type: 'react',
-        name: 'main-spring-footer-text',
-        children: (
-          <>
-            <h3>Thank you for stopping by!</h3>
-            <p>
-              If you have a sec, check out the new gallery I put up called
-              {' '}
-              <Link
-                href={'/gallery/mccloud-at-night/'}
-              >McCloud at Night</Link>
-              {'. '}
-              It's a set of images I took while exploring the small town of McCloud, California.
-              The images have a "liminal space" type feel to them, and are a bit darker than the images
-              in the main gallery.
-            </p>
-
-          </>
-        )
-      },
+      {type: 'react', name: 'main-spring-footer-text', children: (<MainEnding />)},
     ]
   },
   {
     name: 'main-summer',
     label: 'Main',
-    description: '',
+    description: 'The photographic portfolio of Patrick Gillespie.',
     pageContent: [
       {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
@@ -815,7 +778,7 @@ const galleries = [
   {
     name: 'main-halloween',
     label: 'Main',
-    description: '',
+    description: 'The photographic portfolio of Patrick Gillespie.',
     pageContent: [
       {type: 'photo', name: 'a-pathway-to-nightmares'},
       {type: 'photo', name: 'something-in-the-mist'},
@@ -826,7 +789,7 @@ const galleries = [
   {
     name: 'main-christmas',
     label: 'Main',
-    description: '',
+    description: 'The photographic portfolio of Patrick Gillespie.',
     pageContent: [
       {type: 'photo', name: '34th-street-1'},
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
@@ -843,7 +806,7 @@ const galleries = [
   {
     name: 'misc',
     label: 'Misc',
-    description: '',
+    description: 'The photographic portfolio of Patrick Gillespie.',
     pageContent: [
       {type: 'photo', name: 'mt-vernon-fountain'},
       {type: 'photo', name: 'a-pathway-to-nightmares'},
@@ -859,7 +822,7 @@ const galleries = [
   {
     name: 'sunrises-and-sunsets',
     label: 'Sunrises/Sunsets',
-    description: '',
+    description: 'The photographic portfolio of Patrick Gillespie.',
     pageContent: [
       {type: 'photo', name: 'fort-armistead-sunrise-1'},
       {type: 'photo', name: 'fells-point-sunrise'},

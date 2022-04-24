@@ -3,12 +3,24 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import {initReactI18next} from 'react-i18next';
 
 import translationEn from './translation.en.json';
+import translationIt from './translation.it.json';
+import translationRu from './translation.ru.json';
+import translationEs from './translation.es.json';
 
-const languages = ['en']; // (*)
+const languages = ['en', 'it', 'ru', 'es']; // (*)
 
 const resource = {
   en: {
     translation: translationEn,
+  },
+  es: {
+    translation: translationEs,
+  },
+  it: {
+    translation: translationIt
+  },
+  ru: {
+    translation: translationRu,
   },
 };
 
@@ -23,7 +35,7 @@ i18n
     whitelist: languages,
     //lng: "ko",
     ns: ['translation'],
-    defaultNS: "translation",
+    defaultNS: 'translation',
     debug: true,
 
     keySeparator: false, // we do not use keys in form messages.welcome

@@ -1,0 +1,36 @@
+{
+  "toolbar.title": "Fotografía Patrick Gillespie",
+  "toolbar.about": "Acerca de",
+  "toolbar.galleries": "Galerías",
+  "toolbar.galleryMain": "Principal",
+  "toolbar.gallerySunrisesAndSunsets": "Amaneceres y atardeceres",
+  "toolbar.galleryInteractive": "Interactivo",
+  "toolbar.galleryMcCloudAtNight": "McCloud de noche",
+  "toolbar.gallerySpooky": "Escalofriante",
+  "toolbar.galleryPanoramas": "Panorámicas",
+  "toolbar.tooltipFlickr": "Flickr",
+  "toolbar.tooltipInstagram": "Instagram",
+  "toolbar.tooltipSettings": "Ajustes",
+
+  "blurb.introHeader": "¡Bienvenido!",
+  "blurb.introText": "Hola, y bienvenidos a mi sitio web de fotografía. Solo soy un aficionado y solo hago esto por diversión, pero quería crear un sitio para mostrar mi mejor trabajo. Esta página principal es un conjunto de imágenes variadas. En la parte superior hay un conjunto de galerías para elegir (todavía un trabajo en progreso).",
+
+  "blurb.imageTogglesHeader": "Cambios de imagen",
+  "blurb.imageTogglesText": "Algunas imágenes tienen botones de alternancia que le permiten alternar entre 2 imágenes. Mueva la palanca para ver una imagen de antes/después.",
+
+  "blurb.panoramasHeader": "Arrastra panoramas con tu dedo/ratón \uD83D\uDC48 camino",
+  "blurb.panoramasText": "Puede arrastrar panoramas con el dedo y/o el mouse. Puedes probarlo en la imagen de arriba. Esto también funciona para conjuntos de imágenes.",
+
+  "photo.next": "Próximo",
+  "photo.previous": "Previo",
+
+  "photo.textDisplay": "Alternar visualización de texto",
+  "photo.share": "Compartir enlace a la imagen",
+  "photo.moreActions": "Mas acciones",
+
+  "dialog.copy": "Dupdo",
+  "dialog.close": "Cerrar",
+  "dialog.reset": "Reiniciar",
+  "dialog.settingsHeader": "Ajustes",
+  "dialog.shareHeader": "Enlace a la foto"
+}

@@ -12,6 +12,7 @@ import Switch from '@mui/material/Switch';
 import PropTypes from 'prop-types';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import ReactGA from 'react-ga';
+import {useTranslation} from 'react-i18next';
 import MediaQuery from 'react-responsive';
 import PhotoDescription from './PhotoDescription';
 import ResponsiveContainer from './styled/ResponsiveContainer';
@@ -24,7 +25,8 @@ function Photo(props) {
   } = props;
 
   const theme = useTheme();
-
+  const {t} = useTranslation();
+  
   const [activeStep, setActiveStep] = useState(album.transitionOptions?.imageStart || 0);
   const [imageNearView, setImageNearView] = useState(false);
   const [isOffScreen, setIsOffScreen] = useState(false);
@@ -308,14 +310,14 @@ function Photo(props) {
           style={{flexGrow: 1,}}
           nextButton={
             <Button size='small' onClick={handleNext} disabled={activeStep === imgSetSize - 1}>
-              Next
+              {t('photo.next')}
               {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </Button>
           }
           backButton={
             <Button size='small' onClick={handleBack} disabled={activeStep === 0}>
               {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-              Previous
+              {t('photo.previous')}
             </Button>
           }
         />

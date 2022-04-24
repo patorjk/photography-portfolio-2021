@@ -1,0 +1,36 @@
+{
+  "toolbar.title": "Fotografia di Patrick Gillespie",
+  "toolbar.about": "Di",
+  "toolbar.galleries": "Gallerie",
+  "toolbar.galleryMain": "Principale",
+  "toolbar.gallerySunrisesAndSunsets": "Albe e tramonti",
+  "toolbar.galleryInteractive": "Interattivo",
+  "toolbar.galleryMcCloudAtNight": "McCloud di notte",
+  "toolbar.gallerySpooky": "Sinistro",
+  "toolbar.galleryPanoramas": "Panorami",
+  "toolbar.tooltipFlickr": "Flickr",
+  "toolbar.tooltipInstagram": "Instagram",
+  "toolbar.tooltipSettings": "Impostazioni",
+
+  "blurb.introHeader": "Benvenuto!",
+  "blurb.introText": "Ciao e benvenuto nel mio sito di fotografia. Sono solo un dilettante e lo faccio solo per divertimento, ma volevo creare un sito per mostrare il mio lavoro migliore. Questa pagina principale è un insieme di immagini varie. In alto ci sono una serie di gallerie tra cui scegliere (ancora un work in progress).",
+
+  "blurb.imageTogglesHeader": "Alterna immagine",
+  "blurb.imageTogglesText": "Alcune immagini hanno pulsanti di commutazione che ti consentono di alternare tra 2 immagini. Ruota l'interruttore per vedere un'immagine prima/dopo.",
+
+  "blurb.panoramasHeader": "Trascina i panorami con il dito/il mouse \uD83D\uDC48 strada",
+  "blurb.panoramasText": "Puoi trascinare i panorami con il dito e/o il mouse. Puoi provarlo nell'immagine sopra. Questo funziona anche per i set di immagini.",
+
+  "photo.next": "Prossimo",
+  "photo.previous": "Precedente",
+
+  "photo.textDisplay": "Attiva/Disattiva la visualizzazione del testo",
+  "photo.share": "Condividi collegamento all'immagine",
+  "photo.moreActions": "Più azioni",
+
+  "dialog.copy": "copia",
+  "dialog.close": "Chiudere",
+  "dialog.reset": "Ripristina",
+  "dialog.settingsHeader": "Impostazioni",
+  "dialog.shareHeader": "Collegamento alla foto"
+}

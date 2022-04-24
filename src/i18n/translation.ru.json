@@ -1,0 +1,36 @@
+{
+  "toolbar.title": "Патрик Гиллеспи Фотография",
+  "toolbar.about": "О",
+  "toolbar.galleries": "Галереи",
+  "toolbar.galleryMain": "Главный",
+  "toolbar.gallerySunrisesAndSunsets": "Рассветы и закаты",
+  "toolbar.galleryInteractive": "Интерактивный",
+  "toolbar.galleryMcCloudAtNight": "МакКлауд ночью",
+  "toolbar.gallerySpooky": "Жуткий",
+  "toolbar.galleryPanoramas": "Панорамы",
+  "toolbar.tooltipFlickr": "Flickr",
+  "toolbar.tooltipInstagram": "Instagram",
+  "toolbar.tooltipSettings": "Настройки",
+
+  "blurb.introHeader": "Добро пожаловать!",
+  "blurb.introText": "Здравствуйте, и добро пожаловать на мой сайт фотографии. Я просто любитель и делаю это просто для удовольствия, но я хотел создать сайт, чтобы показать свои лучшие работы. Эта главная страница представляет собой набор разнообразных изображений. Вверху есть набор галерей на выбор (все еще в процессе).",
+
+  "blurb.imageTogglesHeader": "Переключение изображений",
+  "blurb.imageTogglesText": "Некоторые изображения имеют кнопки переключения, которые позволяют переключаться между двумя изображениями. Переверните переключатель, чтобы увидеть изображение до/после.",
+
+  "blurb.panoramasHeader": "Перетаскивайте панорамы пальцем/мышью \uD83D\uDC48 способ",
+  "blurb.panoramasText": "Вы можете перетаскивать панорамы пальцем и/или мышью. Вы можете попробовать это на изображении выше. Это также работает и для наборов изображений.",
+
+  "photo.next": "Следующий",
+  "photo.previous": "Предыдущий",
+
+  "photo.textDisplay": "Переключить отображение текста",
+  "photo.share": "Поделиться ссылкой на изображение",
+  "photo.moreActions": "Больше действий",
+
+  "dialog.copy": "Копировать",
+  "dialog.close": "Закрывать",
+  "dialog.reset": "Перезагрузить",
+  "dialog.settingsHeader": "Настройки",
+  "dialog.shareHeader": "Ссылка на фото"
+}

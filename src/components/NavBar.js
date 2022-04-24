@@ -1,6 +1,6 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SettingsIcon from '@mui/icons-material/Settings';
-import {Menu} from '@mui/material';
+import {Menu, Tooltip} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -10,11 +10,11 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import ReactGA from 'react-ga';
+import {useTranslation} from 'react-i18next';
 import MediaQuery from 'react-responsive';
 import {Link} from 'react-router-dom';
-import SettingsDialog from './SettingsDialog';
+import SettingsDialog from './dialogs/SettingsDialog';
 import config from '../app.config.js';
-import { useTranslation } from 'react-i18next';
 
 function NavBar(props) {
   const {
@@ -24,7 +24,7 @@ function NavBar(props) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const { t : translate } = useTranslation();
+  const {t} = useTranslation();
 
   const openGalleryMenu = (event) => setAnchorEl(event.currentTarget);
   const hideGalleryMenu = () => setAnchorEl(null);
@@ -53,7 +53,7 @@ function NavBar(props) {
       <Toolbar>
         <MediaQuery minWidth={700}>
           <Typography variant='h6' color='inherit' to='/' component={Link} style={titleStyle}>
-            {config.title.main}
+            {t('toolbar.title')}
           </Typography>
           <div style={bStyle} />
         </MediaQuery>
@@ -65,7 +65,7 @@ function NavBar(props) {
           aria-expanded={open ? 'true' : undefined}
           onClick={openGalleryMenu}
         >
-          {translate("toolbar.galleries")} <ArrowDropDownIcon/>
+          {t('toolbar.galleries')} <ArrowDropDownIcon/>
         </Button>
         <Menu
           id='gallery-menu'
@@ -78,44 +78,52 @@ function NavBar(props) {
         >
           <MediaQuery maxWidth={699}>
             <MenuItem onClick={hideGalleryMenu}
-              to={'/'} component={Link}>Main</MenuItem>
+              to={'/'} component={Link}>{t('toolbar.galleryMain')}</MenuItem>
           </MediaQuery>
           <MenuItem onClick={hideGalleryMenu} 
-            to={'/gallery/sunrises-and-sunsets'} component={Link}>Sunrises and Sunsets</MenuItem>
+            to={'/gallery/sunrises-and-sunsets'} component={Link}>{t('toolbar.gallerySunrisesAndSunsets')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/interactive'} component={Link}>Interactive</MenuItem>
+            to={'/gallery/interactive'} component={Link}>{t('toolbar.galleryInteractive')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/mccloud-at-night'} component={Link}>McCloud at Night</MenuItem>
+            to={'/gallery/mccloud-at-night'} component={Link}>{t('toolbar.galleryMcCloudAtNight')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/spooky'} component={Link}>Spooky</MenuItem>
+            to={'/gallery/spooky'} component={Link}>{t('toolbar.gallerySpooky')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/panoramas'} component={Link}>Panoramas</MenuItem>
+            to={'/gallery/panoramas'} component={Link}>{t('toolbar.galleryPanoramas')}</MenuItem>
         </Menu>
 
-        <Button to='/about' component={Link} >{translate('toolbar.about')}</Button>
+        <Button to='/about' component={Link} >{t('toolbar.about')}</Button>
 
         <div style={middleStyle} />
 
         <MediaQuery minWidth={700}>
           <div style={rightItemStyle} />
         </MediaQuery>
+
         <ReactGA.OutboundLink
           to={config.urls.flickr}
-          target='_blank' 
+          target='_blank'
           style={rightItemStyle}
           eventLabel='Flickr'
         >
-          <img src={require('../images/flickr.png')} width={32} alt='Flickr' />
+          <Tooltip title={t('toolbar.tooltipFlickr')}>
+            <img src={require('../images/flickr.png')} width={32} alt='Flickr' />
+          </Tooltip>
         </ReactGA.OutboundLink>
+        
         <ReactGA.OutboundLink 
           to={config.urls.instagram} 
           target='_blank'
           eventLabel='Instagram'
         >
-          <img src={require('../images/instagram.png')} width={32} alt='Instagram' />
+          <Tooltip title={t('toolbar.tooltipInstagram')}>
+            <img src={require('../images/instagram.png')} width={32} alt='Instagram' />
+          </Tooltip>
         </ReactGA.OutboundLink>
         <IconButton sx={{marginLeft:'10px'}} onClick={() => setSettingsOpen(true)}>
-          <SettingsIcon />
+          <Tooltip title={t('toolbar.tooltipSettings')}>
+            <SettingsIcon />
+          </Tooltip>
         </IconButton>
         <SettingsDialog 
           open={settingsOpen}

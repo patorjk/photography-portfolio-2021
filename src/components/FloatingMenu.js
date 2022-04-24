@@ -10,6 +10,7 @@ import {styled} from '@mui/system';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
 import ReactGA from 'react-ga';
+import {useTranslation} from 'react-i18next';
 import ShareButton from './ShareButton';
 
 const OptionBar = styled('div')(({theme}) => ({
@@ -34,7 +35,7 @@ const OptionSideShadow = styled('div')(({theme}) => ({
 }));
 
 function FloatingMenu(props) {
-
+  const {t} = useTranslation();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const {
@@ -90,8 +91,8 @@ function FloatingMenu(props) {
 
       <OptionBar className={'options-bar'}>
         {hasText(description) && (
-          <Tooltip title={'Toggle Text Display'} >
-            <IconButton onClick={() => toggleTextOpen()} sx={{padding: '8px'}}>
+          <Tooltip title={t('photo.textDisplay')} >
+            <IconButton onClick={() => toggleTextOpen()} size='large'>
               {isTextOpen ?
                 <ExpandLess />
                 :
@@ -104,8 +105,8 @@ function FloatingMenu(props) {
           <ShareButton album={album} />
         }
         {(flickrURL) &&
-          <Tooltip title='More Actions'>
-            <IconButton onClick={moreOptions} sx={{padding: '8px'}}><MoreVert /></IconButton>
+          <Tooltip title={t('photo.moreActions')}>
+            <IconButton onClick={moreOptions} size='large'><MoreVert /></IconButton>
           </Tooltip>
         }
         

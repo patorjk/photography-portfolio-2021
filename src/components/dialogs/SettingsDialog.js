@@ -12,8 +12,9 @@ import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactGA from 'react-ga';
+import { useTranslation } from 'react-i18next';
 import Cookies from 'universal-cookie';
-import {DefaultTheme, themes} from '../themes';
+import {DefaultTheme, themes} from '../../themes';
 
 function SettingsDialog(props) {
   const {
@@ -22,6 +23,8 @@ function SettingsDialog(props) {
     theme,
     setTheme,
   } = props;
+
+  const {t} = useTranslation();
 
   const resetSettings = () => {
     const cookies = new Cookies();
@@ -61,7 +64,7 @@ function SettingsDialog(props) {
       aria-describedby='settings-dialog-description'
     >
       <DialogTitle id='settings-dialog-title'>
-        Settings
+        {t('dialog.settingsHeader')}
       </DialogTitle>
       <DialogContent id='settings-dialog-description'>
         <FormControl fullWidth sx={{
@@ -85,10 +88,10 @@ function SettingsDialog(props) {
       </DialogContent>
       <DialogActions>
         <Button onClick={resetSettings}>
-          Reset
+          {t('dialog.reset')}
         </Button>
         <Button onClick={handleClose}>
-          Close
+          {t('dialog.close')}
         </Button>
       </DialogActions>
     </Dialog>

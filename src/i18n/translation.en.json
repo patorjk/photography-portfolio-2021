@@ -1,4 +1,36 @@
 {
+  "toolbar.title": "Patrick Gillespie Photography",
   "toolbar.about": "About",
-  "toolbar.galleries": "Galleries"
+  "toolbar.galleries": "Galleries",
+  "toolbar.galleryMain": "Main",
+  "toolbar.gallerySunrisesAndSunsets": "Sunrises and Sunsets",
+  "toolbar.galleryInteractive": "Interactive",
+  "toolbar.galleryMcCloudAtNight": "McCloud at Night",
+  "toolbar.gallerySpooky": "Spooky",
+  "toolbar.galleryPanoramas": "Panoramas",
+  "toolbar.tooltipFlickr": "Pat's Flickr",
+  "toolbar.tooltipInstagram": "Pat's Instagram",
+  "toolbar.tooltipSettings": "Settings",
+
+  "blurb.introHeader": "Welcome!",
+  "blurb.introText": "Hello, and welcome to my photography website. I'm just an amateur and I just do this for fun, but I wanted to set up a site to show off my best work. This main page is a set of varied images. Up at the top there are a set of galleries to choose from (still a work in progress).",
+
+  "blurb.imageTogglesHeader": "Image Toggles",
+  "blurb.imageTogglesText": "Some images have toggle buttons that allow you to toggle between 2 images. Flip the toggle to see a before/after image.",
+
+  "blurb.panoramasHeader": "Drag panoramas with your finger/mouse \uD83D\uDC48 way",
+  "blurb.panoramasText": "You can drag panoramas with your finger and/or mouse. You can try it on the image above. This also works for image sets too.",
+
+  "photo.next": "Next",
+  "photo.previous": "Previous",
+
+  "photo.textDisplay": "Toggle Text Display",
+  "photo.share": "Share Link to Image",
+  "photo.moreActions": "More Actions",
+
+  "dialog.copy": "Copy",
+  "dialog.close": "Close",
+  "dialog.reset": "Reset",
+  "dialog.settingsHeader": "Settings",
+  "dialog.shareHeader": "Link to Photo"
 }

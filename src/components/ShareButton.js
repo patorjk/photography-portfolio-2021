@@ -7,7 +7,8 @@ import {
 import Tooltip from '@mui/material/Tooltip';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ShareDialog from './ShareDialog';
+import { useTranslation } from 'react-i18next';
+import ShareDialog from './dialogs/ShareDialog';
 
 function ShareButton(props) {
   const {
@@ -15,6 +16,7 @@ function ShareButton(props) {
   } = props;
 
   const [open, setOpen] = React.useState(false);
+  const {t} = useTranslation();
 
   const openDialog = () => {
     setOpen(true);
@@ -27,7 +29,7 @@ function ShareButton(props) {
   return (
     <>
       <ShareDialog open={open} handleClose={handleClose} album={album} />
-      <Tooltip title='Share Link to Image'>
+      <Tooltip title={t('photo.share')}>
         <IconButton onClick={openDialog} size='large'>
           <Share />
         </IconButton>
