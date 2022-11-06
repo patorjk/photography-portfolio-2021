@@ -5,6 +5,8 @@ import {styled} from '@mui/system';
 import PropTypes from 'prop-types';
 import React, {useEffect, useState} from 'react';
 import ReactGA from 'react-ga';
+import {Helmet, HelmetProvider} from 'react-helmet-async';
+import {useTranslation} from 'react-i18next';
 import {
   Route,
   BrowserRouter as Router,
@@ -20,6 +22,7 @@ import NavBar from './NavBar.js';
 import SinglePhoto from './SinglePhoto';
 import config from '../app.config.js';
 import {galleries} from '../photos';
+// eslint-disable-next-line no-duplicate-imports
 import photos from '../photos';
 
 import {
@@ -39,32 +42,40 @@ function toTitleCase(text) {
     .join(' ');
 }
 
-function updatePageTitle(location) {
+function getPageInfo(location) {
   if (!location) {
     location = window.location;
   }
+  let title = 'Patrick Gillespie Photography';
+  let description = 'Some cool photos of stuff.';
 
   let name, elm;
   switch(location.pathname) {
   case '/':
-    document.title = config.title.main;
+    title = config.title.main;
     break;
   case '/about':
-    document.title = config.title.about;
+    title = config.title.about;
+    description = '7 years of going to the cherry blossoms.'
     break;
   case location.pathname?.match(/^\/photo/)?.input:
     name = /[^/]*$/.exec(location.pathname)[0];
     elm = photos.find(photo => photo.name === name) || {};
-    document.title = elm.title || config.title.main;
+    title = elm.title || config.title.main;
+    description = elm.description || elm.altText || elm.caption || 'A cool photo.';
     break;
   case location.pathname?.match(/^\/gallery/)?.input:
     name = /[^/]*$/.exec(location.pathname)[0];
     elm = galleries.find(gal => gal.name === name) || {};
-    document.title = elm.title || config.title.main;
+    title = elm.title || config.title.main;
+    description = elm.description;
     break;
-  default:
-    document.title = config.title.main;
   }
+
+  return {
+    title,
+    description,
+  };
 }
 
 function usePageViews() {
@@ -76,10 +87,11 @@ function usePageViews() {
       console.log(`New location: ${loc}`);
       ReactGA.set({page: location.pathname + location.hash});
       ReactGA.pageview(location.pathname + location.hash);
-      updatePageTitle(location);
     },
     [location]
   );
+
+  return getPageInfo(location);
 }
 
 function getQueryParams() {
@@ -184,7 +196,18 @@ function ScrollToTop() {
 }
 
 function InnerApp() {
-  usePageViews();
+  const {title : pageTitle, description : pageDescription} = usePageViews();
+  const {i18n} = useTranslation();
+  
+  useEffect(() => {
+    console.log('Language:'+i18n.language);
+    ReactGA.event({
+      category: 'i18n',
+      action: 'language',
+      label: i18n.language
+    });
+  }, [i18n.language]);
+
   let params = getQueryParams();
   let date = params.date || new Date().toISOString();
   let dateParams = date.match(/^\d\d\d\d-(\d\d)-(\d\d)/);
@@ -210,11 +233,15 @@ function InnerApp() {
   const sunriseGallery = galleries.find(item => item.name === 'sunrises-and-sunsets');
 
   return (
-    <React.Suspense fallback={"loading..."}>
+    <React.Suspense fallback={'loading...'}>
       <ScrollToTop />
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          <Helmet>
+            <title>{pageTitle}</title>
+            <meta name={'description'} content={pageDescription}/>
+          </Helmet>
           <NavBar theme={theme} setTheme={setTheme} />
           <div style={{paddingTop:'64px',boxSizing:'border-box',height:'100%'}}>
             <Routes>
@@ -270,7 +297,9 @@ function InnerApp() {
 function App() {
   return (
     <Router>
-      <InnerApp/>
+      <HelmetProvider>
+        <InnerApp/>
+      </HelmetProvider>
     </Router>
   );
 }

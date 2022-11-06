@@ -12,6 +12,7 @@ import React, {useState} from 'react';
 import ReactGA from 'react-ga';
 import {useTranslation} from 'react-i18next';
 import MediaQuery from 'react-responsive';
+import {useMediaQuery} from 'react-responsive';
 import {Link} from 'react-router-dom';
 import SettingsDialog from './dialogs/SettingsDialog';
 import config from '../app.config.js';
@@ -25,6 +26,11 @@ function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const {t} = useTranslation();
+
+  const isDesktopOrLaptop = useMediaQuery(
+
+    {query: '(min-width: 1224px)'}
+  );
 
   const openGalleryMenu = (event) => setAnchorEl(event.currentTarget);
   const hideGalleryMenu = () => setAnchorEl(null);
@@ -49,7 +55,7 @@ function NavBar(props) {
   };
 
   return (
-    <AppBar position='fixed' >
+    <AppBar position={isDesktopOrLaptop ? 'fixed' : 'static'}>
       <Toolbar>
         <MediaQuery minWidth={700}>
           <Typography variant='h6' color='inherit' to='/' component={Link} style={titleStyle}>
@@ -88,6 +94,8 @@ function NavBar(props) {
             to={'/gallery/mccloud-at-night'} component={Link}>{t('toolbar.galleryMcCloudAtNight')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
             to={'/gallery/spooky'} component={Link}>{t('toolbar.gallerySpooky')}</MenuItem>
+          <MenuItem onClick={hideGalleryMenu}
+            to={'/gallery/halloween-houses'} component={Link}>{t('toolbar.galleryHalloween')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
             to={'/gallery/panoramas'} component={Link}>{t('toolbar.galleryPanoramas')}</MenuItem>
         </Menu>

@@ -1,5 +1,6 @@
 import {Link} from '@mui/material';
 import React from 'react';
+import {galleries} from './galleries';
 import config from '../app.config.js';
 import MainEnding from '../components/blurbs/MainEnding';
 import MainImageToggles from '../components/blurbs/MainImageToggles';
@@ -637,19 +638,91 @@ let albums = [
     altText: 'Old American Brewery in Baltimore',
   },
   {
-    name: 'halloween-house-1',
-    photoFolders: ['2021_halloween_house_1'],
+    name: 'halloween-houses',
+    photoFolders: ['2021_halloween_house_1', '2021_halloween_house_2'],
     tags: ['2021'],
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51624805640/',
     description: [
       `I love it when someone goes all out for Halloween. In 2021 I drove around with my daughter looking for
       "Halloween Houses". We only found a few, but the ones we did find were amazing. 
-      If I collect up enough I may make a gallery dedicated to them.
-      These kind of displays need more love.`,
+      It might be cool to make a larger gallery of these, but the really good houses are few and far between.
+      They definitely need more love though. I always loved trick-or-treating at these kind of places!`,
     ],
     altText: 'Halloween House in Glenn Bernie',
   },
+  {
+    name: 'halloween-death-plague-dance-party',
+    photoFolders: ['2021_halloween_house_1'],
+    tags: ['2021'],
+    aspect: '16x10',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51624805640/',
+    description: [``],
+    caption: 'Greenway Rd, Glenn Bernie, MD (2021)',
+    altText: 'Halloween House in Glenn Bernie',
+  },
+  {
+    name: 'halloween-pumpkin-scarecrow',
+    photoFolders: ['2021_halloween_house_2'],
+    tags: ['2021'],
+    aspect: '16x10',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/51634527438',
+    description: [``],
+    caption: 'Baylor Rd, Glenn Bernie, MD',
+    altText: 'Halloween House in Glenn Bernie (2021)',
+  },
+  {
+    name: 'halloween-dena-cemetery',
+    photoFolders: ['2022_dena_cemetery'],
+    tags: ['2022'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52465471694/',
+    description: [``],
+    caption: 'Maple Avenue, Pasadena, MD',
+    altText: 'Halloween House in Pasadena, MD (2022)',
+  },
+  {
+    name: 'halloween-pirate-skeletons',
+    photoFolders: ['2022_pirate_skeletons'],
+    tags: ['2022'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52465471694/',
+    description: [``],
+    caption: 'Park Rd, Riveria Beach, MD',
+    altText: 'Halloween House in Riveria Beach, MD (2022)',
+  },
+  {
+    name: 'halloween-green-graveyard',
+    photoFolders: ['2022_halloween_graveyard'],
+    tags: ['2022'],
+    aspect: '16x10',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52452299661/',
+    description: [``],
+    caption: 'Red Birch Rd, Millersville, MD',
+    altText: 'Halloween House in Millersville, MD (2022)',
+  },
+  {
+    name: 'halloween-cutouts',
+    photoFolders: ['2022_halloween_baylor'],
+    tags: ['2022'],
+    aspect: '16x10',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52461746940',
+    description: [``],
+    caption: 'Baylor Rd, Glenn Bernie, MD',
+    altText: 'Halloween House in Glenn Bernie (2021)',
+  },
+  {
+    name: 'halloween-biohazard',
+    photoFolders: ['2022_halloween_biohazard'],
+    tags: ['2022'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52478846382/',
+    description: [``],
+    caption: 'Maple Avenue, Pasadena, MD',
+    altText: 'Halloween House in Pasadena, MD (2022)',
+  },
+
+
   {
     name: 'baltimore-skyline-2022-pano',
     photoFolders: ['2022_bmore_pano_1', '2022_bmore_pano_2'],
@@ -672,6 +745,7 @@ let albums = [
     ],
     altText: 'Baltimore Fells Point Sunrise Panorama',
   },
+
 ];
 
 // add in the sizes field
@@ -691,14 +765,25 @@ function getImagesSizes(folder) {
   };
 }
 
+function getImagesSizesOriginal(folder) {
+  return {
+    '600': require(baseImg + folder + '/600.jpg'),
+    '900': require(baseImg + folder + '/900.jpg'),
+    '1200': require(baseImg + folder + '/1200.jpg'),
+    '1536': require(baseImg + folder + '/1536.jpg')
+  };
+}
+
 const createPhotoAlbum = function(input) {
   let album = Object.assign({}, input);
   album.id = album.id || album.photoFolders[0];
   album.title = album.title || album.altText + ' | ' + config.title.main;
   album.photoFolders.forEach(folderName => {
     album.photos = album.photos || [];
+    album.photosNormalSize = album.photosNormalSize || [];
     try {
       album.photos.push(getImagesSizes(folderName));
+      album.photosNormalSize.push(getImagesSizesOriginal(folderName));
     } catch (err) {
       console.dir(err);
     }
@@ -710,401 +795,17 @@ console.log(`number of photos: ${albums.length}`);
 
 albums = albums.map(album => (createPhotoAlbum(album)));
 
-/*
-  Notes:
-  - All pageContent items need a unique name.
- */
-const galleries = [
-  {
-    name: 'main-standard',
-    label: 'Main',
-    description: 'The photographic portfolio of Patrick Gillespie.',
-    pageContent: [
-      {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
-      {type: 'react', name: 'main-standard-intro-blurb', children: (<MainIntro />)},
-      {type: 'photo', name: 'baltimore-skyline-light-toggle'},
-      {type: 'react', name: 'main-standard-toggle-blurb', children: (<MainImageToggles />)},
-      {type: 'photo', name: 'middle-branch-park-2019-pano'},
-      {type: 'react', name: 'main-standard-panoramas-blurb', children: (<MainPanoramas />)},
-      {type: 'photo', name: 'downs-park-pier'},
-      {type: 'photo', name: 'the-thunderbirds'},
-      {type: 'photo', name: 'fort-armistead-sunrise-1'},
-      {type: 'photo', name: 'something-in-the-mist'},
-      {type: 'photo', name: 'mossbrae-falls'},
-      {type: 'photo', name: 'fells-point-sunrise'},
-      {type: 'photo', name: 'icy-domino-sugars-factory'},
-      {type: 'photo', name: 'inner-harbor-sunrise'},
-      {type: 'react', name: 'main-spring-footer-text', children: (<MainEnding />)},
-    ]
-  },
-  {
-    name: 'main-spring',
-    label: 'Main',
-    description: 'The photographic portfolio of Patrick Gillespie.',
-    pageContent: [
-      {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
-      {type: 'react', name: 'main-spring-intro-blurb', children: (<MainIntro />)},
-      {type: 'photo', name: 'baltimore-skyline-light-toggle'},
-      {type: 'react', name: 'main-spring-toggle-blurb', children: (<MainImageToggles />)},
-      {type: 'photo', name: 'middle-branch-park-2019-pano'},
-      {type: 'react', name: 'main-spring-panoramas-blurb', children: (<MainPanoramas />)},
-      {type: 'photo', name: 'mt-vernon-fountain'},
-      {type: 'photo', name: 'downs-park-pier'},
-      {type: 'photo', name: 'fort-armistead-sunrise-1'},
-      {type: 'photo', name: 'mossbrae-falls'},
-      {type: 'photo', name: 'fells-point-sunrise'},
-      {type: 'photo', name: 'cherry-blossoms-dc'},
-      {type: 'photo', name: 'inner-harbor-sunrise'},
-      {type: 'react', name: 'main-spring-footer-text', children: (<MainEnding />)},
-    ]
-  },
-  {
-    name: 'main-summer',
-    label: 'Main',
-    description: 'The photographic portfolio of Patrick Gillespie.',
-    pageContent: [
-      {type: 'photo', name: 'patterson-park-pagoda-in-springtime'},
-      {type: 'photo', name: 'baltimore-skyline-light-toggle'},
-      {type: 'photo', name: 'the-thunderbirds'},
-      {type: 'photo', name: 'downs-park-pier'},
-      {type: 'photo', name: 'fort-armistead-sunrise-1'},
-      {type: 'photo', name: 'mossbrae-falls'},
-      {type: 'photo', name: 'middle-branch-pier'},
-      {type: 'photo', name: 'fells-point-sunrise'},
-      {type: 'photo', name: 'jordan-lake'},
-      {type: 'photo', name: 'inner-harbor-sunrise'},
-    ]
-  },
-  {
-    name: 'main-halloween',
-    label: 'Main',
-    description: 'The photographic portfolio of Patrick Gillespie.',
-    pageContent: [
-      {type: 'photo', name: 'a-pathway-to-nightmares'},
-      {type: 'photo', name: 'something-in-the-mist'},
-      {type: 'photo', name: 'foggy-carroll-park'},
-      {type: 'photo', name: 'the-haunted-car'},
-    ]
-  },
-  {
-    name: 'main-christmas',
-    label: 'Main',
-    description: 'The photographic portfolio of Patrick Gillespie.',
-    pageContent: [
-      {type: 'photo', name: '34th-street-1'},
-      {type: 'photo', name: 'baltimore-skyline-light-toggle'},
-      {type: 'photo', name: 'icy-domino-sugars-factory'},
-      {type: 'photo', name: 'downs-park-pier'},
-      {type: 'photo', name: 'fort-armistead-sunrise-1'},
-      {type: 'photo', name: 'mossbrae-falls'},
-      {type: 'photo', name: 'middle-branch-pier'},
-      {type: 'photo', name: 'fells-point-sunrise'},
-      {type: 'photo', name: 'kids'},
-      {type: 'photo', name: 'inner-harbor-sunrise'},
-    ]
-  },
-  {
-    name: 'misc',
-    label: 'Misc',
-    description: 'The photographic portfolio of Patrick Gillespie.',
-    pageContent: [
-      {type: 'photo', name: 'mt-vernon-fountain'},
-      {type: 'photo', name: 'a-pathway-to-nightmares'},
-      {type: 'photo', name: '34th-street-1'},
-      {type: 'photo', name: 'george-peabody-library'},
-      {type: 'photo', name: 'foggy-carroll-park'},
-      {type: 'photo', name: 'kids'},
-      {type: 'photo', name: 'annapolis-rock-1'},
-      {type: 'photo', name: 'the-haunted-car'},
-      {type: 'photo', name: 'baltimore-skyline-2016-pano'},
-    ]
-  },
-  {
-    name: 'sunrises-and-sunsets',
-    label: 'Sunrises/Sunsets',
-    description: 'The photographic portfolio of Patrick Gillespie.',
-    pageContent: [
-      {type: 'photo', name: 'fort-armistead-sunrise-1'},
-      {type: 'photo', name: 'fells-point-sunrise'},
-      {type: 'photo', name: 'downs-park-pier'},
-      {type: 'photo', name: 'domino-sugars-sunrise'},
-      {type: 'photo', name: 'promenade-view-1'},
-      {type: 'photo', name: 'broening-park-1'},
-      {type: 'photo', name: 'federal-hill-view-1'},
-      {type: 'photo', name: 'inner-harbor-sunrise'},
-      {type: 'photo', name: 'fells-point-puddle'},
-      {type: 'photo', name: 'middle-branch-boat-ramp'},
-      {type: 'photo', name: 'jordan-lake'},
-      {type: 'photo', name: 'fort-armistead-sunrise-2'},
-      {type: 'photo', name: 'cherry-blossoms-dc'},
-      {type: 'photo', name: 'baltimore-skyline-2016'},
-    ]
-  },
-  {
-    name: 'interactive',
-    label: 'Interactive',
-    description: 'A gallery of interactive photographic images.',
-    pageContent: [
-      {type: 'photo', name: 'baltimore-skyline-light-toggle'},
-      {
-        type: 'text',
-        name: 'interactive-text-1',
-        header: 'What\'s this section about anyway?',
-        text:
-          [`These are images you can interact with in some way. Right now the section is pretty small but I hope to
-            expand on it sometime soon.`]
-      },
-      {type: 'photo', name: 'domino-2021-sunrise-toggle'},
-      {type: 'photo', name: 'middle-branch-pier'},
-    ]
-  },
-  {
-    name: 'spooky',
-    label: 'Spooky',
-    description: 'Some spooky images.',
-    pageContent: [
-      {type: 'photo', name: 'a-pathway-to-nightmares'},
-      {
-        type: 'text',
-        name: 'spooky-text-1',
-        header: 'Spooky',
-        text:
-          [`I'm not a fan of horror, but I love the spooky feeling that a forbidding landscape can give off.
-           I don't often go out of my way to capture creepy images, but I get excited when an opportunity 
-           presents itself. These pictures never do well on my social media, sandwiched between to photos of 
-           sunsets and sunrises, but they have a special place in my heart.`,]
-      },
-      {type: 'photo', name: 'something-in-the-mist'},
-      {type: 'photo', name: 'foggy-carroll-park'},
-      {type: 'photo', name: 'the-haunted-car'},
-      {type: 'photo', name: 'downs-park-pier-foggy'},
-      {type: 'photo', name: 'heart-lake-smoky'},
-      {type: 'photo', name: 'old-american-brewery'},
-      {type: 'photo', name: 'halloween-house-1'},
-    ]
-  },
-  {
-    name: 'mccloud-at-night',
-    label: 'McCloud at Night',
-    description: 'A photographic essay on the town of McCloud, CA.',
-    pageContent: [
-      {type: 'photo', name: 'mccloud-church-down-the-street', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-at-night-text-1',
-        text:
-          [`McCloud is an old mountain town that rests in the shadow of Mount Shasta, an active volcano at the 
-            southern end of the Cascade Range in northern California. 
-            The town was founded around a lumber company ("Mother McCloud") which closed down in the second half of 
-            the 20th century. Today its population is less than 1000.`]
-      },
-      {type: 'photo', name: 'mccloud-church-witching-hour', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-at-night-text-2',
-        text:
-          [`This is St. Joseph’s Catholic Church, it was built in 1931. 
-            Prior to its construction the original Catholic church built on this spot was exhumed and moved to another 
-            part of the town.
-            Today this building is apart of the McCloud Historic District, which was
-            put on the National Register of Historic Places in the early 1990's. `]
-      },
-      {type: 'photo', name: 'mccloud-illuminated', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-at-night-text-3',
-        text:
-          [`The week I was in McCloud a thick haze of smoke hung in the air, you can see its eerie glow around
-            the street lamps in each photo. 
-            This smoke came from wild fires that were burning over 100 miles away.
-            These fires burned over 2 and a half million acres of California land over the course of 2021.`,
-          `On a normal night the sky above McCloud is a sea of hundreds of stars.
-            It's a spectacular view to behold. Sadly, with
-            the smoke permeating the landscape, no stars were visible (this becomes more evident in the book photo
-            below). 
-          `]
-      },
-      {type: 'photo', name: 'mccloud-the-house', photoProps: {showDetails: false}},
-      {
-        type: 'react',
-        name: 'mccloud-at-night-react-1',
-        children: (
-          <>
-            <p>
-              I stumbled across the above building on a night walk and found it unsettling and strange.
-              It gave me a strong
-              {' '}
-              <Link
-                href={'https://www.youtube.com/watch?v=N63pQGhvK4M'}
-                target={'_blank'}
-              >Liminal Space</Link>
-              {' '}
-              vibe. The scene inspired me to explore the town more, to see if I could find other
-              spots that gave me that liminal space feeling.
-            </p>
-            <p>
-              When I looked into this house's history I found that it was
-              originally a home for priests and nuns, but that it had recently been
-              {' '}
-              <Link
-                href={'https://www.siskiyoudaily.com/picture-gallery/news/2020/11/17/st-josephs-rectory-moved-across-mccloud/6324358002/'}
-                target={'_blank'}
-              >sold and moved</Link>
-              {' '}
-              to a spot on Main St, with the hopes of using it for a commercial business.
-              The process of moving and installing the old house proved to be just as
-              expensive as buying it.
-            </p>
-
-          </>
-        )
-      },
-      {type: 'photo', name: 'mccloud-high-school', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-at-night-text-4',
-        text:
-          [`Around 30 kids attend the local high school, meaning if you were to go to here you'd most likely
-            know everyone in your high school.`]
-      },
-      {type: 'photo', name: 'mccloud-pocket-of-light', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-at-night-text-5',
-        text:
-          [`The McCloud River Lumber Company was known as "Mother McCloud" because it owned the houses its workers 
-            lived in and it took great pride in taking care of them. In the 1960's the company was sold to 
-            U.S. Plywood who sold the houses to the people living in them for $5k each. Sadly not all of the workers
-            could afford this price tag.`]
-      },
-      {type: 'photo', name: 'mccloud-light-at-the-end-of-the-road', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-light-at-the-end-of-the-road-text',
-        text:
-          [`A patch of light in the darkness. It's was incredibly dark as I walked the streets. Lamp posts were like
-            beacons the void.`]
-      },
-      {type: 'photo', name: 'mccloud-lonely-road', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'lonely-road-text',
-        text:
-          ['The road out of town.']
-      },
-      {type: 'photo', name: 'mccloud-playground', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-playground-text',
-        text:
-          [`I got a strong liminal space vibe from this empty playground. As I left this area a group of teenagers
-            approached me and yelled out: "hey faggot!", I thought I was about to be jumped, but they profusely 
-            apologized when they realized I wasn't the person they were looking for, whom they claimed was a friend 
-            of theirs.`]
-      },
-      {type: 'photo', name: 'mccloud-the-book', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'the-book-text',
-        text:
-          [
-            `A monument to Joaquin Miller, the "Poet of the Sierras". 
-             This statue was created by a local artist to honor Miller, who lived near McCloud when he was living
-             with the Wintu people (which would later help inspire Miller's most celebrated work: 
-             "Life Among the Modocs").`,
-            `Miller lived a rather colorful life. He was a self-styled Indian fighter who later took up arms with
-            the local tribes. He fathered a child with one of the Wintu people. He explored the American north west and 
-            worked as a lawyer, cook, teacher, judge, and news paper editor (to list a few). He committed a number
-            of petty crimes, broke himself out of jail, and became a fugitive. 
-            He hit it big as a poet in England and had a hit play in America. And in his later years he became an 
-            environmentalist, becoming one of California's first tree-huggers.`,
-            `He was hugely popular when he died, and over 1000 people attended his funeral. The preacher who spoke
-             called him "the last of America's great poets". However, chaos broke out before the ceremony could end
-             and police had to recue his corpse from unruly spectators who had began to ransack his house.`
-          ]
-      },
-      {type: 'photo', name: 'mccloud-gas-station', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-gas-station-text',
-        text:
-          ['I just think gas stations look cool at night.']
-      },
-      {type: 'photo', name: 'mccloud-at-night', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        name: 'mccloud-thank-you-text',
-        header: 'Thank you',
-        text:
-          [
-            `Thank you for checking out my gallery on McCloud at night. It was born out a drive to
-            see if I could create some interesting photos from a walk through this quiet town.
-            Hopefully you enjoyed these images and maybe got the same liminal space vibe that I got
-            as I was exploring the town.`, 
-            `Though these images were a little unsettling, the area around McCloud is actually quite
-            beautiful and one of my favorite places to visit. If you enjoy the great outdoors I'd encourage
-            you to check the place out as there are lots of things to do in the surrounding area.`
-          ]
-      },
-    ]
-  },
-  {
-    name: 'panoramas',
-    label: 'Panoramas',
-    description: 'A set of panoramas from the Baltimore area.',
-    pageContent: [
-      {type: 'photo', name: 'baltimore-skyline-2016-pano'},
-      {
-        type: 'text',
-        name: 'panorama-text-1',
-        header: 'Grab the image and pull it that way 👈.',
-        text:
-        [`One of my goals for this site was to make viewing my panoramas easier. You can more easily view them
-          by grabbing them with your mouse or finger and pulling them left or right.`]
-      },
-      {type: 'photo', name: 'middle-branch-park-2019-pano'},
-      {type: 'photo', name: 'middle-branch-trailhead-no9-pano'},
-      {type: 'photo', name: 'baltimore-skyline-2022-pano'},
-      {type: 'photo', name: 'fells-point-2020-pano'},
-    ]
-  },
-];
-
-galleries.forEach(gg => {
-  gg.title = gg.label + ' | ' + config.title.main;
-});
 
 /////////////////////////////////////////// Exports
 
-console.log('galleries');
-const _galleries = galleries.map(item => ({
-  name: item.name,
-  title: item.label,
-  photoName: item.pageContent.find(elm => elm.type === 'photo').name,
-  description: item.description
-}));
-console.dir(_galleries);
-console.log(JSON.stringify(_galleries).replace(/'/g, '\\\''));
-
-export {galleries};
-
 export {createPhotoAlbum};
+export {galleries};
 
 export function getPhotoAlbumByName(name) {
   return albums.find(album => {
     return album.name === name;
   });
 }
-
-console.log('albums');
-let _albums = albums.map(item => ({
-  name: item.name,
-  des: Array.isArray(item.description) ? item.description.join('') : item.description || 'A really cool photo',
-  title: item.altText,
-  photo: item.photos[0]['600'],
-}));
-console.dir(_albums);
-console.log(JSON.stringify(_albums).replace(/'/g, '\\\''));
 
 export default albums;
 

@@ -41,7 +41,7 @@ function ContentGrid(props) {
     <Grid container alignItems='center' justifyContent='center' align='center'>
 
       {items.map((item) => (
-        <GridBlock item xs={12} key={item.name}>
+        <GridBlock item xs={12} key={item.id}>
           {getDisplay(item)}
         </GridBlock>
       ))}

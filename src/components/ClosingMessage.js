@@ -1,10 +1,18 @@
-import {Link} from '@mui/material';
+import {Box, Link} from '@mui/material';
 import React from 'react';
+import GalleryBar from './gallery-bar/GalleryBar';
 import ResponsiveContainer from './styled/ResponsiveContainer';
 
 function ClosingMessage() {
   return (
     <ResponsiveContainer sx={{textAlign:'left'}}>
+      <Box
+        sx={{
+          padding: '0 12px',
+        }}
+      >
+        <GalleryBar />
+      </Box>
       <h3 style={{textAlign:'center',letterSpacing:'4px'}}>***</h3>
       <p style={{padding: '0 12px'}}>
         {`If you're interested in more of my work you can checkout
