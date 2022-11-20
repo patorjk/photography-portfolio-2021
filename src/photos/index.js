@@ -807,5 +807,16 @@ export function getPhotoAlbumByName(name) {
   });
 }
 
+// see app.php
+console.log('albums');
+let _albums = albums.map(item => ({
+  name: item.name,
+  des: Array.isArray(item.description) ? item.description.join('') : item.description || 'A really cool photo',
+  title: item.altText,
+  photo: item.photos[0]['600'],
+}));
+console.dir(_albums);
+console.log(JSON.stringify(_albums).replace(/'/g, '\\\''));
+
 export default albums;
 

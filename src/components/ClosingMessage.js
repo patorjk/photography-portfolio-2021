@@ -5,7 +5,7 @@ import ResponsiveContainer from './styled/ResponsiveContainer';
 
 function ClosingMessage() {
   return (
-    <ResponsiveContainer sx={{textAlign:'left'}}>
+    <ResponsiveContainer sx={{textAlign:'left', marginTop: '-60px'}}>
       <Box
         sx={{
           padding: '0 12px',

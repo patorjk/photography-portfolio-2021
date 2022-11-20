@@ -8,14 +8,15 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga';
+import {MagicalText, GhostSVG, StarCrossSVG} from 'react-halloween';
 import {useTranslation} from 'react-i18next';
-import MediaQuery from 'react-responsive';
-import {useMediaQuery} from 'react-responsive';
-import {Link} from 'react-router-dom';
+import MediaQuery, {useMediaQuery} from 'react-responsive';
+import { Link, useLocation } from 'react-router-dom';
 import SettingsDialog from './dialogs/SettingsDialog';
 import config from '../app.config.js';
+import useEvent from '../hooks/useEvent';
 
 function NavBar(props) {
   const {
@@ -26,6 +27,19 @@ function NavBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const {t} = useTranslation();
+  const location = useLocation();
+  const [adornmentType, setAdornmentType] = useState('sparkle');
+  const [adornment, setAdornment] = useState(StarCrossSVG);
+
+  useEffect(() => {
+    if (location.pathname.indexOf('halloween') !== -1) {
+      setAdornmentType('ghost');
+      setAdornment(GhostSVG);
+    } else {
+      setAdornmentType('sparkle');
+      setAdornment(StarCrossSVG);
+    }
+  }, [location.pathname]);
 
   const isDesktopOrLaptop = useMediaQuery(
 
@@ -54,12 +68,27 @@ function NavBar(props) {
     textDecoration: 'none',
   };
 
+  const [hoveringOverTitle, setHoveringOverTitle] = useState(false);
+  const onMouseEnter = useEvent(() => {
+    setHoveringOverTitle(true);
+  });
+  const onMouseLeave = useEvent(() => {
+    setHoveringOverTitle(false);
+  });
+
   return (
     <AppBar position={isDesktopOrLaptop ? 'fixed' : 'static'}>
       <Toolbar>
         <MediaQuery minWidth={700}>
-          <Typography variant='h6' color='inherit' to='/' component={Link} style={titleStyle}>
-            {t('toolbar.title')}
+          <Typography onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} variant='h6' color='inherit' to='/' component={Link} style={titleStyle}>
+            <MagicalText
+              animationTime={20}
+              showAdornments={hoveringOverTitle}
+              Adornment={adornment}
+              adornmentDuration={adornmentType === 'sparkle' ? 1 : 2}
+              adornmentType={adornmentType}
+              text={t('toolbar.title')}
+            />
           </Typography>
           <div style={bStyle} />
         </MediaQuery>

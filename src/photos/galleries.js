@@ -4,11 +4,18 @@
  */
 import {Link} from '@mui/material';
 import React from 'react';
+import { LightsOut, MagicalText } from 'react-halloween';
 import config from '../app.config';
 import MainEnding from '../components/blurbs/MainEnding';
 import MainImageToggles from '../components/blurbs/MainImageToggles';
 import MainIntro from '../components/blurbs/MainIntro';
 import MainPanoramas from '../components/blurbs/MainPanoramas';
+
+function isTouchDevice() {
+  return (('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (navigator.msMaxTouchPoints > 0));
+}
 
 const galleries = [
   {
@@ -339,17 +346,23 @@ const galleries = [
   {
     name: 'halloween-houses',
     label: 'Halloween Houses',
-    description: 'A gallery of houses that went all-out for Halloween',
+    description: 'A gallery of cool houses that went all-out for Halloween.',
     pageContent: [
       {type: 'photo', name: 'halloween-death-plague-dance-party', photoProps: {showDetails: false}},
       {
-        type: 'text',
-        text:
-          [`Halloween doesn't get a lot of love when it comes to people celebrating the displays people come up with. 
-          I always see people taking pictures of Christmas lights, but I don't really see many photos of Halloween 
-          displays. The stuff 
-          people come up with is pretty cool though, and this gallery is dedicated to those people who go all out for 
-          Halloween.`]
+        type: 'react',
+        children: (
+          <>
+            <p>
+              Halloween doesn't get a lot of love when it comes to people celebrating the displays people come up with.
+              I always see people taking pictures of Christmas lights, but I don't really see many photos of Halloween
+              displays. The stuff
+              people come up with is pretty cool though, and this gallery is dedicated to those people who go all out for
+              Halloween.
+            </p>
+            {!isTouchDevice() && <LightsOut size={400} />}
+          </>
+        )
       },
       {type: 'photo', name: 'halloween-pumpkin-scarecrow', photoProps: {showDetails: false}},
       {
@@ -398,7 +411,13 @@ const galleries = [
         type: 'react',
         children: (
           <>
-            <h3>Where's the rest?</h3>
+            <h3>
+              <MagicalText
+                animationTime={10}
+                showAdornments={false}
+                text={"Where's the rest?"}
+              />
+            </h3>
             <p>
               You can check out more in my
               {' '}
@@ -447,5 +466,16 @@ galleries.forEach(gg => {
     item.id = (item.name || '') + '_' + Math.random();
   })
 });
+
+// see app.php
+console.log('galleries');
+const _galleries = galleries.map(item => ({
+  name: item.name,
+  title: item.label,
+  photoName: item.pageContent.find(elm => elm.type === 'photo').name,
+  description: item.description
+}));
+console.dir(_galleries);
+console.log(JSON.stringify(_galleries).replace(/'/g, '\\\''));
 
 export {galleries};

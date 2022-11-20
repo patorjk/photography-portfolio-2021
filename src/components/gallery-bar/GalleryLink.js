@@ -4,13 +4,21 @@ import React, { useState } from 'react';
 import { Haunted } from 'react-halloween';
 import {useNavigate} from "react-router-dom";
 
-const GalleryLink = ({gallery, galleryName, imgSrc}) => {
+const GalleryLink = ({gallery, galleryName, glowOptions = {}, imgSrc}) => {
   const navigate = useNavigate();
   const [hovering, setHovering] = useState(false);
 
   const onClick = () => {
     navigate(`/gallery/${gallery}`);
   };
+  const onKeyDown = (evt) => {
+    if (evt.code === 'Space' || evt.code === 'Enter') {
+      navigate(`/gallery/${gallery}`);
+      evt.stopPropagation();
+      evt.preventDefault();
+    }
+  };
+
   const onMouseEnter = () => {
     setHovering(true);
   };
@@ -22,7 +30,10 @@ const GalleryLink = ({gallery, galleryName, imgSrc}) => {
       sx={{
         cursor: 'pointer',
       }}
+      aria-label={`Gallery link for ${gallery}`}
+      tabIndex={'0'}
       onClick={onClick}
+      onKeyDown={onKeyDown}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -58,22 +69,23 @@ const GalleryLink = ({gallery, galleryName, imgSrc}) => {
         >
         </Box>
         <Haunted
-          numberOfGhosts={6}
-          disableFun={gallery !== 'halloween-houses'}
+          glowOptions={glowOptions}
+          creatureOptions={gallery !== 'halloween-houses' ? null : {}}
           style={{
             width: '300px',
             height: '200px',
+            backgroundColor: 'black',
+            borderRadius: '10px',
+            position: 'absolute',
+            transform: 'translate(10px, 0) rotate(5deg)',
           }}
         >
           <Box
             sx={{
               width: '300px',
               height: '200px',
-              backgroundColor: 'black',
               border: '1px solid grey',
               borderRadius: '10px',
-              position: 'absolute',
-              transform: 'translate(10px, 0) rotate(5deg)',
               backgroundImage: `url("${imgSrc}")`,
               backgroundSize: 'contain',
             }}

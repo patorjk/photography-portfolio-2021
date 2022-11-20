@@ -48,8 +48,8 @@ function getPageInfo(location) {
   }
   let title = 'Patrick Gillespie Photography';
   let description = 'Some cool photos of stuff.';
-
   let name, elm;
+
   switch(location.pathname) {
   case '/':
     title = config.title.main;
@@ -59,13 +59,13 @@ function getPageInfo(location) {
     description = '7 years of going to the cherry blossoms.'
     break;
   case location.pathname?.match(/^\/photo/)?.input:
-    name = /[^/]*$/.exec(location.pathname)[0];
+    name = /[^/]*$/.exec(location.pathname.replace(/\/$/, ""))[0];
     elm = photos.find(photo => photo.name === name) || {};
     title = elm.title || config.title.main;
     description = elm.description || elm.altText || elm.caption || 'A cool photo.';
     break;
   case location.pathname?.match(/^\/gallery/)?.input:
-    name = /[^/]*$/.exec(location.pathname)[0];
+    name = /[^/]*$/.exec(location.pathname.replace(/\/$/, ""))[0];
     elm = galleries.find(gal => gal.name === name) || {};
     title = elm.title || config.title.main;
     description = elm.description;

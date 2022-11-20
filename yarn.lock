@@ -8699,10 +8699,10 @@
   "resolved" "https://registry.npmjs.org/react-ga/-/react-ga-3.3.0.tgz"
   "version" "3.3.0"
 
-"react-halloween@^0.0.3":
-  "integrity" "sha512-ZXeWVedZZ+xcqiw9rj0mArvfyk7cggA3RXyuZ86jhpDnnvOJz7oRyd5UU7WsLT4kOnH1ERui1GKVkvpR1eN9AA=="
-  "resolved" "https://registry.npmjs.org/react-halloween/-/react-halloween-0.0.3.tgz"
-  "version" "0.0.3"
+"react-halloween@^0.0.10":
+  "integrity" "sha512-UlzR2EPWXPLQfYlhxWmuqqpYOQl/86CUwXjvJ0Lc5F4s8ecMWNDH/FGvdNgw3pld0Co9FmY5hbQ/mVJ6NkEW+g=="
+  "resolved" "https://registry.npmjs.org/react-halloween/-/react-halloween-0.0.10.tgz"
+  "version" "0.0.10"
 
 "react-helmet-async@^1.3.0":
   "integrity" "sha512-9jZ57/dAn9t3q6hneQS0wukqC2ENOBgMNVEhb/ZG9ZSxUetzVIw4iAmEU38IaVg3QGYauQPhSeUTuIUtFglWpg=="
