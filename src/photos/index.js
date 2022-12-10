@@ -1,11 +1,6 @@
-import {Link} from '@mui/material';
 import React from 'react';
 import {galleries} from './galleries';
 import config from '../app.config.js';
-import MainEnding from '../components/blurbs/MainEnding';
-import MainImageToggles from '../components/blurbs/MainImageToggles';
-import MainIntro from '../components/blurbs/MainIntro';
-import MainPanoramas from '../components/blurbs/MainPanoramas';
 
 /*
 	Photos.
@@ -58,6 +53,7 @@ let albums = [
     description: [
       `A view of Baltimore's skyline from 2018. I superimposed two images to create the lights on/off effect.
       I found it kind of fun, though maybe I'm just easily amused. 
+      It's not a perfect lights on/off effect, but I still think it's kind of neat.
       I figured I'd put it up here so others could play around with it too.`
     ],
     altText: 'Baltimore Skyline Light Toggle (power the city on and off)'

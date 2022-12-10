@@ -33,6 +33,7 @@ const GalleryBar = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        marginTop: '40px',
       }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

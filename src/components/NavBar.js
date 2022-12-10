@@ -85,8 +85,10 @@ function NavBar(props) {
               animationTime={20}
               showAdornments={hoveringOverTitle}
               Adornment={adornment}
-              adornmentDuration={adornmentType === 'sparkle' ? 1 : 2}
-              adornmentType={adornmentType}
+              adornmentOptions={{
+                duration: adornmentType === 'sparkle' ? 1 : 2,
+                animationType: adornmentType,
+              }}
               text={t('toolbar.title')}
             />
           </Typography>
