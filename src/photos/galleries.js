@@ -165,14 +165,14 @@ const galleries = [
     ]
   },
   {
-    name: 'spooky',
-    label: 'Spooky',
+    name: 'dark',
+    label: 'Dark',
     description: 'Some spooky images.',
     pageContent: [
       {type: 'photo', name: 'a-pathway-to-nightmares'},
       {
         type: 'text',
-        header: 'Spooky',
+        header: 'Dark',
         text:
           [`I'm not a fan of horror, but I love the spooky feeling that a forbidding landscape can give off.
            I don't often go out of my way to capture creepy images, but I get excited when an opportunity 
@@ -197,34 +197,41 @@ const galleries = [
       {
         type: 'text',
         text:
-          [`McCloud is an old mountain town that rests in the shadow of Mount Shasta, an active volcano at the 
-            southern end of the Cascade Range in northern California. 
-            The town was founded around a lumber company ("Mother McCloud") which closed down in the second half of 
-            the 20th century. Today its population is less than 1000.`]
+          [`The images in this gallery are of a small town called McCloud. One night while the rest of my family slept 
+          I decided to venture out into the town to see what I could find. 
+          I was struck by how quiet and nostalgic it felt. I brought my camera along 
+          (after coming across a strange house - more on that later) 
+          and took pictures of sights that I thought looked interesting.`]
       },
       {type: 'photo', name: 'mccloud-church-witching-hour', photoProps: {showDetails: false}},
       {
         type: 'text',
         text:
-          [`This is St. Joseph’s Catholic Church, it was built in 1931. 
-            Prior to its construction the original Catholic church built on this spot was exhumed and moved to another 
-            part of the town.
-            Today this building is apart of the McCloud Historic District, which was
-            put on the National Register of Historic Places in the early 1990's. `]
+          [`This ominous looking church loomed over the main part of town and had an eerie vibe to it. 
+          It's probably a perfectly normal church where nice people spend their Sunday, 
+          but it just has such a strange presence to it.`]
       },
       {type: 'photo', name: 'mccloud-illuminated', photoProps: {showDetails: false}},
       {
-        type: 'text',
-        text:
-          [`The week I was in McCloud a thick haze of smoke hung in the air, you can see its eerie glow around
-            the street lamps in each photo. 
-            This smoke came from wild fires that were burning over 100 miles away.
-            These fires burned over 2 and a half million acres of California land over the course of 2021.`,
-          `On a normal night the sky above McCloud is a sea of hundreds of stars.
-            It's a spectacular view to behold. Sadly, with
-            the smoke permeating the landscape, no stars were visible (this becomes more evident in the book photo
-            below). 
-          `]
+        type: 'react',
+        children: (
+          <>
+            <p>
+              I didn't know it at the time, but the images I was capturing fit an aesthetic known as
+              {' '}
+              <Link
+                href={'https://www.youtube.com/watch?v=N63pQGhvK4M'}
+                target={'_blank'}
+              >liminal space</Link>
+              {'. '}
+              A liminal space is a place between "states of being" that feels unsettling yet familiar.
+              Typically liminal spaces are of abandoned or empty settings that normally have people in them —
+              a park after dark, an empty office, a long hallway.
+              There's a transitional nature to them.
+              They're a snapshot of the time between "what was" and "what's next".
+            </p>
+          </>
+        )
       },
       {type: 'photo', name: 'mccloud-the-house', photoProps: {showDetails: false}},
       {
@@ -232,31 +239,22 @@ const galleries = [
         children: (
           <>
             <p>
-              I stumbled across the above building on a night walk and found it unsettling and strange.
-              It gave me a strong
-              {' '}
-              <Link
-                href={'https://www.youtube.com/watch?v=N63pQGhvK4M'}
-                target={'_blank'}
-              >Liminal Space</Link>
-              {' '}
-              vibe. The scene inspired me to explore the town more, to see if I could find other
-              spots that gave me that liminal space feeling.
+              The house above was the first image I captured and what motivated me to go and get my camera.
+              This was along Main Street, and in the middle of the darkness there was this old house on cinder blocks.
+              It looked like it had been moved there, but why? And was moving houses really a thing?
             </p>
             <p>
-              When I looked into this house's history I found that it was
-              originally a home for priests and nuns, but that it had recently been
+              Later I would discover that the house had in fact been
               {' '}
               <Link
                 href={'https://www.siskiyoudaily.com/picture-gallery/news/2020/11/17/st-josephs-rectory-moved-across-mccloud/6324358002/'}
                 target={'_blank'}
-              >sold and moved</Link>
+              >moved there</Link>
               {' '}
-              to a spot on Main St, with the hopes of using it for a commercial business.
-              The process of moving and installing the old house proved to be just as
-              expensive as buying it.
+              from a few streets over. It was a historic building, and rather than tear it down the owner sold it to
+              someone who planned to use it as a place of business on Main Street.
+              If there ever was a state of being between "what was" and "what's next", this seems to be it.
             </p>
-
           </>
         )
       },
@@ -264,17 +262,17 @@ const galleries = [
       {
         type: 'text',
         text:
-          [`Around 30 kids attend the local high school, meaning if you were to go to here you'd most likely
-            know everyone in your high school.`]
+          [`An empty parking lot next to the local high school. 
+          At the time I just thought it looked cool, especially with the light illuminating the emptiness.`]
       },
       {type: 'photo', name: 'mccloud-pocket-of-light', photoProps: {showDetails: false}},
       {
         type: 'text',
         text:
-          [`The McCloud River Lumber Company was known as "Mother McCloud" because it owned the houses its workers 
-            lived in and it took great pride in taking care of them. In the 1960's the company was sold to 
-            U.S. Plywood who sold the houses to the people living in them for $5k each. Sadly not all of the workers
-            could afford this price tag.`]
+          [`An interesting fact about McCloud is that originally it was a company town where the company 
+          (affectionately known as "Mother McCloud") owned all of the houses. 
+          In the 1960's, as it was winding down, it sold the houses to the people who were living in them for $5k each. 
+          Sadly not all of the workers could afford this price tag.`]
       },
       {type: 'photo', name: 'mccloud-light-at-the-end-of-the-road', photoProps: {showDetails: false}},
       {
@@ -285,37 +283,64 @@ const galleries = [
       },
       {type: 'photo', name: 'mccloud-lonely-road', photoProps: {showDetails: false}},
       {
-        type: 'text',
-        text:
-          ['The road out of town.']
+        type: 'react',
+        children: (
+          <>
+            <p>
+              Another interesting fact about McCloud is that the town's water comes from the Konwakiton Glacier.
+              Some hippies and mystics believe the water has special powers and will come from miles around to get
+              jugs of it to take home with them. I can't say if its magical or not, but it does taste good.
+            </p>
+            <p>
+              About 15 years ago Nestle got wind of this water supply and swooped in to buy it up. In classic super
+              villain fashion the town was going to get a terrible deal and Nestle was going to be able to suck up
+              all of their water. As an example of the company's douchebaggery, they promised the townsfolk that their
+              water plant would bring jobs to the town, but after looking into this it was discovered that the plant
+              would mostly be automated and that it would only bring <strong>2</strong> jobs to the area.
+            </p>
+            <p>
+              Thankfully the project was
+              {' '}
+              <Link
+                href={'https://caltrout.org/50th/nestle-mccloud'}
+                target={'_blank'}
+              >stopped</Link>
+              {' '}
+              at the 11th hour and the town was spared from Nestle's parasitic clutches. The town is slowly dying
+              though, and I imagine other vultures will circle in and try to get at their water one day.
+            </p>
+          </>
+        )
       },
       {type: 'photo', name: 'mccloud-playground', photoProps: {showDetails: false}},
       {
         type: 'text',
         text:
-          [`I got a strong liminal space vibe from this empty playground. As I left this area a group of teenagers
-            approached me and yelled out: "hey faggot!", I thought I was about to be jumped, but they profusely 
-            apologized when they realized I wasn't the person they were looking for, whom they claimed was a friend 
-            of theirs.`]
+          [`I don't know why, but there's a certain creepy feeling that accompanies being at a playground at night.
+          It feels wrong somehow and even though I think this is a cool shot, I tried to take it as quickly as possible
+          just to get out of there.
+          What really freaked me out though was that as I was leaving a group of teenagers
+            approached me and yelled out: "hey faggot!". I thought for sure I was about to be jumped, but once they
+            saw I was just some random guy doing photography they profusely 
+            apologized. They claimed they thought I was someone else, a "friend" of theirs.`]
       },
       {type: 'photo', name: 'mccloud-the-book', photoProps: {showDetails: false}},
       {
         type: 'text',
         text:
           [
-            `A monument to Joaquin Miller, the "Poet of the Sierras". 
-             This statue was created by a local artist to honor Miller, who lived near McCloud when he was living
-             with the Wintu people (which would later help inspire Miller's most celebrated work: 
-             "Life Among the Modocs").`,
-            `Miller lived a rather colorful life. He was a self-styled Indian fighter who later took up arms with
-            the local tribes. He fathered a child with one of the Wintu people. He explored the American north west and 
-            worked as a lawyer, cook, teacher, judge, and news paper editor (to list a few). He committed a number
-            of petty crimes, broke himself out of jail, and became a fugitive. 
-            He hit it big as a poet in England and had a hit play in America. And in his later years he became an 
-            environmentalist, becoming one of California's first tree-huggers.`,
-            `He was hugely popular when he died, and over 1000 people attended his funeral. The preacher who spoke
+            `Sometimes in these small towns you learn about local legends.
+            This is a monument to Joaquin Miller, the "Poet of the Sierras" and author of "Life Among the Modocs". 
+             Miller lived near McCloud when he was living
+             with the Wintu people (a local indigenous tribe).`,
+            `Miller lived a rather colorful life. To give the briefest of summaries: He was a self-styled Indian fighter who later took up arms with
+            the local tribes. He explored the American north west and 
+            worked as a lawyer, cook, teacher, judge, and news paper editor. He committed a number
+            of petty crimes, broke himself out of jail, and ran off to England, where he hit it big as a poet.`,
+            `While mostly unknown today, he was hugely popular when he died, and over 1000 people attended his funeral. 
+            The preacher who spoke
              called him "the last of America's great poets". However, chaos broke out before the ceremony could end
-             and police had to recue his corpse from unruly spectators who had began to ransack his house.`
+             and police had to recue his corpse from unruly spectators who had began to ransack his house.`,
           ]
       },
       {type: 'photo', name: 'mccloud-gas-station', photoProps: {showDetails: false}},
@@ -330,8 +355,7 @@ const galleries = [
         header: 'Thank you',
         text:
           [
-            `Thank you for checking out my gallery on McCloud at night. It was born out a drive to
-            see if I could create some interesting photos from a walk through this quiet town.
+            `Thank you for checking out my gallery on McCloud at night. 
             Hopefully you enjoyed these images and maybe got the same liminal space vibe that I got
             as I was exploring the town.`,
             `Though these images were a little unsettling, the area around McCloud is actually quite

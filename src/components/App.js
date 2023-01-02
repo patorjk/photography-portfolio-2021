@@ -263,6 +263,13 @@ function InnerApp() {
                 element={<GalleryRoute gallery={miscGallery} />}
               />
 
+              {/* gallery was renamed */}
+              <Route
+                path={`/gallery/spooky`}
+                key={'spooky'}
+                element={<GalleryRoute gallery={galleries.find(item => item.name === 'dark')} />}
+              />
+
               {galleries.map( gallery => (
                 <Route 
                   path={`/gallery/${gallery.name}`}
@@ -273,7 +280,7 @@ function InnerApp() {
 
               <Route
                 path={'/patorjk'}
-                element={<PatorjkRoute />}
+                element={<MainRoute month={month} day={day} />}
               />
 
               <Route path='/photo/:photo' element={<SinglePhotoRoute />} />

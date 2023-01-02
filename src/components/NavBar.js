@@ -81,16 +81,7 @@ function NavBar(props) {
       <Toolbar>
         <MediaQuery minWidth={700}>
           <Typography onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} variant='h6' color='inherit' to='/' component={Link} style={titleStyle}>
-            <MagicalText
-              animationTime={20}
-              showAdornments={hoveringOverTitle}
-              Adornment={adornment}
-              adornmentOptions={{
-                duration: adornmentType === 'sparkle' ? 1 : 2,
-                animationType: adornmentType,
-              }}
-              text={t('toolbar.title')}
-            />
+            {t('toolbar.title')}
           </Typography>
           <div style={bStyle} />
         </MediaQuery>
@@ -124,7 +115,7 @@ function NavBar(props) {
           <MenuItem onClick={hideGalleryMenu}
             to={'/gallery/mccloud-at-night'} component={Link}>{t('toolbar.galleryMcCloudAtNight')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/spooky'} component={Link}>{t('toolbar.gallerySpooky')}</MenuItem>
+            to={'/gallery/dark'} component={Link}>{t('toolbar.gallerySpooky')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
             to={'/gallery/halloween-houses'} component={Link}>{t('toolbar.galleryHalloween')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
