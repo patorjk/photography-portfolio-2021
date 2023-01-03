@@ -155,10 +155,10 @@ const galleries = [
       {type: 'photo', name: 'baltimore-skyline-light-toggle'},
       {
         type: 'text',
-        header: 'What\'s this section about anyway?',
+        header: 'Interactive Images',
         text:
           [`These are images you can interact with in some way. Right now the section is pretty small but I hope to
-            expand on it sometime soon.`]
+            expand on it in the future.`]
       },
       {type: 'photo', name: 'domino-2021-sunrise-toggle'},
       {type: 'photo', name: 'middle-branch-pier'},
@@ -185,7 +185,6 @@ const galleries = [
       {type: 'photo', name: 'downs-park-pier-foggy'},
       {type: 'photo', name: 'heart-lake-smoky'},
       {type: 'photo', name: 'old-american-brewery'},
-      {type: 'photo', name: 'halloween-houses'},
     ]
   },
   {
@@ -196,6 +195,7 @@ const galleries = [
       {type: 'photo', name: 'mccloud-church-down-the-street', photoProps: {showDetails: false}},
       {
         type: 'text',
+        header: 'McCloud at Night',
         text:
           [`The images in this gallery are of a small town called McCloud. One night while the rest of my family slept 
           I decided to venture out into the town to see what I could find. 
@@ -221,7 +221,6 @@ const galleries = [
               {' '}
               <Link
                 href={'https://www.youtube.com/watch?v=N63pQGhvK4M'}
-                target={'_blank'}
               >liminal space</Link>
               {'. '}
               A liminal space is a place between "states of being" that feels unsettling yet familiar.
@@ -239,21 +238,20 @@ const galleries = [
         children: (
           <>
             <p>
-              The house above was the first image I captured and what motivated me to go and get my camera.
-              This was along Main Street, and in the middle of the darkness there was this old house on cinder blocks.
-              It looked like it had been moved there, but why? And was moving houses really a thing?
+              In the middle of the darkness there was this old house on cinder blocks.
+              I thought it would make a cool shot, so I went and got my camera, which then eventually
+              led to me walking around and taking the other pictures in this gallery.
             </p>
             <p>
-              Later I would discover that the house had in fact been
+              Later I would discover that this house had been
               {' '}
               <Link
                 href={'https://www.siskiyoudaily.com/picture-gallery/news/2020/11/17/st-josephs-rectory-moved-across-mccloud/6324358002/'}
-                target={'_blank'}
               >moved there</Link>
               {' '}
               from a few streets over. It was a historic building, and rather than tear it down the owner sold it to
               someone who planned to use it as a place of business on Main Street.
-              If there ever was a state of being between "what was" and "what's next", this seems to be it.
+              Not a terribly exciting story, but it's not every day that you see a house being moved.
             </p>
           </>
         )
@@ -263,7 +261,7 @@ const galleries = [
         type: 'text',
         text:
           [`An empty parking lot next to the local high school. 
-          At the time I just thought it looked cool, especially with the light illuminating the emptiness.`]
+          At the time I just thought it looked eerie, especially with the light illuminating the emptiness.`]
       },
       {type: 'photo', name: 'mccloud-pocket-of-light', photoProps: {showDetails: false}},
       {
@@ -303,7 +301,6 @@ const galleries = [
               {' '}
               <Link
                 href={'https://caltrout.org/50th/nestle-mccloud'}
-                target={'_blank'}
               >stopped</Link>
               {' '}
               at the 11th hour and the town was spared from Nestle's parasitic clutches. The town is slowly dying
@@ -366,71 +363,164 @@ const galleries = [
     ]
   },
 
+  // Christmas
+  {
+    name: 'christmas',
+    label: 'Christmas',
+    description: 'A gallery of houses that went all-out for Christmas.',
+    pageContent: [
+      {type: 'photo', name: '34th-street-1', photoProps: {slimDescription: true}},
+      {
+        type: 'react',
+        header: 'Christmas',
+        children: (
+          <>
+            <p>
+              After my
+              {' '}
+              <Link
+                href={'/gallery/halloween-houses'}
+              >Halloween House</Link>
+              {' '}
+              escapades, it seemed only fitting to try and do something similar for Christmas.
+              Thankfully it's a lot easier to find amazing Christmas lights.
+              I think these shots are much nicer too. People love going all-out for Christmas.
+            </p>
+          </>
+        )
+      },
+      {type: 'photo', name: 'mount-drive', photoProps: {slimDescription: true}},
+      {type: 'photo', name: 'washington-dc-temple', photoProps: {slimDescription: true}},
+      {
+        type: 'text',
+        text:
+          [`This surreal looking building is the Washington DC Mormon Temple. It's closed to the public most of the 
+          year, but they open the grounds up to the public during December. It's mostly to try and recruit people. 
+          They talk about Jesus and provide hot chocolate and cookies, but for me the main draw is the lights and 
+          scenery. I wish there was more architecture like this.`,]
+      },
+      {type: 'photo', name: 'winter-wonderland', photoProps: {slimDescription: true}},
+      {type: 'photo', name: 'sedge-court', photoProps: {slimDescription: true}},
+      {type: 'photo', name: 'ec-lights', photoProps: {slimDescription: true}},
+      {
+        type: 'text',
+        text:
+          [`The above place is known as "EC Lights" on Google Maps. In addition to a fancy light display there's
+          music, dancing, and free popcorn and hot chocolate. The place was actually packed. I made the above image
+          by taking many shots and then combining them to get a clear view of everything.`,]
+      },
+      {type: 'photo', name: '34th-street-2015', photoProps: {slimDescription: true}},
+      {type: 'photo', name: 'old-columbia-pike', photoProps: {slimDescription: true}},
+      {type: 'photo', name: 'christmas-pagoda', photoProps: {slimDescription: true}},
+      {type: 'photo', name: '34th-street-tree', photoProps: {slimDescription: true}},
+      {
+        type: 'react',
+        children: (
+          <>
+            <h3>
+              <MagicalText
+                animationTime={10}
+                showAdornments={false}
+                text={"Is there any more?"}
+              />
+            </h3>
+            <p>
+              I have a
+              {' '}
+              <Link
+                href={'https://www.flickr.com/photos/40423570@N07/albums/72177720303296931'}
+              >Flickr Christmas Gallery</Link>
+              {' '}
+              with 60+ images. I decided to save this page for displaying the best of the best.
+              If you liked this gallery you may also like my
+              {' '}
+              <Link
+                href={'/gallery/halloween-houses'}
+              >Halloween Houses Gallery</Link>. It's a bit harder to find cool Halloween displays, but there are
+              some good ones out there.
+            </p>
+          </>
+        )
+      },
+    ]
+  },
+
   // Halloween
   {
     name: 'halloween-houses',
     label: 'Halloween Houses',
     description: 'A gallery of cool houses that went all-out for Halloween.',
     pageContent: [
-      {type: 'photo', name: 'halloween-death-plague-dance-party', photoProps: {showDetails: false}},
+      {type: 'photo', name: 'halloween-death-plague-dance-party', photoProps: {slimDescription: true}},
       {
         type: 'react',
+        header: 'Halloween Houses',
         children: (
           <>
             <p>
-              Halloween doesn't get a lot of love when it comes to people celebrating the displays people come up with.
-              I always see people taking pictures of Christmas lights, but I don't really see many photos of Halloween
-              displays. The stuff
-              people come up with is pretty cool though, and this gallery is dedicated to those people who go all out for
-              Halloween.
+              It all started with a bike ride one cold October morning. Out of the corner of my eye I spotted an
+              elaborate halloween display with 4 Home Depot skeletons and a "death plague dance party" theme.
+              It was so cool. I thought to myself: Should I take a picture?
+              Hmm, it would probably look even cooler at night...
             </p>
-            {!isTouchDevice() && <LightsOut size={400} />}
+            <p>
+              I had honestly never heard of someone photographing a Halloween display, but it seemed a shame to let the
+              moment escape, so I came back and took a picture (seen above). I thought it ended up being a cool shot
+              and after showing it to several people I got some tips on other houses that were really decked out.
+            </p>
           </>
         )
       },
-      {type: 'photo', name: 'halloween-pumpkin-scarecrow', photoProps: {showDetails: false}},
+      {type: 'photo', name: 'halloween-pumpkin-scarecrow', photoProps: {slimDescription: true}},
       {
         type: 'text',
         text:
-          [`The idea for this gallery started while I was on a bike ride the week before Halloween in 2021. I passed a 
-          really decked out house (the first photo in this gallery) and decided to come back at night and take a photo. 
-          I thought it looked pretty cool and decided to go out in search of other "Halloween Houses".  `]
+          [`Before I knew it I was cruising around looking for cool displays to photograph. 
+          It felt a little weird at first, but a lot of work goes into these displays and they're honestly pretty 
+          cool looking. Good ones are also pretty rare. You can tell when someone really loves the holiday. `]
       },
-      {type: 'photo', name: 'halloween-dena-cemetery', photoProps: {showDetails: false}},
+      {type: 'photo', name: 'halloween-dena-cemetery', photoProps: {slimDescription: true}},
       {
         type: 'text',
         text:
-          [`Sometimes cool houses will be hidden where you least expect them. The rest of the neighborhood will be 
-          quiet and discrete, and then you'll come across a house with a really awesome display.
+          [`Initially my plan was to be super stealthy. When I came across a cool house I'd take a shot and be gone 
+          in under 30 seconds — it never went like that though. For one, even if someone had a cool setup, 
+          finding the right angle or way to frame the shot wasn't easy, especially in the dark. 
+          I'd find myself fumbling around and then once I had an angle I was happy with, taking the picture itself 
+          could take up to 30 seconds (since these are long exposures).`,
+          `For the above shot, the guy's flood lights came on right after I finished taking the shot. 
+          I was like "oh shit, this guy is not cool with this" — but he ended up being pretty flattered and even 
+          offered to turn everything back on (apparently he was doing a test run and didn't even see me until the 
+          lights went on).`]
+      },
+      {type: 'photo', name: 'halloween-pirate-skeletons', photoProps: {slimDescription: true}},
+      {
+        type: 'text',
+        text:
+          [`I probably wouldn't put any "Halloween house" photos in my official portfolio, but I find this project 
+          kind of fun. It's not high art, but there's something about the exploration and the macabre displays that 
+          I really like.
           `]
       },
-      {type: 'photo', name: 'halloween-pirate-skeletons', photoProps: {showDetails: false}},
+      {type: 'photo', name: 'halloween-green-graveyard', photoProps: {slimDescription: true}},
       {
         type: 'text',
         text:
-          [`Sometimes there will be whole neighborhoods where it seems like everyone has decorations up. 
-          The neighborhood where I found the most cool stuff had no homeowners association, which makes me wonder if 
-          those play a role in dictating what people can do.
+          [`
+          Just based on social media likes and views I know I'm in the minority of finding this cool, but sometimes 
+          doing a project just because it's stupid fun is the way to go. I know there has to be at least a few other 
+          people out there that think these are neat.  
           `]
       },
-      {type: 'photo', name: 'halloween-green-graveyard', photoProps: {showDetails: false}},
+      {type: 'photo', name: 'halloween-cutouts', photoProps: {slimDescription: true}},
       {
         type: 'text',
         text:
-          [`I've only been at this for 2 years, but already I'm seeing that people like to build upon their setups each year. 
+          [`Sadly finding these houses is kind of hard. At least really good ones worth displaying here. 
+          I hope to find some more good ones as time goes on.
           `]
       },
-      {type: 'photo', name: 'halloween-cutouts', photoProps: {showDetails: false}},
-      {
-        type: 'text',
-        text:
-          [`Though on the flip side, I've noticed that sometimes a house will go from decked out, to nothing. 
-          When this happens I'm not sure if the original owner moved or if they just decided to take a break. 
-          In 2020 I came across a really cool house - they had a display with what had to be 20+ skeletons, 
-          but when I revisited it in 2021 and 2022, there were no decorations up. 
-          `]
-      },
-      {type: 'photo', name: 'halloween-biohazard', photoProps: {showDetails: false}},
+      {type: 'photo', name: 'halloween-biohazard', photoProps: {slimDescription: true}},
       {
         type: 'react',
         children: (
@@ -447,11 +537,16 @@ const galleries = [
               {' '}
               <Link
                 href={'https://www.flickr.com/photos/40423570@N07/albums/72177720303296931'}
-                target={'_blank'}
               >Flickr Halloween Gallery</Link>
               {' '}
               (there are 20+ more images there). I decided to save this page for displaying the best of the best.
-              Hopefully with each passing Halloween I can add some more and more to both galleries.
+              Hopefully with each passing Halloween I can add some more to both galleries. Until then, if you
+              like these kinds of photos check out my
+              {' '}
+              <Link
+                href={'/gallery/christmas'}
+              >Christmas Houses Gallery</Link>. It's (unsurprisingly) a lot easier to find really cool
+              Christmas displays.
             </p>
           </>
         )

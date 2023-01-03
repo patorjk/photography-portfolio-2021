@@ -15,6 +15,9 @@ const AboutText = styled('div', {
   paddingRight:'12px',
   paddingBottom: '50px',
   fontStyle: props.isCollapsed ? 'italic' : 'normal',
+  fontSize: props.isCollapsed ? '0.85rem' : '1rem',
+  opacity: props.isCollapsed ? '0.7' : '1',
+  transition: 'font-size 1s, opacity 1s',
 }));
 
 const FadeBlock = styled('div')(({theme}) => ({
@@ -32,6 +35,7 @@ function PhotoDescription(props) {
   const {
     album,
     activeStep,
+    slim = false
   } = props;
 
   let photoLabel = album.id;
@@ -47,8 +51,13 @@ function PhotoDescription(props) {
     setIsTextOpen(!isTextOpen);
   };
 
-  const description = album.descriptions ? album.descriptions[activeStep] : album.description;
+  let description = album.descriptions ? album.descriptions[activeStep] : album.description;
   const flickrURL = Array.isArray(album.flickr) ? album.flickr[activeStep] : album.flickr;
+
+  // overwrite description with the caption
+  if (slim === true) {
+    description = album.caption || '';
+  }
 
   return (
     <ResponsiveContainer sx={{textAlign: 'left',position:'relative'}}>
@@ -61,11 +70,13 @@ function PhotoDescription(props) {
           }
         </AboutText>
 
-        <FadeBlock />
+        {slim === false &&
+          <FadeBlock/>
+        }
 
         <FloatingMenu 
           album={album}
-          description={description}
+          description={slim ? false : description}
           photoLabel={photoLabel} 
           isTextOpen={isTextOpen}
           toggleTextOpen={toggleTextOpen}

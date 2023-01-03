@@ -368,7 +368,8 @@ let albums = [
     description: [
       'Every year in December the people who live on this street, 34th Street, go all out with decorating their houses.'
     ],
-    altText: 'Baltimore\'s 34th Street at Christmas Time'
+    altText: 'Baltimore\'s 34th Street at Christmas Time',
+    caption: '34th Street, Baltimore, MD — 2018'
   },
   {
     name: 'george-peabody-library',
@@ -654,7 +655,7 @@ let albums = [
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51624805640/',
     description: [``],
-    caption: 'Greenway Rd, Glenn Bernie, MD (2021)',
+    caption: 'Greenway Rd, Glenn Bernie, MD — 2021',
     altText: 'Halloween House in Glenn Bernie',
   },
   {
@@ -664,8 +665,8 @@ let albums = [
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/51634527438',
     description: [``],
-    caption: 'Baylor Rd, Glenn Bernie, MD',
-    altText: 'Halloween House in Glenn Bernie (2021)',
+    caption: 'Baylor Rd, Glenn Bernie, MD — 2021',
+    altText: 'Halloween House in Glenn Bernie — 2021',
   },
   {
     name: 'halloween-dena-cemetery',
@@ -674,7 +675,7 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52465471694/',
     description: [``],
-    caption: 'Maple Avenue, Pasadena, MD',
+    caption: 'Maple Avenue, Pasadena, MD — 2022',
     altText: 'Halloween House in Pasadena, MD (2022)',
   },
   {
@@ -684,7 +685,7 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52465471694/',
     description: [``],
-    caption: 'Park Rd, Riveria Beach, MD',
+    caption: 'Park Rd, Riveria Beach, MD — 2022',
     altText: 'Halloween House in Riveria Beach, MD (2022)',
   },
   {
@@ -694,7 +695,7 @@ let albums = [
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52452299661/',
     description: [``],
-    caption: 'Red Birch Rd, Millersville, MD',
+    caption: 'Red Birch Rd, Millersville, MD — 2022',
     altText: 'Halloween House in Millersville, MD (2022)',
   },
   {
@@ -704,7 +705,7 @@ let albums = [
     aspect: '16x10',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52461746940',
     description: [``],
-    caption: 'Baylor Rd, Glenn Bernie, MD',
+    caption: 'Baylor Rd, Glenn Bernie, MD — 2022',
     altText: 'Halloween House in Glenn Bernie (2021)',
   },
   {
@@ -714,7 +715,7 @@ let albums = [
     aspect: '6x4',
     flickr: 'https://www.flickr.com/photos/40423570@N07/52478846382/',
     description: [``],
-    caption: 'Maple Avenue, Pasadena, MD',
+    caption: 'Maple Avenue, Pasadena, MD — 2022',
     altText: 'Halloween House in Pasadena, MD (2022)',
   },
 
@@ -742,6 +743,116 @@ let albums = [
     altText: 'Baltimore Fells Point Sunrise Panorama',
   },
 
+
+  // christmas
+  {
+    name: 'mount-drive',
+    photoFolders: ['2022_mount_drive'],
+    tags: ['christmas', '2022'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52592150705/',
+    description: [
+      'The whole street was amazing.'
+    ],
+    caption: '1126 Mount Drive, Pasadena, MD — 2022',
+    altText: 'Christmas lights'
+  },
+  {
+    name: 'washington-dc-temple',
+    photoFolders: ['2017_dc_temple'],
+    tags: ['christmas', '2017'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/38102272844/',
+    description: [
+      'Mormon Church in DC.'
+    ],
+    caption: 'Washington DC Temple — 2017',
+    altText: 'Christmas lights'
+  },
+  {
+    name: 'ec-lights',
+    photoFolders: ['2022_ec_lights'],
+    tags: ['christmas', '2022'],
+    aspect: '16x9',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52598853960/',
+    description: [
+      'Ellicott City Lights'
+    ],
+    caption: '4802 Red Hill Way, Ellicott City, MD — 2022',
+    altText: 'Christmas lights'
+  },
+  {
+    name: 'old-columbia-pike',
+    photoFolders: ['2022_old_columbia_pike'],
+    tags: ['christmas', '2022'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52597933032/in/album-72177720304864106/',
+    description: [
+      'Old Columbia Pike'
+    ],
+    caption: '4110 Old Columbia Pike, Ellicott City, MD — 2022',
+    altText: 'Christmas lights'
+  },
+  {
+    name: 'sedge-court',
+    photoFolders: ['2022_sedge_court'],
+    tags: ['christmas', '2022'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52591243692/in/photostream/',
+    description: [
+      ''
+    ],
+    caption: '1225 Sedge Court, Pasadena, MD — 2022',
+    altText: 'Christmas lights'
+  },
+  {
+    name: 'winter-wonderland',
+    photoFolders: ['2022_winter_wonderland'],
+    tags: ['christmas', '2022'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52584220483/in/album-72177720304864106/',
+    description: [
+      ''
+    ],
+    caption: '1545 Ringe Drive, Severn, MD — 2022',
+    altText: 'Christmas lights'
+  },
+  {
+    name: '34th-street-2015',
+    photoFolders: ['2015_34th_street'],
+    tags: ['christmas', '2015'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/23835343805/',
+    description: [
+      ''
+    ],
+    caption: '34th Street, Baltimore, MD — 2015',
+    altText: 'Christmas lights'
+  },
+  {
+    name: '34th-street-tree',
+    photoFolders: ['2018_34th_street_tree'],
+    tags: ['christmas', '2018'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/32427535128/in/album-72177720304864106/',
+    description: [
+      ''
+    ],
+    caption: '34th Street, Baltimore, MD — 2018',
+    altText: 'Christmas lights'
+  },
+  {
+    name: 'christmas-pagoda',
+    photoFolders: ['2018_christmas_pagoda'],
+    tags: ['christmas', '2018'],
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/31313121077/in/album-72177720304864106/',
+    description: [
+      ''
+    ],
+    caption: 'Patterson Park, Baltimore, MD — 2018',
+    altText: 'Christmas lights'
+  },
 ];
 
 // add in the sizes field
@@ -805,12 +916,21 @@ export function getPhotoAlbumByName(name) {
 
 // see app.php
 console.log('albums');
-let _albums = albums.map(item => ({
-  name: item.name,
-  des: Array.isArray(item.description) ? item.description.join('') : item.description || 'A really cool photo',
-  title: item.altText,
-  photo: item.photos[0]['600'],
-}));
+let _albums = albums.map(item => {
+
+  if (!item.photos[0]) {
+    console.error('Photo missing:');
+    console.dir(item);
+    console.log(`If you are looking at this from github, I've not included some of the images because it was making the repo too large.`);
+  }
+
+  return {
+    name: item.name,
+    des: Array.isArray(item.description) ? item.description.join('') : item.description || 'A really cool photo',
+    title: item.altText,
+    photo: item.photos[0] ? item.photos[0]['600'] : '',
+  };
+});
 console.dir(_albums);
 console.log(JSON.stringify(_albums).replace(/'/g, '\\\''));
 

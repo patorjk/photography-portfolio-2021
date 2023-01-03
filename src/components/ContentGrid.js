@@ -20,7 +20,7 @@ function ContentGrid(props) {
     } else if (item.type === 'text') {
       return (
         <ResponsiveContainer sx={{textAlign: 'left', padding: '0px 12px'}}>
-          {item.header && (<h3>{item.header}</h3>)}
+          {item.header && (<h2>{item.header}</h2>)}
           {item.text.map((pp, idx) => (
             <p key={idx}>{pp}</p>
           ))}
@@ -29,6 +29,7 @@ function ContentGrid(props) {
     } else if (item.type === 'react') {
       return (
         <ResponsiveContainer sx={{textAlign: 'left',position:'relative', padding: '0px 12px'}}>
+          {item.header && (<h2>{item.header}</h2>)}
           {item.children}
         </ResponsiveContainer>
       );

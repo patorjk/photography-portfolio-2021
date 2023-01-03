@@ -115,6 +115,8 @@ function NavBar(props) {
           <MenuItem onClick={hideGalleryMenu}
             to={'/gallery/mccloud-at-night'} component={Link}>{t('toolbar.galleryMcCloudAtNight')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
+            to={'/gallery/christmas'} component={Link}>{t('toolbar.galleryChristmas')}</MenuItem>
+          <MenuItem onClick={hideGalleryMenu}
             to={'/gallery/dark'} component={Link}>{t('toolbar.gallerySpooky')}</MenuItem>
           <MenuItem onClick={hideGalleryMenu}
             to={'/gallery/halloween-houses'} component={Link}>{t('toolbar.galleryHalloween')}</MenuItem>
