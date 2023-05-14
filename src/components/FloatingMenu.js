@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import {styled} from '@mui/system';
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from './react-ga';
 import {useTranslation} from 'react-i18next';
 import ShareButton from './ShareButton';
 

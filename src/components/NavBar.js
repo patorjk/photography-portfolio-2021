@@ -9,7 +9,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from './react-ga';
 import {MagicalText, GhostSVG, StarCrossSVG} from 'react-halloween';
 import {useTranslation} from 'react-i18next';
 import MediaQuery, {useMediaQuery} from 'react-responsive';

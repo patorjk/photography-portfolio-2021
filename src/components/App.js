@@ -4,7 +4,7 @@ import {StyledEngineProvider, ThemeProvider} from '@mui/material/styles';
 import {styled} from '@mui/system';
 import PropTypes from 'prop-types';
 import React, {useEffect, useState} from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from './react-ga';
 import {Helmet, HelmetProvider} from 'react-helmet-async';
 import {useTranslation} from 'react-i18next';
 import {

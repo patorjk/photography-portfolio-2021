@@ -11,7 +11,7 @@ import {useTheme} from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import PropTypes from 'prop-types';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import ReactGA from 'react-ga';
+import ReactGA from './react-ga';
 import {useTranslation} from 'react-i18next';
 import MediaQuery from 'react-responsive';
 import PhotoDescription from './PhotoDescription';
