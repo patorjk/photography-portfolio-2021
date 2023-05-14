@@ -853,6 +853,27 @@ let albums = [
     caption: 'Patterson Park, Baltimore, MD — 2018',
     altText: 'Christmas lights'
   },
+  {
+    name: 'broening-park-sunrise-nd-filter',
+    photoFolders: ['2023_broening_park_sunrise_wide', '2023_broening_park_sunrise_nd'],
+    tags: ['2023'],
+    transitionOptions: {
+      type: 'toggle',
+      toggleLabel: 'ND Filter (toggles the filter on and off - see description for more info)',
+      imageStart: 1
+    },
+    aspect: '6x4',
+    flickr: 'https://www.flickr.com/photos/40423570@N07/52716478799/',
+    description: [
+      `An ND filter is like putting a pair of sunglasses on a camera's lens. It reduces the amount of light that enters
+      the camera, causing it to require more time to take an image. The resulting image shows motion over
+      time. The movements that were captured either get smoothed out or blurred. It creates a really cool dream-like effect.`,
+      `For these shots, each image was captured with a different lens, which causes a slight distortion when flipping between them. 
+      I was originally just trying to capture the scene in 2 different ways, but I later realized that this 
+      made a really good example of what an ND filter does to a scene.`
+    ],
+    altText: '',
+  },
 ];
 
 // add in the sizes field

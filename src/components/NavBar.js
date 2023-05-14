@@ -152,6 +152,8 @@ function NavBar(props) {
             <img src={require('../images/instagram.png')} width={32} alt='Instagram' />
           </Tooltip>
         </ReactGA.OutboundLink>
+        {/* The settings button isn't needed and is just a distraction */}
+        {/*
         <IconButton sx={{marginLeft:'10px'}} onClick={() => setSettingsOpen(true)}>
           <Tooltip title={t('toolbar.tooltipSettings')}>
             <SettingsIcon />
@@ -163,6 +165,7 @@ function NavBar(props) {
           theme={theme}
           setTheme={setTheme}
         />
+        */}
       </Toolbar>
     </AppBar>
   ); 

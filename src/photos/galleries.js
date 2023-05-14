@@ -162,6 +162,7 @@ const galleries = [
       },
       {type: 'photo', name: 'domino-2021-sunrise-toggle'},
       {type: 'photo', name: 'middle-branch-pier'},
+      {type: 'photo', name: 'broening-park-sunrise-nd-filter'}
     ]
   },
   {
