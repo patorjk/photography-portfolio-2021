@@ -4,7 +4,7 @@ import { styled } from '@mui/system';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import ReactGA from './react-ga';
+import ReactGA from 'react-ga4';
 import FloatingMenu from './FloatingMenu';
 import ResponsiveContainer from './styled/ResponsiveContainer';
 

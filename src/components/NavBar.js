@@ -7,9 +7,10 @@ import IconButton from '@mui/material/IconButton';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useState } from 'react';
-import ReactGA from './react-ga';
+import ReactGA from 'react-ga4';
 import { MagicalText, GhostSVG, StarCrossSVG } from 'react-halloween';
 import { useTranslation } from 'react-i18next';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
@@ -171,11 +172,12 @@ function NavBar(props) {
           <div style={rightItemStyle} />
         </MediaQuery>
 
-        <ReactGA.OutboundLink
-          to={config.urls.flickr}
-          target="_blank"
-          style={rightItemStyle}
-          eventLabel="Flickr"
+        <Box sx={{
+          display: 'flex',
+          gap: '0.5rem'
+        }}>
+        <a
+          href={config.urls.flickr}
         >
           <Tooltip title={t('toolbar.tooltipFlickr')}>
             <img
@@ -184,12 +186,10 @@ function NavBar(props) {
               alt="Flickr"
             />
           </Tooltip>
-        </ReactGA.OutboundLink>
+        </a>
 
-        <ReactGA.OutboundLink
-          to={config.urls.instagram}
-          target="_blank"
-          eventLabel="Instagram"
+        <a
+          href={config.urls.instagram}
         >
           <Tooltip title={t('toolbar.tooltipInstagram')}>
             <img
@@ -198,7 +198,9 @@ function NavBar(props) {
               alt="Instagram"
             />
           </Tooltip>
-        </ReactGA.OutboundLink>
+        </a>
+
+        </Box>
         {/* The settings button isn't needed and is just a distraction */}
         {/*
         <IconButton sx={{marginLeft:'10px'}} onClick={() => setSettingsOpen(true)}>

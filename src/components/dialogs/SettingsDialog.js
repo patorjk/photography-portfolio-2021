@@ -12,7 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ReactGA from '../react-ga';
+import ReactGA from 'react-ga4';
 import { useTranslation } from 'react-i18next';
 import Cookies from 'universal-cookie';
 import { DefaultTheme, themes } from '../../themes';

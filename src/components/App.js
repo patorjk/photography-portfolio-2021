@@ -4,7 +4,7 @@ import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { styled } from '@mui/system';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import ReactGA from './react-ga';
+import ReactGA from 'react-ga4';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import {
@@ -29,7 +29,6 @@ import { DefaultTheme, HalloweenTheme, themes } from '../themes';
 import '../i18n';
 
 ReactGA.initialize(config.googleAnalyticsId);
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 function toTitleCase(text) {
   return text
@@ -83,7 +82,6 @@ function usePageViews() {
     const loc = location.pathname + location.hash;
     console.log(`New location: ${loc}`);
     ReactGA.set({ page: location.pathname + location.hash });
-    ReactGA.pageview(location.pathname + location.hash);
   }, [location]);
 
   return getPageInfo(location);
