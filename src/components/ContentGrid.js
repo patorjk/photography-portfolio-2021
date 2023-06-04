@@ -5,22 +5,23 @@ import ClosingMessage from './ClosingMessage';
 import PhotoViewer from './PhotoViewer';
 import GridBlock from './styled/GridBlock';
 import ResponsiveContainer from './styled/ResponsiveContainer';
-import {getPhotoAlbumByName} from '../photos';
+import { getPhotoAlbumByName } from '../photos';
 
 function ContentGrid(props) {
-  const {
-    items
-  } = props;
+  const { items } = props;
 
   const getDisplay = (item) => {
     if (item.type === 'photo') {
       return (
-        <PhotoViewer album={getPhotoAlbumByName(item.name)} {...item.photoProps} />
+        <PhotoViewer
+          album={getPhotoAlbumByName(item.name)}
+          {...item.photoProps}
+        />
       );
     } else if (item.type === 'text') {
       return (
-        <ResponsiveContainer sx={{textAlign: 'left', padding: '0px 12px'}}>
-          {item.header && (<h2>{item.header}</h2>)}
+        <ResponsiveContainer sx={{ textAlign: 'left', padding: '0px 12px' }}>
+          {item.header && <h2>{item.header}</h2>}
           {item.text.map((pp, idx) => (
             <p key={idx}>{pp}</p>
           ))}
@@ -28,8 +29,10 @@ function ContentGrid(props) {
       );
     } else if (item.type === 'react') {
       return (
-        <ResponsiveContainer sx={{textAlign: 'left',position:'relative', padding: '0px 12px'}}>
-          {item.header && (<h2>{item.header}</h2>)}
+        <ResponsiveContainer
+          sx={{ textAlign: 'left', position: 'relative', padding: '0px 12px' }}
+        >
+          {item.header && <h2>{item.header}</h2>}
           {item.children}
         </ResponsiveContainer>
       );
@@ -39,18 +42,16 @@ function ContentGrid(props) {
   };
 
   return (
-    <Grid container alignItems='center' justifyContent='center' align='center'>
-
+    <Grid container alignItems="center" justifyContent="center" align="center">
       {items.map((item) => (
         <GridBlock item xs={12} key={item.id}>
           {getDisplay(item)}
         </GridBlock>
       ))}
 
-      <GridBlock item xs={12} >
+      <GridBlock item xs={12}>
         <ClosingMessage />
       </GridBlock>
-
     </Grid>
   );
 }

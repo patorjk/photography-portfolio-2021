@@ -1,6 +1,6 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SettingsIcon from '@mui/icons-material/Settings';
-import {Menu, Tooltip} from '@mui/material';
+import { Menu, Tooltip } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -10,23 +10,20 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import ReactGA from './react-ga';
-import {MagicalText, GhostSVG, StarCrossSVG} from 'react-halloween';
-import {useTranslation} from 'react-i18next';
-import MediaQuery, {useMediaQuery} from 'react-responsive';
+import { MagicalText, GhostSVG, StarCrossSVG } from 'react-halloween';
+import { useTranslation } from 'react-i18next';
+import MediaQuery, { useMediaQuery } from 'react-responsive';
 import { Link, useLocation } from 'react-router-dom';
 import SettingsDialog from './dialogs/SettingsDialog';
 import config from '../app.config.js';
 import useEvent from '../hooks/useEvent';
 
 function NavBar(props) {
-  const {
-    theme,
-    setTheme
-  } = props;
+  const { theme, setTheme } = props;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const location = useLocation();
   const [adornmentType, setAdornmentType] = useState('sparkle');
   const [adornment, setAdornment] = useState(StarCrossSVG);
@@ -41,10 +38,7 @@ function NavBar(props) {
     }
   }, [location.pathname]);
 
-  const isDesktopOrLaptop = useMediaQuery(
-
-    {query: '(min-width: 1224px)'}
-  );
+  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)' });
 
   const openGalleryMenu = (event) => setAnchorEl(event.currentTarget);
   const hideGalleryMenu = () => setAnchorEl(null);
@@ -53,15 +47,15 @@ function NavBar(props) {
   const handleSettingsClose = () => setSettingsOpen(false);
 
   const bStyle = {
-    width: '20px'
+    width: '20px',
   };
 
   const middleStyle = {
-    marginLeft: 'auto'
+    marginLeft: 'auto',
   };
 
   const rightItemStyle = {
-    marginRight: '15px'
+    marginRight: '15px',
   };
 
   const titleStyle = {
@@ -80,23 +74,31 @@ function NavBar(props) {
     <AppBar position={isDesktopOrLaptop ? 'fixed' : 'static'}>
       <Toolbar>
         <MediaQuery minWidth={700}>
-          <Typography onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} variant='h6' color='inherit' to='/' component={Link} style={titleStyle}>
+          <Typography
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            variant="h6"
+            color="inherit"
+            to="/"
+            component={Link}
+            style={titleStyle}
+          >
             {t('toolbar.title')}
           </Typography>
           <div style={bStyle} />
         </MediaQuery>
 
         <Button
-          id='gallery-button'
+          id="gallery-button"
           aria-controls={open ? 'gallery-menu' : undefined}
-          aria-haspopup='true'
+          aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           onClick={openGalleryMenu}
         >
-          {t('toolbar.galleries')} <ArrowDropDownIcon/>
+          {t('toolbar.galleries')} <ArrowDropDownIcon />
         </Button>
         <Menu
-          id='gallery-menu'
+          id="gallery-menu"
           anchorEl={anchorEl}
           open={open}
           onClose={hideGalleryMenu}
@@ -105,26 +107,64 @@ function NavBar(props) {
           }}
         >
           <MediaQuery maxWidth={699}>
-            <MenuItem onClick={hideGalleryMenu}
-              to={'/'} component={Link}>{t('toolbar.galleryMain')}</MenuItem>
+            <MenuItem onClick={hideGalleryMenu} to={'/'} component={Link}>
+              {t('toolbar.galleryMain')}
+            </MenuItem>
           </MediaQuery>
-          <MenuItem onClick={hideGalleryMenu} 
-            to={'/gallery/sunrises-and-sunsets'} component={Link}>{t('toolbar.gallerySunrisesAndSunsets')}</MenuItem>
-          <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/interactive'} component={Link}>{t('toolbar.galleryInteractive')}</MenuItem>
-          <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/mccloud-at-night'} component={Link}>{t('toolbar.galleryMcCloudAtNight')}</MenuItem>
-          <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/christmas'} component={Link}>{t('toolbar.galleryChristmas')}</MenuItem>
-          <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/dark'} component={Link}>{t('toolbar.gallerySpooky')}</MenuItem>
-          <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/halloween-houses'} component={Link}>{t('toolbar.galleryHalloween')}</MenuItem>
-          <MenuItem onClick={hideGalleryMenu}
-            to={'/gallery/panoramas'} component={Link}>{t('toolbar.galleryPanoramas')}</MenuItem>
+          <MenuItem
+            onClick={hideGalleryMenu}
+            to={'/gallery/sunrises-and-sunsets'}
+            component={Link}
+          >
+            {t('toolbar.gallerySunrisesAndSunsets')}
+          </MenuItem>
+          <MenuItem
+            onClick={hideGalleryMenu}
+            to={'/gallery/interactive'}
+            component={Link}
+          >
+            {t('toolbar.galleryInteractive')}
+          </MenuItem>
+          <MenuItem
+            onClick={hideGalleryMenu}
+            to={'/gallery/mccloud-at-night'}
+            component={Link}
+          >
+            {t('toolbar.galleryMcCloudAtNight')}
+          </MenuItem>
+          <MenuItem
+            onClick={hideGalleryMenu}
+            to={'/gallery/christmas'}
+            component={Link}
+          >
+            {t('toolbar.galleryChristmas')}
+          </MenuItem>
+          <MenuItem
+            onClick={hideGalleryMenu}
+            to={'/gallery/dark'}
+            component={Link}
+          >
+            {t('toolbar.gallerySpooky')}
+          </MenuItem>
+          <MenuItem
+            onClick={hideGalleryMenu}
+            to={'/gallery/halloween-houses'}
+            component={Link}
+          >
+            {t('toolbar.galleryHalloween')}
+          </MenuItem>
+          <MenuItem
+            onClick={hideGalleryMenu}
+            to={'/gallery/panoramas'}
+            component={Link}
+          >
+            {t('toolbar.galleryPanoramas')}
+          </MenuItem>
         </Menu>
 
-        <Button to='/about' component={Link} >{t('toolbar.about')}</Button>
+        <Button to="/about" component={Link}>
+          {t('toolbar.about')}
+        </Button>
 
         <div style={middleStyle} />
 
@@ -134,22 +174,30 @@ function NavBar(props) {
 
         <ReactGA.OutboundLink
           to={config.urls.flickr}
-          target='_blank'
+          target="_blank"
           style={rightItemStyle}
-          eventLabel='Flickr'
+          eventLabel="Flickr"
         >
           <Tooltip title={t('toolbar.tooltipFlickr')}>
-            <img src={require('../images/flickr.png')} width={32} alt='Flickr' />
+            <img
+              src={require('../images/flickr.png')}
+              width={32}
+              alt="Flickr"
+            />
           </Tooltip>
         </ReactGA.OutboundLink>
-        
-        <ReactGA.OutboundLink 
-          to={config.urls.instagram} 
-          target='_blank'
-          eventLabel='Instagram'
+
+        <ReactGA.OutboundLink
+          to={config.urls.instagram}
+          target="_blank"
+          eventLabel="Instagram"
         >
           <Tooltip title={t('toolbar.tooltipInstagram')}>
-            <img src={require('../images/instagram.png')} width={32} alt='Instagram' />
+            <img
+              src={require('../images/instagram.png')}
+              width={32}
+              alt="Instagram"
+            />
           </Tooltip>
         </ReactGA.OutboundLink>
         {/* The settings button isn't needed and is just a distraction */}
@@ -168,7 +216,7 @@ function NavBar(props) {
         */}
       </Toolbar>
     </AppBar>
-  ); 
+  );
 }
 
 NavBar.propTypes = {

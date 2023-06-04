@@ -1,6 +1,6 @@
-import {createTheme} from '@mui/material/styles';
-import {HalloweenThemeDefinition} from './Halloween';
-import {LightThemeDefinition} from './Light';
+import { createTheme } from '@mui/material/styles';
+import { HalloweenThemeDefinition } from './Halloween';
+import { LightThemeDefinition } from './Light';
 
 const themes = [
   {
@@ -10,14 +10,10 @@ const themes = [
   {
     label: 'Dark (Halloween)',
     theme: createTheme(HalloweenThemeDefinition),
-  }
+  },
 ];
 
 const DefaultTheme = themes[1];
 const HalloweenTheme = themes[1];
 
-export {
-  themes,
-  DefaultTheme,
-  HalloweenTheme,
-};
+export { themes, DefaultTheme, HalloweenTheme };

@@ -33,5 +33,4 @@ settings.categories = [
   },
 ];
 
-
 export default settings;

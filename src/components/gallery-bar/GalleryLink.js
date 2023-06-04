@@ -2,9 +2,9 @@ import { Box } from '@mui/material';
 import { alpha } from '@mui/material/styles';
 import React, { useState } from 'react';
 import { Haunted } from 'react-halloween';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const GalleryLink = ({gallery, galleryName, glowOptions = {}, imgSrc}) => {
+const GalleryLink = ({ gallery, galleryName, glowOptions = {}, imgSrc }) => {
   const navigate = useNavigate();
   const [hovering, setHovering] = useState(false);
 
@@ -55,8 +55,7 @@ const GalleryLink = ({gallery, galleryName, glowOptions = {}, imgSrc}) => {
             position: 'absolute',
             transform: 'translate(-10px, 0) rotate(-5deg)',
           }}
-        >
-        </Box>
+        ></Box>
         <Box
           sx={{
             width: '300px',
@@ -66,8 +65,7 @@ const GalleryLink = ({gallery, galleryName, glowOptions = {}, imgSrc}) => {
             borderRadius: '10px',
             position: 'absolute',
           }}
-        >
-        </Box>
+        ></Box>
         <Haunted
           glowOptions={glowOptions}
           creatureOptions={gallery !== 'halloween-houses' ? null : {}}
@@ -89,22 +87,26 @@ const GalleryLink = ({gallery, galleryName, glowOptions = {}, imgSrc}) => {
               backgroundImage: `url("${imgSrc}")`,
               backgroundSize: 'contain',
             }}
-          >
-          </Box>
+          ></Box>
         </Haunted>
       </Box>
       <Box
         sx={{
           textAlign: 'center',
           marginTop: '15px',
-          color: theme => theme.palette.primary.main,
+          color: (theme) => theme.palette.primary.main,
           textDecoration: 'underline',
-          textDecorationColor: theme => hovering ? theme.palette.primary.main : alpha(theme.palette.primary.light, 0.4),
+          textDecorationColor: (theme) =>
+            hovering
+              ? theme.palette.primary.main
+              : alpha(theme.palette.primary.light, 0.4),
         }}
-      >{galleryName}</Box>
+      >
+        {galleryName}
+      </Box>
     </Box>
   );
-}
+};
 
-export {GalleryLink};
+export { GalleryLink };
 export default GalleryLink;

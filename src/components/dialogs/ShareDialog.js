@@ -1,11 +1,10 @@
-
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField
+  TextField,
 } from '@mui/material';
 
 import confetti from 'canvas-confetti';
@@ -16,13 +15,9 @@ import ReactGA from '../react-ga';
 import { useTranslation } from 'react-i18next';
 
 function LinkDialog(props) {
-  const {
-    open,
-    handleClose,
-    album
-  } = props;
+  const { open, handleClose, album } = props;
 
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const selectText = (event) => {
     event.preventDefault();
@@ -36,8 +31,8 @@ function LinkDialog(props) {
     let yPos = event.clientY / window.innerHeight;
 
     if (xPos === 0 && yPos === 0) {
-      xPos = (window.innerWidth / 2) / window.innerWidth;
-      yPos = (window.innerHeight / 2) / window.innerHeight;
+      xPos = window.innerWidth / 2 / window.innerWidth;
+      yPos = window.innerHeight / 2 / window.innerHeight;
     }
 
     confetti({
@@ -45,7 +40,7 @@ function LinkDialog(props) {
         x: xPos,
         y: yPos,
       },
-      zIndex: 10000
+      zIndex: 10000,
     });
     event.preventDefault();
     event.stopPropagation();
@@ -53,7 +48,7 @@ function LinkDialog(props) {
     ReactGA.event({
       category: 'Copy Dialog',
       action: 'Copy',
-      label: album.name
+      label: album.name,
     });
 
     handleClose();
@@ -66,25 +61,24 @@ function LinkDialog(props) {
       open={open}
       onClose={handleClose}
       fullWidth={true}
-      aria-labelledby='photo-dialog-title'
-      aria-describedby='photo-dialog-description'
+      aria-labelledby="photo-dialog-title"
+      aria-describedby="photo-dialog-description"
     >
-      <DialogTitle id='photo-dialog-title'>
+      <DialogTitle id="photo-dialog-title">
         {t('dialog.shareHeader')}
       </DialogTitle>
-      <DialogContent id='photo-dialog-description'>
-        <TextField 
-          id='photo-url' 
-          variant='outlined' 
-          value={photoUrl} 
+      <DialogContent id="photo-dialog-description">
+        <TextField
+          id="photo-url"
+          variant="outlined"
+          value={photoUrl}
           onFocus={selectText}
-          fullWidth />
+          fullWidth
+        />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleCopy}>{t('dialog.copy')}</Button>
-        <Button onClick={handleClose}>
-          {t('dialog.close')}
-        </Button>
+        <Button onClick={handleClose}>{t('dialog.close')}</Button>
       </DialogActions>
     </Dialog>
   );

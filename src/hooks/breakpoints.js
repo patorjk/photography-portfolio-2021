@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material/styles';
-import {useMemo} from 'react';
+import { useMemo } from 'react';
 
 export default function useBreakpoints() {
   const theme = useTheme();
@@ -10,28 +10,28 @@ export default function useBreakpoints() {
   const lg = theme.breakpoints.values['lg'];
   const xl = theme.breakpoints.values['xl'];
 
-  const breakpoints = useMemo( () => ([xs, sm, md, lg, xl]), [xs, sm, md, lg, xl] );
+  const breakpoints = useMemo(() => [xs, sm, md, lg, xl], [xs, sm, md, lg, xl]);
 
   const ranges = {
     [xs]: {
       min: 0,
-      max: sm - 1
+      max: sm - 1,
     },
     [sm]: {
       min: sm,
-      max: md - 1
+      max: md - 1,
     },
     [md]: {
       min: md,
-      max: lg - 1
+      max: lg - 1,
     },
     [lg]: {
       min: lg,
-      max: xl - 1
+      max: xl - 1,
     },
     [xl]: {
       min: xl,
-      max: xl * 100
+      max: xl * 100,
     },
   };
 
@@ -57,7 +57,7 @@ export default function useBreakpoints() {
         width: '1536',
         height: '1025',
       },
-      ratio: 4/6,
+      ratio: 4 / 6,
     },
     '16x9': {
       [xs]: {
@@ -80,7 +80,7 @@ export default function useBreakpoints() {
         width: '1536',
         height: '864',
       },
-      ratio: 9/16,
+      ratio: 9 / 16,
     },
     '16x10': {
       [xs]: {
@@ -103,7 +103,7 @@ export default function useBreakpoints() {
         width: '1536',
         height: '960',
       },
-      ratio: 10/16,
+      ratio: 10 / 16,
     },
     '1x1': {
       [xs]: {
@@ -149,7 +149,7 @@ export default function useBreakpoints() {
         width: '1536',
         height: '1988',
       },
-      ratio: 11/8.5
+      ratio: 11 / 8.5,
     },
     '10x8': {
       [xs]: {
@@ -172,7 +172,7 @@ export default function useBreakpoints() {
         width: '1536',
         height: '1229',
       },
-      ratio: 8/10
+      ratio: 8 / 10,
     },
     '8x10': {
       [xs]: {
@@ -195,13 +195,13 @@ export default function useBreakpoints() {
         width: '1536',
         height: '1920',
       },
-      ratio: 10/8
+      ratio: 10 / 8,
     },
   };
 
   return {
     aspects,
     ranges,
-    breakpoints
+    breakpoints,
   };
 }

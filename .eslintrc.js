@@ -4,7 +4,7 @@ module.exports = {
     commonjs: true, // CommonJS global variables and CommonJS scoping.Allows require, exports and module.
     es6: true, // Enable all ECMAScript 6 features except for modules.
     jest: true, // Jest global variables like `it` etc.
-    node: true // Defines things like process.env when generating through node
+    node: true, // Defines things like process.env when generating through node
   },
   extends: [
     'eslint:recommended',
@@ -12,27 +12,30 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jest/recommended',
-    'plugin:testing-library/react'
+    'plugin:testing-library/react',
   ],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module' // Allows for the use of imports
+    sourceType: 'module', // Allows for the use of imports
   },
   plugins: [
-    'import' // eslint-plugin-import plugin. https://www.npmjs.com/package/eslint-plugin-import
+    'import', // eslint-plugin-import plugin. https://www.npmjs.com/package/eslint-plugin-import
+    'react-helpers',
   ],
   root: true, // For configuration cascading.
   rules: {
+    'react-helpers/no-named-useeffect-functions': 2,
+    'react-helpers/prefer-use-state-lazy-initialization': 2,
     'eol-last': 'error',
     'import/order': [
       'warn',
       {
         alphabetize: {
           caseInsensitive: true,
-          order: 'asc'
+          order: 'asc',
         },
         groups: [
           'builtin',
@@ -40,25 +43,9 @@ module.exports = {
           'index',
           'sibling',
           'parent',
-          'internal'
-        ]
-      }
-    ],
-    indent: [
-      'error',
-      2
-    ],
-    'jsx-quotes': [
-      'warn',
-      'prefer-single'
-    ],
-    'max-len': [
-      'warn',
-      {
-        code: 120,
-        'ignoreTemplateLiterals': true,
-        'ignoreUrls': true,
-      }
+          'internal',
+        ],
+      },
     ],
     //'no-console': 'warn',
     'no-duplicate-imports': 'warn',
@@ -67,76 +54,50 @@ module.exports = {
       {
         paths: [
           {
-            message: 'Please use import foo from \'lodash-es/foo\' instead.',
-            name: 'lodash'
+            message: "Please use import foo from 'lodash-es/foo' instead.",
+            name: 'lodash',
           },
           {
-            message: 'Avoid using chain since it is non tree-shakable. Try out flow instead.',
-            name: 'lodash-es/chain'
+            message:
+              'Avoid using chain since it is non tree-shakable. Try out flow instead.',
+            name: 'lodash-es/chain',
           },
           {
             importNames: ['chain'],
-            message: 'Avoid using chain since it is non tree-shakable. Try out flow instead.',
-            name: 'lodash-es'
+            message:
+              'Avoid using chain since it is non tree-shakable. Try out flow instead.',
+            name: 'lodash-es',
           },
           {
-            message: 'Please use import foo from \'lodash-es/foo\' instead.',
-            name: 'lodash-es'
-          }
+            message: "Please use import foo from 'lodash-es/foo' instead.",
+            name: 'lodash-es',
+          },
         ],
-        patterns: [
-          'lodash/**',
-          'lodash/fp/**'
-        ]
-      }
+        patterns: ['lodash/**', 'lodash/fp/**'],
+      },
     ],
     'react/no-unescaped-entities': 0,
     'no-unused-vars': 'warn',
-    'object-curly-spacing': [
-      'warn',
-      'never'
-    ],
-    quotes: [
-      'warn',
-      'single'
-    ],
     'react/jsx-curly-spacing': [
       'warn',
       {
         allowMultiline: true,
         children: {
-          when: 'never'
+          when: 'never',
         },
         spacing: {
-          objectLiterals: 'never'
+          objectLiterals: 'never',
         },
-        when: 'never'
-      }
+        when: 'never',
+      },
     ],
     'react/jsx-filename-extension': [
       'error',
       {
-        extensions: [
-          '.js',
-          '.jsx',
-          '.ts',
-          '.tsx'
-        ]
-      }
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
     ],
-    'react/jsx-indent': [
-      'error',
-      2,
-      {
-        checkAttributes: true,
-        indentLogicalExpressions:
-          true
-      }
-    ],
-    'react/jsx-indent-props': [
-      'error',
-      2
-    ],
+    'react/jsx-indent-props': ['error', 2],
     'react/prop-types': 'warn',
     semi: 'warn',
     'sort-imports': [
@@ -144,13 +105,13 @@ module.exports = {
       {
         ignoreCase: false,
         ignoreDeclarationSort: true,
-        ignoreMemberSort: false
-      }
-    ]
+        ignoreMemberSort: false,
+      },
+    ],
   },
   settings: {
     react: {
-      version: 'detect' // Detect react version
-    }
-  }
+      version: 'detect', // Detect react version
+    },
+  },
 };

@@ -1,8 +1,8 @@
 import Collapse from '@mui/material/Collapse';
-import {alpha} from '@mui/material/styles';
-import {styled} from '@mui/system';
+import { alpha } from '@mui/material/styles';
+import { styled } from '@mui/system';
 import PropTypes from 'prop-types';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import ReactGA from './react-ga';
 import FloatingMenu from './FloatingMenu';
@@ -12,7 +12,7 @@ const AboutText = styled('div', {
   shouldForwardProp: (prop) => prop !== 'isCollapsed',
 })((props) => ({
   paddingLeft: '12px',
-  paddingRight:'12px',
+  paddingRight: '12px',
   paddingBottom: '50px',
   fontStyle: props.isCollapsed ? 'italic' : 'normal',
   fontSize: props.isCollapsed ? '0.85rem' : '1rem',
@@ -20,23 +20,22 @@ const AboutText = styled('div', {
   transition: 'font-size 1s, opacity 1s',
 }));
 
-const FadeBlock = styled('div')(({theme}) => ({
+const FadeBlock = styled('div')(({ theme }) => ({
   position: 'absolute',
   bottom: '0px',
   display: 'block',
   width: '100%',
   height: '50px',
-  
+
   // eslint-disable-next-line max-len
-  backgroundImage: `linear-gradient(to bottom, ${alpha(theme.palette.background.default,0)}, ${alpha(theme.palette.background.default, 0.9)} 100%)`
+  backgroundImage: `linear-gradient(to bottom, ${alpha(
+    theme.palette.background.default,
+    0
+  )}, ${alpha(theme.palette.background.default, 0.9)} 100%)`,
 }));
 
 function PhotoDescription(props) {
-  const {
-    album,
-    activeStep,
-    slim = false
-  } = props;
+  const { album, activeStep, slim = false } = props;
 
   let photoLabel = album.id;
 
@@ -46,13 +45,17 @@ function PhotoDescription(props) {
     ReactGA.event({
       category: 'Text',
       action: 'Toggle Description',
-      label: photoLabel
+      label: photoLabel,
     });
     setIsTextOpen(!isTextOpen);
   };
 
-  let description = album.descriptions ? album.descriptions[activeStep] : album.description;
-  const flickrURL = Array.isArray(album.flickr) ? album.flickr[activeStep] : album.flickr;
+  let description = album.descriptions
+    ? album.descriptions[activeStep]
+    : album.description;
+  const flickrURL = Array.isArray(album.flickr)
+    ? album.flickr[activeStep]
+    : album.flickr;
 
   // overwrite description with the caption
   if (slim === true) {
@@ -60,24 +63,26 @@ function PhotoDescription(props) {
   }
 
   return (
-    <ResponsiveContainer sx={{textAlign: 'left',position:'relative'}}>
-      <Collapse in={isTextOpen} collapsedSize={50} style={{position:'relative'}}>
+    <ResponsiveContainer sx={{ textAlign: 'left', position: 'relative' }}>
+      <Collapse
+        in={isTextOpen}
+        collapsedSize={50}
+        style={{ position: 'relative' }}
+      >
         <AboutText isCollapsed={!isTextOpen}>
-          {typeof description === 'string' ? <p>{description}</p> :
-            description.map((para, idx) => (
-              <p key={idx}>{para}</p>
-            ))
-          }
+          {typeof description === 'string' ? (
+            <p>{description}</p>
+          ) : (
+            description.map((para, idx) => <p key={idx}>{para}</p>)
+          )}
         </AboutText>
 
-        {slim === false &&
-          <FadeBlock/>
-        }
+        {slim === false && <FadeBlock />}
 
-        <FloatingMenu 
+        <FloatingMenu
           album={album}
           description={slim ? false : description}
-          photoLabel={photoLabel} 
+          photoLabel={photoLabel}
           isTextOpen={isTextOpen}
           toggleTextOpen={toggleTextOpen}
           flickrURL={flickrURL}

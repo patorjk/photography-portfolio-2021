@@ -4,7 +4,7 @@ const LightThemeDefinition = {
       main: '#607d8b',
       light: 'rgb(127, 151, 162)',
       dark: 'rgb(67,87,97)',
-      contrastText: '#fff'
+      contrastText: '#fff',
     },
     text: {
       primary: 'rgb(0, 0, 0, .87)',
@@ -18,10 +18,7 @@ const LightThemeDefinition = {
     },
   },
   typography: {
-    fontFamily: [
-      '"PT Sans"',
-      'sans-serif',
-    ]
+    fontFamily: ['"PT Sans"', 'sans-serif'],
   },
   shadows: Array(25).fill('none'),
   components: {
@@ -31,9 +28,9 @@ const LightThemeDefinition = {
           backgroundColor: '#fff',
           color: 'rgb(0, 0, 0, .87)',
         },
-      }
+      },
     },
-  }
+  },
 };
 
-export {LightThemeDefinition};
+export { LightThemeDefinition };

@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import {initReactI18next} from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 
 import translationEn from './translation.en.json';
 import translationIt from './translation.it.json';
@@ -17,7 +17,7 @@ const resource = {
     translation: translationEs,
   },
   it: {
-    translation: translationIt
+    translation: translationIt,
   },
   ru: {
     translation: translationRu,
@@ -29,7 +29,7 @@ i18n
   .use(LanguageDetector)
   .init({
     // detection: options,
-    detection: {order: ['querystring', 'navigator']},
+    detection: { order: ['querystring', 'navigator'] },
     fallbackLng: 'en',
     resources: resource,
     whitelist: languages,

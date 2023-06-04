@@ -1,4 +1,3 @@
-
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
@@ -7,28 +6,26 @@ import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MobileStepper from '@mui/material/MobileStepper';
-import {useTheme} from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import PropTypes from 'prop-types';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactGA from './react-ga';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
 import PhotoDescription from './PhotoDescription';
 import ResponsiveContainer from './styled/ResponsiveContainer';
 import useBreakpoints from '../hooks/breakpoints.js';
 
 function Photo(props) {
-  let {
-    album,
-    showDetails,
-    slimDescription = false
-  } = props;
+  let { album, showDetails, slimDescription = false } = props;
 
   const theme = useTheme();
-  const {t} = useTranslation();
-  
-  const [activeStep, setActiveStep] = useState(album.transitionOptions?.imageStart || 0);
+  const { t } = useTranslation();
+
+  const [activeStep, setActiveStep] = useState(
+    album.transitionOptions?.imageStart || 0
+  );
   const [imageNearView, setImageNearView] = useState(false);
   const [isOffScreen, setIsOffScreen] = useState(false);
   const [canMoveStepper, setCanMoveStepper] = useState(true);
@@ -36,17 +33,17 @@ function Photo(props) {
   const [clientX, setClientX] = useState(null);
   const [xOffset, setXOffset] = useState(0);
 
-  const {
-    aspects,
-    ranges,
-    breakpoints
-  } = useBreakpoints();
+  const { aspects, ranges, breakpoints } = useBreakpoints();
 
-  const slowTransition = album.transitionOptions ? album.transitionOptions.slowTransition : false;
+  const slowTransition = album.transitionOptions
+    ? album.transitionOptions.slowTransition
+    : false;
   const transitionTime = slowTransition ? 3000 : 1000;
   const isImageSet = album.photos.length > 1 ? true : false;
   const imgSetSize = album.photos.length;
-  const transitionType = album.transitionOptions?.type ? album.transitionOptions.type : 'stepper';
+  const transitionType = album.transitionOptions?.type
+    ? album.transitionOptions.type
+    : 'stepper';
   const photos = album.photos;
   let photoLabel = props.album.id;
 
@@ -54,17 +51,17 @@ function Photo(props) {
     const onScroll = () => {
       if (container.current) {
         let rect = container.current.getBoundingClientRect();
-        
-        let _isOffScreen = (
-          (rect.x + rect.width) < 0 
-             || (rect.y + rect.height) < 0
-             || (rect.x > window.innerWidth || rect.y > window.innerHeight)
-        );
-        
+
+        let _isOffScreen =
+          rect.x + rect.width < 0 ||
+          rect.y + rect.height < 0 ||
+          rect.x > window.innerWidth ||
+          rect.y > window.innerHeight;
+
         setIsOffScreen(_isOffScreen);
 
         if (!imageNearView) {
-          let threshold = (window.innerHeight * 3) + window.pageYOffset;
+          let threshold = window.innerHeight * 3 + window.pageYOffset;
           if (rect.top < threshold) {
             setImageNearView(true);
           }
@@ -81,13 +78,13 @@ function Photo(props) {
   // handle window resize
   const getBreakpoint = useCallback(() => {
     return breakpoints.slice(1).reduce((current, point) => {
-      return (point < window.innerWidth) ? point : current;
+      return point < window.innerWidth ? point : current;
     }, breakpoints[1]);
   }, [breakpoints]);
-  const [currentBreakpoint, setCurrentBreakpoint] = useState( getBreakpoint() );
+  const [currentBreakpoint, setCurrentBreakpoint] = useState(() => getBreakpoint());
   useEffect(() => {
     const onResize = () => {
-      setCurrentBreakpoint( getBreakpoint() );
+      setCurrentBreakpoint(getBreakpoint());
       setIsOffScreen(false); // TODO - fix this
     };
     window.addEventListener('resize', onResize);
@@ -97,41 +94,43 @@ function Photo(props) {
     };
   }, [getBreakpoint]);
 
-
-  const onPointerDown = useCallback((event) => {
-    setClientX(event.clientX);
-  }, [setClientX]);
-  const onPointerMove = useCallback((event) => {
-    if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
-      setXOffset(event.clientX - clientX);
-      event.stopPropagation();
-      event.preventDefault();
-    }
-  }, 
-  [
-    clientX,
-    transitionType,
-    photos,
-  ]);
+  const onPointerDown = useCallback(
+    (event) => {
+      setClientX(event.clientX);
+    },
+    [setClientX]
+  );
+  const onPointerMove = useCallback(
+    (event) => {
+      if (
+        clientX !== null &&
+        transitionType === 'stepper' &&
+        photos.length > 1
+      ) {
+        setXOffset(event.clientX - clientX);
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    },
+    [clientX, transitionType, photos]
+  );
   const onPointerUp = useCallback(() => {
     let rect = container.current.getBoundingClientRect();
     if (rect && rect.width) {
-      if (Math.abs(xOffset) > rect.width/4) {
+      if (Math.abs(xOffset) > rect.width / 4) {
         if (xOffset < 0) {
-
           ReactGA.event({
             category: 'Image Drag',
             action: 'Drag Left',
-            label: photoLabel
+            label: photoLabel,
           });
 
           setActiveStep(Math.min(photos.length - 1, activeStep + 1));
         } else {
-
           ReactGA.event({
             category: 'Image Drag',
             action: 'Drag Right',
-            label: photoLabel
+            label: photoLabel,
           });
 
           setActiveStep(Math.max(0, activeStep - 1));
@@ -141,8 +140,7 @@ function Photo(props) {
 
     setClientX(null);
     setXOffset(0);
-  }, 
-  [
+  }, [
     setClientX,
     xOffset,
     setXOffset,
@@ -166,7 +164,7 @@ function Photo(props) {
     ReactGA.event({
       category: 'Stepper',
       action: 'Next Photo',
-      label: photoLabel
+      label: photoLabel,
     });
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -183,7 +181,7 @@ function Photo(props) {
     ReactGA.event({
       category: 'Stepper',
       action: 'Previous Photo',
-      label: photoLabel
+      label: photoLabel,
     });
 
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -197,7 +195,7 @@ function Photo(props) {
     ReactGA.event({
       category: 'Image Toggle',
       action: 'Toggled',
-      label: photoLabel
+      label: photoLabel,
     });
 
     if (event.target.checked) {
@@ -209,23 +207,29 @@ function Photo(props) {
 
   let containerStyle = {
     // eslint-disable-next-line max-len
-    height: window.innerWidth <= 600 ? (window.innerWidth * aspects[album.aspect].ratio) : aspects[album.aspect][currentBreakpoint].height + 'px',
-    width: window.innerWidth <= 600 ? '100%' : aspects[album.aspect][currentBreakpoint].width + 'px',
+    height:
+      window.innerWidth <= 600
+        ? window.innerWidth * aspects[album.aspect].ratio
+        : aspects[album.aspect][currentBreakpoint].height + 'px',
+    width:
+      window.innerWidth <= 600
+        ? '100%'
+        : aspects[album.aspect][currentBreakpoint].width + 'px',
     overflow: 'hidden',
-    position: 'relative'
+    position: 'relative',
   };
 
   const getImageLeft = (index) => {
     if (index === activeStep) {
       return xOffset + 'px';
     }
-    if (index === (activeStep - 1)) {
+    if (index === activeStep - 1) {
       return `calc(-100% + ${xOffset}px)`;
     }
     if (index < activeStep) {
       return '-200%';
     }
-    if (index === (activeStep + 1)) {
+    if (index === activeStep + 1) {
       return `calc(100% + ${xOffset}px)`;
     }
     if (index > activeStep) {
@@ -248,7 +252,11 @@ function Photo(props) {
   const getImageCursor = () => {
     if (clientX === null && transitionType === 'stepper' && photos.length > 1) {
       return 'grab';
-    } else if (clientX !== null && transitionType === 'stepper' && photos.length > 1) {
+    } else if (
+      clientX !== null &&
+      transitionType === 'stepper' &&
+      photos.length > 1
+    ) {
       return 'grabbing';
     } else {
       return 'default';
@@ -263,33 +271,37 @@ function Photo(props) {
   };
 
   return (
-    <ResponsiveContainer 
+    <ResponsiveContainer
       sx={{
-        position:'relative',
+        position: 'relative',
         textAlign: 'left',
         transition: 'opacity 1s',
-        opacity: isOffScreen ? 0 : 1
+        opacity: isOffScreen ? 0 : 1,
       }}
       ref={container}
     >
       <div style={containerStyle}>
-        {breakpoints.map(point => (
-          <MediaQuery minWidth={ranges[point].min} maxWidth={ranges[point].max} key={point} >
+        {breakpoints.map((point) => (
+          <MediaQuery
+            minWidth={ranges[point].min}
+            maxWidth={ranges[point].max}
+            key={point}
+          >
             {photos.map((img, idx) => (
-              <img 
+              <img
                 key={idx}
-                src={img[Math.max(point, 600)]} 
+                src={img[Math.max(point, 600)]}
                 style={{
                   left: getImageLeft(idx),
                   transition: getImageTransition(idx),
                   cursor: getImageCursor(),
                   touchAction: getImageTouchAction(),
-                  textAlign:'center',
+                  textAlign: 'center',
                   position: 'absolute',
                 }}
-                width={aspects[album.aspect][point].width} 
-                height={aspects[album.aspect][point].height} 
-                alt={album.altText} 
+                width={aspects[album.aspect][point].width}
+                height={aspects[album.aspect][point].height}
+                alt={album.altText}
                 draggable={false}
                 onPointerDown={onPointerDown}
                 onPointerUp={onPointerUp}
@@ -297,61 +309,74 @@ function Photo(props) {
                 onPointerCancel={onPointerUp}
               />
             ))}
-
           </MediaQuery>
         ))}
       </div>
 
-      {(isImageSet && transitionType === 'stepper') ? 
+      {isImageSet && transitionType === 'stepper' ? (
         <MobileStepper
-          variant='dots'
+          variant="dots"
           steps={imgSetSize}
-          position='static'
+          position="static"
           activeStep={activeStep}
-          style={{flexGrow: 1,}}
+          style={{ flexGrow: 1 }}
           nextButton={
-            <Button size='small' onClick={handleNext} disabled={activeStep === imgSetSize - 1}>
+            <Button
+              size="small"
+              onClick={handleNext}
+              disabled={activeStep === imgSetSize - 1}
+            >
               {t('photo.next')}
-              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+              {theme.direction === 'rtl' ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
             </Button>
           }
           backButton={
-            <Button size='small' onClick={handleBack} disabled={activeStep === 0}>
-              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+            <Button
+              size="small"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === 'rtl' ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
               {t('photo.previous')}
             </Button>
           }
         />
-        : null
-      }
+      ) : null}
 
-      {(isImageSet && transitionType === 'toggle') ?
-        <FormControl component='fieldset'>
-          <FormGroup aria-label='position' row>
+      {isImageSet && transitionType === 'toggle' ? (
+        <FormControl component="fieldset">
+          <FormGroup aria-label="position" row>
             <FormControlLabel
-              value='top'
+              value="top"
               control={
                 <Switch
-                  color='primary'
+                  color="primary"
                   checked={activeStep === 1}
                   onChange={toggleChange}
-                />}
+                />
+              }
               label={album.transitionOptions.toggleLabel}
-              labelPlacement='end'
+              labelPlacement="end"
             />
           </FormGroup>
         </FormControl>
-        : null
-      }
+      ) : null}
 
-      {( showDetails !== false ) ?
+      {showDetails !== false ? (
         <PhotoDescription
           album={album}
           activeStep={activeStep}
           slim={slimDescription}
         />
-        : null
-      }
+      ) : null}
     </ResponsiveContainer>
   );
 }

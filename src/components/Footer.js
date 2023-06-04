@@ -7,14 +7,15 @@ const topDiv = {
 const innerStyle = {
   margin: '10px 20px',
   fontSize: '0.8em',
-  textAlign:'center',
+  textAlign: 'center',
 };
 
 function getRandomFooterMessage() {
   var msgs = [];
-  msgs.push('I feel like this footer needs some text, do people read webpage footers?');
+  msgs.push(
+    'I feel like this footer needs some text, do people read webpage footers?'
+  );
   msgs.push('Great wisdom can be found in the small print of webpage footers.');
-
 
   // eslint-disable-next-line max-len
   //msgs.push('Back in 2011, MC Hammer launched a search engine called "WireDoo". That has nothing to do with this page, I just wanted to share.');
@@ -32,9 +33,7 @@ function getRandomFooterMessage() {
 function Footer() {
   return (
     <div style={topDiv}>
-      <div style={innerStyle}>
-        {getRandomFooterMessage()}
-      </div>
+      <div style={innerStyle}>{getRandomFooterMessage()}</div>
     </div>
   );
 }
