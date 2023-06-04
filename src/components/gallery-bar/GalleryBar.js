@@ -1,9 +1,8 @@
 import { Box } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Eyes } from 'react-halloween';
 import { useLocation } from 'react-router-dom';
-import useEvent from '../../hooks/useEvent';
 import { GalleryLink } from './GalleryLink';
 import { getPhotoAlbumByName } from '../../photos';
 
@@ -38,12 +37,12 @@ const GalleryBar = () => {
     boxShadowOn: `0px 0px 40px ${alpha('#93B3E2', 1)}`,
   };
 
-  const onMouseEnter = useEvent(() => {
+  const onMouseEnter = useCallback(() => {
     setEyesOpen(true);
-  });
-  const onMouseLeave = useEvent(() => {
+  }, [setEyesOpen]);
+  const onMouseLeave = useCallback(() => {
     setEyesOpen(false);
-  });
+  }, [setEyesOpen]);
 
   const halloween = getPhotoAlbumByName('halloween-death-plague-dance-party');
   const halloweenSrc = halloween.photosNormalSize[0]['600'];

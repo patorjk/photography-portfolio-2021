@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactGA from './react-ga';
 import { MagicalText, GhostSVG, StarCrossSVG } from 'react-halloween';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,6 @@ import MediaQuery, { useMediaQuery } from 'react-responsive';
 import { Link, useLocation } from 'react-router-dom';
 import SettingsDialog from './dialogs/SettingsDialog';
 import config from '../app.config.js';
-import useEvent from '../hooks/useEvent';
 
 function NavBar(props) {
   const { theme, setTheme } = props;
@@ -63,12 +62,12 @@ function NavBar(props) {
   };
 
   const [hoveringOverTitle, setHoveringOverTitle] = useState(false);
-  const onMouseEnter = useEvent(() => {
+  const onMouseEnter = useCallback(() => {
     setHoveringOverTitle(true);
-  });
-  const onMouseLeave = useEvent(() => {
+  }, [setHoveringOverTitle]);
+  const onMouseLeave = useCallback(() => {
     setHoveringOverTitle(false);
-  });
+  }, [setHoveringOverTitle]);
 
   return (
     <AppBar position={isDesktopOrLaptop ? 'fixed' : 'static'}>
@@ -207,7 +206,7 @@ function NavBar(props) {
             <SettingsIcon />
           </Tooltip>
         </IconButton>
-        <SettingsDialog 
+        <SettingsDialog
           open={settingsOpen}
           handleClose={handleSettingsClose}
           theme={theme}
