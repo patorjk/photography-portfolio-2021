@@ -8,6 +8,7 @@ import { createPhotoAlbum } from '../photos';
 function About() {
   let aboutAlbum = {
     photoFolders: [
+      '2023_cherry_pat',
       '2022_cherry_pat',
       '2021_cherry_pat_2',
       '2020_cherry_pat',
@@ -18,7 +19,9 @@ function About() {
     ],
     descriptions: [
       // eslint-disable-next-line max-len
-      "Drag images 👈 way. Year 7 (2022): They cut off the top of my tree! Sadly I read online that these trees typically only live 15-20 years 😭, though they can live over 100 with proper care - so hopefully the park service is able to save this one. However, I've decided I'm going to continue on even if the tree dies.",
+      "Drag images 👈 way. Year 8 (2023)",
+      // eslint-disable-next-line max-len
+      "Year 7 (2022): They cut off the top of my tree! Sadly I read online that these trees typically only live 15-20 years 😭, though they can live over 100 with proper care - so hopefully the park service is able to save this one. However, I've decided I'm going to continue on even if the tree dies.",
       // eslint-disable-next-line max-len
       'Year 6 (2021): This is almost the prefect shot (in my mind). With this shot I feel like I finally figured out how to nail the lighting. The only problem is the top of the tree is dying. You can see it start to die in 2020.',
       // eslint-disable-next-line max-len
@@ -36,6 +39,7 @@ function About() {
     altText: 'Me, sitting under a tree',
     showShareLink: false,
     flickr: [
+      'https://www.flickr.com/photos/40423570@N07/52788585605/', // 2023
       'https://www.flickr.com/photos/40423570@N07/51961260748/', // 2022
       'https://www.flickr.com/photos/40423570@N07/51096016418/', // 2021
       'https://www.flickr.com/photos/40423570@N07/51095568142/', // 2020
