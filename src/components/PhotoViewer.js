@@ -205,7 +205,7 @@ function Photo(props) {
     }
   };
 
-  let containerStyle = {
+  const containerStyle = {
     // eslint-disable-next-line max-len
     height:
       window.innerWidth <= 600
@@ -217,7 +217,17 @@ function Photo(props) {
         : aspects[album.aspect][currentBreakpoint].width + 'px',
     overflow: 'hidden',
     position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   };
+
+  // This handles the case of the window being very wide, but short
+  const minHeight = window.innerHeight - 60;
+  if (minHeight < parseInt(containerStyle.height, 10)) {
+    containerStyle.height = minHeight + 'px';
+    containerStyle.width = minHeight * (1/aspects[album.aspect].ratio) + 'px';
+  }
 
   const getImageLeft = (index) => {
     if (index === activeStep) {
@@ -299,8 +309,8 @@ function Photo(props) {
                   textAlign: 'center',
                   position: 'absolute',
                 }}
-                width={aspects[album.aspect][point].width}
-                height={aspects[album.aspect][point].height}
+                width={'100%'}
+                height={'100%'}
                 alt={album.altText}
                 draggable={false}
                 onPointerDown={onPointerDown}

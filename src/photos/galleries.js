@@ -198,6 +198,10 @@ const galleries = [
       { type: 'photo', name: 'domino-2021-sunrise-toggle' },
       { type: 'photo', name: 'middle-branch-pier' },
       { type: 'photo', name: 'broening-park-sunrise-nd-filter' },
+      {
+        type: 'photo',
+        name: 'my-house-halloween-2023',
+      },
     ],
   },
   {
@@ -264,26 +268,6 @@ const galleries = [
         photoProps: { showDetails: false },
       },
       {
-        type: 'react',
-        children: (
-          <>
-            <p>
-              I didn't know it at the time, but the images I was capturing fit
-              an aesthetic known as{' '}
-              <Link href={'https://www.youtube.com/watch?v=N63pQGhvK4M'}>
-                liminal space
-              </Link>
-              {'. '}A liminal space is a place between "states of being" that
-              feels unsettling yet familiar. Typically liminal spaces are of
-              abandoned or empty settings that normally have people in them — a
-              park after dark, an empty office, a long hallway. There's a
-              transitional nature to them. They're a snapshot of the time
-              between "what was" and "what's next".
-            </p>
-          </>
-        ),
-      },
-      {
         type: 'photo',
         name: 'mccloud-the-house',
         photoProps: { showDetails: false },
@@ -309,8 +293,8 @@ const galleries = [
               </Link>{' '}
               from a few streets over. It was a historic building, and rather
               than tear it down the owner sold it to someone who planned to use
-              it as a place of business on Main Street. Not a terribly exciting
-              story, but it's not every day that you see a house being moved.
+              it as a place of business on Main Street. A few years later when I came back to the town it was
+              still in the same place and still on cinder blocks.
             </p>
           </>
         ),
@@ -319,13 +303,6 @@ const galleries = [
         type: 'photo',
         name: 'mccloud-high-school',
         photoProps: { showDetails: false },
-      },
-      {
-        type: 'text',
-        text: [
-          `An empty parking lot next to the local high school. 
-          At the time I just thought it looked eerie, especially with the light illuminating the emptiness.`,
-        ],
       },
       {
         type: 'photo',
@@ -345,13 +322,6 @@ const galleries = [
         type: 'photo',
         name: 'mccloud-light-at-the-end-of-the-road',
         photoProps: { showDetails: false },
-      },
-      {
-        type: 'text',
-        text: [
-          `A patch of light in the darkness. It's was incredibly dark as I walked the streets. Lamp posts were like
-            beacons the void.`,
-        ],
       },
       {
         type: 'photo',
@@ -599,21 +569,25 @@ const galleries = [
         children: (
           <>
             <p>
-              It all started with a bike ride one cold October morning. Out of
-              the corner of my eye I spotted an elaborate halloween display with
-              4 Home Depot skeletons and a "death plague dance party" theme. It
-              was so cool. I thought to myself: Should I take a picture? Hmm, it
-              would probably look even cooler at night...
-            </p>
-            <p>
-              I had honestly never heard of someone photographing a Halloween
-              display, but it seemed a shame to let the moment escape, so I came
-              back and took a picture (seen above). I thought it ended up being
-              a cool shot and after showing it to several people I got some tips
-              on other houses that were really decked out.
+              I've always been a big fan of Halloween. I usually keep my camera with me and sometimes when I see
+              a really decked out house I'll stop and take a picture. This page is a collection of the best
+              houses I've seen so far.
             </p>
           </>
         ),
+      },
+      {
+        type: 'photo',
+        name: 'my-house-halloween-2023',
+        photoProps: { slimDescription: true },
+      },
+      {
+        type: 'text',
+        text: [
+          `The above house is mine from 2023. I decided to get in on the fun after photographing a number of these types
+           of houses. If you click the switch you can see what it looks like during the day. I think it would be cool
+           to do more houses like this. `,
+        ],
       },
       {
         type: 'photo',
@@ -623,9 +597,8 @@ const galleries = [
       {
         type: 'text',
         text: [
-          `Before I knew it I was cruising around looking for cool displays to photograph. 
-          It felt a little weird at first, but a lot of work goes into these displays and they're honestly pretty 
-          cool looking. Good ones are also pretty rare. You can tell when someone really loves the holiday. `,
+          `The most important part of any display is the lights. Not something you think about for Halloween, but
+           without them you can't see anything. `,
         ],
       },
       {
@@ -636,11 +609,6 @@ const galleries = [
       {
         type: 'text',
         text: [
-          `Initially my plan was to be super stealthy. When I came across a cool house I'd take a shot and be gone 
-          in under 30 seconds — it never went like that though. For one, even if someone had a cool setup, 
-          finding the right angle or way to frame the shot wasn't easy, especially in the dark. 
-          I'd find myself fumbling around and then once I had an angle I was happy with, taking the picture itself 
-          could take up to 30 seconds (since these are long exposures).`,
           `For the above shot, the guy's flood lights came on right after I finished taking the shot. 
           I was like "oh shit, this guy is not cool with this" — but he ended up being pretty flattered and even 
           offered to turn everything back on (apparently he was doing a test run and didn't even see me until the 
@@ -655,26 +623,13 @@ const galleries = [
       {
         type: 'text',
         text: [
-          `I probably wouldn't put any "Halloween house" photos in my official portfolio, but I find this project 
-          kind of fun. It's not high art, but there's something about the exploration and the macabre displays that 
-          I really like.
-          `,
+          `The macabre displays people come up with are so much fun. `,
         ],
       },
       {
         type: 'photo',
         name: 'halloween-green-graveyard',
         photoProps: { slimDescription: true },
-      },
-      {
-        type: 'text',
-        text: [
-          `
-          Just based on social media likes and views I know I'm in the minority of finding this cool, but sometimes 
-          doing a project just because it's stupid fun is the way to go. I know there has to be at least a few other 
-          people out there that think these are neat.  
-          `,
-        ],
       },
       {
         type: 'photo',

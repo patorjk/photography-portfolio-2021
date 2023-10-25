@@ -816,6 +816,23 @@ let albums = [
     ],
     altText: '',
   },
+  {
+    name: 'my-house-halloween-2023',
+    photoFolders: ['2023_halloween_pat_2', '2023_halloween_pat_1'],
+    tags: ['2023', 'halloween'],
+    transitionOptions: {
+      type: 'toggle',
+      toggleLabel: 'Click the switch to switch between night and day',
+      imageStart: 1,
+    },
+    aspect: '6x4',
+    flickr: [
+      'https://www.flickr.com/photos/40423570@N07/53276039833',
+      'https://www.flickr.com/photos/40423570@N07/53276039843',
+    ],
+    description: ['My 2023 Halloween decorations. '],
+    altText: 'My 2023 Halloween decorations',
+  },
 ];
 
 // add in the sizes field
