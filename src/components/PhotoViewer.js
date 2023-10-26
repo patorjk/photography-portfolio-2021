@@ -8,13 +8,13 @@ import FormGroup from '@mui/material/FormGroup';
 import MobileStepper from '@mui/material/MobileStepper';
 import { useTheme } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
+import { Box } from '@mui/system';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactGA from 'react-ga4';
 import { useTranslation } from 'react-i18next';
 import MediaQuery from 'react-responsive';
 import PhotoDescription from './PhotoDescription';
-import ResponsiveContainer from './styled/ResponsiveContainer';
 import useBreakpoints from '../hooks/breakpoints.js';
 
 function Photo(props) {
@@ -81,7 +81,9 @@ function Photo(props) {
       return point < window.innerWidth ? point : current;
     }, breakpoints[1]);
   }, [breakpoints]);
-  const [currentBreakpoint, setCurrentBreakpoint] = useState(() => getBreakpoint());
+  const [currentBreakpoint, setCurrentBreakpoint] = useState(() =>
+    getBreakpoint()
+  );
   useEffect(() => {
     const onResize = () => {
       setCurrentBreakpoint(getBreakpoint());
@@ -219,14 +221,14 @@ function Photo(props) {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   };
 
   // This handles the case of the window being very wide, but short
   const minHeight = window.innerHeight - 60;
   if (minHeight < parseInt(containerStyle.height, 10)) {
     containerStyle.height = minHeight + 'px';
-    containerStyle.width = minHeight * (1/aspects[album.aspect].ratio) + 'px';
+    containerStyle.width = minHeight * (1 / aspects[album.aspect].ratio) + 'px';
   }
 
   const getImageLeft = (index) => {
@@ -281,7 +283,7 @@ function Photo(props) {
   };
 
   return (
-    <ResponsiveContainer
+    <Box
       sx={{
         position: 'relative',
         textAlign: 'left',
@@ -387,7 +389,7 @@ function Photo(props) {
           slim={slimDescription}
         />
       ) : null}
-    </ResponsiveContainer>
+    </Box>
   );
 }
 

@@ -1,7 +1,5 @@
-import { Link } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
-import { styled } from '@mui/system';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga4';
@@ -17,18 +15,8 @@ import {
 import Cookies from 'universal-cookie';
 import { useDesktop } from '../hooks/useDesktop';
 import About from './About.js';
-import Footer from './Footer.js';
-import { Christmas } from './galleries/Christmas';
 import { Dark } from './galleries/Dark';
-import { Halloween } from './galleries/Halloween';
-import { Interactive } from './galleries/Interactive';
-import { MainChristmas } from './galleries/main/MainChristmas';
-import { MainHalloween } from './galleries/main/MainHalloween';
-import { MainSpring } from './galleries/main/MainSpring';
 import { MainStandard } from './galleries/main/MainStandard';
-import { MainSummer } from './galleries/main/MainSummer';
-import { McCloudAtNight } from './galleries/McCloudAtNight';
-import { Panoramas } from './galleries/Panoramas';
 import { SunrisesAndSunsets } from './galleries/SunrisesAndSunsets';
 import NavBar from './NavBar.js';
 import SinglePhoto from './SinglePhoto';
@@ -41,14 +29,6 @@ import { DefaultTheme, HalloweenTheme, themes } from '../themes';
 import '../i18n';
 
 ReactGA.initialize(config.googleAnalyticsId);
-
-function toTitleCase(text) {
-  return text
-    .toLowerCase()
-    .split(' ')
-    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(' ');
-}
 
 function getPageInfo(location) {
   if (!location) {
@@ -112,26 +92,9 @@ function getQueryParams() {
   return query;
 }
 
-const ContentWrapper = styled('div')(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-}));
-
-const MainContent = styled('div')(() => ({
-  flex: '1 0 auto',
-}));
-
 function SinglePhotoRoute() {
   let params = useParams();
-  return (
-    <ContentWrapper>
-      <MainContent>
-        <SinglePhoto photoName={params.photo} />
-      </MainContent>
-      <Footer />
-    </ContentWrapper>
-  );
+  return <SinglePhoto photoName={params.photo} />;
 }
 
 function MainRoute(props) {
@@ -252,17 +215,7 @@ function InnerApp() {
               />
 
               <Route path="/photo/:photo" element={<SinglePhotoRoute />} />
-
-              <Route
-                path="/about"
-                element={
-                  <ContentWrapper>
-                    <MainContent>
-                      <About />
-                    </MainContent>
-                  </ContentWrapper>
-                }
-              />
+              <Route path="/about" element={<About />} />
             </Routes>
           </div>
         </ThemeProvider>
