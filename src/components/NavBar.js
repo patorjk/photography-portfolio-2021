@@ -15,8 +15,10 @@ import { MagicalText, GhostSVG, StarCrossSVG } from 'react-halloween';
 import { useTranslation } from 'react-i18next';
 import MediaQuery, { useMediaQuery } from 'react-responsive';
 import { Link, useLocation } from 'react-router-dom';
+import { useDesktop } from '../hooks/useDesktop';
 import SettingsDialog from './dialogs/SettingsDialog';
 import config from '../app.config.js';
+import { ReactComponent as CameraIcon } from '../images/camera.svg';
 
 function NavBar(props) {
   const { theme, setTheme } = props;
@@ -38,7 +40,7 @@ function NavBar(props) {
     }
   }, [location.pathname]);
 
-  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1224px)' });
+  const isDesktopOrLaptop = useDesktop();
 
   const openGalleryMenu = (event) => setAnchorEl(event.currentTarget);
   const hideGalleryMenu = () => setAnchorEl(null);
@@ -62,31 +64,22 @@ function NavBar(props) {
     textDecoration: 'none',
   };
 
-  const [hoveringOverTitle, setHoveringOverTitle] = useState(false);
-  const onMouseEnter = useCallback(() => {
-    setHoveringOverTitle(true);
-  }, [setHoveringOverTitle]);
-  const onMouseLeave = useCallback(() => {
-    setHoveringOverTitle(false);
-  }, [setHoveringOverTitle]);
-
   return (
     <AppBar position={isDesktopOrLaptop ? 'fixed' : 'static'}>
       <Toolbar>
-        <MediaQuery minWidth={700}>
-          <Typography
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            variant="h6"
-            color="inherit"
-            to="/"
-            component={Link}
-            style={titleStyle}
+        <Tooltip title={t('toolbar.title')}>
+          <Box
+            sx={{
+              position: 'relative',
+              paddingTop: '4px',
+              marginRight: '0.5rem',
+            }}
           >
-            {t('toolbar.title')}
-          </Typography>
-          <div style={bStyle} />
-        </MediaQuery>
+            <Link to="/" style={titleStyle}>
+              <CameraIcon width={48} height={48} />
+            </Link>
+          </Box>
+        </Tooltip>
 
         <Button
           id="gallery-button"
@@ -172,34 +165,31 @@ function NavBar(props) {
           <div style={rightItemStyle} />
         </MediaQuery>
 
-        <Box sx={{
-          display: 'flex',
-          gap: '0.5rem'
-        }}>
-        <a
-          href={config.urls.flickr}
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '0.5rem',
+          }}
         >
-          <Tooltip title={t('toolbar.tooltipFlickr')}>
-            <img
-              src={require('../images/flickr.png')}
-              width={32}
-              alt="Flickr"
-            />
-          </Tooltip>
-        </a>
+          <a href={config.urls.flickr}>
+            <Tooltip title={t('toolbar.tooltipFlickr')}>
+              <img
+                src={require('../images/flickr.png')}
+                width={32}
+                alt="Flickr"
+              />
+            </Tooltip>
+          </a>
 
-        <a
-          href={config.urls.instagram}
-        >
-          <Tooltip title={t('toolbar.tooltipInstagram')}>
-            <img
-              src={require('../images/instagram.png')}
-              width={32}
-              alt="Instagram"
-            />
-          </Tooltip>
-        </a>
-
+          <a href={config.urls.instagram}>
+            <Tooltip title={t('toolbar.tooltipInstagram')}>
+              <img
+                src={require('../images/instagram.png')}
+                width={32}
+                alt="Instagram"
+              />
+            </Tooltip>
+          </a>
         </Box>
         {/* The settings button isn't needed and is just a distraction */}
         {/*

@@ -1,4 +1,5 @@
 import { Link } from '@mui/material';
+import { Box } from '@mui/system';
 import React from 'react';
 import { MagicalText } from 'react-halloween';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 export default function MainEnding() {
   const { t } = useTranslation();
   return (
-    <>
+    <Box>
       <h3>
         <MagicalText
           animationTime={10}
@@ -23,6 +24,6 @@ export default function MainEnding() {
         California. The images have a "liminal space" type feel to them, and are
         a bit darker than the images in the main gallery.
       </p>
-    </>
+    </Box>
   );
 }

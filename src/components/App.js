@@ -15,9 +15,21 @@ import {
   useParams,
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import { useDesktop } from '../hooks/useDesktop';
 import About from './About.js';
-import ContentGrid from './ContentGrid';
 import Footer from './Footer.js';
+import { Christmas } from './galleries/Christmas';
+import { Dark } from './galleries/Dark';
+import { Halloween } from './galleries/Halloween';
+import { Interactive } from './galleries/Interactive';
+import { MainChristmas } from './galleries/main/MainChristmas';
+import { MainHalloween } from './galleries/main/MainHalloween';
+import { MainSpring } from './galleries/main/MainSpring';
+import { MainStandard } from './galleries/main/MainStandard';
+import { MainSummer } from './galleries/main/MainSummer';
+import { McCloudAtNight } from './galleries/McCloudAtNight';
+import { Panoramas } from './galleries/Panoramas';
+import { SunrisesAndSunsets } from './galleries/SunrisesAndSunsets';
 import NavBar from './NavBar.js';
 import SinglePhoto from './SinglePhoto';
 import config from '../app.config.js';
@@ -122,40 +134,6 @@ function SinglePhotoRoute() {
   );
 }
 
-function GalleryRoute(props) {
-  const { gallery } = props;
-
-  return (
-    <ContentWrapper>
-      <MainContent>
-        <ContentGrid items={gallery.pageContent} />
-      </MainContent>
-      <Footer />
-    </ContentWrapper>
-  );
-}
-GalleryRoute.propTypes = {
-  gallery: PropTypes.object,
-};
-
-function PatorjkRoute() {
-  return (
-    <ContentWrapper>
-      <MainContent>
-        <div style={{ padding: '20px' }}>
-          <h3>How did you get here?</h3>
-          <p>
-            My analytics tell me this is a popular route (/patorjk), but I'm not
-            sure how people are finding it. Did you mean to go to{' '}
-            <Link href={'https://patorjk.com/'}>patorjk.com</Link>?
-          </p>
-        </div>
-      </MainContent>
-      <Footer />
-    </ContentWrapper>
-  );
-}
-
 function MainRoute(props) {
   const { month } = props;
   let mainGallery = galleries.find((item) => item.name === 'main-standard');
@@ -169,7 +147,7 @@ function MainRoute(props) {
     mainGallery = galleries.find((item) => item.name === 'main-christmas');
   }
 
-  return <GalleryRoute gallery={mainGallery} />;
+  return <mainGallery.component />;
 }
 MainRoute.propTypes = {
   month: PropTypes.string,
@@ -198,6 +176,8 @@ function InnerApp() {
     });
   }, [i18n.language]);
 
+  const isDesktopOrLaptop = useDesktop();
+
   let params = getQueryParams();
   let date = params.date || new Date().toISOString();
   let dateParams = date.match(/^\d\d\d\d-(\d\d)-(\d\d)/);
@@ -221,11 +201,6 @@ function InnerApp() {
 
   const [theme, setTheme] = useState(startingTheme);
 
-  const miscGallery = galleries.find((item) => item.name === 'misc');
-  const sunriseGallery = galleries.find(
-    (item) => item.name === 'sunrises-and-sunsets'
-  );
-
   return (
     <React.Suspense fallback={'loading...'}>
       <ScrollToTop />
@@ -239,7 +214,7 @@ function InnerApp() {
           <NavBar theme={theme} setTheme={setTheme} />
           <div
             style={{
-              paddingTop: '64px',
+              paddingTop: isDesktopOrLaptop ? '64px' : 0,
               boxSizing: 'border-box',
               height: '100%',
             }}
@@ -251,33 +226,23 @@ function InnerApp() {
               />
 
               {/* legacy */}
-              <Route
-                path={'/sunrises'}
-                element={<GalleryRoute gallery={sunriseGallery} />}
-              />
+              <Route path={'/sunrises'} element={<SunrisesAndSunsets />} />
 
               {/* legacy */}
-              <Route
-                path={'/misc'}
-                element={<GalleryRoute gallery={miscGallery} />}
-              />
+              <Route path={'/misc'} element={<MainStandard />} />
 
               {/* gallery was renamed */}
               <Route
                 path={`/gallery/spooky`}
                 key={'spooky'}
-                element={
-                  <GalleryRoute
-                    gallery={galleries.find((item) => item.name === 'dark')}
-                  />
-                }
+                element={<Dark />}
               />
 
               {galleries.map((gallery) => (
                 <Route
                   path={`/gallery/${gallery.name}`}
                   key={gallery.label}
-                  element={<GalleryRoute gallery={gallery} />}
+                  element={<gallery.component />}
                 />
               ))}
 
