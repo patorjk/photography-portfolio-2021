@@ -1,11 +1,10 @@
 import { Box, Link } from '@mui/material';
 import React from 'react';
 import GalleryBar from './gallery-bar/GalleryBar';
-import ResponsiveContainer from './styled/ResponsiveContainer';
 
 function ClosingMessage() {
   return (
-    <ResponsiveContainer sx={{ textAlign: 'left', marginTop: '-60px' }}>
+    <Box sx={{ textAlign: 'left', marginTop: '-60px' }}>
       <Box
         sx={{
           padding: '0 12px',
@@ -23,7 +22,7 @@ function ClosingMessage() {
         long time, and then when I finally do upload you'll be all confused about why you're subbed to the channel... 
         so yeah, your decision :P.`}
       </p>
-    </ResponsiveContainer>
+    </Box>
   );
 }
 

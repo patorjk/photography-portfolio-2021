@@ -1,12 +1,11 @@
 import Collapse from '@mui/material/Collapse';
 import { alpha } from '@mui/material/styles';
-import { styled } from '@mui/system';
+import { Box, styled } from '@mui/system';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
 import ReactGA from 'react-ga4';
 import FloatingMenu from './FloatingMenu';
-import ResponsiveContainer from './styled/ResponsiveContainer';
 
 const AboutText = styled('div', {
   shouldForwardProp: (prop) => prop !== 'isCollapsed',
@@ -63,7 +62,7 @@ function PhotoDescription(props) {
   }
 
   return (
-    <ResponsiveContainer sx={{ textAlign: 'left', position: 'relative' }}>
+    <Box sx={{ textAlign: 'left', position: 'relative' }}>
       <Collapse
         in={isTextOpen}
         collapsedSize={50}
@@ -88,7 +87,7 @@ function PhotoDescription(props) {
           flickrURL={flickrURL}
         />
       </Collapse>
-    </ResponsiveContainer>
+    </Box>
   );
 }
 

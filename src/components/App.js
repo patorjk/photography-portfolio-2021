@@ -1,7 +1,5 @@
-import { Link } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
-import { styled } from '@mui/system';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import ReactGA from 'react-ga4';
@@ -15,9 +13,11 @@ import {
   useParams,
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import { useDesktop } from '../hooks/useDesktop';
 import About from './About.js';
-import ContentGrid from './ContentGrid';
-import Footer from './Footer.js';
+import { Dark } from './galleries/Dark';
+import { MainStandard } from './galleries/main/MainStandard';
+import { SunrisesAndSunsets } from './galleries/SunrisesAndSunsets';
 import NavBar from './NavBar.js';
 import SinglePhoto from './SinglePhoto';
 import config from '../app.config.js';
@@ -29,14 +29,6 @@ import { DefaultTheme, HalloweenTheme, themes } from '../themes';
 import '../i18n';
 
 ReactGA.initialize(config.googleAnalyticsId);
-
-function toTitleCase(text) {
-  return text
-    .toLowerCase()
-    .split(' ')
-    .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-    .join(' ');
-}
 
 function getPageInfo(location) {
   if (!location) {
@@ -100,60 +92,9 @@ function getQueryParams() {
   return query;
 }
 
-const ContentWrapper = styled('div')(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-}));
-
-const MainContent = styled('div')(() => ({
-  flex: '1 0 auto',
-}));
-
 function SinglePhotoRoute() {
   let params = useParams();
-  return (
-    <ContentWrapper>
-      <MainContent>
-        <SinglePhoto photoName={params.photo} />
-      </MainContent>
-      <Footer />
-    </ContentWrapper>
-  );
-}
-
-function GalleryRoute(props) {
-  const { gallery } = props;
-
-  return (
-    <ContentWrapper>
-      <MainContent>
-        <ContentGrid items={gallery.pageContent} />
-      </MainContent>
-      <Footer />
-    </ContentWrapper>
-  );
-}
-GalleryRoute.propTypes = {
-  gallery: PropTypes.object,
-};
-
-function PatorjkRoute() {
-  return (
-    <ContentWrapper>
-      <MainContent>
-        <div style={{ padding: '20px' }}>
-          <h3>How did you get here?</h3>
-          <p>
-            My analytics tell me this is a popular route (/patorjk), but I'm not
-            sure how people are finding it. Did you mean to go to{' '}
-            <Link href={'https://patorjk.com/'}>patorjk.com</Link>?
-          </p>
-        </div>
-      </MainContent>
-      <Footer />
-    </ContentWrapper>
-  );
+  return <SinglePhoto photoName={params.photo} />;
 }
 
 function MainRoute(props) {
@@ -169,7 +110,7 @@ function MainRoute(props) {
     mainGallery = galleries.find((item) => item.name === 'main-christmas');
   }
 
-  return <GalleryRoute gallery={mainGallery} />;
+  return <mainGallery.component />;
 }
 MainRoute.propTypes = {
   month: PropTypes.string,
@@ -198,6 +139,8 @@ function InnerApp() {
     });
   }, [i18n.language]);
 
+  const isDesktopOrLaptop = useDesktop();
+
   let params = getQueryParams();
   let date = params.date || new Date().toISOString();
   let dateParams = date.match(/^\d\d\d\d-(\d\d)-(\d\d)/);
@@ -221,11 +164,6 @@ function InnerApp() {
 
   const [theme, setTheme] = useState(startingTheme);
 
-  const miscGallery = galleries.find((item) => item.name === 'misc');
-  const sunriseGallery = galleries.find(
-    (item) => item.name === 'sunrises-and-sunsets'
-  );
-
   return (
     <React.Suspense fallback={'loading...'}>
       <ScrollToTop />
@@ -239,7 +177,7 @@ function InnerApp() {
           <NavBar theme={theme} setTheme={setTheme} />
           <div
             style={{
-              paddingTop: '64px',
+              paddingTop: isDesktopOrLaptop ? '64px' : 0,
               boxSizing: 'border-box',
               height: '100%',
             }}
@@ -251,33 +189,23 @@ function InnerApp() {
               />
 
               {/* legacy */}
-              <Route
-                path={'/sunrises'}
-                element={<GalleryRoute gallery={sunriseGallery} />}
-              />
+              <Route path={'/sunrises'} element={<SunrisesAndSunsets />} />
 
               {/* legacy */}
-              <Route
-                path={'/misc'}
-                element={<GalleryRoute gallery={miscGallery} />}
-              />
+              <Route path={'/misc'} element={<MainStandard />} />
 
               {/* gallery was renamed */}
               <Route
                 path={`/gallery/spooky`}
                 key={'spooky'}
-                element={
-                  <GalleryRoute
-                    gallery={galleries.find((item) => item.name === 'dark')}
-                  />
-                }
+                element={<Dark />}
               />
 
               {galleries.map((gallery) => (
                 <Route
                   path={`/gallery/${gallery.name}`}
                   key={gallery.label}
-                  element={<GalleryRoute gallery={gallery} />}
+                  element={<gallery.component />}
                 />
               ))}
 
@@ -287,17 +215,7 @@ function InnerApp() {
               />
 
               <Route path="/photo/:photo" element={<SinglePhotoRoute />} />
-
-              <Route
-                path="/about"
-                element={
-                  <ContentWrapper>
-                    <MainContent>
-                      <About />
-                    </MainContent>
-                  </ContentWrapper>
-                }
-              />
+              <Route path="/about" element={<About />} />
             </Routes>
           </div>
         </ThemeProvider>

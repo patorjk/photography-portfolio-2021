@@ -51,7 +51,7 @@
             if (strcmp($gallery->name, $endPiece) === 0) {
                 $ogTitle = $gallery->title;
                 $ogDescription = $gallery->description;
-                $photoName = $photo->photoName;
+                $photoName = $gallery->photoName;
 
                 foreach($photos as $photo) {
                     if (strcmp($photo->name, $photoName) === 0) {
